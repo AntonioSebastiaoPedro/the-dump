@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-17 11:09:15 by paulcard         ###   ########.fr       */
+/*   Created: 2025/06/23 12:06:59 by paulcard          #+#    #+#             */
+/*   Updated: 2025/06/23 12:48:44 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "includes/cub.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	ft_putchar_fd(char c, int fd)
 {
+	write(fd, &c, 1);
 }

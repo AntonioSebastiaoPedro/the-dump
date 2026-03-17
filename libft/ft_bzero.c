@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-17 11:09:15 by paulcard         ###   ########.fr       */
+/*   Created: 2025/06/12 10:31:55 by paulcard          #+#    #+#             */
+/*   Updated: 2025/06/23 15:44:45 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "includes/cub.h"
+#include <stddef.h>
 
-int main(int ac, char **av)
+void	ft_bzero(void *s, size_t n)
 {
+	size_t			i;
+	unsigned char	*str;
+
+	if (!s)
+		return ;
+	str = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
 }

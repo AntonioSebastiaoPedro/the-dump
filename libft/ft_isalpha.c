@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-17 11:09:15 by paulcard         ###   ########.fr       */
+/*   Created: 2025/06/10 13:42:38 by paulcard          #+#    #+#             */
+/*   Updated: 2025/06/16 17:58:30 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "includes/cub.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_isalpha(int c)
 {
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	{
+		return (1);
+	}
+	return (0);
 }
