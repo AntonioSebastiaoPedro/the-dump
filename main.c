@@ -17,14 +17,15 @@ int	main(int ac, char **av)
     t_game  game;
 
     ft_memset(&game, 0, sizeof(game));
-	ft_validate_and_open_file(ac, av);
-    char **map = read_file(av[1]);
+    parser(ac, av, &game);
 
-    int i = 0;
-    while (map[i])
-    {
-        printf("%s", map[i]);
-        i++;
-    }
+
+    printf("\nValor main: %s\n", game.no);
+    printf("\nValor main: %s\n", game.so);
+    printf("\nValor main: %s\n", game.ea);
+    printf("\nValor main: %s\n", game.we);
+    printf("\nValor main: %d\n", game.floor_color);
+    printf("\nValor main: %d\n", game.ceiling_color);
+
 }
 
