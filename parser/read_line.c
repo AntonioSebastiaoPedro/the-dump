@@ -31,12 +31,11 @@ char    **read_file(char *filename)
         return ((ft_putstr_fd("Erro: Ao Abrir o ficheiro", 2)), NULL);
     lines = (char **)malloc(sizeof(char *) * (line_count + 1));
     if (!lines)
-        return (ft_putendl_fd("Error: Memory allocation failed", 2), close(fd), NULL);
+        return (ft_putendl_fd("Error: Falha a alocar Mempria", 2), close(fd), NULL);
     i = 0;
     lines[i] = get_next_line(fd);
     while (lines[i])
     {
-        free(lines[i]);
         i++;
         lines[i] = get_next_line(fd);
     }

@@ -16,7 +16,7 @@ void	ft_check_args(int ac)
 {
 	if (ac != 2)
 	{
-		ft_putstr_fd("Uso: cub3D <filename> [ case_size z_size ]\n", 2);
+		ft_putstr_fd("Uso: ./cub3D <map.cub>\n", 2);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -53,7 +53,7 @@ int	ft_open_file(char *filename)
 	return (fd);
 }
 
-void    ft_validate_and_open_file(int ac, char **av)
+void    ft_validate_file(int ac, char **av)
 {
 	ft_check_args(ac);
 	if (!ft_check_file(av[1]))
