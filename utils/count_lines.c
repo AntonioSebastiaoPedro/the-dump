@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_count_lines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-17 11:09:15 by paulcard         ###   ########.fr       */
+/*   Created: 2026-03-18 10:28:32 by paulcard          #+#    #+#             */
+/*   Updated: 2026-03-18 10:28:32 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "includes/cub.h"
+# include "../includes/cub.h"
 
-int	main(int ac, char **av)
+int ft_count_lines(int fd)
 {
-    t_game  game;
+    char    *line;
+    int     count;
 
-    ft_memset(&game, 0, sizeof(game));
-	ft_validate_and_open_file(ac, av);
-    char **map = read_file(av[1]);
-
-    int i = 0;
-    while (map[i])
+    count = 0;
+    line = get_next_line(fd);
+    while (line)
     {
-        printf("%s", map[i]);
-        i++;
+        free(line);
+        count++;
+        line = get_next_line(fd);
     }
+    return (count);
 }
-
