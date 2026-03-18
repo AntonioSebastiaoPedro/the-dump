@@ -5,17 +5,27 @@
 NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -Iminilibx-linux
+CFLAGS += -O3
 CFLAGS += -g
 CPPFLAGS = -I. -I$(LIBFT_DIR) -MMD -MP
 LDFLAGS = -lft -L$(LIBFT_DIR)
+LDFLAGS += -lmlx -Lminilibx-linux -lX11 -lXext
 LDFLAGS += -lreadline
 RM = rm -rf
 
 # ==============================================================================
 # LIBFT
 # ==============================================================================
+
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
+
+# ==============================================================================
+# MINILIBX
+# ==============================================================================
+MINILIBX_DIR = minilibx-linux
+MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 # ==============================================================================
 # DIRECTORIES
@@ -35,18 +45,19 @@ UTILS_DIR = utils
 
 ASSETS_FILES = 
 INIT_MLX_FILES = 
-PARSER_FILES = 
+PARSER_FILES = check_file.c read_line.c
+UTILS_FILES = count_lines.c
 # ==============================================================================
 # SOURCE PATHS AND OBJECTS
 # ==============================================================================
 
 # Add prefix to the files
 ASSETS = $(addprefix $(ASSETS_DIR)/, $(ASSETS_FILES))
-INIT_MLX = 
-
+PARSER = $(addprefix $(PARSER_DIR)/, $(PARSER_FILES))
+UTILS = $(addprefix $(UTILS_DIR)/, $(UTILS_FILES))
 
 # All source files
-SRC = main.c $(INIT_MLX)
+SRC = main.c $(INIT_MLX) $(PARSER) $(UTILS)
 
 # Add prefix to save objects and dependency files in build folder
 OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
@@ -77,12 +88,9 @@ $(BUILD_DIR):
 	@mkdir -p $(BUILD_DIR)
 
 # Link final executable
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(LDFLAGS) -o $@
 
-# Compile with banner
-banner: fclean
-	$(MAKE) all SHOW_BANNER=true
 
 # Compile without custom prompt and command not found handle
 raw: fclean
@@ -96,6 +104,10 @@ n norm:
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
+# Compile minilibx
+$(MINILIBX):
+	make -C $(MINILIBX_DIR)
+
 # ==============================================================================
 # CLEAN RULES
 # ==============================================================================
@@ -103,11 +115,13 @@ $(LIBFT):
 clean:
 	$(RM) $(BUILD_DIR)
 	make clean -C $(LIBFT_DIR)
+	make clean -C $(MINILIBX_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 	make fclean -C $(LIBFT_DIR)
+	make clean -C $(MINILIBX_DIR)
 
 re: fclean all
 
-.PHONY: all clean fclean re banner n norm raw
+.PHONY: all clean fclean re n norm 
