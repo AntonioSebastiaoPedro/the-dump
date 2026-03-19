@@ -80,6 +80,7 @@ int		parse_color(const char *line, t_game *game);
 int		parse_map(char **lines, int map_start, t_game *game);
 int		is_empty_line(char *line);
 int		is_valid_line_map(char *line);
+char	**normalize_map(char **map, int height);
 
 
 /*		UTILS		*/
