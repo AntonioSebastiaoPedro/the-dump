@@ -26,6 +26,9 @@ int	main(int ac, char **av)
     printf("\nValor main: %s\n", game.we);
     printf("\nValor main: %d\n", game.floor_color);
     printf("\nValor main: %d\n", game.ceiling_color);
-
+    printf("\nValor main: %d\n", game.map_height);
+    printf("\nValor main: %d\n", game.map_width);
+    print_map(game.map);
+    return (0);
 }
 

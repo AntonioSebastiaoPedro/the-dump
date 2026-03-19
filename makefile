@@ -45,8 +45,8 @@ UTILS_DIR = utils
 
 ASSETS_FILES = 
 INIT_MLX_FILES = 
-PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c valid_map.c normalize_map.c
-UTILS_FILES = count_lines.c free_lines.c free_split.c copy_map.c debug.c
+PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c normalize_map.c valid_line_map.c validate_map.c check_player.c check_inside.c check_borders.c
+UTILS_FILES = count_lines.c free_all.c copy_map.c debug.c
 # ==============================================================================
 # SOURCE PATHS AND OBJECTS
 # ==============================================================================
