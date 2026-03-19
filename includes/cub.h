@@ -59,6 +59,7 @@ typedef enum e_line_type
 # define NEWLINE '\n'
 # define ENDLINE '\0'
 # define COMMA ','
+# define CARRIAGE '\r'
 
 
 # define NORTE "NO"
@@ -67,25 +68,26 @@ typedef enum e_line_type
 # define OESTE "WE"
 
 
-/*PARSER*/
-
-/*	check file	*/
+/*		PARSER				*/
 void	ft_check_args(int ac);
 int		ft_check_file(char *filename);
 int		ft_open_file(char *filename);
 void	ft_validate_file(int ac, char **av);
-
-/*readfile*/
 char    **read_file(char *filename);
 int		parser(int ac, char **av, t_game *game);
 int		parse_texture(const char *line, t_game *game);
 int		parse_color(const char *line, t_game *game);
 int		parse_map(char **lines, int map_start, t_game *game);
+int		is_empty_line(char *line);
+int		is_valid_line_map(char *line);
+
 
 /*		UTILS		*/
 int			ft_count_lines(int fd);
 void    	free_lines(char **lines);
 void		free_split(char **arr);
 t_line_type get_line_type(const char *line);
+char    **copy_map(char **lines, int map_start, int height);
+void	print_map(char **map);
 
 #endif
