@@ -13,7 +13,7 @@
 # include "../includes/cub.h"
 
 int	parse_map(char **lines, int map_start, t_game *game)
-{(void)game;
+{
     int     i;
     int     height;
     bool    ln_empty_found;
@@ -44,6 +44,13 @@ int	parse_map(char **lines, int map_start, t_game *game)
     }
     map = copy_map(lines, map_start, height);
     map = normalize_map(map, height);
-    print_map(map);
+
+    if (validate_map(map, height) == 0)
+    {
+        //free_map(map);
+    }
+    game->map = map;
+    game->map_height = height;
+    game->map_width = ft_strlen(map[0]);
     return (1);
 }

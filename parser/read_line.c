@@ -34,6 +34,10 @@ char    **read_file(char *filename)
         return (ft_putendl_fd("Error: Falha a alocar Mempria", 2), close(fd), NULL);
     i = 0;
     lines[i] = get_next_line(fd);
+    if (!lines[i])
+    {
+        //TODO: vai dar pau, Arranjar uma forma de liberar toda memoria
+    }
     while (lines[i])
     {
         i++;

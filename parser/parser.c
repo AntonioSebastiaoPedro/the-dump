@@ -56,6 +56,6 @@ int parser(int ac, char **av, t_game *game)
         return (0);
     }
     if (parse_map(lines, map_start ,game) == 0)
-        return 0;
+        return (0);
     return (1);
 }
