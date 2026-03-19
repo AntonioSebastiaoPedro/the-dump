@@ -12,20 +12,48 @@
 
 # include "../includes/cub.h"
 
+static void remove_newline(char *line)
+{
+    int i = 0;
+
+    if (!line)
+        return;
+    while (line[i])
+    {
+        if (line[i] == '\n')
+        {
+            line[i] = '\0';
+            return;
+        }
+        i++;
+    }
+}
+
+static char *trim_left(char *str)
+{
+    while (*str == ' ')
+        str++;
+    return (str);
+}
+
 char    **copy_map(char **lines, int map_start, int height)
 {
     char    **map;
+    char    *clean;
     int     i;
 
-    if (!lines)
-        return (NULL);
-    map = (char **)malloc((height + 1) * sizeof(char *));
+    map = malloc((height + 1) * sizeof(char *));
     if (!map)
         return (NULL);
+
     i = 0;
     while (i < height)
     {
-        map[i] = ft_strdup(lines[map_start + i]);
+        remove_newline(lines[map_start + i]);
+        clean = trim_left(lines[map_start + i]);
+        map[i] = ft_strdup(clean);
+        if (!map[i])
+            return (NULL);
         i++;
     }
     map[i] = NULL;
