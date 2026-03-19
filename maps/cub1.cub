@@ -1,9 +1,9 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./assets/textures/comb2/tatame_north_texture.xpm
+SO ./assets/textures/comb2/tatame_south_texture.xpm
+WE ./assets/textures/comb2/tatame_west_texture.xpm
+EA ./assets/textures/comb2/tatame_east_texture.xpm
 
-F 300,100,0
+F 200,100,0
 C 225,30,0
 
         1111111111111111111111111
