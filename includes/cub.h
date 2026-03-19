@@ -69,26 +69,31 @@ typedef enum e_line_type
 
 
 /*		PARSER				*/
-void	ft_check_args(int ac);
-int		ft_check_file(char *filename);
-int		ft_open_file(char *filename);
-void	ft_validate_file(int ac, char **av);
-char    **read_file(char *filename);
-int		parser(int ac, char **av, t_game *game);
-int		parse_texture(const char *line, t_game *game);
-int		parse_color(const char *line, t_game *game);
-int		parse_map(char **lines, int map_start, t_game *game);
-int		is_empty_line(char *line);
-int		is_valid_line_map(char *line);
-char	**normalize_map(char **map, int height);
+void		ft_check_args(int ac);
+int			ft_check_file(char *filename);
+int			ft_open_file(char *filename);
+void		ft_validate_file(int ac, char **av);
+char		**read_file(char *filename);
+int			parser(int ac, char **av, t_game *game);
+int			parse_texture(const char *line, t_game *game);
+int			parse_color(const char *line, t_game *game);
+int			parse_map(char **lines, int map_start, t_game *game);
+int			is_empty_line(char *line);
+int			is_valid_line_map(char *line);
+char		**normalize_map(char **map, int height);
+int			validate_map(char **map, int height);
+int			check_player(char **map);
+int			check_borders(char **map, int height, int width);
+int			check_inside(char **map, int height, int width);
 
 
 /*		UTILS		*/
 int			ft_count_lines(int fd);
-void    	free_lines(char **lines);
 void		free_split(char **arr);
 t_line_type get_line_type(const char *line);
-char    **copy_map(char **lines, int map_start, int height);
-void	print_map(char **map);
+char    	**copy_map(char **lines, int map_start, int height);
+void		free_game(t_game *game);
+void    	free_map(char **map, int height);
+void		print_map(char **map);
 
 #endif
