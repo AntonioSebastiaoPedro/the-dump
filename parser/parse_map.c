@@ -12,10 +12,39 @@
 
 # include "../includes/cub.h"
 
-int	parse_map(char **lines, int map_start,t_game *game)
-{
-    (void)lines;
-    (void)game;
-    printf("[MAP] Starting at line %d\n", map_start);
+int	parse_map(char **lines, int map_start, t_game *game)
+{(void)game;
+    int     i;
+    int     height;
+    bool    ln_empty_found;
+    char    **map;
+
+    if (!lines || map_start < 0)
+        return (ft_putendl_fd("Mapa invalido", 2), 0);
+    i = map_start;
+    ln_empty_found = false;
+    while (lines[i])
+    {
+        if (is_empty_line(lines[i]))
+            ln_empty_found = true;
+        else if (ln_empty_found)
+            return (ft_putendl_fd("Erro: linha vazia dentro do mapa", 2), 0);
+        else if (!is_valid_line_map(lines[i]))
+            return (ft_putendl_fd("Erro: caracteres inválidos no mapa", 2), 0);
+        i++;
+    }
+    // tamanho da linha
+    height = i - map_start;
+    if (height == 0)
+        return (ft_putendl_fd("Mapa Ausente", 2), 0);
+    while (lines[i])
+    {
+        if (!is_empty_line(lines[i]))
+            return (ft_putendl_fd("Erro: mapa deve ser último elemento", 2), 0);
+        i++;
+    }
+    map = copy_map(lines, map_start, height);
+    printf("Mapa Valido\n");
+    print_map(map);
     return (1);
 }
