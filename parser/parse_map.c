@@ -33,7 +33,6 @@ int	parse_map(char **lines, int map_start, t_game *game)
             return (ft_putendl_fd("Erro: caracteres inválidos no mapa", 2), 0);
         i++;
     }
-    // tamanho da linha
     height = i - map_start;
     if (height == 0)
         return (ft_putendl_fd("Mapa Ausente", 2), 0);
@@ -44,7 +43,7 @@ int	parse_map(char **lines, int map_start, t_game *game)
         i++;
     }
     map = copy_map(lines, map_start, height);
-    printf("Mapa Valido\n");
+    map = normalize_map(map, height);
     print_map(map);
     return (1);
 }
