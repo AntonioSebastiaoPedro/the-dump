@@ -94,7 +94,7 @@ $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 
 # Compile without custom prompt and command not found handle
 raw: fclean
-	$(MAKE) all CUSTOM_PROMPT=false COMMAND_NOT_FOUND_HANDLE=false
+	$(MAKE) all
 
 # NORM
 n norm:
