@@ -11,7 +11,6 @@ CFLAGS += -g
 CPPFLAGS = -I. -I$(LIBFT_DIR) -MMD -MP
 LDFLAGS = -lft -L$(LIBFT_DIR)
 LDFLAGS += -lmlx -Lminilibx-linux -lX11 -lXext
-LDFLAGS += -lreadline
 RM = rm -rf
 
 # ==============================================================================
