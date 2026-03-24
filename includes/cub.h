@@ -54,7 +54,7 @@ typedef enum e_line_type
 
 
 /*	*/
-# define ESPACO 32
+# define SPACE 32
 # define TAB '\t'
 # define NEWLINE '\n'
 # define ENDLINE '\0'

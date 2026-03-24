@@ -21,7 +21,7 @@ int is_empty_line(char *line)
     i = 0;
     while (line[i])
     {
-        if (line[i] != ESPACO && line[i] != TAB && line[i] != NEWLINE && line[i] != CARRIAGE)
+        if (line[i] != SPACE && line[i] != TAB && line[i] != NEWLINE && line[i] != CARRIAGE)
             return (0);
         i++;
     }

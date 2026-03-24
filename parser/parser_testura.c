@@ -18,7 +18,7 @@ int parse_texture(const char *line, t_game *game)
 	int		fd_testura;
     char    **parts;
 
-   parts = ft_split(line, ESPACO);
+   parts = ft_split(line, SPACE);
    printf("Testura: %s\n", parts[0]);
    if (!parts || !parts[0] || !parts[1] || parts[2])
 		return (ft_putendl_fd("Erro: Textura Invalida", 2), 0);

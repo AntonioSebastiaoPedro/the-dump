@@ -50,7 +50,7 @@ static char *pad_line(char *line, int max_len)
     }
     while (i < max_len)
     {
-        new_line[i] = ESPACO;
+        new_line[i] = SPACE;
         i++;
     }
     new_line[i] = '\0';
