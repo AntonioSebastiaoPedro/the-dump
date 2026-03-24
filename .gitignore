@@ -53,3 +53,9 @@ dkms.conf
 
 # debug information files
 *.dwo
+teste.c
+.gitignore
+file.txt
+*.txt
+assets/textures
+cub3d
