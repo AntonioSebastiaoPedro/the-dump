@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_inside.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-19 18:07:53 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-19 18:07:53 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/19 18:07:53 by paulcard          #+#    #+#             */
+/*   Updated: 2026/03/24 18:47:50 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int check_inside(char **map)
         {
             if (map[i][j] == '0' || is_player(map[i][j]))
             {
-                if (map[i - 1][j] == SPACE || map[i + 1][j] == SPACE ||
+                if (map[i][j] == SPACE || map[i + 1][j] == SPACE ||
                     map[i][j - 1] == SPACE || map[i][j + 1] == SPACE)
                     return (0);
             }

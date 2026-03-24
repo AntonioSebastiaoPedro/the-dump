@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-18 14:04:24 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
+/*   Updated: 2026/03/24 15:23:38 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ int	parse_color(const char *line, t_game *game)
 	int		r, g, b;
 	char	id;
 
-	printf("[COLOR] %s", line);
 	if (!validate_identifier(line, &id))
 		return (0);
 	if (!validate_rgb_format(line))

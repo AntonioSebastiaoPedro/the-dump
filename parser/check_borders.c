@@ -22,7 +22,7 @@ int check_borders(char **map, int height, int width)
     {
         if (map[0][i] != '1' && map[0][i] != SPACE)
             return (0);
-        if (map[0][height - 1] != '1' && map[0][height - 1] != SPACE)
+        if (map[height - 1][i] != '1' && map[height - 1][i] != SPACE)
             return (0);
         i++;
     }
@@ -32,9 +32,9 @@ int check_borders(char **map, int height, int width)
         if (map[i][0] != '1' && map[i][0] != SPACE)
             return (0);
         value = width - 1;
-        while (map[i][value] == SPACE)
+        while (value >= 0 && map[i][value] == SPACE)
             value--;
-        if (map[i][value] != '1' && map[i][value] != SPACE)
+        if (value >= 0 && map[i][value] != '1')
             return (0);
         i++;
     }

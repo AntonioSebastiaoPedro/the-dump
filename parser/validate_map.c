@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-19 17:29:20 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-19 17:29:20 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/19 17:29:20 by paulcard          #+#    #+#             */
+/*   Updated: 2026/03/24 18:42:22 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int validate_map(char **map, int height, t_game *game)
 {
+	(void)game;
 	int	width;
 
 	width = ft_strlen(map[0]);

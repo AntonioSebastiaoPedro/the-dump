@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_split.c                                       :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-18 14:30:22 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
+/*   Updated: 2026/03/24 15:38:11 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void    free_map(char **map, int height)
         i++;
     }
     free(map);
+    map = NULL;
 }
 
  void   free_split(char **arr)
