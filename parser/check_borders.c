@@ -14,8 +14,29 @@
 
 int check_borders(char **map, int height, int width)
 {
-    (void)map;
-    (void)height;
-    (void)width;
+    int value;
+    int i;
+
+    i = 0;
+    while (i < width)
+    {
+        if (map[0][i] != '1' && map[0][i] != SPACE)
+            return (0);
+        if (map[0][height - 1] != '1' && map[0][height - 1] != SPACE)
+            return (0);
+        i++;
+    }
+    i = 0;
+    while (i < height)
+    {
+        if (map[i][0] != '1' && map[i][0] != SPACE)
+            return (0);
+        value = width - 1;
+        while (map[i][value] == SPACE)
+            value--;
+        if (map[i][value] != '1' && map[i][value] != SPACE)
+            return (0);
+        i++;
+    }
     return (1);
 }

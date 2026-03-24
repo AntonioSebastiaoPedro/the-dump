@@ -12,6 +12,11 @@
 
 # include "../includes/cub.h"
 
+bool is_player(char c)
+{
+    return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
+
 int check_player(char **map)
 {
     int	i;
@@ -25,7 +30,7 @@ int check_player(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (ft_strchr("NSEW", map[i][j]))
+			if (is_player(map[i][j]))
 				player_count++;
 			j++;
 		}
