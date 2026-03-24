@@ -42,14 +42,14 @@ int	parse_map(char **lines, int map_start, t_game *game)
             return (ft_putendl_fd("Erro: mapa deve ser último elemento", 2), 0);
         i++;
     }
+    game->map = copy_map(lines, map_start, height);
     map = copy_map(lines, map_start, height);
     map = normalize_map(map, height);
 
-    if (validate_map(map, height) == 0)
+    if (validate_map(map, height, game) == 0)
     {
         //free_map(map);
     }
-    game->map = map;
     game->map_height = height;
     game->map_width = ft_strlen(map[0]);
     return (1);
