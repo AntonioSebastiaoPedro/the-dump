@@ -12,10 +12,26 @@
 
 # include "../includes/cub.h"
 
-int check_inside(char **map, int height, int width)
+int check_inside(char **map)
 {
-    (void)map;
-    (void)height;
-    (void)width;
+    int i;
+    int j;
+
+    i = 1;
+    while (map[i + 1])
+    {
+        j = 1;
+        while (map[i][j + 1])
+        {
+            if (map[i][j] == '0' || is_player(map[i][j]))
+            {
+                if (map[i - 1][j] == SPACE || map[i + 1][j] == SPACE ||
+                    map[i][j - 1] == SPACE || map[i][j + 1] == SPACE)
+                    return (0);
+            }
+            j++;
+        }
+        i++;
+    }
     return (1);
 }
