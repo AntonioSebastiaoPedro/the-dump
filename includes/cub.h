@@ -42,6 +42,19 @@ typedef struct  s_game
 	int		player_y;
 	char    player_dir;
 }              t_game;
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+	t_game	*game;
+}	t_mlx;
 
 typedef enum e_line_type
 {
@@ -98,4 +111,7 @@ void		free_game(t_game *game);
 void    	free_map(char **map, int height);
 void		print_map(char **map);
 
+/*	MLX INIT	*/
+void	ft_init_mlx(t_mlx *mlx);
+void	exit_error(char *msg, t_mlx *mlx);
 #endif

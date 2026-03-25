@@ -14,16 +14,13 @@
 
 int	main(int ac, char **av)
 {
+    t_mlx   mlx;
     t_game  game;
 
     ft_memset(&game, 0, sizeof(game));
     if (!parser(ac, av, &game))
-    {
-        free_game(&game);
-        return (1);
-    }
-
-
+        return(free_game(&game), 1);
+    
     printf("\nValor main: %s\n", game.no);
     printf("\nValor main: %s\n", game.so);
     printf("\nValor main: %s\n", game.ea);
@@ -31,7 +28,9 @@ int	main(int ac, char **av)
     printf("\nValor main: %d\n", game.floor_color);
     printf("\nValor main: %d\n", game.ceiling_color);
     printf("\nValor main: %d\n", game.map_height);
-    printf("\nValor main: %d\n", game.map_width);
+    printf("\nValor main: %d\n", game.player_x);
+    printf("\nValor main: %d\n", game.player_y);
+    printf("\nValor main: %c\n", game.player_dir);
     print_map(game.map);
     free_game(&game);
     return (0);
