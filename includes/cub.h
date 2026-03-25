@@ -82,10 +82,10 @@ int			is_empty_line(char *line);
 int			is_valid_line_map(char *line);
 char		**normalize_map(char **map, int height);
 int			validate_map(char **map, int height, t_game *game);
-int			check_player(char **map);
+int			check_player(char **map, t_game *game);
 bool		is_player(char c);
 int			check_borders(char **map, int height, int width);
-int			check_inside(char **map, int height);
+int			check_inside(char **map, int height, t_game *game);
 int flood_fill(char **map, int x, int y);
 
 

@@ -12,41 +12,14 @@
 
 # include "../includes/cub.h"
 
-int find_player(char **map, int *x, int *y)
-{
-    int i = 0;
-    int j;
-
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (is_player(map[i][j]))
-            {
-                *x = j;
-                *y = i;
-                return (1);
-            }
-            j++;
-        }
-        i++;
-    }
-    return (0);
-}
-
-int check_inside(char **map, int height)
+int check_inside(char **map, int height, t_game *game)
 {
     char **copy;
-    int x;
-    int y;
 
     copy = copy_map(map, 0, height);
     if (!copy)
         return (0);
-    if (!find_player(copy, &x, &y))
-        return (0);
-    if (!flood_fill(copy, x, y))
+    if (!flood_fill(copy, game->player_x, game->player_y))
     {
         free_map(copy, height);
         return (0);

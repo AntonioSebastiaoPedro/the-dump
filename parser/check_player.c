@@ -17,28 +17,39 @@ bool is_player(char c)
     return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-int check_player(char **map)
+int check_player(char **map, t_game *game)
 {
-    int	i;
-    int	j;
-    int	player_count;
+    int i;
+    int j;
+    int count;
 
-    player_count = 0;
     i = 0;
+    count = 0;
+    game->player_dir = 0;
+
     while (map[i])
     {
-		j = 0;
-		while (map[i][j])
-		{
-			if (is_player(map[i][j]))
-				player_count++;
-			j++;
-		}
-		i++;
+        j = 0;
+        while (map[i][j])
+        {
+            if (is_player(map[i][j]))
+            {
+                count++;
+                if (count == 1)
+                {
+                    game->player_x = j;
+                    game->player_y = i;
+                    game->player_dir = map[i][j];
+                }
+                map[i][j] = '0'; 
+            }
+            j++;
+        }
+        i++;
     }
-    if (player_count == 0)
-        return (ft_putendl_fd("Erro: jogador ausente no mapa", 2), 0);
-    if (player_count > 1)
-        return (ft_putendl_fd("Erro: múltiplos jogadores no mapa", 2), 0);
+    if (count == 0)
+        return (ft_putendl_fd("Erro: jogador ausente", 2), 0);
+    if (count > 1)
+        return (ft_putendl_fd("Erro: múltiplos jogadores", 2), 0);
     return (1);
 }
