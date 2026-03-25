@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.c                                        :+:      :+:    :+:   */
+/*   valid_line_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-19 09:38:12 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-19 09:38:12 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/19 09:38:12 by paulcard          #+#    #+#             */
+/*   Updated: 2026/03/25 11:29:23 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int is_valid_line_map(char *line)
     i = 0;
     while (line[i])
     {
-        if (!ft_strchr("01NSEW \n", line[i]))
+        if (!ft_strchr("01NSEW\t \n", line[i]))
             return (0);
         i++;
     }
