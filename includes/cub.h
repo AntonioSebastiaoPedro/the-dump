@@ -86,7 +86,7 @@ int			check_player(char **map, t_game *game);
 bool		is_player(char c);
 int			check_borders(char **map, int height, int width);
 int			check_inside(char **map, int height, t_game *game);
-int flood_fill(char **map, int start_x, int start_y, int height, int width);
+int flood_fill(char **map, int x, int y, int height, int width);
 
 
 /*		UTILS		*/
