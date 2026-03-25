@@ -16,24 +16,19 @@ int	parse_map(char **lines, int map_start, t_game *game)
 {
     int     i;
     int     height;
-    bool    ln_empty_found;
     char    **map;
 
     if (!lines || map_start < 0)
         return (ft_putendl_fd("Mapa invalido", 2), 0);
     i = map_start;
     height = 0;
-    ln_empty_found = false;
     while (lines[i])
     {
         if (is_empty_line(lines[i]))
-            ln_empty_found = true;
-        else if (ln_empty_found)
-            return (ft_putendl_fd("Erro: linha vazia dentro do mapa", 2), 0);
-        else if (!is_valid_line_map(lines[i]))
+            break ;
+        if (!is_valid_line_map(lines[i]))
             return (ft_putendl_fd("Erro: caracteres inválidos no mapa", 2), 0);
-        else
-            height++;
+        height++;
         i++;
     }
     if (height == 0)
@@ -45,13 +40,16 @@ int	parse_map(char **lines, int map_start, t_game *game)
         i++;
     }
     map = copy_map(lines, map_start, height);
+    if (!map)
+        return (ft_putendl_fd("Erro: falha ao copiar mapa", 2), 0);
     map = normalize_map(map, height);
+    if (!map)
+        return (ft_putendl_fd("Erro: falha ao normalizar mapa", 2), 0);
     print_map(map);
-    game->map = copy_map(lines, map_start, height);
     game->map_height = height;
     game->map_width = ft_strlen(map[0]);
     if (validate_map(map, height, game) == 0)
         return (free_map(map, height), 0);
-    free_map(map, height);
+    game->map = map;
     return (1);
 }

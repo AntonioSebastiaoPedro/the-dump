@@ -29,31 +29,21 @@ static void remove_newline(char *line)
     }
 }
 
-static char *trim_left(char *str)
-{
-    while (*str == ' ')
-        str++;
-    return (str);
-}
-
 char    **copy_map(char **lines, int map_start, int height)
 {
     char    **map;
-    char    *clean;
     int     i;
 
     map = malloc((height + 1) * sizeof(char *));
     if (!map)
         return (NULL);
-
     i = 0;
     while (i < height)
     {
-        remove_newline(lines[map_start + i]);
-        clean = trim_left(lines[map_start + i]);
-        map[i] = ft_strdup(clean);
+        map[i] = ft_strdup(lines[map_start + i]);
         if (!map[i])
-            return (NULL);
+            return (free_map(map, i), NULL);
+        remove_newline(map[i]);
         i++;
     }
     map[i] = NULL;

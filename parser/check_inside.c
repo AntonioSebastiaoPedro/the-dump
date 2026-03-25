@@ -14,12 +14,14 @@
 
 int check_inside(char **map, int height, t_game *game)
 {
-    char **copy;
+    char	**copy;
+    int		width;
 
     copy = copy_map(map, 0, height);
     if (!copy)
         return (0);
-    if (!flood_fill(copy, game->player_x, game->player_y))
+    width = ft_strlen(copy[0]);
+    if (!flood_fill(copy, game->player_x, game->player_y, height, width))
     {
         free_map(copy, height);
         return (0);
