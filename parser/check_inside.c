@@ -34,9 +34,9 @@ static int	check_no_space_adjacent(char **map, int height, int width)
 					return (0);
 				if (y == 0 || y == height - 1)
 					return (0);
-				if (map[y][x + 1] == ' ' || map[y][x - 1] == ' ')
+				if (ft_isspace(map[y][x + 1]) || ft_isspace(map[y][x - 1]))
 					return (0);
-				if (map[y + 1][x] == ' ' || map[y - 1][x] == ' ')
+				if (ft_isspace(map[y + 1][x]) || ft_isspace(map[y - 1][x]))
 					return (0);
 			}
 			x++;
