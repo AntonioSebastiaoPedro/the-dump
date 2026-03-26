@@ -69,10 +69,10 @@ static char	**process_map_layout(char **lines, int start, int height)
 	return (map);
 }
 
-int	parse_map(char **lines, int map_start, t_game *game)
+int	parse_map(char **lines, int map_start, t_cub *cub)
 {
 	int		height;
-	char	**map;
+	char	**grid;
 
 	if (!lines || map_start < 0)
 		return (ft_putendl_fd("Mapa invalido", 2), 0);
@@ -81,17 +81,17 @@ int	parse_map(char **lines, int map_start, t_game *game)
 		return (0);
 	if (has_trailing_elements(lines, map_start + height))
 		return (0);
-	map = process_map_layout(lines, map_start, height);
-	if (!map)
+	grid = process_map_layout(lines, map_start, height);
+	if (!grid)
 		return (0);
-	//print_map(map);
-	game->map_height = height;
-	game->map_width = ft_strlen(map[0]);
-	if (validate_map(map, height, game) == 0)
+	cub->map->height = height;
+	cub->map->width = ft_strlen(grid[0]);
+	cub->map->grid = grid;
+	if (validate_map(grid, height, cub) == 0)
 	{
-		free_map(map, height);
+		free_map(grid, height);
+		cub->map->grid = NULL;
 		return (0);
 	}
-	game->map = map;
 	return (1);
 }

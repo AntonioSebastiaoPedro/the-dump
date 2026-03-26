@@ -17,15 +17,15 @@ bool	is_player(char c)
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-static	void	set_player_position(char **map, t_game *g, int x, int y)
+static	void	set_player_position(char **map, t_cub *cub, int x, int y)
 {
-	g->player_x = x;
-	g->player_y = y;
-	g->player_dir = map[y][x];
+	cub->player->pos_x = x + 0.5;
+	cub->player->pos_y = y + 0.5;
+	cub->player->dir = map[y][x];
 	map[y][x] = '0';
 }
 
-int	check_player_help(char **map, t_game *g)
+int	check_player_help(char **map, t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -33,7 +33,7 @@ int	check_player_help(char **map, t_game *g)
 
 	i = 0;
 	count = 0;
-	g->player_dir = 0;
+	cub->player->dir = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -43,8 +43,7 @@ int	check_player_help(char **map, t_game *g)
 			{
 				count++;
 				if (count == 1)
-					set_player_position(map, g, j, i);
-				map[i][j] = '0';
+					set_player_position(map, cub, j, i);
 			}
 			j++;
 		}
@@ -53,11 +52,11 @@ int	check_player_help(char **map, t_game *g)
 	return (count);
 }
 
-int	check_player(char **map, t_game *game)
+int	check_player(char **map, t_cub *cub)
 {
 	int	count;
 
-	count = check_player_help(map, game);
+	count = check_player_help(map, cub);
 	if (count == 0)
 		return (ft_putendl_fd("Erro: jogador ausente", 2), 0);
 	if (count > 1)

@@ -58,7 +58,7 @@ static int	set_texture(char **dest, char **parts, char *dir)
 	return (1);
 }
 
-int	parse_texture(const char *line, t_game *game)
+int	parse_texture(const char *line, t_cub *cub)
 {
 	char	**parts;
 	int		ret;
@@ -71,13 +71,13 @@ int	parse_texture(const char *line, t_game *game)
 		return (0);
 	}
 	if (ft_strcmp(parts[0], "NO") == 0)
-		ret = set_texture(&game->no, parts, "NO");
+		ret = set_texture(&cub->config->no, parts, "NO");
 	else if (ft_strcmp(parts[0], "SO") == 0)
-		ret = set_texture(&game->so, parts, "SO");
+		ret = set_texture(&cub->config->so, parts, "SO");
 	else if (ft_strcmp(parts[0], "WE") == 0)
-		ret = set_texture(&game->we, parts, "WE");
+		ret = set_texture(&cub->config->we, parts, "WE");
 	else if (ft_strcmp(parts[0], "EA") == 0)
-		ret = set_texture(&game->ea, parts, "EA");
+		ret = set_texture(&cub->config->ea, parts, "EA");
 	else
 	{
 		ret = (ft_putendl_fd("Erro: Textura nao existe", 2), free_split(parts), 0);

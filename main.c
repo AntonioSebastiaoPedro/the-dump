@@ -12,27 +12,22 @@
 
 # include "includes/cub.h"
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
 
 int	main(int ac, char **av)
 {
-    t_mlx   mlx;
-    t_game  game;
-
-    ft_memset(&game, 0, sizeof(game));
-    memset(&mlx, 0, sizeof(t_mlx));
-    if (!parser(ac, av, &game))
-        return(free_game(&game), 1);
-    init_mlx(&mlx);
-    render(&mlx);
-    mlx_loop(&mlx);
-    free_game(&game);
-    return (0);
+	t_cub	*cub;
+	cub = parse_cub(ac, av);
+	if (!cub)
+		return (1);
+	cub->mlx = init_mlx();
+	if (!cub->mlx)
+	{
+		free_cub(cub);
+		return (1);
+	}
+	render(cub);
+	mlx_loop(cub->mlx->mlx);
+	free_cub(cub);
+	return (0);
 }
 

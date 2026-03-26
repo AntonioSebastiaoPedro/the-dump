@@ -12,51 +12,47 @@
 
 # include "../includes/cub.h"
 
-void    init_mlx(t_mlx *mlx)
+t_mlx    *init_mlx(void)
 {
+	t_mlx	*mlx;
+
+	mlx = ft_calloc(1, sizeof(t_mlx));
+	if (!mlx)
+		return (NULL);
 	mlx->width = 1920;
 	mlx->height = 1080;
-
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
-		exit_error("MLX init failed", mlx);
+		return (free(mlx), NULL);
 	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "Cub3D");
 	if (!mlx->win)
-		exit_error("Window creation failed", mlx);
+		return (free(mlx), NULL);
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	if (!mlx->img)
-		exit_error("Image creation failed", mlx);
+		return (free(mlx), NULL);
 	mlx->addr = mlx_get_data_addr(mlx->img,
 			&mlx->bpp,
 			&mlx->line_len,
 			&mlx->endian);
+	return (mlx);
 }
 
-void	put_pixel(t_mlx *mlx, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = mlx->addr + (y * mlx->line_len + x * (mlx->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-void	render(t_mlx *mlx)
+void	render(t_cub *cub)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < mlx->height)
+	while (y < cub->mlx->height)
 	{
 		x = 0;
-		while (x < mlx->width)
+		while (x < cub->mlx->width)
 		{
-			put_pixel(mlx, x, y, 0x00FF0000);
+			put_pixel(cub, x, y, 0x00FF0000);
 			x++;
 		}
 		y++;
 	}
-
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 }
 

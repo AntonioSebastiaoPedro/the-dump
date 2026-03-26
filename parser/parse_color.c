@@ -77,26 +77,26 @@ static int	validate_rgb_values(char **rgb)
 	return (1);
 }
 
-static int	set_color(t_game *game, char id, int r, int g, int b)
+static int	set_color(t_cub *cub, char id, int r, int g, int b)
 {
 	if (id == 'F')
 	{
-		if (game->f_set)
+		if (cub->config->floor_color != -1)
 			return (ft_putendl_fd("Erro: F já definido", 2), 0);
-		game->floor_color = (r << 16) | (g << 8) | b;
-		game->f_set = 1;
+		cub->config->floor_color = (r << 16) | (g << 8) | b;
+		cub->floor_color = cub->config->floor_color;
 	}
 	else
 	{
-		if (game->c_set)
+		if (cub->config->ceiling_color != -1)
 			return (ft_putendl_fd("Erro: C já definido", 2), 0);
-		game->ceiling_color = (r << 16) | (g << 8) | b;
-		game->c_set = 1;
+		cub->config->ceiling_color = (r << 16) | (g << 8) | b;
+		cub->ceiling_color = cub->config->ceiling_color;
 	}
 	return (1);
 }
 
-int	parse_color(const char *line, t_game *game)
+int	parse_color(const char *line, t_cub *cub)
 {
 	char	**rgb;
 	int		r, g, b;
@@ -116,7 +116,7 @@ int	parse_color(const char *line, t_game *game)
 	b = ft_atoi(rgb[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (free_split(rgb), ft_putendl_fd("Erro: RGB fora do intervalo (0-255)", 2), 0);
-	if (!set_color(game, id, r, g, b))
+	if (!set_color(cub, id, r, g, b))
 		return (free_split(rgb), 0);
 	free_split(rgb);
 	return (1);

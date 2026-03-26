@@ -46,7 +46,7 @@ static int	check_no_space_adjacent(char **map, int height, int width)
 	return (1);
 }
 
-int	check_inside(char **map, int height, t_game *game)
+int	check_inside(char **map, int height, t_cub *cub)
 {
 	char	**copy;
 	int		width;
@@ -57,7 +57,7 @@ int	check_inside(char **map, int height, t_game *game)
 	copy = copy_map(map, 0, height);
 	if (!copy)
 		return (0);
-	if (!flood_fill(copy, game->player_x, game->player_y, height, width))
+	if (!flood_fill(copy, (int)cub->player->pos_x, (int)cub->player->pos_y, height, width))
 	{
 		free_map(copy, height);
 		return (0);

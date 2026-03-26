@@ -42,14 +42,32 @@ void    free_map(char **map, int height)
     free(arr);
 }
 
-void	free_game(t_game *game)
+void	free_cub(t_cub *cub)
 {
-	if (!game)
+	if (!cub)
 		return ;
-	free(game->no);
-	free(game->so);
-	free(game->we);
-	free(game->ea);
-	if (game->map)
-		free_map(game->map, game->map_height);
+	if (cub->config)
+	{
+		free(cub->config->no);
+		free(cub->config->so);
+		free(cub->config->we);
+		free(cub->config->ea);
+		free(cub->config);
+	}
+	if (cub->map)
+	{
+		if (cub->map->grid)
+			free_map(cub->map->grid, cub->map->height);
+		free(cub->map);
+	}
+	if (cub->player)
+		free(cub->player);
+	if (cub->textures)
+		free(cub->textures);
+	if (cub->mlx)
+	{
+		// To be implemented: mlx_destroy_window, etc.
+		free(cub->mlx);
+	}
+	free(cub);
 }
