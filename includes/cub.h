@@ -143,5 +143,7 @@ t_mlx		*init_mlx(void);
 void		put_pixel(t_cub *cub, int x, int y, int color);
 void		exit_error(char *msg, t_cub *cub);
 void		render(t_cub *cub);
+void		hook_close(t_cub *cub);
+int			key_press(int key, t_cub *cub);
 
 #endif

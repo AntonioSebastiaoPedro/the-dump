@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/24 15:38:11 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:18:15 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,17 @@ void	free_cub(t_cub *cub)
 		free(cub->textures);
 	if (cub->mlx)
 	{
-		// To be implemented: mlx_destroy_window, etc.
+		if (cub->mlx->img)
+			mlx_destroy_image(cub->mlx->mlx, cub->mlx->img);
+		if (cub->mlx->win)
+			mlx_destroy_window(cub->mlx->mlx, cub->mlx->win);
+		if (cub->mlx->mlx)
+		{
+			mlx_destroy_display(cub->mlx->mlx);
+			free(cub->mlx->mlx);
+		}
 		free(cub->mlx);
+		cub->mlx = NULL;
 	}
 	free(cub);
 }

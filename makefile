@@ -42,7 +42,7 @@ PLAYER_DIR = player
 # ==============================================================================
 
 PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c normalize_map.c valid_line_map.c validate_map.c check_player.c check_inside.c check_borders.c flood_fill.c
-MLX_FILES = mlx_init.c mlx_utils.c
+MLX_FILES = mlx_init.c mlx_utils.c hooks.c
 RENDER_FILES = put_pixel.c
 UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c
 
@@ -88,11 +88,6 @@ $(BUILD_DIR):
 # Link final executable
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(LDFLAGS) -o $@
-
-
-# Compile without custom prompt and command not found handle
-raw: fclean
-	$(MAKE) all
 
 # NORM
 n norm:

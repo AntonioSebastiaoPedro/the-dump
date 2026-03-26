@@ -26,10 +26,19 @@ t_mlx    *init_mlx(void)
 		return (free(mlx), NULL);
 	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "Cub3D");
 	if (!mlx->win)
+	{
+		mlx_destroy_display(mlx->mlx);
+		free(mlx->mlx);
 		return (free(mlx), NULL);
+	}
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	if (!mlx->img)
+	{
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		mlx_destroy_display(mlx->mlx);
+		free(mlx->mlx);
 		return (free(mlx), NULL);
+	}
 	mlx->addr = mlx_get_data_addr(mlx->img,
 			&mlx->bpp,
 			&mlx->line_len,
@@ -43,12 +52,14 @@ void	render(t_cub *cub)
 	int	y;
 
 	y = 0;
+	hook_close(cub);
+	mlx_key_hook(cub->mlx->win, key_press, cub);
 	while (y < cub->mlx->height)
 	{
 		x = 0;
 		while (x < cub->mlx->width)
 		{
-			put_pixel(cub, x, y, 0x00FF0000);
+			put_pixel(cub, x, y, 0x8CF59D);
 			x++;
 		}
 		y++;
