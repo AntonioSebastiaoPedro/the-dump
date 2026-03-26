@@ -53,7 +53,6 @@ typedef struct s_mlx
 	int		endian;
 	int		width;
 	int		height;
-	t_game	*game;
 }	t_mlx;
 
 typedef enum e_line_type
@@ -112,6 +111,7 @@ void    	free_map(char **map, int height);
 void		print_map(char **map);
 
 /*	MLX INIT	*/
-void	ft_init_mlx(t_mlx *mlx);
+void	init_mlx(t_mlx *mlx);
 void	exit_error(char *msg, t_mlx *mlx);
+void	render(t_mlx *mlx);
 #endif

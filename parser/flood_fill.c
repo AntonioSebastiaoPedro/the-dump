@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
 int	flood_fill(char **map, int x, int y, int height, int width)
 {
 	if (x < 0 || y < 0 || y >= height || x >= width)
 		return (0);
-	if (map[y][x] == ' ')
+	if (map[y][x] == SPACE)
 		return (0);
 	if (map[y][x] == '1' || map[y][x] == 'F')
 		return (1);

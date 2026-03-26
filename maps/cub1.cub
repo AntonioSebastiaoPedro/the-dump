@@ -3,7 +3,7 @@ SO ./assets/textures/comb2/tatame_south_texture.xpm
 WE ./assets/textures/comb2/tatame_west_texture.xpm
 EA ./assets/textures/comb2/tatame_east_texture.xpm
 
-F 200,100,0
+F       200,100,0
 C 225,30,0
 
         1111111111111111111111111

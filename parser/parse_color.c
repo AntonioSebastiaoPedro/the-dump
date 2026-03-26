@@ -26,9 +26,7 @@ static int	validate_rgb_format(const char *line)
 	int	comma;
 	int	expecting_number;
 
-	i = 2;
-	comma = 0;
-	expecting_number = 1;
+	(i = 2, comma = 0, expecting_number = 1);
 	while (line[i])
 	{
 		if (line[i] == SPACE || line[i] == NEWLINE)

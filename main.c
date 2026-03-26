@@ -12,26 +12,26 @@
 
 # include "includes/cub.h"
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 int	main(int ac, char **av)
 {
     t_mlx   mlx;
     t_game  game;
 
     ft_memset(&game, 0, sizeof(game));
+    memset(&mlx, 0, sizeof(t_mlx));
     if (!parser(ac, av, &game))
         return(free_game(&game), 1);
-    
-    printf("\nValor main: %s\n", game.no);
-    printf("\nValor main: %s\n", game.so);
-    printf("\nValor main: %s\n", game.ea);
-    printf("\nValor main: %s\n", game.we);
-    printf("\nValor main: %d\n", game.floor_color);
-    printf("\nValor main: %d\n", game.ceiling_color);
-    printf("\nValor main: %d\n", game.map_height);
-    printf("\nValor main: %d\n", game.player_x);
-    printf("\nValor main: %d\n", game.player_y);
-    printf("\nValor main: %c\n", game.player_dir);
-    print_map(game.map);
+    init_mlx(&mlx);
+    render(&mlx);
+    mlx_loop(&mlx);
     free_game(&game);
     return (0);
 }

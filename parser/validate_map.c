@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
-int validate_map(char **map, int height, t_game *game)
+int	validate_map(char **map, int height, t_game *game)
 {
 	int	width;
 
@@ -25,5 +25,5 @@ int validate_map(char **map, int height, t_game *game)
 		return (ft_putendl_fd("Erro: mapa não fechado nas bordas", 2), 0);
 	if (check_inside(map, height, game) == 0)
 		return (ft_putendl_fd("Erro: mapa aberto no interior", 2), 0);
-    return (1);
+	return (1);
 }

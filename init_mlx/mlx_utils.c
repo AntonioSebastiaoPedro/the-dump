@@ -24,8 +24,6 @@ void	exit_error(char *msg, t_mlx *mlx)
 			mlx_destroy_window(mlx->mlx, mlx->win);
 		if (mlx->mlx)
 			(mlx_destroy_display(mlx->mlx), free(mlx->mlx));
-        if (mlx->game)
-            free_game(mlx->game);
 	}
 	exit(EXIT_FAILURE);
 }

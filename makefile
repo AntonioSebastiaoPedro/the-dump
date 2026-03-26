@@ -43,7 +43,7 @@ UTILS_DIR = utils
 # ==============================================================================
 
 ASSETS_FILES = 
-INIT_MLX_FILES = 
+INIT_MLX_FILES = mlx_init.c  mlx_utils.c
 PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c normalize_map.c valid_line_map.c validate_map.c check_player.c check_inside.c check_borders.c flood_fill.c
 UTILS_FILES = count_lines.c free_all.c copy_map.c debug.c
 # ==============================================================================
@@ -54,6 +54,7 @@ UTILS_FILES = count_lines.c free_all.c copy_map.c debug.c
 ASSETS = $(addprefix $(ASSETS_DIR)/, $(ASSETS_FILES))
 PARSER = $(addprefix $(PARSER_DIR)/, $(PARSER_FILES))
 UTILS = $(addprefix $(UTILS_DIR)/, $(UTILS_FILES))
+INIT_MLX = $(addprefix $(INIT_MLX_DIR)/, $(INIT_MLX_FILES))
 
 # All source files
 SRC = main.c $(INIT_MLX) $(PARSER) $(UTILS)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
 static char	*trim_path(char **parts)
 {
@@ -65,7 +65,11 @@ int	parse_texture(const char *line, t_game *game)
 
 	parts = ft_split(line, SPACE);
 	if (!parts || !parts[0] || !parts[1] || parts[2])
-		return (ft_putendl_fd("Erro: Textura Invalida", 2), free_split(parts), 0);
+	{
+		ft_putendl_fd("Erro: Textura Invalida", 2);
+		free_split(parts);
+		return (0);
+	}
 	if (ft_strcmp(parts[0], "NO") == 0)
 		ret = set_texture(&game->no, parts, "NO");
 	else if (ft_strcmp(parts[0], "SO") == 0)
@@ -75,7 +79,9 @@ int	parse_texture(const char *line, t_game *game)
 	else if (ft_strcmp(parts[0], "EA") == 0)
 		ret = set_texture(&game->ea, parts, "EA");
 	else
+	{
 		ret = (ft_putendl_fd("Erro: Textura nao existe", 2), free_split(parts), 0);
+	}
 	if (ret)
 		free_split(parts);
 	return (ret);
