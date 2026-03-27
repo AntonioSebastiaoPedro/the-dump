@@ -26,11 +26,7 @@ t_mlx    *init_mlx(void)
 		return (free(mlx), NULL);
 	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "Cub3D");
 	if (!mlx->win)
-	{
-		mlx_destroy_display(mlx->mlx);
-		free(mlx->mlx);
-		return (free(mlx), NULL);
-	}
+		return (mlx_destroy_display(mlx->mlx), free(mlx->mlx), free(mlx), NULL);
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	if (!mlx->img)
 	{

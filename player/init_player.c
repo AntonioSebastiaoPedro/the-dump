@@ -17,28 +17,28 @@ static	void	set_dir_vectors(t_player *player)
 	char	c;
 
 	c = player->dir;
-	if (c == 'N')
+	if (c == NORTE)
 	{
 		player->dir_x = 0;
 		player->dir_y = -1;
 		player->plane_x = 0.66;
 		player->plane_y = 0;
 	}
-	else if (c == 'S')
+	else if (c == SUL)
 	{
 		player->dir_x = 0;
 		player->dir_y = 1;
 		player->plane_x = -0.66;
 		player->plane_y = 0;
 	}
-	else if (c == 'E')
+	else if (c == LESTE)
 	{
 		player->dir_x = 1;
 		player->dir_y = 0;
 		player->plane_x = 0;
 		player->plane_y = 0.66;
 	}
-	else if (c == 'W')
+	else if (c == OESTE)
 	{
 		player->dir_x = -1;
 		player->dir_y = 0;

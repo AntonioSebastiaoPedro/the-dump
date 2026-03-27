@@ -26,7 +26,7 @@ void hook_close(t_cub *cub)
 
 int	key_press(int key, t_cub *cub)
 {
-	if (key == 65307)
+	if (key == ESC)
         ft_close(cub);
     update_player(cub->player, cub->map, key);
     render(cub);
