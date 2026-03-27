@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-17 11:52:24 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
+/*   Updated: 2026/03/27 13:57:21 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,33 @@ typedef enum e_line_type
 # define LESTE "EA"
 # define OESTE "WE"
 
+# define MOVE_SPEED 0.2
+# define ROT_SPEED  0.1
+
+// Movement keys
+# define KEY_W       119
+# define KEY_S       115
+# define KEY_A       97
+# define KEY_D       100
+
+// Arrow keys
+# define KEY_LEFT    65361
+# define KEY_RIGHT   65363
+
+// tela
+# define WIDTH 1920
+# define HEIGHT 1080
+
+// color
+# define RED 0xFF0000
+# define WHITE 0xFFFFFF
+# define GRAY 0x808080
+# define BLACK 0x000000
+
+// mini_map
+# define TILE_SIZE 12
+# define PLAYER_SIZE 4
+
 /*		PARSER				*/
 void		ft_check_args(int ac);
 int			ft_check_file(char *filename);
@@ -142,8 +169,14 @@ void		print_map(char **map);
 t_mlx		*init_mlx(void);
 void		put_pixel(t_cub *cub, int x, int y, int color);
 void		exit_error(char *msg, t_cub *cub);
-void		render(t_cub *cub);
 void		hook_close(t_cub *cub);
 int			key_press(int key, t_cub *cub);
+/*RENDER*/
+void		render(t_cub *cub);
+void		draw_minimap(t_cub *cub);
+
+/*player*/
+t_player	*init_player(t_cub *cub);
+void		update_player(t_player *player, t_map *map, int  key);
 
 #endif

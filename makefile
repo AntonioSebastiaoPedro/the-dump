@@ -43,8 +43,9 @@ PLAYER_DIR = player
 
 PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c normalize_map.c valid_line_map.c validate_map.c check_player.c check_inside.c check_borders.c flood_fill.c
 MLX_FILES = mlx_init.c mlx_utils.c hooks.c
-RENDER_FILES = put_pixel.c
+RENDER_FILES = put_pixel.c minimap.c
 UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c
+PLAYER_FILES = init_player.c update_player.c
 
 # ==============================================================================
 # SOURCE PATHS AND OBJECTS
@@ -54,8 +55,9 @@ PARSER = $(addprefix $(PARSER_DIR)/, $(PARSER_FILES))
 MLX = $(addprefix $(MLX_DIR)/, $(MLX_FILES))
 RENDER = $(addprefix $(RENDER_DIR)/, $(RENDER_FILES))
 UTILS = $(addprefix $(UTILS_DIR)/, $(UTILS_FILES))
+PLAYER = $(addprefix $(PLAYER_DIR)/, $(PLAYER_FILES))
 
-SRC = main.c $(PARSER) $(MLX) $(RENDER) $(UTILS)
+SRC = main.c $(PARSER) $(MLX) $(RENDER) $(UTILS) $(PLAYER)
 
 # Add prefix to save objects and dependency files in build folder
 OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
@@ -117,4 +119,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re n norm 
+.PHONY: all clean fclean re n norm
