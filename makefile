@@ -45,7 +45,7 @@ PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c p
 MLX_FILES = mlx_init.c mlx_utils.c hooks.c
 RENDER_FILES = put_pixel.c minimap.c
 UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c
-PLAYER_FILES = init_player.c update_player.c
+PLAYER_FILES = init_player.c update_player.c set_dir_vectors.c
 
 # ==============================================================================
 # SOURCE PATHS AND OBJECTS

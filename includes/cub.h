@@ -69,5 +69,6 @@ void		draw_minimap(t_cub *cub);
 /*player*/
 t_player	*init_player(t_cub *cub);
 void		update_player(t_player *player, t_map *map, int  key);
+void	    set_dir_vectors(t_player *player);
 
 #endif
