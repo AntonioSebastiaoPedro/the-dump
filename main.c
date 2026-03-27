@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/24 15:24:42 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/03/27 10:16:55 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ int	main(int ac, char **av)
 	mlx_loop(cub->mlx->mlx);
 	free_cub(cub);
 	return (0);
+
+	
 }
 
