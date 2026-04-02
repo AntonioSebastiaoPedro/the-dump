@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:48:35 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/27 16:41:31 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/03/30 10:47:11 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,18 @@ static void	rotate(t_player *player, double rot)
 	player->plane_y = old_plane_x * sin(rot) + player->plane_y * cos(rot);
 }
 
-void	update_player(t_player *player, t_map *map, int  key)
+void	update_player(t_cub *cub)
 {
-	(void)map;
-	(void)player;
-	if (key == KEY_W)
-		move_forward(player, map);
-	else if (key == KEY_S)
-		move_backward(player, map);
-	else if (key == KEY_A)
-		strafe(player, map, -1);
-	else if (key == KEY_D)
-		strafe(player, map, 1);
-	else if (key == KEY_LEFT)
-		rotate(player, -ROT_SPEED);
-	else if (key == KEY_RIGHT)
-		rotate(player, ROT_SPEED);
+	if (cub->keys[KEY_W])
+		move_forward(cub->player, cub->map);
+	if (cub->keys[KEY_S])
+		move_backward(cub->player, cub->map);
+	if (cub->keys[KEY_A])
+		strafe(cub->player, cub->map, -1);
+	if (cub->keys[KEY_D])
+		strafe(cub->player, cub->map, 1);
+	if (cub->keys[KEY_LEFT])
+		rotate(cub->player, -ROT_SPEED);
+	if (cub->keys[KEY_RIGHT])
+		rotate(cub->player, ROT_SPEED);
 }

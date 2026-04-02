@@ -27,8 +27,22 @@ void hook_close(t_cub *cub)
 int	key_press(int key, t_cub *cub)
 {
 	if (key == ESC)
-        ft_close(cub);
-    update_player(cub->player, cub->map, key);
-    render(cub);
+		ft_close(cub);
+	if (key >= 0 && key < 65536)
+		cub->keys[key] = 1;
+	return (0);
+}
+
+int	key_release(int key, t_cub *cub)
+{
+	if (key >= 0 && key < 65536)
+		cub->keys[key] = 0;
+	return (0);
+}
+
+int	loop_hook(t_cub *cub)
+{
+	update_player(cub);
+	render(cub);
 	return (0);
 }

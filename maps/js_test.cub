@@ -1,0 +1,18 @@
+NO ./assets/textures/comb2/tatame_north_texture.xpm
+SO ./assets/textures/comb2/tatame_south_texture.xpm
+WE ./assets/textures/comb2/tatame_west_texture.xpm
+EA ./assets/textures/comb2/tatame_east_texture.xpm
+
+F 120,120,120
+C 180,200,255
+
+1111111111
+1100000011
+1000000001
+1010000001
+1000001001
+10000N0001
+1001000001
+1000000001
+1100000011
+1111111111

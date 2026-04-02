@@ -25,8 +25,9 @@ int	main(int ac, char **av)
 	if (!init_player(cub))
 		return (free_cub(cub),1);
 	hook_close(cub);
-	mlx_key_hook(cub->mlx->win, key_press, cub);
-	render(cub);
+	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);
+	mlx_hook(cub->mlx->win, 3, 1L << 1, key_release, cub);
+	mlx_loop_hook(cub->mlx->mlx, loop_hook, cub);
 	mlx_loop(cub->mlx->mlx);
 	free_cub(cub);
 	return (0);

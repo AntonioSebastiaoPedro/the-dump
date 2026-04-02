@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:09:20 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/27 13:09:52 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:34:05 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void    draw_minimap(t_cub *cub)
         while (cub->map->grid[y][x])
         {
             if (cub->map->grid[y][x] == '1')
-                draw_square(cub, x * TILE_SIZE, y * TILE_SIZE, WHITE);
+                draw_square(cub, x * TILE_SIZE, y * TILE_SIZE, TRANSP);
             else if (cub->map->grid[y][x] == '0')
                 draw_square(cub, x * TILE_SIZE, y * TILE_SIZE, GRAY);
 			else

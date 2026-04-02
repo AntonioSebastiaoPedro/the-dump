@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/25 14:46:31 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/30 08:45:32 by paulcard         ###   ########.fr       */
+/*   Created: 2026/04/01 15:42:00 by paulcard          #+#    #+#             */
+/*   Updated: 2026/04/01 15:42:00 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cub.h"
 
-void	exit_error(char *msg, t_cub *cub)
+void	draw_ver_line(t_cub *cub, int x, t_ray *ray)
 {
-	if (msg)
-		(ft_putstr_fd("Error: ", 2), ft_putendl_fd(msg, 2));
-	if (cub && cub->mlx)
+	int	y;
+
+	y = 0;
+	while (y < ray->draw_start)
 	{
-		if (cub->mlx->img)
-			mlx_destroy_image(cub->mlx->mlx, cub->mlx->img);
-		if (cub->mlx->win)
-			mlx_destroy_window(cub->mlx->mlx, cub->mlx->win);
-		if (cub->mlx->mlx)
-		{
-			mlx_destroy_display(cub->mlx->mlx);
-			free(cub->mlx->mlx);
-		}
-		free(cub->mlx);
+		put_pixel(cub, x, y, cub->ceiling_color);
+		y++;
 	}
-	if (cub)
-		free_cub(cub);
-	exit(EXIT_FAILURE);
+	while (y <= ray->draw_end)
+	{
+		put_pixel(cub, x, y, ray->color);
+		y++;
+	}
+	while (y < cub->mlx->height)
+	{
+		put_pixel(cub, x, y, cub->floor_color);
+		y++;
+	}
 }

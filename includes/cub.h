@@ -62,13 +62,17 @@ void		put_pixel(t_cub *cub, int x, int y, int color);
 void		exit_error(char *msg, t_cub *cub);
 void		hook_close(t_cub *cub);
 int			key_press(int key, t_cub *cub);
+int			key_release(int key, t_cub *cub);
+int			loop_hook(t_cub *cub);
 /*RENDER*/
 void		render(t_cub *cub);
 void		draw_minimap(t_cub *cub);
+void		draw_walls(t_cub *cub);
+void		draw_ver_line(t_cub *cub, int x, t_ray *ray);
 
 /*player*/
 t_player	*init_player(t_cub *cub);
-void		update_player(t_player *player, t_map *map, int  key);
+void		update_player(t_cub *cub);
 void	    set_dir_vectors(t_player *player);
 
 #endif

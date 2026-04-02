@@ -2,7 +2,7 @@
 # CONFIGURATION
 # ==============================================================================
 
-NAME = cub3d
+NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -Iminilibx-linux
@@ -43,7 +43,7 @@ PLAYER_DIR = player
 
 PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c normalize_map.c valid_line_map.c validate_map.c check_player.c check_inside.c check_borders.c flood_fill.c
 MLX_FILES = mlx_init.c mlx_utils.c hooks.c
-RENDER_FILES = put_pixel.c minimap.c
+RENDER_FILES = put_pixel.c minimap.c raycasting.c draw_line.c render.c
 UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c
 PLAYER_FILES = init_player.c update_player.c set_dir_vectors.c
 
