@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/26 12:18:15 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/02 13:23:44 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void    free_map(char **map, int height)
     free(arr);
 }
 
-void	free_cub(t_cub *cub)
+void	free_config(t_cub *cub)
 {
-	if (!cub)
-		return ;
 	if (cub->config)
 	{
 		free(cub->config->no);
@@ -54,16 +52,9 @@ void	free_cub(t_cub *cub)
 		free(cub->config->ea);
 		free(cub->config);
 	}
-	if (cub->map)
-	{
-		if (cub->map->grid)
-			free_map(cub->map->grid, cub->map->height);
-		free(cub->map);
-	}
-	if (cub->player)
-		free(cub->player);
-	if (cub->textures)
-		free(cub->textures);
+}
+void	free_mlx(t_cub *cub)
+{
 	if (cub->mlx)
 	{
 		if (cub->mlx->img)
@@ -78,5 +69,23 @@ void	free_cub(t_cub *cub)
 		free(cub->mlx);
 		cub->mlx = NULL;
 	}
+}
+
+void	free_cub(t_cub *cub)
+{
+	if (!cub)
+		return ;
+	free_config(cub);
+	if (cub->map)
+	{
+		if (cub->map->grid)
+			free_map(cub->map->grid, cub->map->height);
+		free(cub->map);
+	}
+	if (cub->player)
+		free(cub->player);
+	if (cub->textures)
+		free(cub->textures);
+	free_mlx(cub);
 	free(cub);
 }
