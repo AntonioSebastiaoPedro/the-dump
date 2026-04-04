@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 13:23:44 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/04 02:20:31 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,14 @@ void	free_config(t_cub *cub)
 {
 	if (cub->config)
 	{
-		free(cub->config->no);
-		free(cub->config->so);
-		free(cub->config->we);
-		free(cub->config->ea);
+		if (cub->config->no)
+			free(cub->config->no);
+		if (cub->config->so)
+			free(cub->config->so);
+		if (cub->config->we)
+			free(cub->config->we);
+		if (cub->config->ea)
+			free(cub->config->ea);
 		free(cub->config);
 	}
 }
