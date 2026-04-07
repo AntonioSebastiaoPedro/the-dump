@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 17:17:32 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/07 17:21:34 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void		free_map(char **map, int height);
 void		print_map(char **map);
 int			ft_fprintf_fd(int fd, const char *format, ...);
 int			ft_sprintf(char *str, const char *format, ...);
+char		ft_delim(const char *s);
 
 /* ====== MLX SETUP ====== */
 t_mlx		*init_mlx(void);

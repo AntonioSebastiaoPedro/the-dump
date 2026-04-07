@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_testura.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:03:13 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/24 17:02:14 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:10:51 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	parse_texture(const char *line, t_cub *cub)
 	char	**parts;
 	int		ret;
 
-	parts = ft_split(line, SPACE);
+	parts = ft_split(line, ft_delim(line));
 	if (!parts || !parts[0] || !parts[1] || parts[2])
 	{
 		ft_putendl_fd("Erro: Textura Invalida", 2);
