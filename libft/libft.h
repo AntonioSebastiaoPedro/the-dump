@@ -77,6 +77,8 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char    *ft_strcpy(char *dest, const char *src);
+int		ft_fprintf_fd(int fd, const char *format, ...);
+int		ft_sprintf(char *str, const char *format, ...);
 
 /*			Bonus Parts			*/
 

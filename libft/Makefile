@@ -57,6 +57,8 @@ ft_putendl_fd.c \
 ft_putnbr_fd.c \
 ft_strcmp.c \
 ft_strcpy.c \
+ft_fprintf_fd.c \
+ft_sprintf.c \
 Get_next_line/get_next_line.c
 
 SRCS_BONUS = _bonus/ft_lstnew.c \
