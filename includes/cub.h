@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/07 17:21:34 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/07 17:42:42 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,6 @@
 # include "mlx.h"
 # include "structs.h"
 # include "macros.h"
-
-/* ====== LOADING SCREEN ====== */
-void		init_loading(t_loading *loading, void *mlx);
-void		update_loading(t_loading *loading);
-void		render_loading(t_cub *game);
-int			is_loading_complete(t_loading *loading);
-
-/* ====== MENU ====== */
-void		init_menu(t_cub *cub);
-void		update_menu(t_cub *cub);
-void		render_menu(t_cub *cub);
-void		render_about(t_cub *cub);
-void		handle_menu_input(int key, t_cub *cub);
 
 
 /* ====== PARSER ====== */
@@ -87,7 +74,6 @@ int			loop_hook(t_cub *cub);
 
 /* ====== RENDER ====== */
 void		render(t_cub *cub);
-void		draw_minimap(t_cub *cub);
 void		draw_walls(t_cub *cub);
 void		draw_ver_line(t_cub *cub, int x, t_ray *ray);
 

@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/27 13:36:16 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/07 17:43:40 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ int	main(int ac, char **av)
 	cub->mlx = init_mlx();
 	if (!cub->mlx)
 		return (free_cub(cub), 1);
-	cub->state = LOADING;
-	init_loading(&cub->loading, cub->mlx->mlx);
 	if (!init_player(cub))
 		return (free_cub(cub), 1);
-
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);
 	mlx_hook(cub->mlx->win, 3, 1L << 1, key_release, cub);

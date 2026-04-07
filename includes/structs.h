@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 17:08:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/07 17:44:06 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,6 @@
 # define STRUCTS_H
 
 # include <stdbool.h>
-
-typedef enum e_game_state
-{
-	LOADING,
-	MENU,
-	GAME,
-	ABOUT
-}	t_game_state;
-
-typedef struct s_menu
-{
-	int		selected;
-	int		total;
-}	t_menu;
-
-typedef struct s_loading
-{
-	int		progress;
-	int		max_progress;
-	int		frame_count;
-	void	*logo;
-	void	*background;
-}	t_loading;
-
 
 typedef struct s_map
 {
@@ -120,9 +96,6 @@ typedef struct s_cub
 	t_player		*player;
 	t_mlx			*mlx;
 	t_textures		*textures;
-	t_loading		loading;
-	t_menu			menu;
-	t_game_state	state;
 	int				floor_color;
 	int			ceiling_color;
 	int			keys[65536];
