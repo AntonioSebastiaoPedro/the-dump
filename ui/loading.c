@@ -109,8 +109,7 @@ void render_loading(t_cub *game)
     // Draw filled bar
     draw_rectangle(game, x, y, filled_width, bar_height, GREEN);
 
-    // Render text
-    sprintf(progress_text, "Loading... %d%%", game->loading.progress);
+    ft_sprintf(progress_text, "Loading... %d%%", game->loading.progress);
     mlx_string_put(game->mlx->mlx, game->mlx->win, x + (bar_width / 2) - 40, y + bar_height + 30, WHITE, progress_text);
     
     // Put image to window

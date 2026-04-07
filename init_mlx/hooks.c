@@ -26,8 +26,10 @@ void hook_close(t_cub *cub)
 
 int	key_press(int key, t_cub *cub)
 {
-	if (key == ESC)
+	if (key == ESC && cub->state == GAME)
 		ft_close(cub);
+	if (cub->state == MENU || cub->state == ABOUT)
+		handle_menu_input(key, cub);
 	if (key >= 0 && key < 65536)
 		cub->keys[key] = 1;
 	return (0);
@@ -47,7 +49,19 @@ int	loop_hook(t_cub *cub)
 		update_loading(&cub->loading);
 		render_loading(cub);
 		if (is_loading_complete(&cub->loading))
-			cub->state = GAME; // For now, skip MENU as requested or simplified
+		{
+			cub->state = MENU;
+			init_menu(cub);
+		}
+	}
+	else if (cub->state == MENU)
+	{
+		update_menu(cub);
+		render_menu(cub);
+	}
+	else if (cub->state == ABOUT)
+	{
+		render_about(cub);
 	}
 	else if (cub->state == GAME)
 	{

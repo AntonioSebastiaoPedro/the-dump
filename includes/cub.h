@@ -36,6 +36,13 @@ void		update_loading(t_loading *loading);
 void		render_loading(t_cub *game);
 int			is_loading_complete(t_loading *loading);
 
+/* ====== MENU ====== */
+void		init_menu(t_cub *cub);
+void		update_menu(t_cub *cub);
+void		render_menu(t_cub *cub);
+void		render_about(t_cub *cub);
+void		handle_menu_input(int key, t_cub *cub);
+
 
 /* ====== PARSER ====== */
 void		ft_check_args(int ac);
@@ -65,6 +72,8 @@ char		**copy_map(char **lines, int map_start, int height);
 void		free_cub(t_cub *cub);
 void		free_map(char **map, int height);
 void		print_map(char **map);
+int			ft_fprintf_fd(int fd, const char *format, ...);
+int			ft_sprintf(char *str, const char *format, ...);
 
 /* ====== MLX SETUP ====== */
 t_mlx		*init_mlx(void);

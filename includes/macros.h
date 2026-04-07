@@ -40,7 +40,10 @@
 /* Arrow keys */
 # define KEY_LEFT    65361
 # define KEY_RIGHT   65363
-# define ESC     65307
+# define KEY_UP      65362
+# define KEY_DOWN    65364
+# define KEY_ENTER   65293
+# define ESC         65307
 
 /* Screen */
 # define WIDTH 1920

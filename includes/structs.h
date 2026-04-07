@@ -19,8 +19,15 @@ typedef enum e_game_state
 {
 	LOADING,
 	MENU,
-	GAME
+	GAME,
+	ABOUT
 }	t_game_state;
+
+typedef struct s_menu
+{
+	int		selected;
+	int		total;
+}	t_menu;
 
 typedef struct s_loading
 {
@@ -114,6 +121,7 @@ typedef struct s_cub
 	t_mlx			*mlx;
 	t_textures		*textures;
 	t_loading		loading;
+	t_menu			menu;
 	t_game_state	state;
 	int				floor_color;
 	int			ceiling_color;
