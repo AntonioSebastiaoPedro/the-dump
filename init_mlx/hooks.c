@@ -42,7 +42,17 @@ int	key_release(int key, t_cub *cub)
 
 int	loop_hook(t_cub *cub)
 {
-	update_player(cub);
-	render(cub);
+	if (cub->state == LOADING)
+	{
+		update_loading(&cub->loading);
+		render_loading(cub);
+		if (is_loading_complete(&cub->loading))
+			cub->state = GAME; // For now, skip MENU as requested or simplified
+	}
+	else if (cub->state == GAME)
+	{
+		update_player(cub);
+		render(cub);
+	}
 	return (0);
 }

@@ -30,6 +30,13 @@
 # include "structs.h"
 # include "macros.h"
 
+/* ====== LOADING SCREEN ====== */
+void		init_loading(t_loading *loading, void *mlx);
+void		update_loading(t_loading *loading);
+void		render_loading(t_cub *game);
+int			is_loading_complete(t_loading *loading);
+
+
 /* ====== PARSER ====== */
 void		ft_check_args(int ac);
 int			ft_check_file(char *filename);

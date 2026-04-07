@@ -48,6 +48,7 @@ MLX_DIR = init_mlx
 RENDER_DIR = render
 UTILS_DIR = utils
 PLAYER_DIR = player
+UI_DIR = ui
 
 # ==============================================================================
 # SOURCE FILES
@@ -58,6 +59,7 @@ MLX_FILES = mlx_init.c mlx_utils.c hooks.c
 RENDER_FILES = put_pixel.c minimap.c raycasting.c draw_line.c render.c
 UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c
 PLAYER_FILES = init_player.c update_player.c set_dir_vectors.c
+UI_FILES = loading.c
 
 # ==============================================================================
 # SOURCE PATHS AND OBJECTS
@@ -68,8 +70,9 @@ MLX = $(addprefix $(MLX_DIR)/, $(MLX_FILES))
 RENDER = $(addprefix $(RENDER_DIR)/, $(RENDER_FILES))
 UTILS = $(addprefix $(UTILS_DIR)/, $(UTILS_FILES))
 PLAYER = $(addprefix $(PLAYER_DIR)/, $(PLAYER_FILES))
+UI = $(addprefix $(UI_DIR)/, $(UI_FILES))
 
-SRC = main.c $(PARSER) $(MLX) $(RENDER) $(UTILS) $(PLAYER)
+SRC = main.c $(PARSER) $(MLX) $(RENDER) $(UTILS) $(PLAYER) $(UI)
 
 # Add prefix to save objects and dependency files in build folder
 OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))

@@ -15,6 +15,23 @@
 
 # include <stdbool.h>
 
+typedef enum e_game_state
+{
+	LOADING,
+	MENU,
+	GAME
+}	t_game_state;
+
+typedef struct s_loading
+{
+	int		progress;
+	int		max_progress;
+	int		frame_count;
+	void	*logo;
+	void	*background;
+}	t_loading;
+
+
 typedef struct s_map
 {
 	char	**grid;
@@ -91,12 +108,14 @@ typedef struct s_ray
 
 typedef struct s_cub
 {
-	t_map		*map;
-	t_config	*config;
-	t_player	*player;
-	t_mlx		*mlx;
-	t_textures	*textures;
-	int			floor_color;
+	t_map			*map;
+	t_config		*config;
+	t_player		*player;
+	t_mlx			*mlx;
+	t_textures		*textures;
+	t_loading		loading;
+	t_game_state	state;
+	int				floor_color;
 	int			ceiling_color;
 	int			keys[65536];
 }	t_cub;
