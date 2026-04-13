@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 14:43:03 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 13:27:03 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/13 22:04:46 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ t_mlx    *init_mlx(void)
 	mlx = ft_calloc(1, sizeof(t_mlx));
 	if (!mlx)
 		return (NULL);
-	mlx->width = WIDTH;
-	mlx->height = HEIGHT;
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		return (free(mlx), NULL);
-	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "Cub3D");
+	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!mlx->win)
 		return (mlx_destroy_display(mlx->mlx), free(mlx->mlx), free(mlx), NULL);
-	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
+	mlx->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 	if (!mlx->img)
 	{
 		mlx_destroy_window(mlx->mlx, mlx->win);

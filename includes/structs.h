@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/13 19:51:17 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/13 22:04:32 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ typedef struct s_mlx
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int		width;
-	int		height;
 }	t_mlx;
 
 typedef struct s_cub
