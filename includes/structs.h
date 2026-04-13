@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 17:08:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/13 19:51:17 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,6 @@ typedef struct s_mlx
 	int		height;
 }	t_mlx;
 
-typedef struct s_ray
-{
-	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	int		map_x;
-	int		map_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	perp_wall_dist;
-	int		step_x;
-	int		step_y;
-	int		hit;
-	int		side;
-	int		side_hit;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-	int		color;
-}	t_ray;
-
 typedef struct s_cub
 {
 	t_map		*map;
@@ -111,3 +88,27 @@ typedef enum e_line_type
 }	t_line_type;
 
 #endif
+
+
+/*typedef struct s_ray
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		side_hit;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		color;
+}	t_ray;*/

@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 17:06:22 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/13 19:17:08 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@
 # define KEY_S       115
 # define KEY_A       97
 # define KEY_D       100
-
-/* Arrow keys */
 # define KEY_LEFT    65361
 # define KEY_RIGHT   65363
 # define ESC     65307
