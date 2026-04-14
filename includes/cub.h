@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/13 19:48:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:23:13 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include <float.h>
 # include <limits.h>
 # include <stdbool.h>
 
 /* ====== HEADERS DO PROJETO ====== */
 # include "../libft/libft.h"
-# include "minilibx-linux/mlx_int.h"
 # include "mlx.h"
 # include "structs.h"
 # include "macros.h"

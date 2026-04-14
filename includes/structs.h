@@ -6,14 +6,12 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/13 22:04:32 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:17:25 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-
-# include <stdbool.h>
 
 typedef struct s_map
 {

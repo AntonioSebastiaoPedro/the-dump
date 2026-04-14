@@ -6,11 +6,11 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 19:15:23 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/14 00:53:17 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:12:21 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "cub.h"
 
 void	ft_put_pixel(t_cub *cub, int x, int y, int color)
 {
