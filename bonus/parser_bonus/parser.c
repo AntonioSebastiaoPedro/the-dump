@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:28:44 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/25 18:47:00 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/15 10:58:52 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	handle_line(char *line, t_cub *cub, int *map_start, int i)
 	}
 	else if (type == INVALID && line[0] != '\0')
 	{
-		ft_putendl_fd("Mapa invalido", 2);
+		ft_putendl_fd("Error\nMapa invalido", 2);
 		return (0);
 	}
 	return (1);

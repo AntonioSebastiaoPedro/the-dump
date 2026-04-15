@@ -74,6 +74,7 @@ void		free_map(char **map, int height);
 void		print_map(char **map);
 int			ft_fprintf_fd(int fd, const char *format, ...);
 int			ft_sprintf(char *str, const char *format, ...);
+char		**ft_split_new(const char *s, const char *delim);
 char		ft_delim(const char *s);
 
 /* ====== MLX SETUP ====== */

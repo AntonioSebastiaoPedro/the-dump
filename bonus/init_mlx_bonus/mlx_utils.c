@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 14:46:31 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 13:26:56 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/15 10:53:16 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	exit_error(char *msg, t_cub *cub)
 {
 	if (msg)
-		(ft_putstr_fd("Error: ", 2), ft_putendl_fd(msg, 2));
+		(ft_putstr_fd("Error\n", 2), ft_putendl_fd(msg, 2));
 	if (cub && cub->mlx)
 	{
 		if (cub->mlx->img)
