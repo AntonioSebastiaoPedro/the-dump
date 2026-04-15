@@ -62,6 +62,7 @@ void		print_map(char **map);
 int			ft_fprintf_fd(int fd, const char *format, ...);
 int			ft_sprintf(char *str, const char *format, ...);
 char		ft_delim(const char *s);
+char		**ft_split_new(const char *s, const char *delim);
 
 /* ====== MLX SETUP ====== */
 t_mlx		*init_mlx(void);

@@ -6,7 +6,7 @@
 #    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/07 18:17:03 by paulcard         ###   ########.fr        #
+#    Updated: 2026/04/15 10:21:43 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ BONUS_INCLUDES_DIR = includes_bonus
 PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c normalize_map.c valid_line_map.c validate_map.c check_player.c check_inside.c check_borders.c flood_fill.c
 MLX_FILES = mlx_init.c mlx_utils.c hooks.c
 RENDER_FILES = put_pixel.c raycasting.c render.c draw_line.c
-UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c ft_delim.c
+UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c ft_delim.c new_split.c
 PLAYER_FILES = init_player.c update_player.c set_dir_vectors.c
 
 # ==============================================================================
