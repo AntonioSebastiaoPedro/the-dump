@@ -41,6 +41,18 @@ static int	handle_line(char *line, t_cub *cub, int *map_start, int i)
 	return (1);
 }
 
+static int	is_config_complete(t_cub *cub)
+{
+	if (!cub->config->no || !cub->config->so || !cub->config->we
+		|| !cub->config->ea || cub->config->floor_color == -1
+		|| cub->config->ceiling_color == -1)
+	{
+		ft_putendl_fd("Error\nConfiguracao incompleta", 2);
+		return (0);
+	}
+	return (1);
+}
+
 static int	process_config(char **lines, t_cub *cub, int *map_start)
 {
 	int	i;
@@ -58,9 +70,11 @@ static int	process_config(char **lines, t_cub *cub, int *map_start)
 	}
 	if (*map_start == -1)
 	{
-		ft_putendl_fd("Ficheiro Nao encontrado no mapa", 2);
+		ft_putendl_fd("Error\nFicheiro Nao encontrado no mapa", 2);
 		return (0);
 	}
+	if (!is_config_complete(cub))
+		return (0);
 	return (1);
 }
 
