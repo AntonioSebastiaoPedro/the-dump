@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_testura.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:03:13 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/07 11:10:51 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/15 11:04:01 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	open_texture(const char *path, char *dir, char **parts)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr_fd("Erro: Caminho da Textura ", 2);
+		ft_putstr_fd("Error\nCaminho da Textura ", 2);
 		ft_putstr_fd(dir, 2);
 		ft_putendl_fd(" invalida", 2);
 		free_split(parts);
@@ -45,7 +45,7 @@ static int	set_texture(char **dest, char **parts, char *dir)
 
 	if (*dest)
 	{
-		ft_putstr_fd("Erro: ", 2);
+		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd(dir, 2);
 		ft_putendl_fd(" já definido", 2);
 		free_split(parts);
@@ -63,10 +63,10 @@ int	parse_texture(const char *line, t_cub *cub)
 	char	**parts;
 	int		ret;
 
-	parts = ft_split(line, ft_delim(line));
+	parts = ft_split_new(line, " \t\n\r");
 	if (!parts || !parts[0] || !parts[1] || parts[2])
 	{
-		ft_putendl_fd("Erro: Textura Invalida", 2);
+		ft_putendl_fd("Error\nTextura Invalida", 2);
 		free_split(parts);
 		return (0);
 	}
@@ -80,7 +80,7 @@ int	parse_texture(const char *line, t_cub *cub)
 		ret = set_texture(&cub->config->ea, parts, "EA");
 	else
 	{
-		ret = (ft_putendl_fd("Erro: Textura nao existe", 2), free_split(parts), 0);
+		ret = (ft_putendl_fd("Error\nTextura nao existe", 2), free_split(parts), 0);
 	}
 	if (ret)
 		free_split(parts);

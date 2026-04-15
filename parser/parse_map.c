@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:30 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/25 18:55:00 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/15 11:03:25 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static int	get_map_height(char **lines, int map_start)
 			break ;
 		if (!is_valid_line_map(lines[i]))
 		{
-			ft_putendl_fd("Erro: caracteres inválidos no mapa", 2);
+			ft_putendl_fd("Error\ncaracteres inválidos no mapa", 2);
 			return (-1);
 		}
 		height++;
 		i++;
 	}
 	if (height == 0)
-		ft_putendl_fd("Mapa Ausente no ficheiro", 2);
+		ft_putendl_fd("Error\nMapa Ausente no ficheiro", 2);
 	return (height);
 }
 
@@ -42,7 +42,7 @@ static int	has_trailing_elements(char **lines, int i)
 	{
 		if (!is_empty_line(lines[i]))
 		{
-			ft_putendl_fd("Erro: mapa deve ser último elemento", 2);
+			ft_putendl_fd("Error\nMapa deve ser último elemento", 2);
 			return (1);
 		}
 		i++;
@@ -57,13 +57,13 @@ static char	**process_map_layout(char **lines, int start, int height)
 	map = copy_map(lines, start, height);
 	if (!map)
 	{
-		ft_putendl_fd("Erro: falha ao copiar mapa", 2);
+		ft_putendl_fd("Error\nFalha ao copiar mapa", 2);
 		return (NULL);
 	}
 	map = normalize_map(map, height);
 	if (!map)
 	{
-		ft_putendl_fd("Erro: falha ao normalizar mapa", 2);
+		ft_putendl_fd("Error\nFalha ao normalizar mapa", 2);
 		return (NULL);
 	}
 	return (map);
@@ -75,7 +75,7 @@ int	parse_map(char **lines, int map_start, t_cub *cub)
 	char	**grid;
 
 	if (!lines || map_start < 0)
-		return (ft_putendl_fd("Mapa invalido", 2), 0);
+		return (ft_putendl_fd("Error\nMapa invalido", 2), 0);
 	height = get_map_height(lines, map_start);
 	if (height <= 0)
 		return (0);

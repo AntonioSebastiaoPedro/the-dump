@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-19 18:07:01 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-19 18:07:01 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/19 18:07:01 by paulcard          #+#    #+#             */
+/*   Updated: 2026/04/15 11:01:47 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	check_player(char **map, t_cub *cub)
 
 	count = check_player_help(map, cub);
 	if (count == 0)
-		return (ft_putendl_fd("Erro: jogador ausente", 2), 0);
+		return (ft_putendl_fd("Error\njogador ausente", 2), 0);
 	if (count > 1)
-		return (ft_putendl_fd("Erro: múltiplos jogadores", 2), 0);
+		return (ft_putendl_fd("Error\nmúltiplos jogadores", 2), 0);
 	return (1);
 }
