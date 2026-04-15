@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/14 12:17:25 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/15 11:18:42 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ typedef struct s_mlx
 	int		line_len;
 	int		endian;
 }	t_mlx;
+
+typedef struct s_ray
+{
+	double	dir_x;
+	double	dir_y;
+	double	camera_x;
+}	t_ray;
 
 typedef struct s_cub
 {
