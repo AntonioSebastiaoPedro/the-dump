@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_split.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 10:20:54 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 10:27:10 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/15 11:27:50 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ char	**ft_split_new(const char *s, const char *delim)
 			start++;
 		box[i] = ft_substr(s, start, ft_count_char(s, delim, start));
 		if (!box[i])
-		{
-			free_split(box);
-			return (NULL);
-		}
+			return (free_split(box), NULL);
 		start += ft_count_char(s, delim, start);
 		i++;
 	}

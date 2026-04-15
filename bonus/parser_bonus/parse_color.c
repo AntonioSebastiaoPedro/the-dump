@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 10:56:52 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/15 11:41:16 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ int	parse_color(const char *line, t_cub *cub)
 	if (!validate_identifier(line, &id))
 		return (0);
 	if (!validate_rgb_format(line))
-		return (ft_putendl_fd("Erro: formato RGB inválido", 2), 0);
+		return (ft_putendl_fd("Error\nFormato RGB inválido", 2), 0);
 	rgb = ft_split_new(line + 2, ",");
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3])
-		return (ft_putendl_fd("Error\nformato RGB inválido", 2), 0);
+		return (ft_putendl_fd("Error\nFormato RGB inválido", 2), 0);
 	if (!validate_rgb_values(rgb))
-		return (free_split(rgb), ft_putendl_fd("Error\nvalor RGB inválido", 2), 0);
+		return (free_split(rgb), ft_putendl_fd("Error\nValor RGB inválido", 2), 0);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
