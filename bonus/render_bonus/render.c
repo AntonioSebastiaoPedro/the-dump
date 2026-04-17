@@ -6,11 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:42:04 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 12:43:27 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:24:32 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
 void	render(t_cub *cub)
 {

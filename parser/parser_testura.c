@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:03:13 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 11:04:01 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 11:02:29 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ static int	set_texture(char **dest, char **parts, char *dir)
 
 int	parse_texture(const char *line, t_cub *cub)
 {
+	char	*msg;
+	char	*msg1;
 	char	**parts;
 	int		ret;
 
+	msg = "Error\nTextura Invalida";
+	msg1 = "Error\nTextura nao existe";
 	parts = ft_split_new(line, " \t\n\r");
 	if (!parts || !parts[0] || !parts[1] || parts[2])
-	{
-		ft_putendl_fd("Error\nTextura Invalida", 2);
-		free_split(parts);
-		return (0);
-	}
+		return (ft_putendl_fd(msg, 2), free_split(parts), 0);
 	if (ft_strcmp(parts[0], "NO") == 0)
 		ret = set_texture(&cub->config->no, parts, "NO");
 	else if (ft_strcmp(parts[0], "SO") == 0)
@@ -79,9 +79,7 @@ int	parse_texture(const char *line, t_cub *cub)
 	else if (ft_strcmp(parts[0], "EA") == 0)
 		ret = set_texture(&cub->config->ea, parts, "EA");
 	else
-	{
-		ret = (ft_putendl_fd("Error\nTextura nao existe", 2), free_split(parts), 0);
-	}
+		ret = (ft_putendl_fd(msg1, 2), free_split(parts), 0);
 	if (ret)
 		free_split(parts);
 	return (ret);

@@ -6,13 +6,13 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 14:43:03 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 13:27:03 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 10:31:50 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
-t_mlx    *init_mlx(void)
+t_mlx	*init_mlx(void)
 {
 	t_mlx	*mlx;
 
@@ -40,4 +40,3 @@ t_mlx    *init_mlx(void)
 			&mlx->endian);
 	return (mlx);
 }
-

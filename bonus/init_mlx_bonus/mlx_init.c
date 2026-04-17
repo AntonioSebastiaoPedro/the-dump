@@ -6,13 +6,13 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 14:43:03 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 13:27:03 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:12:51 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes_bonus/cub.h"
 
-t_mlx    *init_mlx(void)
+t_mlx	*init_mlx(void)
 {
 	t_mlx	*mlx;
 

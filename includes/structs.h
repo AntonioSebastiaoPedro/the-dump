@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/07 17:44:06 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 11:55:14 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,22 @@ typedef struct s_cub
 	t_mlx			*mlx;
 	t_textures		*textures;
 	int				floor_color;
-	int			ceiling_color;
-	int			keys[65536];
+	int				ceiling_color;
+	int				keys[65536];
 }	t_cub;
+
+typedef struct s_fdfil
+{
+	int	x;
+	int	y;
+}	t_fdfil;
+
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}			t_rgb;
 
 typedef enum e_line_type
 {

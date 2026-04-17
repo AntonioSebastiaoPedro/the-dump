@@ -6,11 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/07 17:21:34 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:38:59 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef CUB_H
+#ifndef CUB_H
 # define CUB_H
 
 /* ====== LIBS PADRÃO ====== */
@@ -43,7 +43,6 @@ void		render_menu(t_cub *cub);
 void		render_about(t_cub *cub);
 void		handle_menu_input(int key, t_cub *cub);
 
-
 /* ====== PARSER ====== */
 void		ft_check_args(int ac);
 int			ft_check_file(char *filename);
@@ -62,12 +61,12 @@ int			check_player(char **map, t_cub *cub);
 bool		is_player(char c);
 int			check_borders(char **map, int height, int width);
 int			check_inside(char **map, int height, t_cub *cub);
-int			flood_fill(char **map, int x, int y, int height, int width);
+int			flood_fill(char **map, t_fdfil pos, int height, int width);
 
 /* ====== UTILS ====== */
 int			ft_count_lines(int fd);
 void		free_split(char **arr);
-t_line_type get_line_type(const char *line);
+t_line_type	get_line_type(const char *line);
 char		**copy_map(char **lines, int map_start, int height);
 void		free_cub(t_cub *cub);
 void		free_map(char **map, int height);
@@ -95,6 +94,6 @@ void		draw_ver_line(t_cub *cub, int x, t_ray *ray);
 /* ====== PLAYER ====== */
 t_player	*init_player(t_cub *cub);
 void		update_player(t_cub *cub);
-void	    set_dir_vectors(t_player *player);
+void		set_dir_vectors(t_player *player);
 
 #endif

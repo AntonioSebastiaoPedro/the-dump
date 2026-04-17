@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 11:39:31 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/17 12:12:48 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
 static int	validate_identifier(const char *line, char *id)
 {
@@ -26,7 +26,9 @@ static int	validate_rgb_format(const char *line)
 	int	comma;
 	int	expecting_number;
 
-	(i = 2, comma = 0, expecting_number = 1);
+	i = 2;
+	comma = 0;
+	expecting_number = 1;
 	while (line[i])
 	{
 		if (line[i] == SPACE || line[i] == NEWLINE)
@@ -99,7 +101,7 @@ static int	set_color(t_cub *cub, char id, int r, int g, int b)
 int	parse_color(const char *line, t_cub *cub)
 {
 	char	**rgb;
-	int		r, g, b;
+	t_rgb	trgb;
 	char	id;
 
 	if (!validate_identifier(line, &id))
@@ -110,13 +112,14 @@ int	parse_color(const char *line, t_cub *cub)
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3])
 		return (ft_putendl_fd("Error\nFormato RGB inválido", 2), 0);
 	if (!validate_rgb_values(rgb))
-		return (free_split(rgb), ft_putendl_fd("Error\nvalor RGB inválido", 2), 0);
-	r = ft_atoi(rgb[0]);
-	g = ft_atoi(rgb[1]);
-	b = ft_atoi(rgb[2]);
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		return (free_split(rgb), ft_putendl_fd("Error\nRGB fora do intervalo (0-255)", 2), 0);
-	if (!set_color(cub, id, r, g, b))
+		return (free_split(rgb), ft_putendl_fd(VALOR, 2), 0);
+	trgb.r = ft_atoi(rgb[0]);
+	trgb.g = ft_atoi(rgb[1]);
+	trgb.b = ft_atoi(rgb[2]);
+	if (trgb.r < 0 || trgb.r > 255 || trgb.g < 0
+		|| trgb.g > 255 || trgb.b < 0 || trgb.b > 255)
+		return (free_split(rgb), ft_putendl_fd(FORA, 2), 0);
+	if (!set_color(cub, id, trgb.r, trgb.g, trgb.b))
 		return (free_split(rgb), 0);
 	free_split(rgb);
 	return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 17:06:22 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:17:11 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # define ENDLINE '\0'
 # define COMMA ','
 # define CARRIAGE '\r'
+
+/* RGB Error */
+# define FORA "Error\nRGB fora do intervalo (0-255)"
+# define VALOR "Error\nvalor RGB inválido"
 
 /* Directions */
 # define NORTH "NO"

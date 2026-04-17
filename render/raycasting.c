@@ -6,11 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 15:42:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 12:52:29 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 11:13:31 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
 static void	init_ray(t_ray *ray, t_player *player, int x, int w)
 {

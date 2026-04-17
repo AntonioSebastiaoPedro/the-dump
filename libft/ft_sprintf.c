@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 15:52:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/07 15:52:00 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 10:38:46 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_putnbr_buf_len(int n, char *buf, int *pos)
 	buf[(*pos)++] = (nb % 10) + '0';
 }
 
-static void	ft_handle_format_buf(const char format, va_list args, char *str, int *pos)
+static void	ft_hnd_fmt_buf(const char format, va_list args, char *str, int *pos)
 {
 	char	*s;
 	char	c;
@@ -66,7 +66,7 @@ int	ft_sprintf(char *str, const char *format, ...)
 		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
-			ft_handle_format_buf(format[i], args, str, &pos);
+			ft_hnd_fmt_buf(format[i], args, str, &pos);
 		}
 		else
 			str[pos++] = format[i];

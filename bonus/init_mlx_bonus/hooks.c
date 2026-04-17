@@ -6,22 +6,22 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/27 13:58:29 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:12:38 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
-int ft_close(t_cub *cub)
+int	ft_close(t_cub *cub)
 {
-    free_cub(cub);
-    exit(0);
-    return (0);
+	free_cub(cub);
+	exit(0);
+	return (0);
 }
 
-void hook_close(t_cub *cub)
+void	hook_close(t_cub *cub)
 {
-    mlx_hook(cub->mlx->win, 17, 0, ft_close, cub);
+	mlx_hook(cub->mlx->win, 17, 0, ft_close, cub);
 }
 
 int	key_press(int key, t_cub *cub)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_delim.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:58:04 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/07 11:31:49 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/17 11:24:57 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
 char	ft_delim(const char *s)
 {
@@ -22,7 +22,7 @@ char	ft_delim(const char *s)
 	while (s[i])
 	{
 		if (ft_strchr(" \t\v\r\f", s[i]))
-			return s[i];
+			return (s[i]);
 		i++;
 	}
 	return ('\0');

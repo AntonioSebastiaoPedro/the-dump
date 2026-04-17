@@ -6,16 +6,16 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/07 17:39:48 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 10:28:54 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "includes_bonus/cub.h"
-
+#include "includes_bonus/cub.h"
 
 int	main(int ac, char **av)
 {
 	t_cub	*cub;
+
 	cub = parse_cub(ac, av);
 	if (!cub)
 		return (1);
@@ -34,4 +34,3 @@ int	main(int ac, char **av)
 	free_cub(cub);
 	return (0);
 }
-

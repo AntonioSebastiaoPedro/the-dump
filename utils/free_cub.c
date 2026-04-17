@@ -6,40 +6,41 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 13:23:44 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 11:24:41 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- # include "../includes/cub.h"
+ #include "../includes/cub.h"
 
-void    free_map(char **map, int height)
+void	free_map(char **map, int height)
 {
-    int i;
+	int	i;
 
-    if (!map)
-        return ;
-    i = 0;
-    while (i < height)
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
-    map = NULL;
+	if (!map)
+		return ;
+	i = 0;
+	while (i < height)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+	map = NULL;
 }
 
- void   free_split(char **arr)
+void	free_split(char **arr)
 {
-    int i;
-    if (!arr)
+	int	i;
+
+	if (!arr)
 		return ;
-    i = 0;
-    while (arr[i])
-    {
-        free(arr[i]);
-        i++;
-    }
-    free(arr);
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
 
 void	free_config(t_cub *cub)
@@ -53,6 +54,7 @@ void	free_config(t_cub *cub)
 		free(cub->config);
 	}
 }
+
 void	free_mlx(t_cub *cub)
 {
 	if (cub->mlx)

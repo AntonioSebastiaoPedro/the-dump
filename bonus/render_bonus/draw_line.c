@@ -6,11 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 15:42:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/01 15:42:00 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:21:58 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
 void	draw_ver_line(t_cub *cub, int x, t_ray *ray)
 {

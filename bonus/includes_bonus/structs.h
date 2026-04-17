@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/02 17:08:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:39:17 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_loading
 	void	*logo;
 	void	*background;
 }	t_loading;
-
 
 typedef struct s_map
 {
@@ -124,9 +123,22 @@ typedef struct s_cub
 	t_menu			menu;
 	t_game_state	state;
 	int				floor_color;
-	int			ceiling_color;
-	int			keys[65536];
+	int				ceiling_color;
+	int				keys[65536];
 }	t_cub;
+
+typedef struct s_fdfil
+{
+	int	x;
+	int	y;
+}	t_fdfil;
+
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}			t_rgb;
 
 typedef enum e_line_type
 {

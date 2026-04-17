@@ -6,16 +6,16 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:48:35 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/30 10:47:11 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:21:48 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
 static void	move_forward(t_player *player, t_map *map)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = player->pos_x + player->dir_x * MOVE_SPEED;
 	new_y = player->pos_y + player->dir_y * MOVE_SPEED;
@@ -25,7 +25,7 @@ static void	move_forward(t_player *player, t_map *map)
 		player->pos_y = new_y;
 }
 
-static void	move_backward(t_player *player, t_map * map)
+static void	move_backward(t_player *player, t_map *map)
 {
 	double	new_x;
 	double	new_y;

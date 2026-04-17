@@ -6,15 +6,16 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 18:07:53 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/24 18:47:50 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:14:01 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
 static int	is_walkable(char c)
 {
-	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'D');
+	return (c == '0' || c == 'N' || c == 'S'
+		|| c == 'E' || c == 'W' || c == 'D');
 }
 
 static int	check_no_space_adjacent(char **map, int height, int width)
@@ -57,7 +58,8 @@ int	check_inside(char **map, int height, t_cub *cub)
 	copy = copy_map(map, 0, height);
 	if (!copy)
 		return (0);
-	if (!flood_fill(copy, (int)cub->player->pos_x, (int)cub->player->pos_y, height, width))
+	if (!flood_fill(copy, (t_fdfil){(int)cub->player->pos_x,
+			(int)cub->player->pos_y}, height, width))
 	{
 		free_map(copy, height);
 		return (0);

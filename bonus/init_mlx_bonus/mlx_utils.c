@@ -6,11 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 14:46:31 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 10:53:16 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:12:57 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
 void	exit_error(char *msg, t_cub *cub)
 {

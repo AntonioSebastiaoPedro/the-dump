@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_file.c                                       :+:      :+:    :+:   */
+/*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          #+#  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-18 09:10:51 by paulcard          #+#    #+#             */
-/*   Updated: 2026-03-18 09:10:51 by paulcard         ###   ########.fr       */
+/*   Created: 2026/03/18 09:10:51 by paulcard          #+#    #+#             */
+/*   Updated: 2026/04/17 15:50:55 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
 void	ft_check_args(int ac)
 {
@@ -23,7 +23,7 @@ void	ft_check_args(int ac)
 
 int	ft_check_file(char *name)
 {
-    char	*filename;
+	char	*filename;
 	char	*extension;
 
 	filename = ft_strrchr(name, '/');
@@ -53,7 +53,7 @@ int	ft_open_file(char *filename)
 	return (fd);
 }
 
-void    ft_validate_file(int ac, char **av)
+void	ft_validate_file(int ac, char **av)
 {
 	ft_check_args(ac);
 	if (!ft_check_file(av[1]))

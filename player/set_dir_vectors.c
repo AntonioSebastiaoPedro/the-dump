@@ -6,11 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 16:43:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/27 16:43:37 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 11:09:04 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
 static void	set_north(t_player *player)
 {
