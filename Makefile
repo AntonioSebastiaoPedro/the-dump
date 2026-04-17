@@ -6,7 +6,7 @@
 #    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/15 10:21:43 by paulcard         ###   ########.fr        #
+#    Updated: 2026/04/17 09:50:52 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS += -Iminilibx-linux
 CFLAGS += -O3
 CFLAGS += -g
 CPPFLAGS = -I. -I$(LIBFT_DIR) -MMD -MP
-LDFLAGS = -lft -L$(LIBFT_DIR)
+LDFLAGS = -lft -L$(LIBFT_DIR) -lm
 LDFLAGS += -lmlx -Lminilibx-linux -lX11 -lXext
 RM = rm -rf
 
