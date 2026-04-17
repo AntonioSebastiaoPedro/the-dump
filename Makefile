@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/14 16:41:38 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/15 14:02:29 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ PLAYER_DIR = player
 # ==============================================================================
 
 PARSER_FILES = check_file.c read_line.c parser.c get_line_type.c parse_color.c parser_testura.c parse_map.c normalize_map.c valid_line_map.c validate_map.c check_player.c check_inside.c check_borders.c flood_fill.c
-MLX_FILES = mlx_init.c mlx_utils.c hooks.c
+MLX_FILES = mlx_init.c mlx_utils.c hooks.c ft_put_pixel.c
 RENDER_FILES = render.c raycasting.c
 UTILS_FILES = count_lines.c free_cub.c copy_map.c debug.c
 PLAYER_FILES = init_player.c update_player.c set_dir_vectors.c

@@ -6,29 +6,72 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 19:15:23 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/14 16:44:21 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/17 02:52:13 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
+/*static void	draw_square_in_map(t_cub *cub, int x, int y, int color)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < TILE_SIZE)
+	{
+		col = 0;
+		while (col < TILE_SIZE)
+		{
+			ft_put_pixel(cub, x + col, y + row, color);
+			col++;
+		}
+		row++;
+	}
+}
+
+static void	draw_map(t_cub *cub)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < cub->map->height)
+	{
+		col = 0;
+		while (col < cub->map->width)
+		{
+			if (cub->map->grid[row][col] == '1')
+			{
+				// draw wall
+				draw_square_in_map(cub, col * TILE_SIZE, row * TILE_SIZE, RED);
+			}
+			else
+			{
+				// draw empty space
+				draw_square_in_map(cub, col * TILE_SIZE, row * TILE_SIZE, YELLOW);
+			}
+			col++;
+		}
+		row++;
+	}
+}*/
+
 void	render(t_cub *cub)
 {
 	unsigned int	*pos;
-	int				i;
+	int				x;
 	t_ray			ray;
 
-	i = 0;
+	x = 0;
 	pos = (unsigned int *)cub->mlx->addr;
-	while (i < WIDTH * HEIGHT)
-		*(pos + i++) = BLACK;
-
-	// Verificar direccao do ray lancado
-	int	col = WIDTH / 2;
-	calculate_ray_dir(cub, &ray, col);
-	printf("\ncoluna = %d:\n\tray na dirX = %f\n\tray na dirY = %f", col, ray.dir_x, ray.dir_y);
-
-
-	ft_put_pixel(cub, WIDTH / 2, HEIGHT / 2, RED);
+	while (x < WIDTH * HEIGHT)
+		*(pos + x++) = BLACK;
+	x = 0;
+	while (x < WIDTH)
+	{
+		setup_ray(cub, &ray, x);
+		x++;
+	}
 	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 }

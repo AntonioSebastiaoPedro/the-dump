@@ -6,11 +6,11 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/14 16:47:15 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/17 02:51:24 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef CUB_H
+#ifndef CUB_H
 # define CUB_H
 
 /* ====== LIBS PADRÃO ====== */
@@ -51,7 +51,7 @@ int			flood_fill(char **map, int x, int y, int height, int width);
 /* ====== UTILS ====== */
 int			ft_count_lines(int fd);
 void		free_split(char **arr);
-t_line_type get_line_type(const char *line);
+t_line_type	get_line_type(const char *line);
 char		**copy_map(char **lines, int map_start, int height);
 void		free_cub(t_cub *cub);
 void		free_map(char **map, int height);
@@ -67,15 +67,12 @@ int			key_release(int key, t_cub *cub);
 int			loop_hook(t_cub *cub);
 
 /* ====== RENDER ====== */
-void	render(t_cub *cub);
-void	calculate_ray_dir(t_cub *cub, t_ray *ray, int col);
-//void		draw_minimap(t_cub *cub);
-//void		draw_walls(t_cub *cub);
-//void		draw_ver_line(t_cub *cub, int x, t_ray *ray);
+void		render(t_cub *cub);
+void		setup_ray(t_cub *cub, t_ray *ray, int col);
 
 /* ====== PLAYER ====== */
 t_player	*init_player(t_cub *cub);
 void		update_player(t_cub *cub);
-void	    set_dir_vectors(t_player *player);
+void		set_dir_vectors(t_player *player);
 
 #endif
