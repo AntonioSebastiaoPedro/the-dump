@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 01:52:03 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/18 17:55:19 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct s_ray
 	double	side_dist_y;
 	int		step_x;
 	int		step_y;
+	int		side;
+	int		hit;
 }	t_ray;
 
 typedef struct s_cub
