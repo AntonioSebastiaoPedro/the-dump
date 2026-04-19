@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 19:15:23 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/18 18:28:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/18 23:51:20 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ void	render(t_cub *cub)
 		*(pos + i++) = BLACK;
 	i = 0;
 	while (i < WIDTH)
-	{
-		setup_ray(i++, &ray, cub);
-		dda(&ray, cub);
-	}
+		raycasting(i++, &ray, cub);
 	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 }

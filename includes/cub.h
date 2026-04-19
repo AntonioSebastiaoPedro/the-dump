@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/18 18:26:56 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/19 02:17:14 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ int			loop_hook(t_cub *cub);
 
 /* ====== RENDER ====== */
 void		render(t_cub *cub);
-void		setup_ray(int col, t_ray *ray, t_cub *cub);
+void		raycasting(int col, t_ray *ray, t_cub *cub);
 void		dda(t_ray *ray, t_cub *cub);
+void		draw_vertical_line(int col, t_ray *ray, t_cub *cub);
 
 /* ====== PLAYER ====== */
 t_player	*init_player(t_cub *cub);
