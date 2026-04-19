@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/19 02:17:14 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/19 04:25:48 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void		print_map(char **map);
 
 /* ====== MLX SETUP ====== */
 t_mlx		*init_mlx(void);
-void		ft_put_pixel(t_cub *cub, int x, int y, int color);
 void		exit_error(char *msg, t_cub *cub);
 void		hook_close(t_cub *cub);
 int			key_press(int key, t_cub *cub);
@@ -68,6 +67,7 @@ int			loop_hook(t_cub *cub);
 
 /* ====== RENDER ====== */
 void		render(t_cub *cub);
+void		ft_put_pixel(t_cub *cub, int x, int y, int color);
 void		raycasting(int col, t_ray *ray, t_cub *cub);
 void		dda(t_ray *ray, t_cub *cub);
 void		draw_vertical_line(int col, t_ray *ray, t_cub *cub);

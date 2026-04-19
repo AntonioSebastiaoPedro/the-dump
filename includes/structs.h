@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/19 01:19:56 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/19 04:23:14 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ typedef struct s_cub
 	t_player	*player;
 	t_mlx		*mlx;
 	t_textures	*textures;
-	int			floor_color;
-	int			ceiling_color;
 	int			keys[65536];
 }	t_cub;
 

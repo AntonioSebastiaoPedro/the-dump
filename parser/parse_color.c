@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/24 15:23:38 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/19 04:23:06 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,12 @@ static int	set_color(t_cub *cub, char id, int r, int g, int b)
 		if (cub->config->floor_color != -1)
 			return (ft_putendl_fd("Erro: F já definido", 2), 0);
 		cub->config->floor_color = (r << 16) | (g << 8) | b;
-		cub->floor_color = cub->config->floor_color;
 	}
 	else
 	{
 		if (cub->config->ceiling_color != -1)
 			return (ft_putendl_fd("Erro: C já definido", 2), 0);
 		cub->config->ceiling_color = (r << 16) | (g << 8) | b;
-		cub->ceiling_color = cub->config->ceiling_color;
 	}
 	return (1);
 }
