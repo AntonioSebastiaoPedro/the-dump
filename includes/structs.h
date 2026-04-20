@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/20 19:06:00 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/20 23:24:08 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 	double	wall_impact;
+	int		texture_column;
+	double	step_texture;
+	double	texture_pos;
 }	t_ray;
 
 typedef struct s_cub
