@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/20 20:02:47 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/20 21:05:59 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,16 @@ int			flood_fill(char **map, int x, int y, int height, int width);
 
 /* ====== UTILS ====== */
 int			ft_count_lines(int fd);
-void		free_split(char **arr);
 t_line_type	get_line_type(const char *line);
 char		**copy_map(char **lines, int map_start, int height);
-void		free_cub(t_cub *cub);
-void		free_map(char **map, int height);
 void		print_map(char **map);
+void		free_map(char **map, int height);
+void		free_split(char **arr);
+void		free_config(t_cub *cub);
+void		free_mlx(t_cub *cub);
 void		free_textures(t_cub *cub);
+void		free_cub(t_cub *cub);
+int			load_textures(t_cub *cub);
 
 /* ====== MLX SETUP ====== */
 t_mlx		*init_mlx(void);
