@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 16:40:10 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/19 02:16:47 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/20 16:50:56 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void	raycasting(int col, t_ray *ray, t_cub *cub)
 	calculate_side_dist(ray, cub->player);
 	dda(ray, cub);
 	calculate_wall(ray);
+	calculate_wall_impact(ray, cub->player);
 	draw_vertical_line(col, ray, cub);
 }
