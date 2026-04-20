@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/20 16:51:01 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/20 19:06:00 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,23 @@ typedef struct s_player
 	char	dir;
 }	t_player;
 
-typedef struct s_textures
+typedef struct s_texture
 {
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
+	void	*img;
+	char	*addr;
 	int		width;
 	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_texture;
+
+typedef struct s_textures
+{
+	t_texture	no;
+	t_texture	so;
+	t_texture	we;
+	t_texture	ea;
 }	t_textures;
 
 typedef struct s_mlx

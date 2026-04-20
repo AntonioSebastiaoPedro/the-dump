@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/04 02:20:31 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/20 20:32:38 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,20 @@ void	free_mlx(t_cub *cub)
 	}
 }
 
+void	free_textures(t_cub *cub)
+{
+	if (!cub || !cub->mlx || !cub->mlx->mlx || !cub->textures)
+		return ;
+	if (cub->textures->no.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->textures->no.img);
+	if (cub->textures->so.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->textures->so.img);
+	if (cub->textures->we.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->textures->we.img);
+	if (cub->textures->ea.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->textures->ea.img);
+}
+
 void	free_cub(t_cub *cub)
 {
 	if (!cub)
@@ -89,7 +103,10 @@ void	free_cub(t_cub *cub)
 	if (cub->player)
 		free(cub->player);
 	if (cub->textures)
+	{
+		free_textures(cub);
 		free(cub->textures);
+	}
 	free_mlx(cub);
 	free(cub);
 }
