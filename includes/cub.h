@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/20 21:05:59 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/21 16:40:14 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		ft_put_pixel(t_cub *cub, int x, int y, int color);
 void		raycasting(int col, t_ray *ray, t_cub *cub);
 void		dda(t_ray *ray, t_cub *cub);
 void		draw_vertical_line(int col, t_ray *ray, t_cub *cub);
-void		calculate_wall_impact(t_ray *ray, t_player *player);
+void		calculate_texture(t_ray *ray, t_cub *cub);
 
 /* ====== PLAYER ====== */
 t_player	*init_player(t_cub *cub);

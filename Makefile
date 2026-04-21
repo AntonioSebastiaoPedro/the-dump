@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/20 21:06:51 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/21 12:39:02 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS += -O3
 CFLAGS += -g
 CPPFLAGS = -I includes -I $(LIBFT_DIR) -MMD -MP
 LDFLAGS = -lft -L$(LIBFT_DIR)
-LDFLAGS += -lmlx -Lminilibx-linux -lX11 -lXext
+LDFLAGS += -lmlx -Lminilibx-linux -lX11 -lXext -lm
 RM = rm -rf
 
 # ==============================================================================

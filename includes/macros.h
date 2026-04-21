@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/13 19:17:08 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:39:59 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define WEST "WE"
 
 /* Movement */
-# define MOVE_SPEED 0.05
-# define ROT_SPEED  0.03
+# define MOVE_SPEED 0.03
+# define ROT_SPEED  0.02
 
 /* Keys */
 # define KEY_W       119

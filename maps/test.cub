@@ -1,7 +1,7 @@
-NO ./assets/textures/comb2/tatame_north_texture.xpm
-SO ./assets/textures/comb2/tatame_south_texture.xpm
-WE ./assets/textures/comb2/tatame_west_texture.xpm
-EA ./assets/textures/comb2/tatame_east_texture.xpm
+NO ./assets/tatame_north_texture.xpm
+SO ./assets/tatame_south_texture.xpm
+WE ./assets/tatame_west_texture.xpm
+EA ./assets/tatame_east_texture.xpm
 
 F 49,45,21
 C  135,206,225
