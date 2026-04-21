@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:09:20 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:23:43 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 09:17:03 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	draw_player(t_cub *cub)
 		y++;
 	}
 	draw_line_dir(cub);
-
 }
 
 void	draw_square(t_cub *cub, int start_x, int start_y, int color)

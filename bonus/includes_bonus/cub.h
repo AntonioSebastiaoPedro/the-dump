@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:38:59 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 08:28:24 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ bool		is_player(char c);
 int			check_borders(char **map, int height, int width);
 int			check_inside(char **map, int height, t_cub *cub);
 int			flood_fill(char **map, t_fdfil pos, int height, int width);
+int			validate_rgb_format(const char *line);
 
 /* ====== UTILS ====== */
 int			ft_count_lines(int fd);

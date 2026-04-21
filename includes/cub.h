@@ -39,6 +39,7 @@ char		**read_file(char *filename);
 t_cub		*parse_cub(int ac, char **av);
 int			parse_texture(const char *line, t_cub *cub);
 int			parse_color(const char *line, t_cub *cub);
+int			validate_rgb_format(const char *line);
 int			parse_map(char **lines, int map_start, t_cub *cub);
 int			is_empty_line(char *line);
 int			is_valid_line_map(char *line);

@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:16:04 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 08:55:29 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,6 @@ static int	validate_identifier(const char *line, char *id)
 	if (!line || (line[0] != 'F' && line[0] != 'C') || line[1] != SPACE)
 		return (ft_putendl_fd("Error\nIdentificador de cor inválido", 2), 0);
 	*id = line[0];
-	return (1);
-}
-
-static int	validate_rgb_format(const char *line)
-{
-	int	i;
-	int	comma;
-	int	expecting_number;
-
-	(i = 2, comma = 0, expecting_number = 1);
-	while (line[i])
-	{
-		if (line[i] == SPACE || line[i] == NEWLINE)
-			i++;
-		else if (ft_isdigit(line[i]))
-		{
-			expecting_number = 0;
-			while (ft_isdigit(line[i]))
-				i++;
-		}
-		else if (line[i] == COMMA)
-		{
-			if (expecting_number)
-				return (0);
-			comma++;
-			expecting_number = 1;
-			i++;
-		}
-		else
-			return (0);
-	}
-	if (expecting_number || comma != 2)
-		return (0);
 	return (1);
 }
 
@@ -77,20 +44,20 @@ static int	validate_rgb_values(char **rgb)
 	return (1);
 }
 
-static int	set_color(t_cub *cub, char id, int r, int g, int b)
+static int	set_color(t_cub *cub, char id, t_rgb rgb)
 {
 	if (id == 'F')
 	{
 		if (cub->config->floor_color != -1)
 			return (ft_putendl_fd("Error\nF já definido", 2), 0);
-		cub->config->floor_color = (r << 16) | (g << 8) | b;
+		cub->config->floor_color = (rgb.r << 16) | (rgb.g << 8) | rgb.b;
 		cub->floor_color = cub->config->floor_color;
 	}
 	else
 	{
 		if (cub->config->ceiling_color != -1)
 			return (ft_putendl_fd("Error\nC já definido", 2), 0);
-		cub->config->ceiling_color = (r << 16) | (g << 8) | b;
+		cub->config->ceiling_color = (rgb.r << 16) | (rgb.g << 8) | rgb.b;
 		cub->ceiling_color = cub->config->ceiling_color;
 	}
 	return (1);
@@ -117,7 +84,7 @@ int	parse_color(const char *line, t_cub *cub)
 	if (trgb.r < 0 || trgb.r > 255 || trgb.g < 0
 		|| trgb.g > 255 || trgb.b < 0 || trgb.b > 255)
 		return (free_split(rgb), ft_putendl_fd(FORA, 2), 0);
-	if (!set_color(cub, id, trgb.r, trgb.g, trgb.b))
+	if (!set_color(cub, id, trgb))
 		return (free_split(rgb), 0);
 	free_split(rgb);
 	return (1);

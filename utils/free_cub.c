@@ -6,11 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 11:24:41 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 09:14:10 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../includes/cub.h"
+#include "../includes/cub.h"
 
 void	free_map(char **map, int height)
 {

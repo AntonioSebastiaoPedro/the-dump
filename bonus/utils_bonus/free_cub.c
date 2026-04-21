@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:33:44 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 09:13:40 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	free_config(t_cub *cub)
 		free(cub->config);
 	}
 }
+
 void	free_mlx(t_cub *cub)
 {
 	if (cub->mlx)
