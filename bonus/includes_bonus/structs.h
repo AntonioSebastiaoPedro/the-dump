@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:39:17 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 09:53:54 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,16 @@ typedef struct s_ray
 	int		color;
 }	t_ray;
 
+typedef struct s_mouse
+{
+	int	center_x;
+	int	center_y;
+	int	x;
+	int	y;
+	int	delta_x;
+	bool	show_mouse;
+}	t_mouse;
+
 typedef struct s_cub
 {
 	t_map			*map;
@@ -125,6 +135,7 @@ typedef struct s_cub
 	int				floor_color;
 	int				ceiling_color;
 	int				keys[65536];
+	t_mouse			mouse;
 }	t_cub;
 
 typedef struct s_fdfil

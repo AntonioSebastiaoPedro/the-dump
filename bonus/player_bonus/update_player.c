@@ -64,8 +64,26 @@ static void	rotate(t_player *player, double rot)
 	player->plane_y = old_plane_x * sin(rot) + player->plane_y * cos(rot);
 }
 
+static void	update_mouse(t_cub *cub)
+{
+	int	x;
+	int	y;
+
+	if (cub->mouse.show_mouse)
+		return ;
+	mlx_mouse_get_pos(cub->mlx->mlx, cub->mlx->win, &x, &y);
+	cub->mouse.delta_x = x - cub->mouse.center_x;
+	if (cub->mouse.delta_x != 0)
+	{
+		rotate(cub->player, cub->mouse.delta_x * MOUSE_SENSITIVITY);
+		mlx_mouse_move(cub->mlx->mlx, cub->mlx->win,
+			cub->mouse.center_x, cub->mouse.center_y);
+	}
+}
+
 void	update_player(t_cub *cub)
 {
+	update_mouse(cub);
 	if (cub->keys[KEY_W])
 		move_forward(cub->player, cub->map);
 	if (cub->keys[KEY_S])

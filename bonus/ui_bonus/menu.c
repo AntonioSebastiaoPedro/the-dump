@@ -161,7 +161,11 @@ void handle_menu_input(int key, t_cub *cub)
         else if (key == KEY_ENTER)
         {
             if (cub->menu.selected == 0) // PLAY
+            {
                 cub->state = GAME;
+                mlx_mouse_hide(cub->mlx->mlx, cub->mlx->win);
+                mlx_mouse_move(cub->mlx->mlx, cub->mlx->win, cub->mouse.center_x, cub->mouse.center_y);
+            }
             else if (cub->menu.selected == 1) // ABOUT
                 cub->state = ABOUT;
             else if (cub->menu.selected == 2) // QUIT

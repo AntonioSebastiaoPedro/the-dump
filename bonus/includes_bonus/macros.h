@@ -34,12 +34,14 @@
 /* Movement */
 # define MOVE_SPEED 0.05
 # define ROT_SPEED  0.03
+# define MOUSE_SENSITIVITY 0.001
 
 /* Keys */
 # define KEY_W       119
 # define KEY_S       115
 # define KEY_A       97
 # define KEY_D       100
+# define KEY_P       112
 
 /* Arrow keys */
 # define KEY_LEFT    65361

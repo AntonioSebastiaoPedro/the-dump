@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 	cub->mlx = init_mlx();
 	if (!cub->mlx)
 		return (free_cub(cub), 1);
+	cub->mouse.center_x = cub->mlx->width / 2;
+	cub->mouse.center_y = cub->mlx->height / 2;
 	cub->state = LOADING;
 	init_loading(&cub->loading, cub->mlx->mlx);
 	if (!init_player(cub))
