@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/21 08:55:29 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 18:51:00 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	validate_identifier(const char *line, char *id)
 {
-	if (!line || (line[0] != 'F' && line[0] != 'C') || line[1] != SPACE)
+	if (!line || (line[0] != 'F' && line[0] != 'C') ||  !ft_isspace(line[1]))
 		return (ft_putendl_fd("Error\nIdentificador de cor inválido", 2), 0);
 	*id = line[0];
 	return (1);
@@ -29,13 +29,13 @@ static int	validate_rgb_values(char **rgb)
 	while (rgb[i])
 	{
 		j = 0;
-		while (rgb[i][j] == SPACE || rgb[i][j] == NEWLINE)
+		while (ft_isspace(rgb[i][j]))
 			j++;
 		if (!ft_isdigit(rgb[i][j]))
 			return (0);
 		while (ft_isdigit(rgb[i][j]))
 			j++;
-		while (rgb[i][j] == SPACE || rgb[i][j] == NEWLINE)
+		while (ft_isspace(rgb[i][j]))
 			j++;
 		if (rgb[i][j] != '\0')
 			return (0);
