@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:30 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 11:03:25 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 19:39:21 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	parse_map(char **lines, int map_start, t_cub *cub)
 	char	**grid;
 
 	if (!lines || map_start < 0)
-		return (ft_putendl_fd("Error\nMapa invalido", 2), 0);
+		return (ft_putendl_fd("Error\nMapa não encontrado no ficheiro", 2), 0);
 	height = get_map_height(lines, map_start);
 	if (height <= 0)
 		return (0);

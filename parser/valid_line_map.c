@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 09:38:12 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 11:04:39 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 19:35:08 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_empty_line(char *line)
 	int	i;
 
 	if (!line)
-		return (ft_putendl_fd("Line do Mapa invalido", 2), 0);
+		return (ft_putendl_fd("Error\nLine do Mapa invalido", 2), 0);
 	i = 0;
 	while (line[i])
 	{
