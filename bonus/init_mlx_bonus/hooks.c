@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:12:38 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 10:54:26 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	loop_hook(t_cub *cub)
 		update_menu(cub);
 		render_menu(cub);
 	}
-	else if (cub->state == ABOUT)4
+	else if (cub->state == ABOUT)
 		render_about(cub);
 	else if (cub->state == GAME)
 	{
