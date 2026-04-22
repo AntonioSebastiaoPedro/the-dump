@@ -57,5 +57,4 @@ teste.c
 .gitignore
 file.txt
 *.txt
-assets/textures
 cub3D
