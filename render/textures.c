@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:50:16 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/21 16:39:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/22 19:39:39 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	calculate_wall_impact(t_ray *ray, t_player *player)
 	else
 		ray->wall_impact = player->pos_x + ray->dir_x * ray->perp_wall_dist;
 	ray->wall_impact = ray->wall_impact - (int)ray->wall_impact;
-	if (ray->side == 0 && ray->dir_x > 0)
+	if (ray->side == 0 && ray->dir_x < 0)
 		ray->wall_impact = 1.0 - ray->wall_impact;
-	if (ray->side == 1 && ray->dir_y < 0)
+	if (ray->side == 1 && ray->dir_y > 0)
 		ray->wall_impact = 1.0 - ray->wall_impact;
 }
 

@@ -1,9 +1,9 @@
-NO ./assets/tatame_north_texture.xpm
-SO ./assets/tatame_south_texture.xpm
-WE ./assets/tatame_west_texture.xpm
-EA ./assets/tatame_east_texture.xpm
+WE ./assets/textures/parede7.xpm
+EA ./assets/textures/parede8.xpm
+NO ./assets/textures/chao3.xpm
+SO ./assets/textures/chao2.xpm
 
-F 0,0,0
+F 30,30,20
 C 0,0,0
 
 111111111111111

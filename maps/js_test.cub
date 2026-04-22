@@ -1,7 +1,7 @@
-NO ./assets/SO.xpm
-SO ./assets/SO.xpm
-WE ./assets/WE.xpm
-EA ./assets/NO.xpm
+EA ./assets/textures/novo1.xpm
+WE ./assets/textures/users.xpm
+SO ./assets/textures/users.xpm
+NO ./assets/textures/novo1.xpm
 
 F 120,120,120
 C 180,200,255
