@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/02 12:42:04 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/21 08:17:45 by paulcard         ###   ########.fr       */
+/*   Created: 2026/04/13 19:15:23 by aamandio          #+#    #+#             */
+/*   Updated: 2026/04/25 14:42:28 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 void	render(t_cub *cub)
 {
-	draw_walls(cub);
+	unsigned int	*pos;
+	int				i;
+	t_ray			ray;
+
+	i = 0;
+	pos = (unsigned int *)cub->mlx->addr;
+	while (i < WIDTH * HEIGHT)
+		*(pos + i++) = BLACK;
+	i = 0;
+	while (i < WIDTH)
+		raycasting(i++, &ray, cub);
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:09:20 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/21 09:17:03 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/25 22:49:27 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_line_dir(t_cub *cub)
 
 	dx = (int)((cub->player->pos_x + cub->player->dir_x * 0.5) * TILE_SIZE);
 	dy = (int)((cub->player->pos_y + cub->player->dir_y * 0.5) * TILE_SIZE);
-	put_pixel(cub, dx, dy, RED);
+	ft_put_pixel(cub, dx, dy, RED);
 }
 
 void	draw_player(t_cub *cub)
@@ -37,7 +37,7 @@ void	draw_player(t_cub *cub)
 		x = 0;
 		while (x < PLAYER_SIZE)
 		{
-			put_pixel(cub, px + x, py + y, RED);
+			ft_put_pixel(cub, px + x, py + y, RED);
 			x++;
 		}
 		y++;
@@ -56,7 +56,7 @@ void	draw_square(t_cub *cub, int start_x, int start_y, int color)
 		x = 0;
 		while (x < TILE_SIZE)
 		{
-			put_pixel(cub, start_x + x, start_y + y, color);
+			ft_put_pixel(cub, start_x + x, start_y + y, color);
 			x++;
 		}
 		y++;

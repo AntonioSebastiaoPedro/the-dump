@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 02:41:40 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/25 15:00:23 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char		**ft_split_new(const char *s, const char *delim);
 
 /* ====== MLX SETUP ====== */
 t_mlx		*init_mlx(void);
-void		exit_error(char *msg, t_cub *cub);
 void		hook_close(t_cub *cub);
 int			key_press(int key, t_cub *cub);
 int			key_release(int key, t_cub *cub);
@@ -82,8 +81,6 @@ void		raycasting(int col, t_ray *ray, t_cub *cub);
 void		dda(t_ray *ray, t_cub *cub);
 void		draw_vertical_line(int col, t_ray *ray, t_cub *cub);
 void		calculate_texture(t_ray *ray, t_cub *cub);
-void		draw_walls(t_cub *cub);
-void		draw_ver_line(t_cub *cub, int x, t_ray *ray);
 
 /* ====== PLAYER ====== */
 t_player	*init_player(t_cub *cub);

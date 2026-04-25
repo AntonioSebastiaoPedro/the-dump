@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/21 09:53:54 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/25 22:40:28 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,23 @@ typedef struct s_player
 	char	dir;
 }	t_player;
 
-typedef struct s_textures
+typedef struct s_texture
 {
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
+	void	*img;
+	char	*addr;
 	int		width;
 	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_texture;
+
+typedef struct s_textures
+{
+	t_texture	no;
+	t_texture	so;
+	t_texture	we;
+	t_texture	ea;
 }	t_textures;
 
 typedef struct s_mlx
@@ -85,31 +94,31 @@ typedef struct s_mlx
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int		width;
-	int		height;
 }	t_mlx;
 
 typedef struct s_ray
 {
+	double	dir_x;
+	double	dir_y;
 	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
 	int		map_x;
 	int		map_y;
-	double	side_dist_x;
-	double	side_dist_y;
 	double	delta_dist_x;
 	double	delta_dist_y;
-	double	perp_wall_dist;
+	double	side_dist_x;
+	double	side_dist_y;
 	int		step_x;
 	int		step_y;
-	int		hit;
 	int		side;
-	int		side_hit;
+	int		hit;
+	double	perp_wall_dist;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	int		color;
+	double	wall_impact;
+	int		texture_column;
+	double	step_texture;
+	double	texture_pos;
 }	t_ray;
 
 typedef struct s_mouse

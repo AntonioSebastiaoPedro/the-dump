@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:28:59 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/25 22:51:54 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	draw_rectangle(t_cub *cub, int x, int y, int w, int h, int color)
 		j = 0;
 		while (j < w)
 		{
-			put_pixel(cub, x + j, y + i, color);
+			ft_put_pixel(cub, x + j, y + i, color);
 			j++;
 		}
 		i++;
@@ -94,13 +94,13 @@ void render_loading(t_cub *game)
 {
 	int bar_width = 400;
 	int bar_height = 30;
-	int x = (game->mlx->width - bar_width) / 2;
-	int y = (game->mlx->height - bar_height) / 2;
+	int x = (WIDTH - bar_width) / 2;
+	int y = (HEIGHT - bar_height) / 2;
 	int filled_width = (game->loading.progress * bar_width) / game->loading.max_progress;
 	char progress_text[20];
 
 	// Clear background (optional, could be a specific color)
-	draw_rectangle(game, 0, 0, game->mlx->width, game->mlx->height, BLACK);
+	draw_rectangle(game, 0, 0, WIDTH, HEIGHT, BLACK);
 
 	// Draw background bar (border/empty)
 	draw_rectangle(game, x - 2, y - 2, bar_width + 4, bar_height + 4, WHITE);

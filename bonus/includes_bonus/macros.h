@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:17:11 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/25 15:34:24 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@
 # define KEY_A       97
 # define KEY_D       100
 # define KEY_P       112
-
-/* Arrow keys */
 # define KEY_LEFT    65361
 # define KEY_RIGHT   65363
 # define KEY_UP      65362

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 11:40:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/07 11:40:00 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/25 22:48:35 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,37 +44,37 @@ void render_menu(t_cub *cub)
 
     // Optimized background rendering
     i = 0;
-    while (i < cub->mlx->width)
+    while (i < WIDTH)
     {
         j = 0;
-        while (j < cub->mlx->height)
+        while (j < HEIGHT)
         {
-            put_pixel(cub, i, j, 0x1A1A1A);
+            ft_put_pixel(cub, i, j, 0x1A1A1A);
             j++;
         }
         i++;
     }
-    
+
     // Put background image to window before drawing strings
     mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 
-    y = cub->mlx->height / 2 - 50;
+    y = HEIGHT / 2 - 50;
 
     // PLAY
     color = (cub->menu.selected == 0) ? 0x00FF00 : 0xFFFFFF;
-    mlx_string_put(cub->mlx->mlx, cub->mlx->win, cub->mlx->width / 2 - 30, y, color, 
+    mlx_string_put(cub->mlx->mlx, cub->mlx->win, WIDTH / 2 - 30, y, color,
         (cub->menu.selected == 0) ? "> PLAY" : "  PLAY");
 
     // ABOUT
     y += 40;
     color = (cub->menu.selected == 1) ? 0x00FF00 : 0xFFFFFF;
-    mlx_string_put(cub->mlx->mlx, cub->mlx->win, cub->mlx->width / 2 - 30, y, color, 
+    mlx_string_put(cub->mlx->mlx, cub->mlx->win, WIDTH / 2 - 30, y, color,
         (cub->menu.selected == 1) ? "> ABOUT" : "  ABOUT");
 
     // QUIT
     y += 40;
     color = (cub->menu.selected == 2) ? 0x00FF00 : 0xFFFFFF;
-    mlx_string_put(cub->mlx->mlx, cub->mlx->win, cub->mlx->width / 2 - 30, y, color, 
+    mlx_string_put(cub->mlx->mlx, cub->mlx->win, WIDTH / 2 - 30, y, color,
         (cub->menu.selected == 2) ? "> QUIT" : "  QUIT");
 }
 
@@ -90,12 +90,12 @@ void render_about(t_cub *cub)
 
     // Optimized background rendering
     i = 0;
-    while (i < cub->mlx->width)
+    while (i < WIDTH)
     {
         j = 0;
-        while (j < cub->mlx->height)
+        while (j < HEIGHT)
         {
-            put_pixel(cub, i, j, 0x000000);
+            ft_put_pixel(cub, i, j, 0x000000);
             j++;
         }
         i++;
@@ -109,7 +109,7 @@ void render_about(t_cub *cub)
     mlx_string_put(cub->mlx->mlx, cub->mlx->win, margin, y, 0x00FF00, "of the 42 curriculum by Paulo Cardoso (paulcard),");
     y += 20;
     mlx_string_put(cub->mlx->mlx, cub->mlx->win, margin, y, 0x00FF00, "Antonio Amandio (aamandio)");
-    
+
     y += 40;
     mlx_string_put(cub->mlx->mlx, cub->mlx->win, margin, y, 0xFFFFFF, "Descricao:");
     y += 20;
@@ -136,7 +136,7 @@ void render_about(t_cub *cub)
     mlx_string_put(cub->mlx->mlx, cub->mlx->win, margin, y, 0x00AAFF, "- game loop");
 
     y += 80;
-    mlx_string_put(cub->mlx->mlx, cub->mlx->win, cub->mlx->width / 2 - 100, y, 0xAAAAAA, "Pressione ESC para voltar ao MENU");
+    mlx_string_put(cub->mlx->mlx, cub->mlx->win, WIDTH / 2 - 100, y, 0xAAAAAA, "Pressione ESC para voltar ao MENU");
 }
 
 /**

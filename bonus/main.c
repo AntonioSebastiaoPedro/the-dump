@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 10:28:54 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/25 22:40:46 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/cub.h"
+#include "../includes_bonus/cub.h"
 
 int	main(int ac, char **av)
 {
@@ -22,11 +22,13 @@ int	main(int ac, char **av)
 	cub->mlx = init_mlx();
 	if (!cub->mlx)
 		return (free_cub(cub), 1);
-	cub->mouse.center_x = cub->mlx->width / 2;
-	cub->mouse.center_y = cub->mlx->height / 2;
+	cub->mouse.center_x = WIDTH / 2;
+	cub->mouse.center_y = HEIGHT / 2;
 	cub->state = LOADING;
 	init_loading(&cub->loading, cub->mlx->mlx);
 	if (!init_player(cub))
+		return (free_cub(cub), 1);
+	if (!load_textures(cub))
 		return (free_cub(cub), 1);
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);

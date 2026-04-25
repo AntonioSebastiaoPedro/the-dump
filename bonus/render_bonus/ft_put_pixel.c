@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   ft_put_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 15:24:14 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:24:15 by paulcard         ###   ########.fr       */
+/*   Created: 2026/04/14 16:42:35 by aamandio          #+#    #+#             */
+/*   Updated: 2026/04/25 14:41:44 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub.h"
 
-void	put_pixel(t_cub *cub, int x, int y, int color)
+void	ft_put_pixel(t_cub *cub, int x, int y, int color)
 {
-	char	*dst;
+	char	*new_addr;
 
-	if (x < 0 || x >= cub->mlx->width || y < 0 || y >= cub->mlx->height)
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 		return ;
-	dst = cub->mlx->addr + (y * cub->mlx->line_len + x * (cub->mlx->bpp / 8));
-	*(unsigned int *)dst = color;
+	new_addr = cub->mlx->addr + (y * cub->mlx->line_len)
+		+ (x * (cub->mlx->bpp / 8));
+	*(unsigned int *)new_addr = color;
 }
