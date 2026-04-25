@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/20 23:24:08 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/25 02:52:43 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,19 @@ typedef struct s_cub
 	t_textures	*textures;
 	int			keys[65536];
 }	t_cub;
+
+typedef struct s_fdfil
+{
+	int	x;
+	int	y;
+}	t_fdfil;
+
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}			t_rgb;
 
 typedef enum e_line_type
 {

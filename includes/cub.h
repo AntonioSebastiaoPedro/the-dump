@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/21 16:40:14 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/25 02:41:40 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char		**read_file(char *filename);
 t_cub		*parse_cub(int ac, char **av);
 int			parse_texture(const char *line, t_cub *cub);
 int			parse_color(const char *line, t_cub *cub);
+int			validate_rgb_format(const char *line);
 int			parse_map(char **lines, int map_start, t_cub *cub);
 int			is_empty_line(char *line);
 int			is_valid_line_map(char *line);
@@ -46,10 +47,11 @@ int			check_player(char **map, t_cub *cub);
 bool		is_player(char c);
 int			check_borders(char **map, int height, int width);
 int			check_inside(char **map, int height, t_cub *cub);
-int			flood_fill(char **map, int x, int y, int height, int width);
+int			flood_fill(char **map, t_fdfil pos, int height, int width);
 
 /* ====== UTILS ====== */
 int			ft_count_lines(int fd);
+void		free_split(char **arr);
 t_line_type	get_line_type(const char *line);
 char		**copy_map(char **lines, int map_start, int height);
 void		print_map(char **map);
@@ -60,6 +62,10 @@ void		free_mlx(t_cub *cub);
 void		free_textures(t_cub *cub);
 void		free_cub(t_cub *cub);
 int			load_textures(t_cub *cub);
+int			ft_fprintf_fd(int fd, const char *format, ...);
+int			ft_sprintf(char *str, const char *format, ...);
+char		ft_delim(const char *s);
+char		**ft_split_new(const char *s, const char *delim);
 
 /* ====== MLX SETUP ====== */
 t_mlx		*init_mlx(void);
@@ -76,6 +82,8 @@ void		raycasting(int col, t_ray *ray, t_cub *cub);
 void		dda(t_ray *ray, t_cub *cub);
 void		draw_vertical_line(int col, t_ray *ray, t_cub *cub);
 void		calculate_texture(t_ray *ray, t_cub *cub);
+void		draw_walls(t_cub *cub);
+void		draw_ver_line(t_cub *cub, int x, t_ray *ray);
 
 /* ====== PLAYER ====== */
 t_player	*init_player(t_cub *cub);

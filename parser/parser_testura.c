@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:03:13 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/24 17:02:14 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 11:02:29 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	open_texture(const char *path, char *dir, char **parts)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr_fd("Erro: Caminho da Textura ", 2);
+		ft_putstr_fd("Error\nCaminho da Textura ", 2);
 		ft_putstr_fd(dir, 2);
 		ft_putendl_fd(" invalida", 2);
 		free_split(parts);
@@ -45,7 +45,7 @@ static int	set_texture(char **dest, char **parts, char *dir)
 
 	if (*dest)
 	{
-		ft_putstr_fd("Erro: ", 2);
+		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd(dir, 2);
 		ft_putendl_fd(" já definido", 2);
 		free_split(parts);
@@ -60,16 +60,16 @@ static int	set_texture(char **dest, char **parts, char *dir)
 
 int	parse_texture(const char *line, t_cub *cub)
 {
+	char	*msg;
+	char	*msg1;
 	char	**parts;
 	int		ret;
 
-	parts = ft_split(line, SPACE);
+	msg = "Error\nTextura Invalida";
+	msg1 = "Error\nTextura nao existe";
+	parts = ft_split_new(line, " \t\n\r");
 	if (!parts || !parts[0] || !parts[1] || parts[2])
-	{
-		ft_putendl_fd("Erro: Textura Invalida", 2);
-		free_split(parts);
-		return (0);
-	}
+		return (ft_putendl_fd(msg, 2), free_split(parts), 0);
 	if (ft_strcmp(parts[0], "NO") == 0)
 		ret = set_texture(&cub->config->no, parts, "NO");
 	else if (ft_strcmp(parts[0], "SO") == 0)
@@ -79,9 +79,7 @@ int	parse_texture(const char *line, t_cub *cub)
 	else if (ft_strcmp(parts[0], "EA") == 0)
 		ret = set_texture(&cub->config->ea, parts, "EA");
 	else
-	{
-		ret = (ft_putendl_fd("Erro: Textura nao existe", 2), free_split(parts), 0);
-	}
+		ret = (ft_putendl_fd(msg1, 2), free_split(parts), 0);
 	if (ret)
 		free_split(parts);
 	return (ret);

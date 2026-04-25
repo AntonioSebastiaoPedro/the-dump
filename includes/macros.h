@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/21 15:39:59 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/25 02:43:19 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # define ENDLINE '\0'
 # define COMMA ','
 # define CARRIAGE '\r'
+
+/* RGB Error */
+# define FORA "Error\nRGB fora do intervalo (0-255)"
+# define VALOR "Error\nvalor RGB inválido"
 
 /* Directions */
 # define NORTH "NO"
@@ -38,7 +42,10 @@
 # define KEY_D       100
 # define KEY_LEFT    65361
 # define KEY_RIGHT   65363
-# define ESC     65307
+# define KEY_UP      65362
+# define KEY_DOWN    65364
+# define KEY_ENTER   65293
+# define ESC         65307
 
 /* Screen */
 # define WIDTH 1920

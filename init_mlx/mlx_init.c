@@ -6,13 +6,13 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 14:43:03 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/13 22:04:46 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/25 02:44:29 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub.h"
+#include "../includes/cub.h"
 
-t_mlx    *init_mlx(void)
+t_mlx	*init_mlx(void)
 {
 	t_mlx	*mlx;
 
@@ -38,4 +38,3 @@ t_mlx    *init_mlx(void)
 			&mlx->endian);
 	return (mlx);
 }
-

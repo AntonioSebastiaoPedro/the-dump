@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 12:45:52 by paulcard          #+#    #+#             */
-/*   Updated: 2025/10/31 14:49:15 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/17 10:41:43 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 # include <stdlib.h>
 # include <limits.h>
 
-# 	ifndef BUFFER_SIZE
-#  		define BUFFER_SIZE 42
-# 	endif
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_atoi
 {
@@ -42,7 +41,7 @@ typedef struct s_list
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
-int     ft_isspace(char c);
+int		ft_isspace(char c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
@@ -76,7 +75,9 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-char    *ft_strcpy(char *dest, const char *src);
+char	*ft_strcpy(char *dest, const char *src);
+int		ft_fprintf_fd(int fd, const char *format, ...);
+int		ft_sprintf(char *str, const char *format, ...);
 
 /*			Bonus Parts			*/
 

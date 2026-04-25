@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:28:44 by paulcard          #+#    #+#             */
-/*   Updated: 2026/03/25 18:47:00 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/21 19:31:45 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,19 @@ static int	handle_line(char *line, t_cub *cub, int *map_start, int i)
 	}
 	else if (type == INVALID && line[0] != '\0')
 	{
-		ft_putendl_fd("Mapa invalido", 2);
+		ft_putendl_fd("Error\nMapa invalido", 2);
+		return (0);
+	}
+	return (1);
+}
+
+static int	is_config_complete(t_cub *cub)
+{
+	if (!cub->config->no || !cub->config->so || !cub->config->we
+		|| !cub->config->ea || cub->config->floor_color == -1
+		|| cub->config->ceiling_color == -1)
+	{
+		ft_putendl_fd("Error\nConfiguracao incompleta", 2);
 		return (0);
 	}
 	return (1);
@@ -58,9 +70,11 @@ static int	process_config(char **lines, t_cub *cub, int *map_start)
 	}
 	if (*map_start == -1)
 	{
-		ft_putendl_fd("Ficheiro Nao encontrado no mapa", 2);
+		ft_putendl_fd("Error\nMapa não encontrado no ficheiro", 2);
 		return (0);
 	}
+	if (!is_config_complete(cub))
+		return (0);
 	return (1);
 }
 

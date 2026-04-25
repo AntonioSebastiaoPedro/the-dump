@@ -12,22 +12,22 @@
 
 #include "../includes/cub.h"
 
-int	flood_fill(char **map, int x, int y, int height, int width)
+int	flood_fill(char **map, t_fdfil pos, int height, int width)
 {
-	if (x < 0 || y < 0 || y >= height || x >= width)
+	if (pos.x < 0 || pos.y < 0 || pos.y >= height || pos.x >= width)
 		return (0);
-	if (map[y][x] == SPACE)
+	if (map[pos.y][pos.x] == SPACE)
 		return (0);
-	if (map[y][x] == '1' || map[y][x] == 'F')
+	if (map[pos.y][pos.x] == '1' || map[pos.y][pos.x] == 'F')
 		return (1);
-	map[y][x] = 'F';
-	if (!flood_fill(map, x + 1, y, height, width))
+	map[pos.y][pos.x] = 'F';
+	if (!flood_fill(map, (t_fdfil){pos.x + 1, pos.y}, height, width))
 		return (0);
-	if (!flood_fill(map, x - 1, y, height, width))
+	if (!flood_fill(map, (t_fdfil){pos.x - 1, pos.y}, height, width))
 		return (0);
-	if (!flood_fill(map, x, y + 1, height, width))
+	if (!flood_fill(map, (t_fdfil){pos.x, pos.y + 1}, height, width))
 		return (0);
-	if (!flood_fill(map, x, y - 1, height, width))
+	if (!flood_fill(map, (t_fdfil){pos.x, pos.y - 1}, height, width))
 		return (0);
 	return (1);
 }
