@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:50:16 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/22 19:39:39 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/25 01:42:52 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	calculate_texture(t_ray *ray, t_cub *cub)
 	if (ray->texture_column >= texture->width)
 		ray->texture_column = texture->width - 1;
 	ray->step_texture = (double)texture->height / (double)ray->line_height;
-	ray->texture_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2) * ray->step_texture;
+	ray->texture_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2)
+		* ray->step_texture;
 }
