@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 02:46:26 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/26 00:18:02 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	validate_identifier(const char *line, char *id)
 {
-	if (!line || (line[0] != 'F' && line[0] != 'C') ||  !ft_isspace(line[1]))
+	if (!line || (line[0] != 'F' && line[0] != 'C') || !ft_isspace(line[1]))
 		return (ft_putendl_fd("Error\nIdentificador de cor inválido", 2), 0);
 	*id = line[0];
 	return (1);

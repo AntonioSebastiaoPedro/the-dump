@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 22:40:28 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/26 00:20:25 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,11 @@ typedef struct s_ray
 
 typedef struct s_mouse
 {
-	int	center_x;
-	int	center_y;
-	int	x;
-	int	y;
-	int	delta_x;
+	int		center_x;
+	int		center_y;
+	int		x;
+	int		y;
+	int		delta_x;
 	bool	show_mouse;
 }	t_mouse;
 
