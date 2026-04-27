@@ -40,6 +40,7 @@ Instead of using a real 3D engine, this project simulates a 3D environment using
 | **W / S**     | Move forward/back |
 | **A / D**     | Move left/right   |
 | **← / →**     | Rotate view       |
+| **P**         | Show/hide mouse   |
 | **Mouse**     | Rotate view (bonus)|
 | **ESC**       | Exit game         |
 
@@ -101,7 +102,7 @@ For each vertical stripe of the screen:
 
 ```bash
 # Clone the repository
-git clone https://github.com/paulcard/cub3d.git
+git clone git@vogsphere.42luanda.com:vogsphere/intra-uuid-39aead79-5f1d-4dd3-9741-452221d44b3b-7296694-paulcard
 cd cub3d
 
 # Compile mandatory version
@@ -138,7 +139,7 @@ Artificial Intelligence tools were used during the development of this project t
 **How AI was used:**
 - **Conceptual Learning**: Explaining raycasting principles and the DDA algorithm.
 - **Mathematics Support**: Understanding vector math, rotation matrices, and perspective projection.
-- **Architecture**: Structuring the project modules for better maintainability.
+- **Architecture**: Structuring the project modules for better maintainability and structuring the readme file.
 
 ---
 
