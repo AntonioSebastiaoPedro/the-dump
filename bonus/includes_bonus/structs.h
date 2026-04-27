@@ -6,14 +6,20 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 15:26:02 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 19:05:21 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include <stdbool.h>
+/* WEAPON MACROS */
+# define WEAPON_FRAMES 6
+# define WEAPON_STATES 3
+# define WEAPON_IDLE 0
+# define WEAPON_MOVE 1
+# define WEAPON_SHOT 2
+# define WEAPON_TRANSPARENT 0xFFFF00FF
 
 typedef enum e_game_state
 {
@@ -121,6 +127,14 @@ typedef struct s_mouse
 	bool	show_mouse;
 }	t_mouse;
 
+typedef struct s_weapon
+{
+	t_texture	frames[WEAPON_FRAMES][WEAPON_FRAMES];
+	int			state;
+	int			current_frame;
+	int			frame_timer;
+}	t_weapon;
+
 typedef struct s_cub
 {
 	t_map			*map;
@@ -134,6 +148,7 @@ typedef struct s_cub
 	int				ceiling_color;
 	int				keys[65536];
 	t_mouse			mouse;
+	t_weapon		weapon;
 }	t_cub;
 
 typedef struct s_fdfil
