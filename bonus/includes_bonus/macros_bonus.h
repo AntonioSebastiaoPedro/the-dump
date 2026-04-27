@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macros_bonus.h                                           :+:      :+:    :+:   */
+/*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 17:40:43 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 18:51:01 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACROS_H
-# define MACROS_H
+#ifndef MACROS_BONUS_H
+# define MACROS_BONUS_H
 
 /* Characters */
 # define SPACE 32
@@ -79,15 +79,14 @@
 # define COVER "assets/textures/cover5.xpm"
 
 # define PP   "Project: This project has been created as part"
-# define PP1  "of the 42 curriculum by Paulo Cardoso (paulcard),"
-# define PP2  "Antonio Amandio (aamandio)"
+# define PP1  "of the 42 curriculum by Paulo Cardoso (paulcard,\
+ Antonio Amandio (aamandio)"
 
 # define DESC_TITLE   "Description:"
-# define DESC1        "Cub3D is a project based on raycasting that simulates"
-# define DESC2        "a 3D environment from a 2D map."
-# define DESC3        "The player can move through a virtual world,"
-# define DESC4        "where walls are rendered in real time,"
-# define DESC5        "creating a sense of depth."
+# define DESC1        "Cub3D is a project based on raycasting that simulates \
+	a 3D environment from a 2D map."
+# define DESC2        "The player can move through a virtual world, \
+	where walls are rendered in real time, creating a sense of depth."
 
 # define CONCEPT_TITLE "The project explores concepts such as:"
 # define CONCEPT1      "- trigonometry"

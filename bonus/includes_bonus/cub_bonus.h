@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_bonus.h                                              :+:      :+:    :+:   */
+/*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 18:04:45 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 18:16:17 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_BONUS_H
+# define CUB_BONUS_H
 
 /* ====== LIBS PADRÃO ====== */
 # include <fcntl.h>

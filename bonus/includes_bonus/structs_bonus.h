@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs_bonus.h                                          :+:      :+:    :+:   */
+/*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 14:13:40 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 18:17:15 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef STRUCTS_BONUS_H
+# define STRUCTS_BONUS_H
 
 # include <stdbool.h>
 
