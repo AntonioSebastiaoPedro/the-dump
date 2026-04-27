@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_menu.c                                      :+:      :+:    :+:   */
+/*   render_menu_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 15:00:54 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 16:04:13 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 19:11:19 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	draw_button(t_cub *cub, int y, int index, char *label)
 
 	if (cub->menu.selected == index)
 	{
-		color = DARK_GREEN;
+		color = GREEN;
 		mlx_string_put(cub->mlx->mlx, cub->mlx->win,
 			WIDTH / 2 - 30, y, color, label);
 	}
