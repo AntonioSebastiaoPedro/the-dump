@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_player.c                                    :+:      :+:    :+:   */
+/*   update_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:48:35 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:21:48 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 19:18:39 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	strafe(t_player *player, t_map *map, int dir)
 		player->pos_y = new_y;
 }
 
-static void	rotate(t_player *player, double rot)
+void	rotate(t_player *player, double rot)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -62,23 +62,6 @@ static void	rotate(t_player *player, double rot)
 	old_plane_x = player->plane_x;
 	player->plane_x = player->plane_x * cos(rot) - player->plane_y * sin(rot);
 	player->plane_y = old_plane_x * sin(rot) + player->plane_y * cos(rot);
-}
-
-static void	update_mouse(t_cub *cub)
-{
-	int	x;
-	int	y;
-
-	if (cub->mouse.show_mouse)
-		return ;
-	mlx_mouse_get_pos(cub->mlx->mlx, cub->mlx->win, &x, &y);
-	cub->mouse.delta_x = x - cub->mouse.center_x;
-	if (cub->mouse.delta_x != 0)
-	{
-		rotate(cub->player, cub->mouse.delta_x * MOUSE_SENSITIVITY);
-		mlx_mouse_move(cub->mlx->mlx, cub->mlx->win,
-			cub->mouse.center_x, cub->mouse.center_y);
-	}
 }
 
 void	update_player(t_cub *cub)

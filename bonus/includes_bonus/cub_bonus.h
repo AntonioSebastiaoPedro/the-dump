@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 18:16:17 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 19:21:19 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ void		calculate_texture(t_ray *ray, t_cub *cub);
 t_player	*init_player(t_cub *cub);
 void		update_player(t_cub *cub);
 void		set_dir_vectors(t_player *player);
+void		rotate(t_player *player, double rot);
+void		update_mouse(t_cub *cub);
 
 #endif

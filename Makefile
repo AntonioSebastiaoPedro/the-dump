@@ -6,7 +6,7 @@
 #    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/27 18:05:17 by paulcard         ###   ########.fr        #
+#    Updated: 2026/04/27 19:20:56 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ BONUS_PARSER_FILES = $(PARSER_FILES:.c=_bonus.c)
 BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) hooks1_bonus.c
 BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c
 BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c
-BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c)
+BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
 BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
 
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
