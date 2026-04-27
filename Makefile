@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/25 15:49:38 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/27 16:26:34 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,11 +92,11 @@ DEP = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.d))
 BONUS_RENDER_FILES = $(BONUS_RENDER_DIR)/minimap.c
 
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(PARSER_FILES))
-BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES))
+BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES) hooks1.c)
 BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_FILES)
-BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES))
+BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES) image_utils_bonus.c)
 BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))
-BONUS_UI = $(BONUS_UI_DIR)/loading.c $(BONUS_UI_DIR)/menu.c
+BONUS_UI = $(BONUS_UI_DIR)/loading.c $(BONUS_UI_DIR)/menu.c $(BONUS_UI_DIR)/menu_about.c $(BONUS_UI_DIR)/render_menu.c
 
 BONUS_SRC_FILES = main.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI)
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC_FILES))

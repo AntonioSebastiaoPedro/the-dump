@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/25 22:51:03 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 15:38:04 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ int	load_textures(t_cub *cub)
 		return (0);
 	if (!load_single_texture(cub, &cub->textures->ea, cub->config->ea))
 		return (0);
+	if (!load_single_texture(cub, &cub->menu.cover, COVER))
+		return (0);
+	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
 	return (1);
 }

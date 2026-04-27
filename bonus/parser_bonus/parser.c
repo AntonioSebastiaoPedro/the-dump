@@ -93,6 +93,7 @@ t_cub	*init_cub(void)
 		return (free_cub(cub), NULL);
 	cub->config->floor_color = -1;
 	cub->config->ceiling_color = -1;
+	cub->menu.cover.img = NULL;
 	return (cub);
 }
 

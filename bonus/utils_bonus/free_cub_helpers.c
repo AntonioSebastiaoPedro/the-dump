@@ -89,4 +89,6 @@ void	free_textures(t_cub *cub)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->we.img);
 	if (cub->textures->ea.img)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->ea.img);
+	if (cub->menu.cover.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->menu.cover.img);
 }
