@@ -6,7 +6,7 @@
 #    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/27 16:26:34 by paulcard         ###   ########.fr        #
+#    Updated: 2026/04/27 18:05:17 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,16 +89,21 @@ DEP = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.d))
 # Bonus SRC
 # For bonus, we use the files in the _bonus directory
 
-BONUS_RENDER_FILES = $(BONUS_RENDER_DIR)/minimap.c
+BONUS_PARSER_FILES = $(PARSER_FILES:.c=_bonus.c)
+BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) hooks1_bonus.c
+BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c
+BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c
+BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c)
+BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
 
-BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(PARSER_FILES))
-BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES) hooks1.c)
-BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_FILES)
-BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES) image_utils_bonus.c)
-BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))
-BONUS_UI = $(BONUS_UI_DIR)/loading.c $(BONUS_UI_DIR)/menu.c $(BONUS_UI_DIR)/menu_about.c $(BONUS_UI_DIR)/render_menu.c
+BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
+BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(BONUS_MLX_FILES))
+BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(BONUS_RENDER_FILES))
+BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(BONUS_UTILS_FILES))
+BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(BONUS_PLAYER_FILES))
+BONUS_UI = $(addprefix $(BONUS_UI_DIR)/, $(BONUS_UI_FILES))
 
-BONUS_SRC_FILES = main.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI)
+BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI)
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC_FILES))
 BONUS_OBJ = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.o))
 BONUS_DEP = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.d))
