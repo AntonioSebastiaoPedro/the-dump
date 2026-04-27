@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 14:54:22 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 15:27:23 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,7 @@ int	key_release(int key, t_cub *cub)
 
 int	loop_hook(t_cub *cub)
 {
-	if (cub->state == LOADING)
-	{
-		update_loading(&cub->loading);
-		render_loading(cub);
-		if (is_loading_complete(&cub->loading))
-		{
-			cub->state = MENU;
-			init_menu(cub);
-		}
-	}
-	else if (cub->state == MENU)
+	if (cub->state == MENU)
 	{
 		update_menu(cub);
 		render_menu(cub);

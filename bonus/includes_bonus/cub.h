@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 14:59:34 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 15:24:53 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@
 # include "mlx.h"
 # include "structs.h"
 # include "macros.h"
-
-/* ====== LOADING SCREEN ====== */
-void		init_loading(t_loading *loading, void *mlx);
-void		update_loading(t_loading *loading);
-void		render_loading(t_cub *game);
-int			is_loading_complete(t_loading *loading);
 
 /* ====== MENU ====== */
 void		init_menu(t_cub *cub);
