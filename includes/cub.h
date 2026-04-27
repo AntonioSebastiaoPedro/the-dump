@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 15:00:23 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 19:22:01 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		free_mlx(t_cub *cub);
 void		free_textures(t_cub *cub);
 void		free_cub(t_cub *cub);
 int			load_textures(t_cub *cub);
+int			load_single_texture(t_cub *cub, t_texture *tex, char *path);
 int			ft_fprintf_fd(int fd, const char *format, ...);
 int			ft_sprintf(char *str, const char *format, ...);
 char		ft_delim(const char *s);

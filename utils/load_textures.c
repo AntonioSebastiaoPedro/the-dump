@@ -6,13 +6,13 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/27 16:10:00 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 19:21:30 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	load_single_texture(t_cub *cub, t_texture *tex, char *path)
+int	load_single_texture(t_cub *cub, t_texture *tex, char *path)
 {
 	tex->img = mlx_xpm_file_to_image(cub->mlx->mlx, path, &tex->width,
 			&tex->height);
