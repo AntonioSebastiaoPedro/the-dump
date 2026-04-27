@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   loading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 22:51:54 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 15:33:30 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub.h"
 
-/**
- * @brief Initializes the loading screen structure.
- *
- * @param loading Pointer to the loading struct.
- * @param mlx Pointer to the MLX structure.
- */
 void	init_loading(t_loading *loading, void *mlx)
 {
 	(void)mlx;
@@ -28,17 +22,12 @@ void	init_loading(t_loading *loading, void *mlx)
 	loading->background = NULL;
 }
 
-/**
- * @brief Updates the loading progress.
- *
- * @param loading Pointer to the loading struct.
- */
 void	update_loading(t_loading *loading)
 {
 	if (loading->progress < loading->max_progress)
 	{
 		loading->frame_count++;
-		if (loading->frame_count >= 8) // Change this value to adjust speed (higher = slower)
+		if (loading->frame_count >= 8)
 		{
 			loading->progress += 1;
 			loading->frame_count = 0;
@@ -46,73 +35,80 @@ void	update_loading(t_loading *loading)
 	}
 }
 
-/**
- * @brief Checks if the loading is complete.
- *
- * @param loading Pointer to the loading struct.
- * @return int 1 if complete, 0 otherwise.
- */
 int	is_loading_complete(t_loading *loading)
 {
 	return (loading->progress >= loading->max_progress);
 }
 
-/**
- * @brief Draws a filled rectangle on the screen.
- *
- * @param cub Pointer to the cub struct.
- * @param x Start X coordinate.
- * @param y Start Y coordinate.
- * @param w Width of the rectangle.
- * @param h Height of the rectangle.
- * @param color Color of the rectangle.
- */
-static void	draw_rectangle(t_cub *cub, int x, int y, int w, int h, int color)
+static void	draw_rectangle(t_cub *cub, t_ldg_render *ldg, int color)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < h)
+	while (i < ldg->h)
 	{
 		j = 0;
-		while (j < w)
+		while (j < ldg->w)
 		{
-			ft_put_pixel(cub, x + j, y + i, color);
+			ft_put_pixel(cub, ldg->x + j, ldg->y + i, color);
 			j++;
 		}
 		i++;
 	}
 }
 
-/**
- * @brief Renders the loading screen.
- *
- * @param game Pointer to the game (t_cub) struct.
- */
-void render_loading(t_cub *game)
+static void	draw_cover(t_cub *game)
 {
-	int bar_width = 400;
-	int bar_height = 30;
-	int x = (WIDTH - bar_width) / 2;
-	int y = (HEIGHT - bar_height) / 2;
-	int filled_width = (game->loading.progress * bar_width) / game->loading.max_progress;
-	char progress_text[20];
+	int				x;
+	int				y;
+	unsigned int	color;
+	char			*pixel;
 
-	// Clear background (optional, could be a specific color)
-	draw_rectangle(game, 0, 0, WIDTH, HEIGHT, BLACK);
+	if (!game->menu.cover.img)
+		return ;
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			pixel = game->menu.cover.addr + (y * game->menu.cover.line_len
+					+ x * (game->menu.cover.bpp / 8));
+			color = *(unsigned int *)pixel;
+			ft_put_pixel(game, x, y, color);
+			x++;
+		}
+		y++;
+	}
+}
 
-	// Draw background bar (border/empty)
-	draw_rectangle(game, x - 2, y - 2, bar_width + 4, bar_height + 4, WHITE);
-	draw_rectangle(game, x, y, bar_width, bar_height, GRAY);
+void	loading_render(t_cub *game)
+{
+	char			progress_text[30];
+	t_ldg_render	ldg;
 
-	// Draw filled bar
-	draw_rectangle(game, x, y, filled_width, bar_height, GREEN);
-
+	draw_cover(game);
+	ft_memset(&ldg, 0, sizeof(ldg));
+	ldg.bar_width = 400;
+	ldg.bar_height = 30;
+	ldg.filled_width = (game->loading.progress * ldg.bar_width)
+		/ game->loading.max_progress;
+	ldg.x = (WIDTH - ldg.bar_width) / 2 - 2;
+	ldg.y = (HEIGHT - ldg.bar_height) / 2 - 2;
+	ldg.w = ldg.bar_width + 4;
+	ldg.h = ldg.bar_height + 4;
+	draw_rectangle(game, &ldg, WHITE);
+	ldg.x += 2;
+	ldg.y += 2;
+	ldg.w = ldg.bar_width;
+	ldg.h = ldg.bar_height;
+	draw_rectangle(game, &ldg, GRAY);
+	ldg.w = ldg.filled_width;
+	draw_rectangle(game, &ldg, DARK_GREEN);
+	mlx_put_image_to_window(game->mlx->mlx,
+		game->mlx->win, game->mlx->img, 0, 0);
 	ft_sprintf(progress_text, "Loading... %d%%", game->loading.progress);
-	mlx_string_put(game->mlx->mlx, game->mlx->win, x + (bar_width / 2) - 40,
-		y + bar_height + 30, WHITE, progress_text);
-
-	// Put image to window
-	mlx_put_image_to_window(game->mlx->mlx, game->mlx->win, game->mlx->img, 0, 0);
+	mlx_string_put(game->mlx->mlx, game->mlx->win, (WIDTH / 2) - 50,
+		ldg.y + ldg.bar_height + 40, WHITE, progress_text);
 }
