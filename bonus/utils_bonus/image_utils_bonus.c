@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub_bonus.h"
 
 static int	get_pixel_color(t_texture *tex, int x, int y)
 {
