@@ -141,8 +141,10 @@ $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(LDFLAGS) -o $@
 
 # Bonus target
-bonus: $(LIBFT) $(MINILIBX) $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) -o $(BONUS_NAME)
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(LIBFT) $(MINILIBX) $(BONUS_OBJ)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) -o $@
 
 # Compile libft
 $(LIBFT):
