@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/26 00:20:25 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 14:13:40 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,30 @@ typedef enum e_game_state
 	ABOUT
 }	t_game_state;
 
+typedef struct s_texture
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_texture;
+
+typedef struct s_textures
+{
+	t_texture	no;
+	t_texture	so;
+	t_texture	we;
+	t_texture	ea;
+}	t_textures;
+
 typedef struct s_menu
 {
-	int		selected;
-	int		total;
+	int			selected;
+	int			total;
+	t_texture	cover;
 }	t_menu;
 
 typedef struct s_loading
@@ -65,25 +85,6 @@ typedef struct s_player
 	double	plane_y;
 	char	dir;
 }	t_player;
-
-typedef struct s_texture
-{
-	void	*img;
-	char	*addr;
-	int		width;
-	int		height;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_texture;
-
-typedef struct s_textures
-{
-	t_texture	no;
-	t_texture	so;
-	t_texture	we;
-	t_texture	ea;
-}	t_textures;
 
 typedef struct s_mlx
 {
@@ -147,6 +148,17 @@ typedef struct s_cub
 	t_mouse			mouse;
 }	t_cub;
 
+typedef struct s_ldg_render
+{
+	int		x;
+	int		y;
+	int		w;
+	int		h;
+	int		bar_width;
+	int		bar_height;
+	int		filled_width;
+}	t_ldg_render;
+
 typedef struct s_fdfil
 {
 	int	x;
@@ -159,6 +171,14 @@ typedef struct s_rgb
 	int	g;
 	int	b;
 }			t_rgb;
+
+typedef struct s_draw
+{
+	t_cub	*cub;
+	int		margin;
+	int		*y;
+	int		color;
+}	t_draw;
 
 typedef enum e_line_type
 {

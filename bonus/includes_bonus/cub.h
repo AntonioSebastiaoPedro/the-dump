@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 14:59:34 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 13:35:30 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 /* ====== HEADERS DO PROJETO ====== */
 # include "../libft/libft.h"
@@ -31,7 +32,7 @@
 /* ====== LOADING SCREEN ====== */
 void		init_loading(t_loading *loading, void *mlx);
 void		update_loading(t_loading *loading);
-void		render_loading(t_cub *game);
+void		loading_render(t_cub *game);
 int			is_loading_complete(t_loading *loading);
 
 /* ====== MENU ====== */
@@ -77,6 +78,7 @@ void		free_mlx(t_cub *cub);
 void		free_textures(t_cub *cub);
 void		free_cub(t_cub *cub);
 int			load_textures(t_cub *cub);
+int			scale_texture(t_cub *cub, t_texture *tex, int new_w, int new_h);
 int			ft_fprintf_fd(int fd, const char *format, ...);
 int			ft_sprintf(char *str, const char *format, ...);
 char		ft_delim(const char *s);
