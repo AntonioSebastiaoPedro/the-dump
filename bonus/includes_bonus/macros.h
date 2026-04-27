@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 15:38:16 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 17:40:43 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@
 # define MEDIUM_GRAY 0xAAAAAA
 
 /* Minimap */
-# define TILE_SIZE 10
+# define MNP_MAX_SIZE 200
+# define MNP_OFFSET 20
 # define PLAYER_SIZE 4
 
 # define COVER "assets/textures/cover5.xpm"

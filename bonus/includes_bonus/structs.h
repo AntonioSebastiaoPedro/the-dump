@@ -165,6 +165,13 @@ typedef struct s_fdfil
 	int	y;
 }	t_fdfil;
 
+typedef struct s_mmap_render
+{
+	double	scale;
+	int		off_x;
+	int		off_y;
+}	t_mmap_render;
+
 typedef struct s_rgb
 {
 	int	r;

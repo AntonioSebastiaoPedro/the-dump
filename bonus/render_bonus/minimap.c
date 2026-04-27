@@ -3,34 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:09:20 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 22:49:27 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 17:43:51 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub.h"
 
-void	draw_line_dir(t_cub *cub)
+void	draw_line_dir(t_cub *cub, t_mmap_render *mmap)
 {
 	int	dx;
 	int	dy;
 
-	dx = (int)((cub->player->pos_x + cub->player->dir_x * 0.5) * TILE_SIZE);
-	dy = (int)((cub->player->pos_y + cub->player->dir_y * 0.5) * TILE_SIZE);
+	dx = (int)((cub->player->pos_x + cub->player->dir_x * 0.5) * mmap->scale)
+		+ mmap->off_x;
+	dy = (int)((cub->player->pos_y + cub->player->dir_y * 0.5) * mmap->scale)
+		+ mmap->off_y;
 	ft_put_pixel(cub, dx, dy, RED);
 }
 
-void	draw_player(t_cub *cub)
+void	draw_player(t_cub *cub, t_mmap_render *mmap)
 {
 	int	x;
 	int	y;
 	int	px;
 	int	py;
 
-	px = (int)(cub->player->pos_x * TILE_SIZE) - PLAYER_SIZE / 2;
-	py = (int)(cub->player->pos_y * TILE_SIZE) - PLAYER_SIZE / 2;
+	px = (int)(cub->player->pos_x * mmap->scale) + mmap->off_x
+		- PLAYER_SIZE / 2;
+	py = (int)(cub->player->pos_y * mmap->scale) + mmap->off_y
+		- PLAYER_SIZE / 2;
 	y = 0;
 	while (y < PLAYER_SIZE)
 	{
@@ -42,47 +46,64 @@ void	draw_player(t_cub *cub)
 		}
 		y++;
 	}
-	draw_line_dir(cub);
+	draw_line_dir(cub, mmap);
 }
 
-void	draw_square(t_cub *cub, int start_x, int start_y, int color)
+void	draw_square(t_cub *cub, t_ldg_render *render, int color)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < TILE_SIZE)
+	while (y < render->h)
 	{
 		x = 0;
-		while (x < TILE_SIZE)
+		while (x < render->w)
 		{
-			ft_put_pixel(cub, start_x + x, start_y + y, color);
+			ft_put_pixel(cub, render->x + x, render->y + y, color);
 			x++;
 		}
 		y++;
+	}
+}
+
+static void	draw_grid(t_cub *cub, t_mmap_render *mmap)
+{
+	int				x;
+	int				y;
+	t_ldg_render	render;
+
+	y = -1;
+	while (cub->map->grid[++y])
+	{
+		x = -1;
+		while (cub->map->grid[y][++x])
+		{
+			render.x = mmap->off_x + x * mmap->scale;
+			render.y = mmap->off_y + y * mmap->scale;
+			render.w = (int)mmap->scale;
+			render.h = (int)mmap->scale;
+			if (cub->map->grid[y][x] == '1')
+				draw_square(cub, &render, TRANSP);
+			else if (cub->map->grid[y][x] == '0')
+				draw_square(cub, &render, GRAY);
+			else
+				draw_square(cub, &render, BLACK);
+		}
 	}
 }
 
 void	draw_minimap(t_cub *cub)
 {
-	int	x;
-	int	y;
+	t_mmap_render	mmap;
 
-	y = 0;
-	while (cub->map->grid[y])
-	{
-		x = 0;
-		while (cub->map->grid[y][x])
-		{
-			if (cub->map->grid[y][x] == '1')
-				draw_square(cub, x * TILE_SIZE, y * TILE_SIZE, TRANSP);
-			else if (cub->map->grid[y][x] == '0')
-				draw_square(cub, x * TILE_SIZE, y * TILE_SIZE, GRAY);
-			else
-				draw_square(cub, x * TILE_SIZE, y * TILE_SIZE, BLACK);
-			x++;
-		}
-		y++;
-	}
-	draw_player(cub);
+	mmap.scale = (double)MNP_MAX_SIZE / cub->map->width;
+	if ((double)MNP_MAX_SIZE / cub->map->height < mmap.scale)
+		mmap.scale = (double)MNP_MAX_SIZE / cub->map->height;
+	mmap.off_x = (MNP_MAX_SIZE - (cub->map->width * mmap.scale))
+		/ 2 + MNP_OFFSET;
+	mmap.off_y = (MNP_MAX_SIZE - (cub->map->height * mmap.scale))
+		/ 2 + MNP_OFFSET;
+	draw_grid(cub, &mmap);
+	draw_player(cub, &mmap);
 }

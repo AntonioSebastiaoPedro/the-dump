@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 15:33:30 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/27 17:22:49 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	loading_render(t_cub *game)
 	t_ldg_render	ldg;
 
 	draw_cover(game);
-	ft_memset(&ldg, 0, sizeof(ldg));
 	ldg.bar_width = 400;
 	ldg.bar_height = 30;
 	ldg.filled_width = (game->loading.progress * ldg.bar_width)
