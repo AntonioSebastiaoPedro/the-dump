@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/28 01:04:47 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 02:20:24 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	mouse_hook(int key, int x, int y, t_cub *cub)
 {
 	(void)x;
 	(void)y;
-	if (key == 1)
+	if (key == 1 && cub->mouse.show_mouse == false)
 		on_mouse_click(cub);
 	return (0);
 }
