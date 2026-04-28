@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 20:51:34 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/25 14:39:38 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/27 23:13:21 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,27 @@ void	free_mlx(t_cub *cub)
 	}
 }
 
+static void	free_weapon_textures(t_cub *cub)
+{
+	int		state;
+	int		frame;
+	void	*img_ptr;
+
+	state = 0;
+	while (state < WEAPON_STATES)
+	{
+		frame = 0;
+		while (frame < WEAPON_FRAMES)
+		{
+			img_ptr = cub->weapon.frames[state][frame].img;
+			if (img_ptr)
+				mlx_destroy_image(cub->mlx->mlx, img_ptr);
+			frame++;
+		}
+		state++;
+	}
+}
+
 void	free_textures(t_cub *cub)
 {
 	if (!cub || !cub->mlx || !cub->mlx->mlx || !cub->textures)
@@ -89,4 +110,5 @@ void	free_textures(t_cub *cub)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->we.img);
 	if (cub->textures->ea.img)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->ea.img);
+	free_weapon_textures(cub);
 }

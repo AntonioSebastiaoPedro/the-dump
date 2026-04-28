@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 19:05:21 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 00:39:41 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_player
 	double	plane_x;
 	double	plane_y;
 	char	dir;
+	int		is_moving;
 }	t_player;
 
 typedef struct s_texture
@@ -129,10 +130,11 @@ typedef struct s_mouse
 
 typedef struct s_weapon
 {
-	t_texture	frames[WEAPON_FRAMES][WEAPON_FRAMES];
+	t_texture	frames[WEAPON_STATES][WEAPON_FRAMES];
 	int			state;
 	int			current_frame;
 	int			frame_timer;
+	int			frame_delay;
 }	t_weapon;
 
 typedef struct s_cub

@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 15:32:22 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 01:02:47 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);
 	mlx_hook(cub->mlx->win, 3, 1L << 1, key_release, cub);
+	mlx_mouse_hook(cub->mlx->win, mouse_hook, cub);
 	mlx_loop_hook(cub->mlx->mlx, loop_hook, cub);
 	mlx_loop(cub->mlx->mlx);
 	free_cub(cub);
