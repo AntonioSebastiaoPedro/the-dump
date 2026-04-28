@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 19:15:23 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 17:38:11 by aamandio         ###   ########.fr       */
+/*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
+/*   Updated: 2026/04/28 16:27:04 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub.h"
 
-void	render(t_cub *cub)
+void	on_mouse_click(t_cub *cub)
 {
-	unsigned int	*pos;
-	int				i;
-	t_ray			ray;
-	t_weapon		*weapon;
+	if (cub->weapon.state == WEAPON_SHOT)
+		return ;
+	set_weapon_state(&cub->weapon, WEAPON_SHOT);
+}
 
-	i = 0;
-	pos = (unsigned int *)cub->mlx->addr;
-	weapon = &cub->weapon;
-	while (i < WIDTH * HEIGHT)
-		*(pos + i++) = BLACK;
-	i = 0;
-	while (i < WIDTH)
-		raycasting(i++, &ray, cub);
-	draw_minimap(cub);
-	update_weapon(cub);
-	draw_weapon(cub);
-	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
+int	mouse_hook(int key, int x, int y, t_cub *cub)
+{
+	(void)x;
+	(void)y;
+	if (key == 1 && cub->mouse.show_mouse == false)
+		on_mouse_click(cub);
+	return (0);
 }

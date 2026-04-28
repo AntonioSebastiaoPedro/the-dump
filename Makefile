@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/28 16:21:32 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/28 18:25:29 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,11 +89,12 @@ DEP = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.d))
 # Bonus SRC
 # For bonus, we use the files in the _bonus directory
 
-BONUS_RENDER_FILES = $(BONUS_RENDER_DIR)/minimap.c
-
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(PARSER_FILES))
-BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES))
-BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_FILES)
+
+BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES)) $(BONUS_MLX_DIR)/weapon_hooks_bonus.c
+
+BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_DIR)/minimap.c $(BONUS_RENDER_DIR)/weapon_bonus.c
+
 BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES))
 BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))
 BONUS_UI = $(BONUS_UI_DIR)/menu.c $(BONUS_UTILS_DIR)/free_textures_bonus.c

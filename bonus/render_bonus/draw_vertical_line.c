@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 02:16:31 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/25 14:41:41 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:46:33 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,21 @@ static t_texture	*get_texture(t_ray *ray, t_cub *cub)
 	return (NULL);
 }
 
+unsigned int	get_texture_color(t_texture *texture, int x, int y)
+{
+	unsigned int	color;
+
+	color = *(unsigned int *)(texture->addr + (y * texture->line_len)
+			+ (x * (texture->bpp / 8)));
+	return (color);
+}
+
 void	draw_vertical_line(int col, t_ray *ray, t_cub *cub)
 {
-	int			y;
-	int			tex_y;
-	int			color;
-	t_texture	*texture;
+	int				y;
+	int				tex_y;
+	unsigned int	color;
+	t_texture		*texture;
 
 	y = 0;
 	texture = get_texture(ray, cub);
@@ -46,9 +55,7 @@ void	draw_vertical_line(int col, t_ray *ray, t_cub *cub)
 	{
 		tex_y = (int)ray->texture_pos;
 		ray->texture_pos += ray->step_texture;
-		color = *(unsigned int *)(texture->addr
-				+ (tex_y * texture->line_len
-					+ ray->texture_column * (texture->bpp / 8)));
+		color = get_texture_color(texture, ray->texture_column, tex_y);
 		ft_put_pixel(cub, col, y, color);
 		y++;
 	}
