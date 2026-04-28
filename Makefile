@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/27 15:30:16 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/28 16:21:32 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES))
 BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_FILES)
 BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES))
 BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))
-BONUS_UI = $(BONUS_UI_DIR)/menu.c
+BONUS_UI = $(BONUS_UI_DIR)/menu.c $(BONUS_UTILS_DIR)/free_textures_bonus.c
 
 BONUS_SRC_FILES = main.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI)
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC_FILES))

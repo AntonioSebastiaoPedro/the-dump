@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/28 01:05:41 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:51:28 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void			set_dir_vectors(t_player *player);
 /* ====== BONUS ====== */
 int				mouse_hook(int key, int x, int y, t_cub *cub);
 void			set_weapon_state(t_weapon *weapon, int new_state);
+void			free_weapon_textures(t_cub *cub);
 
 #endif
