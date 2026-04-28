@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 19:15:23 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 02:24:40 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 12:23:17 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	set_weapon_state(t_weapon *weapon, int new_state)
 	if (new_state == WEAPON_IDLE)
 		weapon->frame_delay = 15;
 	else if (new_state == WEAPON_MOVE)
-		weapon->frame_delay = 8;
+		weapon->frame_delay = 3;
 	else if (new_state == WEAPON_SHOT)
 		weapon->frame_delay = 4;
 }
@@ -103,7 +103,7 @@ void	draw_weapon(t_cub *cub)
 	weapon = &cub->weapon;
 	texture = &weapon->frames[weapon->state][weapon->current_frame];
 	start_x = (WIDTH - texture->width) / 2;
-	start_y = (HEIGHT - texture->height) / 2;
+	start_y = (HEIGHT - texture->height);
 	x = 0;
 	while (x < texture->width)
 	{
@@ -111,7 +111,7 @@ void	draw_weapon(t_cub *cub)
 		while (y < texture->height)
 		{
 			color = get_texture_color(texture, x, y);
-			if (color != 0x000000)
+			if (color != 0xFF0000)
 			{
 				if (start_x + x >= 0 && start_x + x < WIDTH &&
 					start_y + y >= 0 && start_y + y < HEIGHT)

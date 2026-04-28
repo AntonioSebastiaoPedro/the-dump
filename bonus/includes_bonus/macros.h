@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 15:49:38 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 12:07:54 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 
 /* Screen */
 # define WIDTH 1920
-# define HEIGHT 1080
+# define HEIGHT 1010
 
 /* Colors */
 # define RED 0xFF0000
