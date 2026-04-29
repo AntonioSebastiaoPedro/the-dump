@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 02:16:31 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 18:19:14 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:21:36 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ unsigned int	get_texture_color(t_texture *texture, int x, int y)
 	unsigned int	color;
 
 	color = *(unsigned int *)(texture->addr + (y * texture->line_len)
-		+ (x * (texture->bpp / 8)));
+			+ (x * (texture->bpp / 8)));
 	return (color);
 }
 
