@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_weapon.c                                    :+:      :+:    :+:   */
+/*   update_weapon_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 02:21:53 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:53:35 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:56:35 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-// Obtem a quantidade de frames tendo em conta a animacao
 static int	get_max_frames(int state)
 {
 	if (state == WEAPON_IDLE)
@@ -24,7 +23,6 @@ static int	get_max_frames(int state)
 	return (0);
 }
 
-// Altera o tipo de animacao da arma
 void	set_weapon_state(t_weapon *weapon, int new_state)
 {
 	if (weapon->state == new_state)
@@ -40,7 +38,6 @@ void	set_weapon_state(t_weapon *weapon, int new_state)
 		weapon->frame_delay = 6;
 }
 
-// Avanca para o proximo frame da animacao
 static void	update_frame(t_weapon *weapon)
 {
 	weapon->frame_timer++;
@@ -51,7 +48,6 @@ static void	update_frame(t_weapon *weapon)
 	}
 }
 
-// Controlador de animacoes da arma
 void	update_weapon(t_cub *cub)
 {
 	t_weapon	*weapon;

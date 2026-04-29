@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/29 14:52:31 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/29 16:54:47 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -Iminilibx-linux
 CFLAGS += -O3
-CFLAGS += -g
 CPPFLAGS = -I includes -I $(LIBFT_DIR) -MMD -MP
 LDFLAGS = -lft -L$(LIBFT_DIR)
 LDFLAGS += -lmlx -Lminilibx-linux -lX11 -lXext -lm
@@ -87,21 +86,9 @@ OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
 DEP = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.d))
 
 # Bonus SRC
-# For bonus, we use the files in the _bonus directory
-
-# BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(PARSER_FILES))
-
-# BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES)) $(BONUS_MLX_DIR)/weapon_hooks_bonus.c
-
-# BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_DIR)/minimap.c $(BONUS_RENDER_DIR)/draw_weapon.c $(BONUS_RENDER_DIR)/update_weapon.c
-
-# BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES))
-# BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))
-# BONUS_UI = $(BONUS_UI_DIR)/menu.c $(BONUS_UTILS_DIR)/free_textures_bonus.c
-
 BONUS_PARSER_FILES = $(PARSER_FILES:.c=_bonus.c)
 BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) hooks1_bonus.c  weapon_hooks_bonus.c
-BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon.c draw_weapon.c
+BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon_bonus.c draw_weapon_bonus.c
 BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c
 BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
 BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
@@ -182,4 +169,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re n norm
+.PHONY: all bonus clean fclean re
