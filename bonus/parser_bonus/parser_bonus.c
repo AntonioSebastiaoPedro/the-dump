@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:28:44 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 10:58:52 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/29 19:09:42 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ t_cub	*init_cub(void)
 	cub->config->floor_color = -1;
 	cub->config->ceiling_color = -1;
 	cub->menu.cover.img = NULL;
+	cub->menu.about_img.img = NULL;
 	return (cub);
 }
 

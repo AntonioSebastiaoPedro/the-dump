@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 14:27:44 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 19:00:16 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@
 # define PLAYER_SIZE 4
 
 # define COVER "assets/textures/cover5.xpm"
+# define ABOUT_IMG "assets/textures/about.xpm"
 
 # define PP   "Project: This project has been created as part"
 # define PP1  "of the 42 curriculum by Paulo Cardoso (paulcard,\

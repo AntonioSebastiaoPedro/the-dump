@@ -58,14 +58,14 @@ void	draw_rectangle(t_cub *cub, t_ldg_render *ldg, int color)
 	}
 }
 
-void	draw_cover(t_cub *game)
+void	draw_texture_img(t_cub *cub, t_texture *tex)
 {
 	int				x;
 	int				y;
 	unsigned int	color;
 	char			*pixel;
 
-	if (!game->menu.cover.img)
+	if (!tex->img)
 		return ;
 	y = 0;
 	while (y < HEIGHT)
@@ -73,10 +73,10 @@ void	draw_cover(t_cub *game)
 		x = 0;
 		while (x < WIDTH)
 		{
-			pixel = game->menu.cover.addr + (y * game->menu.cover.line_len
-					+ x * (game->menu.cover.bpp / 8));
+			pixel = tex->addr + (y * tex->line_len
+					+ x * (tex->bpp / 8));
 			color = *(unsigned int *)pixel;
-			ft_put_pixel(game, x, y, color);
+			ft_put_pixel(cub, x, y, color);
 			x++;
 		}
 		y++;

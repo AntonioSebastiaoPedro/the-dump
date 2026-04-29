@@ -35,7 +35,7 @@ void			update_loading(t_loading *loading);
 void			loading_render(t_cub *game);
 int				is_loading_complete(t_loading *loading);
 void			draw_rectangle(t_cub *cub, t_ldg_render *ldg, int color);
-void			draw_cover(t_cub *game);
+void			draw_texture_img(t_cub *cub, t_texture *tex);
 
 /* ====== MENU ====== */
 void			init_menu(t_cub *cub);

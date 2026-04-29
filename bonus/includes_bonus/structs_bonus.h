@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 14:45:59 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 19:08:53 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_menu
 	int			selected;
 	int			total;
 	t_texture	cover;
+	t_texture	about_img;
 }	t_menu;
 
 typedef struct s_loading

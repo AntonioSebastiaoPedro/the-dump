@@ -17,7 +17,7 @@ void	loading_render(t_cub *game)
 	char			progress_text[30];
 	t_ldg_render	ldg;
 
-	draw_cover(game);
+	draw_texture_img(game, &game->menu.cover);
 	ldg.bar_width = 400;
 	ldg.bar_height = 30;
 	ldg.filled_width = (game->loading.progress * ldg.bar_width)

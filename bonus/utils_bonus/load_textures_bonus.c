@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 15:54:14 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 19:31:49 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,11 @@ int	load_textures(t_cub *cub)
 		return (0);
 	if (!load_single_texture(cub, &cub->menu.cover, COVER))
 		return (0);
+	if (!load_single_texture(cub, &cub->menu.about_img, ABOUT_IMG))
+		return (0);
 	if (!load_weapon_textures(cub))
 		return (0);
 	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
+	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
 	return (1);
 }
