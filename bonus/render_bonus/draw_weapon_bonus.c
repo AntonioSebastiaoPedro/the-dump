@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_weapon.c                                      :+:      :+:    :+:   */
+/*   draw_weapon_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:35:35 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:53:40 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:54:35 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw_weapon(t_cub *cub)
 		while (y < dw.scaled_height)
 		{
 			dw.color = get_texture_color(texture,
-					x / WEAPON_SCALE, y / WEAPON_SCALE);
+					x, y );
 			if (dw.color != WEAPON_BACKGROUND)
 				ft_put_pixel(cub, dw.start_x + x, dw.start_y + y, dw.color);
 			y++;
