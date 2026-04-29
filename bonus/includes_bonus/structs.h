@@ -6,20 +6,14 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/28 23:36:33 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 02:28:10 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-/* WEAPON MACROS */
-# define WEAPON_FRAMES 9
-# define WEAPON_STATES 3
-# define WEAPON_IDLE 0
-# define WEAPON_MOVE 1
-# define WEAPON_SHOT 2
-# define WEAPON_TRANSPARENT 0xFFFF00FF
+# include "macros.h"
 
 typedef enum e_game_state
 {

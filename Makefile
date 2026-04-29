@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/28 18:25:29 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/29 02:26:03 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(PARSER_FILES))
 
 BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES)) $(BONUS_MLX_DIR)/weapon_hooks_bonus.c
 
-BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_DIR)/minimap.c $(BONUS_RENDER_DIR)/weapon_bonus.c
+BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_DIR)/minimap.c $(BONUS_RENDER_DIR)/weapon_bonus.c $(BONUS_RENDER_DIR)/update_weapon.c
 
 BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES))
 BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))

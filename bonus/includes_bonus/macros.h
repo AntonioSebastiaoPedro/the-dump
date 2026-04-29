@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/28 18:41:54 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 01:55:20 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,13 @@
 /* Minimap */
 # define TILE_SIZE 10
 # define PLAYER_SIZE 4
+
+/* WEAPON MACROS */
+# define WEAPON_FRAMES 9
+# define WEAPON_STATES 3
+# define WEAPON_IDLE 0
+# define WEAPON_MOVE 1
+# define WEAPON_SHOT 2
+# define WEAPON_BACKGROUND 0xFF0000
 
 #endif
