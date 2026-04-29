@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 19:15:23 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 17:38:11 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/28 22:42:43 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	render(t_cub *cub)
 {
-	unsigned int	*pos;
+	//unsigned int	*pos;
 	int				i;
 	t_ray			ray;
-	t_weapon		*weapon;
 
-	i = 0;
-	pos = (unsigned int *)cub->mlx->addr;
-	weapon = &cub->weapon;
-	while (i < WIDTH * HEIGHT)
-		*(pos + i++) = BLACK;
+	//i = 0;
+	//pos = (unsigned int *)cub->mlx->addr;
+	//while (i < WIDTH * HEIGHT)
+	//	*(pos + i++) = BLACK;
 	i = 0;
 	while (i < WIDTH)
 		raycasting(i++, &ray, cub);

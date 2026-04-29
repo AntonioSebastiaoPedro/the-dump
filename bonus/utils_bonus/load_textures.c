@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 02:25:09 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 01:13:15 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,31 @@ int	load_weapon_textures(t_cub *cub)
 {
 	int		state;
 	int		frame;
-	//char	paths[WEAPON_SHOT][WEAPON_FRAMES];
-
  	char *paths[WEAPON_STATES][WEAPON_FRAMES] = {
         {
             "assets/weapon/idle/idle1.xpm",
-			NULL, NULL, NULL, NULL, NULL,
+			NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         },
         {
             "assets/weapon/move/move1.xpm",
-            "assets/weapon/move/move2.xpm",
-            "assets/weapon/move/move3.xpm",
-            "assets/weapon/move/move4.xpm",
-            "assets/weapon/move/move5.xpm",
-            "assets/weapon/move/move6.xpm",
+			"assets/weapon/move/move2.xpm",
+			"assets/weapon/move/move3.xpm",
+			"assets/weapon/move/move4.xpm",
+			"assets/weapon/move/move5.xpm",
+			"assets/weapon/move/move6.xpm",
+			"assets/weapon/move/move7.xpm",
+			NULL, NULL
         },
         {
-            "assets/weapon/shot/shot1.xpm",
-            "assets/weapon/shot/shot2.xpm",
-            "assets/weapon/shot/shot3.xpm",
-            "assets/weapon/shot/shot4.xpm",
-            //"assets/weapon/shot/shot5.xpm",
-            //"assets/weapon/shot/shot6.xpm",
+            "assets/weapon/shot/frame1.xpm",
+            "assets/weapon/shot/frame2.xpm",
+            "assets/weapon/shot/frame3.xpm",
+            "assets/weapon/shot/frame4.xpm",
+        	"assets/weapon/shot/frame5.xpm",
+			"assets/weapon/shot/frame6.xpm",
+			"assets/weapon/shot/frame7.xpm",
+			"assets/weapon/shot/frame8.xpm",
+			"assets/weapon/shot/frame9.xpm",
         },
     };
 
@@ -67,10 +70,7 @@ int	load_weapon_textures(t_cub *cub)
 				continue ;
 			}
 			if (!load_single_texture(cub, &cub->weapon.frames[state][frame], paths[state][frame]))
-			{
-				ft_putendl_fd("Error\nNão foi possível carregar alguma textura", 2);
 				return (0);
-			}
 			frame++;
 		}
 		state++;

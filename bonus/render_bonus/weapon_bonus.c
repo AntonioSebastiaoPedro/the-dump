@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:35:35 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 18:43:02 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 01:18:16 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	get_max_frames(int state)
 	if (state == WEAPON_IDLE)
 		return (1);
 	else if (state == WEAPON_MOVE)
-		return (6);
+		return (7);
 	else if (state == WEAPON_SHOT)
-		return (4);
+		return (9);
 	return (0);
 }
 
@@ -35,9 +35,9 @@ void	set_weapon_state(t_weapon *weapon, int new_state)
 	if (new_state == WEAPON_IDLE)
 		weapon->frame_delay = 15;
 	else if (new_state == WEAPON_MOVE)
-		weapon->frame_delay = 7;
-	else if (new_state == WEAPON_SHOT)
 		weapon->frame_delay = 4;
+	else if (new_state == WEAPON_SHOT)
+		weapon->frame_delay = 6;
 }
 
 // Avanca para o proximo frame da animacao
