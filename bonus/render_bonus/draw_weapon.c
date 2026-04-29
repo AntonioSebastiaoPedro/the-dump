@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_weapon.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:35:35 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 03:03:06 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:35:06 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,25 @@
 void	draw_weapon(t_cub *cub)
 {
 	t_texture		*texture;
-	int				start_x;
-	int				start_y;
-	unsigned int	color;
-	double			scale;
-	int				scaled_width;
-	int				scaled_height;
+	t_draw_weapon	dw;
+	int				x;
+	int				y;
 
 	texture = &cub->weapon.frames[cub->weapon.state][cub->weapon.current_frame];
-	scale = 4.0;
-	scaled_width = texture->width * scale;
-	scaled_height = texture->height * scale;
-	start_x = (WIDTH - scaled_width) / 2;
-	start_y = HEIGHT - scaled_height;
-	int	x = 0;
-	int	y = 0;
-	while (x < scaled_width)
+	dw.scaled_width = texture->width * WEAPON_SCALE;
+	dw.scaled_height = texture->height * WEAPON_SCALE;
+	dw.start_x = (WIDTH - dw.scaled_width) / 2;
+	dw.start_y = HEIGHT - dw.scaled_height;
+	x = 0;
+	while (x < dw.scaled_width)
 	{
 		y = 0;
-		while (y < scaled_height)
+		while (y < dw.scaled_height)
 		{
-			color = get_texture_color(texture, x / scale, y / scale);
-			if (color != WEAPON_BACKGROUND)
-				ft_put_pixel(cub, start_x + x, start_y + y, color);
+			dw.color = get_texture_color(texture,
+					x / WEAPON_SCALE, y / WEAPON_SCALE);
+			if (dw.color != WEAPON_BACKGROUND)
+				ft_put_pixel(cub, dw.start_x + x, dw.start_y + y, dw.color);
 			y++;
 		}
 		x++;

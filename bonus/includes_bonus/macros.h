@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 01:55:20 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:35:06 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@
 # define WEAPON_IDLE 0
 # define WEAPON_MOVE 1
 # define WEAPON_SHOT 2
+# define WEAPON_SCALE 4.0
 # define WEAPON_BACKGROUND 0xFF0000
 
 #endif

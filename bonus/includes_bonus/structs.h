@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 02:28:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:33:01 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include "macros.h"
+# include <stdbool.h>
 
 typedef enum e_game_state
 {
@@ -159,6 +160,16 @@ typedef struct s_rgb
 	int	g;
 	int	b;
 }			t_rgb;
+
+typedef struct s_draw_weapon
+{
+	int				start_x;
+	int				start_y;
+	unsigned int	color;
+	int				scaled_width;
+	int				scaled_height;
+}	t_draw_weapon;
+
 
 typedef enum e_line_type
 {
