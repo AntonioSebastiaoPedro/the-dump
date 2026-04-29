@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
+/*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:51:47 by aamandio         ###   ########.fr       */
+/*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
+/*   Updated: 2026/04/25 14:39:55 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-void	on_mouse_click(t_cub *cub)
+void	free_cub(t_cub *cub)
 {
-	if (cub->weapon.state == WEAPON_SHOT)
+	if (!cub)
 		return ;
-	set_weapon_state(&cub->weapon, WEAPON_SHOT);
-}
-
-int	mouse_hook(int key, int x, int y, t_cub *cub)
-{
-	(void)x;
-	(void)y;
-	if (key == 1 && cub->mouse.show_mouse == false)
-		on_mouse_click(cub);
-	return (0);
+	free_config(cub);
+	if (cub->map)
+	{
+		if (cub->map->grid)
+			free_map(cub->map->grid, cub->map->height);
+		free(cub->map);
+	}
+	if (cub->player)
+		free(cub->player);
+	if (cub->textures)
+	{
+		free_textures(cub);
+		free(cub->textures);
+	}
+	free_mlx(cub);
+	free(cub);
 }

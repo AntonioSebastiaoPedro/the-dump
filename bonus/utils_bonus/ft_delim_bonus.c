@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
+/*   ft_delim.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:51:47 by aamandio         ###   ########.fr       */
+/*   Created: 2026/04/07 10:58:04 by aamandio          #+#    #+#             */
+/*   Updated: 2026/04/17 15:33:58 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-void	on_mouse_click(t_cub *cub)
+char	ft_delim(const char *s)
 {
-	if (cub->weapon.state == WEAPON_SHOT)
-		return ;
-	set_weapon_state(&cub->weapon, WEAPON_SHOT);
-}
+	int	i;
 
-int	mouse_hook(int key, int x, int y, t_cub *cub)
-{
-	(void)x;
-	(void)y;
-	if (key == 1 && cub->mouse.show_mouse == false)
-		on_mouse_click(cub);
-	return (0);
+	if (!s)
+		return ('\0');
+	i = 0;
+	while (s[i])
+	{
+		if (ft_strchr(" \t\v\r\f", s[i]))
+			return (s[i]);
+		i++;
+	}
+	return ('\0');
 }

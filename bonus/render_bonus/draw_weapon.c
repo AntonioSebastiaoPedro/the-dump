@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_weapon.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:35:35 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 13:35:06 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/29 14:53:40 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub_bonus.h"
 
 void	draw_weapon(t_cub *cub)
 {

@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/29 02:35:35 by aamandio         ###   ########.fr        #
+#    Updated: 2026/04/29 14:52:31 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,17 +89,31 @@ DEP = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.d))
 # Bonus SRC
 # For bonus, we use the files in the _bonus directory
 
-BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(PARSER_FILES))
+# BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(PARSER_FILES))
 
-BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES)) $(BONUS_MLX_DIR)/weapon_hooks_bonus.c
+# BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(MLX_FILES)) $(BONUS_MLX_DIR)/weapon_hooks_bonus.c
 
-BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_DIR)/minimap.c $(BONUS_RENDER_DIR)/draw_weapon.c $(BONUS_RENDER_DIR)/update_weapon.c
+# BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(RENDER_FILES)) $(BONUS_RENDER_DIR)/minimap.c $(BONUS_RENDER_DIR)/draw_weapon.c $(BONUS_RENDER_DIR)/update_weapon.c
 
-BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES))
-BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))
-BONUS_UI = $(BONUS_UI_DIR)/menu.c $(BONUS_UTILS_DIR)/free_textures_bonus.c
+# BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(UTILS_FILES))
+# BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(PLAYER_FILES))
+# BONUS_UI = $(BONUS_UI_DIR)/menu.c $(BONUS_UTILS_DIR)/free_textures_bonus.c
 
-BONUS_SRC_FILES = main.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI)
+BONUS_PARSER_FILES = $(PARSER_FILES:.c=_bonus.c)
+BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) hooks1_bonus.c  weapon_hooks_bonus.c
+BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon.c draw_weapon.c
+BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c
+BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
+BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
+
+BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
+BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(BONUS_MLX_FILES))
+BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(BONUS_RENDER_FILES))
+BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(BONUS_UTILS_FILES))
+BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(BONUS_PLAYER_FILES))
+BONUS_UI = $(addprefix $(BONUS_UI_DIR)/, $(BONUS_UI_FILES))
+
+BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI)
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC_FILES))
 BONUS_OBJ = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.o))
 BONUS_DEP = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.d))
@@ -137,8 +151,10 @@ $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(LDFLAGS) -o $@
 
 # Bonus target
-bonus: $(LIBFT) $(MINILIBX) $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) -o $(BONUS_NAME)
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(LIBFT) $(MINILIBX) $(BONUS_OBJ)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) -o $@
 
 # Compile libft
 $(LIBFT):

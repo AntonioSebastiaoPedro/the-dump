@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
+/*   ft_put_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:51:47 by aamandio         ###   ########.fr       */
+/*   Created: 2026/04/14 16:42:35 by aamandio          #+#    #+#             */
+/*   Updated: 2026/04/25 14:41:44 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-void	on_mouse_click(t_cub *cub)
+void	ft_put_pixel(t_cub *cub, int x, int y, int color)
 {
-	if (cub->weapon.state == WEAPON_SHOT)
-		return ;
-	set_weapon_state(&cub->weapon, WEAPON_SHOT);
-}
+	char	*new_addr;
 
-int	mouse_hook(int key, int x, int y, t_cub *cub)
-{
-	(void)x;
-	(void)y;
-	if (key == 1 && cub->mouse.show_mouse == false)
-		on_mouse_click(cub);
-	return (0);
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return ;
+	new_addr = cub->mlx->addr + (y * cub->mlx->line_len)
+		+ (x * (cub->mlx->bpp / 8));
+	*(unsigned int *)new_addr = color;
 }

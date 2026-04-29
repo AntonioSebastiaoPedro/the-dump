@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
+/*   count_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:51:47 by aamandio         ###   ########.fr       */
+/*   Created: 2026/03/18 10:28:32 by paulcard          #+#    #+#             */
+/*   Updated: 2026/04/17 15:32:26 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-void	on_mouse_click(t_cub *cub)
+int	ft_count_lines(int fd)
 {
-	if (cub->weapon.state == WEAPON_SHOT)
-		return ;
-	set_weapon_state(&cub->weapon, WEAPON_SHOT);
-}
+	char	*line;
+	int		count;
 
-int	mouse_hook(int key, int x, int y, t_cub *cub)
-{
-	(void)x;
-	(void)y;
-	if (key == 1 && cub->mouse.show_mouse == false)
-		on_mouse_click(cub);
-	return (0);
+	count = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		count++;
+		line = get_next_line(fd);
+	}
+	return (count);
 }

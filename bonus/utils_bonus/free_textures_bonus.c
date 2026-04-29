@@ -6,11 +6,11 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:50:00 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 15:52:06 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 14:38:22 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub_bonus.h"
 
 void	free_weapon_textures(t_cub *cub)
 {

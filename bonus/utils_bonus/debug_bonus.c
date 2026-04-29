@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:51:47 by aamandio         ###   ########.fr       */
+/*   Created: 2026/03/19 11:40:11 by paulcard          #+#    #+#             */
+/*   Updated: 2026/04/17 15:32:52 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-void	on_mouse_click(t_cub *cub)
+void	print_map(char **map)
 {
-	if (cub->weapon.state == WEAPON_SHOT)
-		return ;
-	set_weapon_state(&cub->weapon, WEAPON_SHOT);
-}
+	int	i;
 
-int	mouse_hook(int key, int x, int y, t_cub *cub)
-{
-	(void)x;
-	(void)y;
-	if (key == 1 && cub->mouse.show_mouse == false)
-		on_mouse_click(cub);
-	return (0);
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		printf("[%s]\n", map[i]);
+		i++;
+	}
 }

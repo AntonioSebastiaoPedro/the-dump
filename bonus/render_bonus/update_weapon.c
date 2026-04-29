@@ -6,11 +6,11 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 02:21:53 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 02:30:30 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 14:53:35 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes_bonus/cub.h"
+#include "../includes_bonus/cub_bonus.h"
 
 // Obtem a quantidade de frames tendo em conta a animacao
 static int	get_max_frames(int state)

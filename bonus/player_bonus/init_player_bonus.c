@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
+/*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:51:47 by aamandio         ###   ########.fr       */
+/*   Created: 2026/03/27 13:18:20 by paulcard          #+#    #+#             */
+/*   Updated: 2026/04/28 00:23:00 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-void	on_mouse_click(t_cub *cub)
+t_player	*init_player(t_cub *cub)
 {
-	if (cub->weapon.state == WEAPON_SHOT)
-		return ;
-	set_weapon_state(&cub->weapon, WEAPON_SHOT);
-}
-
-int	mouse_hook(int key, int x, int y, t_cub *cub)
-{
-	(void)x;
-	(void)y;
-	if (key == 1 && cub->mouse.show_mouse == false)
-		on_mouse_click(cub);
-	return (0);
+	if (!cub->player || !cub->player->dir)
+		return (NULL);
+	cub->player->is_moving = 0;
+	set_dir_vectors(cub->player);
+	return (cub->player);
 }
