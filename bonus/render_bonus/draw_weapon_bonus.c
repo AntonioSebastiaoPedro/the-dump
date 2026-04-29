@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:35:35 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 16:54:35 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:54:06 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	draw_weapon(t_cub *cub)
 		y = 0;
 		while (y < dw.scaled_height)
 		{
-			dw.color = get_texture_color(texture,
-					x, y );
+			dw.color = get_texture_color(texture, x / WEAPON_SCALE, y / WEAPON_SCALE);
 			if (dw.color != WEAPON_BACKGROUND)
 				ft_put_pixel(cub, dw.start_x + x, dw.start_y + y, dw.color);
 			y++;
