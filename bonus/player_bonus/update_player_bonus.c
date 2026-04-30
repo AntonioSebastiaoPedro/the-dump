@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:48:35 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 14:34:45 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 13:43:34 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	move_forward(t_player *player, t_map *map)
 
 	new_x = player->pos_x + player->dir_x * MOVE_SPEED;
 	new_y = player->pos_y + player->dir_y * MOVE_SPEED;
-	if (map->grid[(int)player->pos_y][(int)new_x] == '0')
+	if (map->grid[(int)player->pos_y][(int)new_x] == '0' || map->grid[(int)player->pos_y][(int)new_x] == 'A')
 		player->pos_x = new_x;
-	if (map->grid[(int)new_y][(int)player->pos_x] == '0')
+	if (map->grid[(int)new_y][(int)player->pos_x] == '0' || map->grid[(int)new_y][(int)player->pos_x] == 'A')
 		player->pos_y = new_y;
 }
 
@@ -32,9 +32,9 @@ static void	move_backward(t_player *player, t_map *map)
 
 	new_x = player->pos_x - player->dir_x * MOVE_SPEED;
 	new_y = player->pos_y - player->dir_y * MOVE_SPEED;
-	if (map->grid[(int)player->pos_y][(int)new_x] == '0')
+	if (map->grid[(int)player->pos_y][(int)new_x] == '0' || map->grid[(int)player->pos_y][(int)new_x] == 'A')
 		player->pos_x = new_x;
-	if (map->grid[(int)new_y][(int)player->pos_x] == '0')
+	if (map->grid[(int)new_y][(int)player->pos_x] == '0' || map->grid[(int)new_y][(int)player->pos_x] == 'A')
 		player->pos_y = new_y;
 }
 
@@ -45,9 +45,9 @@ static void	strafe(t_player *player, t_map *map, int dir)
 
 	new_x = player->pos_x + dir * player->plane_x * MOVE_SPEED;
 	new_y = player->pos_y + dir * player->plane_y * MOVE_SPEED;
-	if (map->grid[(int)player->pos_y][(int)new_x] == '0')
+	if (map->grid[(int)player->pos_y][(int)new_x] == '0' || map->grid[(int)player->pos_y][(int)new_x] == 'A')
 		player->pos_x = new_x;
-	if (map->grid[(int)new_y][(int)player->pos_x] == '0')
+	if (map->grid[(int)new_y][(int)player->pos_x] == '0' || map->grid[(int)new_y][(int)player->pos_x] == 'A')
 		player->pos_y = new_y;
 }
 

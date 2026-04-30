@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 19:08:53 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/30 13:34:09 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_textures
 	t_texture	so;
 	t_texture	we;
 	t_texture	ea;
+	t_texture	door[DOOR_FRAMES];
 }	t_textures;
 
 typedef struct s_menu
@@ -123,6 +124,7 @@ typedef struct s_ray
 	int		texture_column;
 	double	step_texture;
 	double	texture_pos;
+	bool	is_door;
 }	t_ray;
 
 typedef struct s_mouse

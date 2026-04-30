@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
+/*   textures_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:50:16 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/25 14:42:32 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 13:35:29 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ static void	calculate_wall_impact(t_ray *ray, t_player *player)
 		ray->wall_impact = 1.0 - ray->wall_impact;
 }
 
-static t_texture	*get_texture(t_ray *ray, t_cub *cub)
+t_texture	*get_texture(t_ray *ray, t_cub *cub)
 {
+	if (ray->is_door == 1)
+		return &cub->textures->door[0];
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)

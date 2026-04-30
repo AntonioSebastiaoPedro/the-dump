@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 19:31:49 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/30 13:35:58 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,39 @@ int	load_weapon(t_cub *cub, const char *paths[WEAPON_STATES][WEAPON_FRAMES])
 	return (set_weapon_state(&cub->weapon, WEAPON_IDLE), 1);
 }
 
+int	load_door(t_cub *cub, const char *path[DOOR_FRAMES])
+{
+	int			i;
+
+	i = 0;
+	while (i < DOOR_FRAMES)
+	{
+		if (!load_single_texture(cub, &cub->textures->door[i], path[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	load_door_textures(t_cub *cub)
+{
+	const char	*path[DOOR_FRAMES] = {
+		"assets/door/porta_de_madeira_1.xpm",
+		"assets/door/porta_de_madeira_2.xpm",
+		"assets/door/porta_de_madeira_3.xpm",
+		"assets/door/porta_de_madeira_4.xpm",
+		"assets/door/porta_de_madeira_5.xpm",
+		"assets/door/porta_de_madeira_6.xpm",
+		"assets/door/porta_de_madeira_7.xpm",
+		"assets/door/porta_de_madeira_8.xpm",
+		"assets/door/porta_de_madeira_9.xpm",
+		"assets/door/porta_de_madeira_10.xpm",
+	};
+	if (load_door(cub, path) == 0)
+		return (0);
+	return (1);
+}
+
 int	load_weapon_textures(t_cub *cub)
 {
 	const char	*paths[WEAPON_STATES][WEAPON_FRAMES] = {
@@ -98,6 +131,8 @@ int	load_textures(t_cub *cub)
 	if (!load_single_texture(cub, &cub->menu.about_img, ABOUT_IMG))
 		return (0);
 	if (!load_weapon_textures(cub))
+		return (0);
+	if (!load_door_textures(cub))
 		return (0);
 	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
 	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);

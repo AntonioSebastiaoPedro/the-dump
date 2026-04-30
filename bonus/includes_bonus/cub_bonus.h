@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 16:25:07 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 13:08:43 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			dda(t_ray *ray, t_cub *cub);
 void			draw_vertical_line(int col, t_ray *ray, t_cub *cub);
 void			calculate_texture(t_ray *ray, t_cub *cub);
 unsigned int	get_texture_color(t_texture *texture, int x, int y);
+t_texture		*get_texture(t_ray *ray, t_cub *cub);
 
 /* ====== PLAYER ====== */
 t_player		*init_player(t_cub *cub);

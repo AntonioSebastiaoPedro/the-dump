@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 16:40:10 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/25 14:42:19 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 12:39:31 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	calculate_wall(t_ray *ray)
 
 void	raycasting(int col, t_ray *ray, t_cub *cub)
 {
+	ray->is_door = 0;
 	ray->map_x = (int)cub->player->pos_x;
 	ray->map_y = (int)cub->player->pos_y;
 	calculate_ray_dir(col, ray, cub->player);

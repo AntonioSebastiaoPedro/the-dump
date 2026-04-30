@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_vertical_line.c                               :+:      :+:    :+:   */
+/*   draw_vertical_line_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 02:16:31 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/28 18:46:33 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 13:12:47 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
-
-static t_texture	*get_texture(t_ray *ray, t_cub *cub)
-{
-	if (ray->side == 0)
-	{
-		if (ray->dir_x < 0)
-			return (&cub->textures->we);
-		else
-			return (&cub->textures->ea);
-	}
-	else
-	{
-		if (ray->dir_y < 0)
-			return (&cub->textures->no);
-		else
-			return (&cub->textures->so);
-	}
-	return (NULL);
-}
 
 unsigned int	get_texture_color(t_texture *texture, int x, int y)
 {

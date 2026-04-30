@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 19:00:16 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/30 13:16:18 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,25 +79,6 @@
 # define COVER "assets/textures/cover5.xpm"
 # define ABOUT_IMG "assets/textures/about.xpm"
 
-# define PP   "Project: This project has been created as part"
-# define PP1  "of the 42 curriculum by Paulo Cardoso (paulcard,\
- Antonio Amandio (aamandio)"
-
-# define DESC_TITLE   "Description:"
-# define DESC1        "Cub3D is a project based on raycasting that simulates \
-	a 3D environment from a 2D map."
-# define DESC2        "The player can move through a virtual world, \
-	where walls are rendered in real time, creating a sense of depth."
-
-# define CONCEPT_TITLE "The project explores concepts such as:"
-# define CONCEPT1      "- trigonometry"
-# define CONCEPT2      "- pixel manipulation"
-# define CONCEPT3      "- graphics rendering"
-# define CONCEPT4      "- data structures"
-# define CONCEPT5      "- game loop"
-
-# define EXIT_MSG "Press ESC to return to the MENU"
-
 /* WEAPON MACROS */
 # define WEAPON_FRAMES 9
 # define WEAPON_STATES 3
@@ -106,5 +87,6 @@
 # define WEAPON_SHOT 2
 # define WEAPON_SCALE 4.0
 # define WEAPON_BACKGROUND 0xFF0000
+# define DOOR_FRAMES 10
 
 #endif
