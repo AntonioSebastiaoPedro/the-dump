@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 15:33:35 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 18:49:49 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,17 @@ static void	toggle_mouse(t_cub *cub)
 
 static void open_door(t_cub *cub)
 {
-	double step = 0.1;
-	double max_dist = 3.0;
-	double i = 0;
+	(void)cub;
+	// double step = 0.1;
+	// double i = 0;
 
-	while (i < max_dist)
-	{
-		int grid_x = (int)cub->player->pos_x + cub->player->dir_x * i;
-		int grid_y = (int)cub->player->pos_y + cub->player->dir_y * i;
+	// while (i < MAX_DOOR_DIST)
+	// {
+	// 	int grid_x = (int)(cub->player->pos_x + cub->player->dir_x * i);
+	// 	int grid_y = (int)(cub->player->pos_y + cub->player->dir_y * i);
 
-		if (cub->map->grid[grid_y][grid_x] == 'D')
-		{
-			cub->map->grid[grid_y][grid_x] = 'A';
-			break ;
-		}
-		i += step;
-	}
+	// 	i += step;
+	// }
 }
 
 int	key_press(int key, t_cub *cub)

@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 13:34:09 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 18:46:28 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ typedef enum e_game_state
 	GAME,
 	ABOUT
 }	t_game_state;
+
+typedef enum e_line_type
+{
+	TEXTURE,
+	COLOR,
+	MAP,
+	EMPTY,
+	INVALID
+}	t_line_type;
+
+typedef enum e_door_state
+{
+	DOOR_CLOSED,
+	DOOR_OPENING,
+	DOOR_OPEN,
+	DOOR_CLOSING
+}	t_door_state;
 
 typedef struct s_texture
 {
@@ -41,7 +58,6 @@ typedef struct s_textures
 	t_texture	so;
 	t_texture	we;
 	t_texture	ea;
-	t_texture	door[DOOR_FRAMES];
 }	t_textures;
 
 typedef struct s_menu
@@ -146,6 +162,15 @@ typedef struct s_weapon
 	int			frame_delay;
 }	t_weapon;
 
+typedef struct s_door
+{
+	int				x;
+	int				y;
+	t_door_state	state;
+	int				frame;
+	int				timer;
+}	t_door;
+
 typedef struct s_cub
 {
 	t_map			*map;
@@ -161,6 +186,7 @@ typedef struct s_cub
 	int				keys[65536];
 	t_mouse			mouse;
 	t_weapon		weapon;
+	t_door			*door;
 }	t_cub;
 
 typedef struct s_ldg_render
@@ -210,14 +236,5 @@ typedef struct s_draw
 	int		*y;
 	int		color;
 }	t_draw;
-
-typedef enum e_line_type
-{
-	TEXTURE,
-	COLOR,
-	MAP,
-	EMPTY,
-	INVALID
-}	t_line_type;
 
 #endif

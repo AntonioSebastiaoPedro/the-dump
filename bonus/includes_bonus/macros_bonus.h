@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 13:16:18 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 18:45:40 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,8 @@
 # define WEAPON_SCALE 4.0
 # define WEAPON_BACKGROUND 0xFF0000
 # define DOOR_FRAMES 10
+
+/* DOOR MACROS */
+# define MAX_DOOR_DIST 3.0
 
 #endif

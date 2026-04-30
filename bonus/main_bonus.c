@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 15:57:05 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 16:29:27 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		return (free_cub(cub), 1);
 	cub->mouse.center_x = WIDTH / 2;
 	cub->mouse.center_y = HEIGHT / 2;
-	cub->state = LOADING;
+	cub->state = MENU;
 	init_loading(&cub->loading, cub->mlx->mlx);
 	if (!init_player(cub))
 		return (free_cub(cub), 1);
