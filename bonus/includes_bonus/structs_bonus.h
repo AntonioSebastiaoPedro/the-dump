@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 18:46:28 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 19:07:38 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ typedef struct s_cub
 	t_mouse			mouse;
 	t_weapon		weapon;
 	t_door			*door;
+	int				n_door;
 }	t_cub;
 
 typedef struct s_ldg_render

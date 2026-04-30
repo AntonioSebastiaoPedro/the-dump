@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:30 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/15 10:57:54 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/04/30 19:34:53 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,62 @@ static char	**process_map_layout(char **lines, int start, int height)
 	return (map);
 }
 
+int	count_door(t_cub *cub)
+{
+	int	n_door;
+	int	i;
+	int	j;
+
+	n_door = 0;
+	i = 0;
+	while (i < cub->map->height)
+	{
+		j = 0;
+		while (j < cub->map->width)
+		{
+			if (cub->map->grid[i][j] == 'D')
+				n_door++;
+			j++;
+		}
+		i++;
+	}
+	return (n_door);
+}
+
+void	add_door(t_cub *cub, int x, int y)
+{
+	cub->door[cub->n_door].x = x;
+	cub->door[cub->n_door].y = y;
+	cub->door[cub->n_door].state = DOOR_CLOSED;
+	cub->door[cub->n_door].frame = 0;
+	cub->door[cub->n_door].timer = 0;
+	cub->n_door++;
+}
+
+int	init_door(t_cub *cub)
+{
+	cub->n_door = 0;
+	cub->door = (t_door *)malloc(count_door(cub) * sizeof(t_door));
+	if (!cub->door)
+		return (0);
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < cub->map->height)
+	{
+		x = 0;
+		while (x < cub->map->width)
+		{
+			if (cub->map->grid[y][x] == 'D')
+				add_door(cub, x, y);
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
 int	parse_map(char **lines, int map_start, t_cub *cub)
 {
 	int		height;
@@ -88,10 +144,7 @@ int	parse_map(char **lines, int map_start, t_cub *cub)
 	cub->map->width = ft_strlen(grid[0]);
 	cub->map->grid = grid;
 	if (validate_map(grid, height, cub) == 0)
-	{
-		free_map(grid, height);
-		cub->map->grid = NULL;
-		return (0);
-	}
+		return (free_map(grid, height), cub->map->grid = NULL,0);
+	init_door(cub);
 	return (1);
 }
