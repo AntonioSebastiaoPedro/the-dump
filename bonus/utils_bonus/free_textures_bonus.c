@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:50:00 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:38:22 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 19:47:28 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ void	free_textures(t_cub *cub)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->we.img);
 	if (cub->textures->ea.img)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->ea.img);
+	if (cub->menu.cover.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->menu.cover.img);
+	if (cub->menu.about_img.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->menu.about_img.img);
 	free_weapon_textures(cub);
 }

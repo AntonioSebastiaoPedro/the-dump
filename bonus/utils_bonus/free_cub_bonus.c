@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cub.c                                         :+:      :+:    :+:   */
+/*   free_cub_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/25 14:39:55 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 19:42:40 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	free_cub(t_cub *cub)
 			free_map(cub->map->grid, cub->map->height);
 		free(cub->map);
 	}
+	if (cub->door)
+		free(cub->door);
 	if (cub->player)
 		free(cub->player);
 	if (cub->textures)
