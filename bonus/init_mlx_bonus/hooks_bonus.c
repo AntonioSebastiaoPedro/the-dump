@@ -6,11 +6,13 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 14:56:24 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/04/30 15:33:35 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
+
+#define KEY_SPACE	 32
 
 int	ft_close(t_cub *cub)
 {
@@ -33,6 +35,26 @@ static void	toggle_mouse(t_cub *cub)
 		mlx_mouse_hide(cub->mlx->mlx, cub->mlx->win);
 }
 
+static void open_door(t_cub *cub)
+{
+	double step = 0.1;
+	double max_dist = 3.0;
+	double i = 0;
+
+	while (i < max_dist)
+	{
+		int grid_x = (int)cub->player->pos_x + cub->player->dir_x * i;
+		int grid_y = (int)cub->player->pos_y + cub->player->dir_y * i;
+
+		if (cub->map->grid[grid_y][grid_x] == 'D')
+		{
+			cub->map->grid[grid_y][grid_x] = 'A';
+			break ;
+		}
+		i += step;
+	}
+}
+
 int	key_press(int key, t_cub *cub)
 {
 	if (key == ESC && cub->state == GAME)
@@ -45,6 +67,8 @@ int	key_press(int key, t_cub *cub)
 		cub->keys[key] = 1;
 	if (key == KEY_W || key == KEY_S || key == KEY_A || key == KEY_D)
 		cub->player->is_moving = 1;
+	if (key == KEY_SPACE)
+		open_door(cub);
 	return (0);
 }
 
