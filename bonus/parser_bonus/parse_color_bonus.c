@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_color.c                                      :+:      :+:    :+:   */
+/*   parse_color_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/26 00:21:19 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:41:15 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,28 @@ static int	set_color(t_cub *cub, char id, t_rgb rgb)
 	return (1);
 }
 
+static int	parse_fc_texture(const char *line, char id, t_cub *cub)
+{
+	char	**parts;
+	int		ret;
+
+	parts = ft_split_new(line, " \t\n\r");
+	if (!parts || !parts[0] || !parts[1] || parts[2])
+	{
+		if (parts)
+			free_split(parts);
+		ft_putendl_fd("Error\nTextura Invalida", 2);
+		return (0);
+	}
+	if (id == 'F')
+		ret = set_cub_texture(&cub->config->f_tex, parts, "F");
+	else
+		ret = set_cub_texture(&cub->config->c_tex, parts, "C");
+	if (ret)
+		free_split(parts);
+	return (ret);
+}
+
 int	parse_color(const char *line, t_cub *cub)
 {
 	char	**rgb;
@@ -71,6 +93,8 @@ int	parse_color(const char *line, t_cub *cub)
 
 	if (!validate_identifier(line, &id))
 		return (0);
+	if (!ft_strchr(line, ','))
+		return (parse_fc_texture(line, id, cub));
 	if (!validate_rgb_format(line))
 		return (ft_putendl_fd("Error\nFormato RGB inválido", 2), 0);
 	rgb = ft_split_new(line + 2, ",");

@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 15:14:10 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:40:05 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct s_textures
 	t_texture	so;
 	t_texture	we;
 	t_texture	ea;
+	t_texture	floor;
+	t_texture	ceiling;
 }	t_textures;
 
 typedef struct s_menu
@@ -100,6 +102,8 @@ typedef struct s_config
 	char	*so;
 	char	*we;
 	char	*ea;
+	char	*f_tex;
+	char	*c_tex;
 	int		floor_color;
 	int		ceiling_color;
 }	t_config;

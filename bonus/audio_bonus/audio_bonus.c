@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 15:35:00 by antigravity       #+#    #+#             */
-/*   Updated: 2026/05/01 19:26:19 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:35:44 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	init_audio(t_cub *cub)
 		cub->run_channel = BASS_SampleGetChannel(cub->run_sound, FALSE);
 	else
 		cub->run_channel = 0;
-
 	if (cub->back_sound)
 	{
 		cub->back_channel = BASS_SampleGetChannel(cub->back_sound, FALSE);

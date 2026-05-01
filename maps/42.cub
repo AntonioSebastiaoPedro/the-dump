@@ -3,7 +3,7 @@ EA ./assets/textures/parede8.xpm
 NO ./assets/textures/chao3.xpm
 SO ./assets/textures/chao2.xpm
 
-F 120,120,120
+F ./assets/textures/we.xpm
 C 5,204,255
 
 111111111111111

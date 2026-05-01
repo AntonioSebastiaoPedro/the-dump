@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_testura.c                                   :+:      :+:    :+:   */
+/*   parser_testura_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:03:13 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 15:20:19 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:44:00 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	open_texture(const char *path, char *dir, char **parts)
 	return (fd);
 }
 
-static int	set_texture(char **dest, char **parts, char *dir)
+int	set_cub_texture(char **dest, char **parts, char *dir)
 {
 	char	*path;
 
@@ -71,13 +71,13 @@ int	parse_texture(const char *line, t_cub *cub)
 	if (!parts || !parts[0] || !parts[1] || parts[2])
 		return (ft_putendl_fd(msg, 2), free_split(parts), 0);
 	if (ft_strcmp(parts[0], "NO") == 0)
-		ret = set_texture(&cub->config->no, parts, "NO");
+		ret = set_cub_texture(&cub->config->no, parts, "NO");
 	else if (ft_strcmp(parts[0], "SO") == 0)
-		ret = set_texture(&cub->config->so, parts, "SO");
+		ret = set_cub_texture(&cub->config->so, parts, "SO");
 	else if (ft_strcmp(parts[0], "WE") == 0)
-		ret = set_texture(&cub->config->we, parts, "WE");
+		ret = set_cub_texture(&cub->config->we, parts, "WE");
 	else if (ft_strcmp(parts[0], "EA") == 0)
-		ret = set_texture(&cub->config->ea, parts, "EA");
+		ret = set_cub_texture(&cub->config->ea, parts, "EA");
 	else
 		ret = (ft_putendl_fd(msg1, 2), free_split(parts), 0);
 	if (ret)

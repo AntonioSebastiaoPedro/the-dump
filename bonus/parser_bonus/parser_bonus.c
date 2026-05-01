@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:28:44 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 19:09:42 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:43:11 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,13 @@ static int	handle_line(char *line, t_cub *cub, int *map_start, int i)
 static int	is_config_complete(t_cub *cub)
 {
 	if (!cub->config->no || !cub->config->so || !cub->config->we
-		|| !cub->config->ea || cub->config->floor_color == -1
-		|| cub->config->ceiling_color == -1)
+		|| !cub->config->ea)
+	{
+		ft_putendl_fd("Error\nConfiguracao incompleta", 2);
+		return (0);
+	}
+	if ((cub->config->floor_color == -1 && !cub->config->f_tex)
+		|| (cub->config->ceiling_color == -1 && !cub->config->c_tex))
 	{
 		ft_putendl_fd("Error\nConfiguracao incompleta", 2);
 		return (0);

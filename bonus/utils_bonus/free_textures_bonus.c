@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_textures_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:50:00 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/30 19:47:28 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:46:58 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void	free_textures(t_cub *cub)
 		mlx_destroy_image(cub->mlx->mlx, cub->menu.cover.img);
 	if (cub->menu.about_img.img)
 		mlx_destroy_image(cub->mlx->mlx, cub->menu.about_img.img);
+	if (cub->textures->floor.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->textures->floor.img);
+	if (cub->textures->ceiling.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->textures->ceiling.img);
 	free_weapon_textures(cub);
 	free_door_textures(cub);
 }

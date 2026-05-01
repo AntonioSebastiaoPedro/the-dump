@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/01 11:12:37 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:47:56 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,16 @@ int	load_textures(t_cub *cub)
 		return (0);
 	if (!load_single_texture(cub, &cub->menu.menu_img, MENU_IMG))
 		return (0);
+	if (cub->config->f_tex)
+	{
+		if (!load_single_texture(cub, &cub->textures->floor, cub->config->f_tex))
+			return (0);
+	}
+	if (cub->config->c_tex)
+	{
+		if (!load_single_texture(cub, &cub->textures->ceiling, cub->config->c_tex))
+			return (0);
+	}
 	if (!load_weapon_textures(cub))
 		return (0);
 	if (!load_door_textures(cub))

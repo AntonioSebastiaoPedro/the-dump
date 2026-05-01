@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub_helpers_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 20:51:34 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:57:12 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:46:10 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ void	free_config(t_cub *cub)
 			free(cub->config->we);
 		if (cub->config->ea)
 			free(cub->config->ea);
+		if (cub->config->f_tex)
+			free(cub->config->f_tex);
+		if (cub->config->c_tex)
+			free(cub->config->c_tex);
 		free(cub->config);
 	}
 }

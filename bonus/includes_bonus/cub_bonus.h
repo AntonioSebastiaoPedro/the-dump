@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 18:41:04 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:43:07 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void			ft_validate_file(int ac, char **av);
 char			**read_file(char *filename);
 t_cub			*parse_cub(int ac, char **av);
 int				parse_texture(const char *line, t_cub *cub);
+int				set_cub_texture(char **dest, char **parts, char *dir);
 int				parse_color(const char *line, t_cub *cub);
 int				validate_rgb_format(const char *line);
 int				parse_map(char **lines, int map_start, t_cub *cub);
