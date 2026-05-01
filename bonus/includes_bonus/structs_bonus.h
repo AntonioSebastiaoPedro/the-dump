@@ -202,7 +202,9 @@ typedef struct s_cub
 	unsigned int	weapon_sound;
 	unsigned int	run_sound;
 	unsigned int	door_sound;
+	unsigned int	back_sound;
 	unsigned int	run_channel;
+	unsigned int	back_channel;
 }	t_cub;
 
 typedef struct s_ldg_render

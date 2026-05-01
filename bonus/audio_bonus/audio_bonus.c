@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 15:35:00 by antigravity       #+#    #+#             */
-/*   Updated: 2026/05/01 18:43:56 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:26:19 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 void	init_audio(t_cub *cub)
 {
 	cub->weapon_sound = 0;
+	cub->back_sound = 0;
 	if (!BASS_Init(-1, 44100, 0, 0, NULL))
 	{
 		ft_putstr_fd("Error\nBASS initialization failed\n", 2);
@@ -35,10 +36,22 @@ void	init_audio(t_cub *cub)
 			"assets/sounds/door/door_1.mp3", 0, 0, 3, 0);
 	if (!cub->door_sound)
 		ft_putstr_fd("Warning: Failed to load assets/sounds/door/door_1.mp3\n", 2);
+	cub->back_sound = BASS_SampleLoad(FALSE,
+			"assets/sounds/back3.mp3", 0, 0, 1, 4);
+	if (!cub->back_sound)
+		ft_putstr_fd("Warning: Failed to load assets/sounds/back2.mp3\n", 2);
 	if (cub->run_sound)
 		cub->run_channel = BASS_SampleGetChannel(cub->run_sound, FALSE);
 	else
 		cub->run_channel = 0;
+
+	if (cub->back_sound)
+	{
+		cub->back_channel = BASS_SampleGetChannel(cub->back_sound, FALSE);
+		BASS_ChannelPlay(cub->back_channel, FALSE);
+	}
+	else
+		cub->back_channel = 0;
 }
 
 /* Retrieves a playback channel for the sample and plays it */
@@ -90,5 +103,7 @@ void	free_audio(t_cub *cub)
 		BASS_SampleFree(cub->run_sound);
 	if (cub->door_sound)
 		BASS_SampleFree(cub->door_sound);
+	if (cub->back_sound)
+		BASS_SampleFree(cub->back_sound);
 	BASS_Free();
 }
