@@ -91,5 +91,7 @@
 
 /* DOOR MACROS */
 # define MAX_DOOR_DIST 3.0
+# define FRAME_DELAY 5
+# define KEY_SPACE 32
 
 #endif

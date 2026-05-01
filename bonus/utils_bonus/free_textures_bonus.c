@@ -33,6 +33,21 @@ void	free_weapon_textures(t_cub *cub)
 	}
 }
 
+void	free_door_textures(t_cub *cub)
+{
+	int		i;
+	void	*img_ptr;
+
+	i = 0;
+	while (i < DOOR_FRAMES)
+	{
+		img_ptr = cub->door_frames[i].img;
+		if (img_ptr)
+			mlx_destroy_image(cub->mlx->mlx, img_ptr);
+		i++;
+	}
+}
+
 void	free_textures(t_cub *cub)
 {
 	if (!cub || !cub->mlx || !cub->mlx->mlx || !cub->textures)
@@ -50,4 +65,5 @@ void	free_textures(t_cub *cub)
 	if (cub->menu.about_img.img)
 		mlx_destroy_image(cub->mlx->mlx, cub->menu.about_img.img);
 	free_weapon_textures(cub);
+	free_door_textures(cub);
 }

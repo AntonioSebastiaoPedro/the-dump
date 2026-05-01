@@ -85,6 +85,8 @@ static void	draw_grid(t_cub *cub, t_mmap_render *mmap)
 			render.h = (int)mmap->scale;
 			if (cub->map->grid[y][x] == '1')
 				draw_square(cub, &render, WHITE);
+			else if (cub->map->grid[y][x] == 'D')
+				draw_square(cub, &render, DARK_RED);
 			else if (cub->map->grid[y][x] == '0')
 				draw_square(cub, &render, GRAY);
 			else

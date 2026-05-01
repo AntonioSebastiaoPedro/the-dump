@@ -12,8 +12,6 @@
 
 #include "../includes_bonus/cub_bonus.h"
 
-#define KEY_SPACE	 32
-
 int	ft_close(t_cub *cub)
 {
 	free_cub(cub);
@@ -35,21 +33,6 @@ static void	toggle_mouse(t_cub *cub)
 		mlx_mouse_hide(cub->mlx->mlx, cub->mlx->win);
 }
 
-static void open_door(t_cub *cub)
-{
-	(void)cub;
-	// double step = 0.1;
-	// double i = 0;
-
-	// while (i < MAX_DOOR_DIST)
-	// {
-	// 	int grid_x = (int)(cub->player->pos_x + cub->player->dir_x * i);
-	// 	int grid_y = (int)(cub->player->pos_y + cub->player->dir_y * i);
-
-	// 	i += step;
-	// }
-}
-
 int	key_press(int key, t_cub *cub)
 {
 	if (key == ESC && cub->state == GAME)
@@ -62,8 +45,8 @@ int	key_press(int key, t_cub *cub)
 		cub->keys[key] = 1;
 	if (key == KEY_W || key == KEY_S || key == KEY_A || key == KEY_D)
 		cub->player->is_moving = 1;
-	if (key == KEY_SPACE)
-		open_door(cub);
+	if (key == KEY_SPACE && cub->state == GAME)
+		try_interact_door(cub);
 	return (0);
 }
 

@@ -186,6 +186,7 @@ typedef struct s_cub
 	int				keys[65536];
 	t_mouse			mouse;
 	t_weapon		weapon;
+	t_texture		door_frames[DOOR_FRAMES];
 	t_door			*door;
 	int				n_door;
 }	t_cub;

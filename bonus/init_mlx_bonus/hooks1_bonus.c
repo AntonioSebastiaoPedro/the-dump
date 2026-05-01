@@ -34,6 +34,7 @@ int	loop_hook(t_cub *cub)
 	else if (cub->state == GAME)
 	{
 		update_player(cub);
+		update_doors(cub);
 		render(cub);
 	}
 	return (0);

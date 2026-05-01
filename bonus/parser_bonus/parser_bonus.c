@@ -122,6 +122,7 @@ t_cub	*parse_cub(int ac, char **av)
 		free_split(lines);
 		return (free_cub(cub), NULL);
 	}
+	init_doors(cub);
 	free_split(lines);
 	return (cub);
 }

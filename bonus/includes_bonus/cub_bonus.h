@@ -119,4 +119,14 @@ void			on_mouse_click(t_cub *cub);
 void			update_weapon(t_cub *cub);
 void			draw_weapon(t_cub *cub);
 
+/* ====== BONUS (DOORS) ====== */
+void			init_doors(t_cub *cub);
+t_door			*get_door_at(t_cub *cub, int x, int y);
+t_door			*find_door_in_front(t_cub *cub);
+void			try_interact_door(t_cub *cub);
+void			update_doors(t_cub *cub);
+int				is_door_open(t_cub *cub, int x, int y);
+int				load_door_textures(t_cub *cub);
+void			free_door_textures(t_cub *cub);
+
 #endif

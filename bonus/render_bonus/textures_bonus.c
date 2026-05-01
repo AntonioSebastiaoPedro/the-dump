@@ -27,9 +27,15 @@ static void	calculate_wall_impact(t_ray *ray, t_player *player)
 
 t_texture	*get_texture(t_ray *ray, t_cub *cub)
 {
-	/*if (ray->is_door == 1)
-		return &cub->door.frames[0][0];
-	*/
+	if (ray->is_door == 1)
+	{
+		t_door	*door;
+
+		door = get_door_at(cub, ray->map_x, ray->map_y);
+		if (door)
+			return (&cub->door_frames[door->frame]);
+		return (&cub->door_frames[0]);
+	}
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
