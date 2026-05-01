@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 08:20:00 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/01 08:20:00 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:09:50 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ void	init_doors(t_cub *cub)
 	total = count_doors(cub);
 	cub->n_door = 0;
 	if (total == 0)
-	{
-		cub->door = NULL;
-		return ;
-	}
+		return ((void)(cub->door = NULL));
 	cub->door = ft_calloc(total, sizeof(t_door));
 	if (!cub->door)
 		return ;
@@ -130,10 +127,17 @@ void	try_interact_door(t_cub *cub)
 	if (!door)
 		return ;
 	if (door->state == DOOR_CLOSED)
+	{
 		door->state = DOOR_OPENING;
+		play_door_sound(cub);
+	}
 	else if (door->state == DOOR_OPEN)
+	{
 		door->state = DOOR_CLOSING;
+		play_door_sound(cub);
+	}
 }
+
 
 static void	update_single_door(t_door *door)
 {

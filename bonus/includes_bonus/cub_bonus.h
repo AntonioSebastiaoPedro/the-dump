@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 13:08:43 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 18:41:04 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 /* ====== HEADERS DO PROJETO ====== */
 # include "../libft/libft.h"
 # include "mlx.h"
+# include "../bass/bass.h"
 # include "structs_bonus.h"
 # include "macros_bonus.h"
 
@@ -130,3 +131,11 @@ int				load_door_textures(t_cub *cub);
 void			free_door_textures(t_cub *cub);
 
 #endif
+
+/* ====== AUDIO ====== */
+void			init_audio(t_cub *cub);
+void 			play_weapon_sound(t_cub *cub);
+void			play_door_sound(t_cub *cub);
+void			play_run_sound(t_cub *cub);
+void			stop_run_sound(t_cub *cub);
+void			free_audio(t_cub *cub);

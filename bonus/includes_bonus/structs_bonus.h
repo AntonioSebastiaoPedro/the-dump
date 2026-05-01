@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 11:10:32 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:14:10 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ typedef enum e_door_state
 	DOOR_OPEN,
 	DOOR_CLOSING
 }	t_door_state;
+
+typedef struct s_audio
+{
+	HSTREAM	music;
+	HSAMPLE	step;
+	HSAMPLE	door;
+	HSAMPLE	lion;
+	float	step_timer;
+}	t_audio;
 
 typedef struct s_texture
 {
@@ -190,6 +199,10 @@ typedef struct s_cub
 	t_texture		door_frames[DOOR_FRAMES];
 	t_door			*door;
 	int				n_door;
+	unsigned int	weapon_sound;
+	unsigned int	run_sound;
+	unsigned int	door_sound;
+	unsigned int	run_channel;
 }	t_cub;
 
 typedef struct s_ldg_render

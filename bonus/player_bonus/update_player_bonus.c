@@ -78,6 +78,11 @@ void	rotate(t_player *player, double rot)
 
 void	update_player(t_cub *cub)
 {
+	double	old_x;
+	double	old_y;
+
+	old_x = cub->player->pos_x;
+	old_y = cub->player->pos_y;
 	update_mouse(cub);
 	if (cub->keys[KEY_W])
 		move_forward(cub->player, cub);
@@ -91,4 +96,8 @@ void	update_player(t_cub *cub)
 		rotate(cub->player, -ROT_SPEED);
 	if (cub->keys[KEY_RIGHT])
 		rotate(cub->player, ROT_SPEED);
+	if (old_x != cub->player->pos_x || old_y != cub->player->pos_y)
+		play_run_sound(cub);
+	else
+		stop_run_sound(cub);
 }

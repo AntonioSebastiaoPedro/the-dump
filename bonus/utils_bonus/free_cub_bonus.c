@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:30:22 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 19:42:40 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:50:02 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	free_cub(t_cub *cub)
 		free_textures(cub);
 		free(cub->textures);
 	}
+	free_audio(cub);
 	free_mlx(cub);
 	free(cub);
 }

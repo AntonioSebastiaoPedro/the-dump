@@ -28,6 +28,7 @@ int	main(int ac, char **av)
 	init_loading(&cub->loading, cub->mlx->mlx);
 	if (!init_player(cub))
 		return (free_cub(cub), 1);
+	init_audio(cub);
 	if (!load_textures(cub))
 		return (free_cub(cub), 1);
 	hook_close(cub);

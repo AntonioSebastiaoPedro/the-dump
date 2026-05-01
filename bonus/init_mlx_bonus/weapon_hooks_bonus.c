@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 14:51:47 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:49:37 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	on_mouse_click(t_cub *cub)
 	if (cub->weapon.state == WEAPON_SHOT)
 		return ;
 	set_weapon_state(&cub->weapon, WEAPON_SHOT);
+	play_weapon_sound(cub);
 }
 
 int	mouse_hook(int key, int x, int y, t_cub *cub)
