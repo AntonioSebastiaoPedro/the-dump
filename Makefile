@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/29 16:54:47 by aamandio         ###   ########.fr        #
+#    Updated: 2026/05/01 15:22:55 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,14 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX_DIR = minilibx-linux
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
+
+# ==============================================================================
+# Bass Library
+# ==============================================================================
+BASSPATH = bass
+INCLUDES = -I$(BASSPATH)
+LDFLAGS += -L./$(BASSPATH) -lbass -Wl,-rpath=./$(BASSPATH)
+
 # ==============================================================================
 # DIRECTORIES
 # ==============================================================================
@@ -59,6 +67,7 @@ BONUS_UTILS_DIR = utils_bonus
 BONUS_PLAYER_DIR = player_bonus
 BONUS_UI_DIR = ui_bonus
 BONUS_INCLUDES_DIR = includes_bonus
+BONUS_AUDIO_DIR = audio_bonus
 
 # ==============================================================================
 # SOURCE FILES
@@ -92,6 +101,7 @@ BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon_b
 BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c
 BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
 BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
+BONUS_AUDIO_FILES = audio_bonus.c
 
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
 BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(BONUS_MLX_FILES))
@@ -99,8 +109,9 @@ BONUS_RENDER = $(addprefix $(BONUS_RENDER_DIR)/, $(BONUS_RENDER_FILES))
 BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(BONUS_UTILS_FILES))
 BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(BONUS_PLAYER_FILES))
 BONUS_UI = $(addprefix $(BONUS_UI_DIR)/, $(BONUS_UI_FILES))
+BONUS_AUDIO = $(addprefix $(BONUS_AUDIO_DIR)/, $(BONUS_AUDIO_FILES))
 
-BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI)
+BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI) $(BONUS_AUDIO)
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC_FILES))
 BONUS_OBJ = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.o))
 BONUS_DEP = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.d))
@@ -119,12 +130,12 @@ all: $(NAME)
 # Rule for mandatory objects
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) -c $< -o $@
 
 # Rule for bonus objects
 $(BONUS_BUILD_DIR)/%.o: $(BONUS_DIR)/%.c | $(BONUS_BUILD_DIR)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I$(BONUS_DIR) -I$(BONUS_DIR)/$(BONUS_INCLUDES_DIR) -I$(LIBFT_DIR) -I. -MMD -MP -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -I$(BONUS_DIR) -I$(BONUS_DIR)/$(BONUS_INCLUDES_DIR) -I$(LIBFT_DIR) -I. -MMD -MP -c $< -o $@
 
 # Create build folders
 $(BUILD_DIR):
