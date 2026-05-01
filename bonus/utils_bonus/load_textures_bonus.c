@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/30 18:48:18 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:25:53 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,32 +78,29 @@ int	load_weapon_textures(t_cub *cub)
 	},
 	};
 
-	if (load_weapon(cub, paths) == 0)
+	if (!load_weapon(cub, paths))
 		return (0);
 	return (1);
 }
 
-/*
-int	load_door(t_cub *cub, const char *paths[DOOR_STATES][DOOR_FRAMES])
+int	load_door(t_cub *cub, const char *paths[DOOR_FRAMES])
 {
-		int			frame;
+	int	frame;
 
-		frame = 0;
-		while (frame < DOOR_FRAMES)
-		{
-			if (!load_single_texture(cub, &cub->door.frames[0][frame], paths[0][frame]))
-				return (0);
-			frame++;
-		}
-	cub->door.current_frame = 0;
-	cub->door.frame_timer = 0;
-	return 1;
+	frame = 0;
+	while (frame < DOOR_FRAMES)
+	{
+		if (!load_single_texture(cub,
+				&cub->textures->door[frame], paths[frame]))
+			return (0);
+		frame++;
+	}
+	return (1);
 }
 
 int	load_door_textures(t_cub *cub)
 {
-	const char	*paths[DOOR_STATES][DOOR_FRAMES] = {
-	{
+	const char *paths[DOOR_FRAMES] = {
 		"assets/door/porta_de_madeira_1.xpm",
 		"assets/door/porta_de_madeira_2.xpm",
 		"assets/door/porta_de_madeira_3.xpm",
@@ -114,14 +111,11 @@ int	load_door_textures(t_cub *cub)
 		"assets/door/porta_de_madeira_8.xpm",
 		"assets/door/porta_de_madeira_9.xpm",
 		"assets/door/porta_de_madeira_10.xpm",
-	},
 	};
-	if (load_door(cub, paths) == 0)
+	if (!load_door(cub, paths))
 		return (0);
 	return (1);
 }
-*/
-
 
 int	load_textures(t_cub *cub)
 {
@@ -139,8 +133,8 @@ int	load_textures(t_cub *cub)
 		return (0);
 	if (!load_weapon_textures(cub))
 		return (0);
-	//if (!load_door_textures(cub))
-	//	return (0);
+	if (!load_door_textures(cub))
+		return (0);
 	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
 	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
 	return (1);

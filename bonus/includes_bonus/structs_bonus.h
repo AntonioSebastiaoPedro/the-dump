@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 19:07:38 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:04:05 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_textures
 	t_texture	so;
 	t_texture	we;
 	t_texture	ea;
+	t_texture	door[DOOR_FRAMES];
 }	t_textures;
 
 typedef struct s_menu
