@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 15:00:54 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 19:11:19 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/01 11:37:08 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static void	draw_button(t_cub *cub, int y, int index, char *label)
 	{
 		color = GREEN;
 		mlx_string_put(cub->mlx->mlx, cub->mlx->win,
-			WIDTH / 2 - 30, y, color, label);
+			WIDTH / 2 - 120, y, color, label);
 	}
 	else
 	{
 		color = WHITE;
 		mlx_string_put(cub->mlx->mlx, cub->mlx->win,
-			WIDTH / 2 - 30, y, color, label + 2);
+			WIDTH / 2 - 100, y, color, label + 2);
 	}
 }
 
@@ -34,12 +34,12 @@ void	switch_button(t_cub *cub)
 {
 	int	y;
 
-	y = HEIGHT / 2 + 20;
-	draw_button(cub, y, 0, "> PLAY");
-	y += 40;
-	draw_button(cub, y, 1, "> ABOUT");
-	y += 40;
-	draw_button(cub, y, 2, "> QUIT");
+	y = HEIGHT / 2 - 25;
+	draw_button(cub, y, 0, ">");
+	y += 100;
+	draw_button(cub, y, 1, ">");
+	y += 100;
+	draw_button(cub, y, 2, ">");
 }
 
 void	render_menu(t_cub *cub)
@@ -59,8 +59,8 @@ void	render_menu(t_cub *cub)
 		i++;
 	}
 	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
-	if (cub->menu.cover.img)
+	if (cub->menu.menu_img.img)
 		mlx_put_image_to_window(cub->mlx->mlx,
-			cub->mlx->win, cub->menu.cover.img, 0, 0);
+			cub->mlx->win, cub->menu.menu_img.img, 0, 0);
 	switch_button(cub);
 }

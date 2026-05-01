@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 18:45:40 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 11:10:12 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@
 # define PLAYER_SIZE 4
 
 # define COVER "assets/textures/cover5.xpm"
+# define MENU_IMG "assets/textures/menu.xpm"
 # define ABOUT_IMG "assets/textures/about.xpm"
 
 /* WEAPON MACROS */
