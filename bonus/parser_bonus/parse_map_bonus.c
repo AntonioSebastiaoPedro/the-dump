@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:30 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 16:06:47 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 18:20:55 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,8 @@ int	parse_map(char **lines, int map_start, t_cub *cub)
 	cub->map->width = ft_strlen(grid[0]);
 	cub->map->grid = grid;
 	if (validate_map(grid, height, cub) == 0)
-		return (free_map(grid, height), cub->map->grid = NULL,0);
+		return (free_map(grid, height), cub->map->grid = NULL, 0);
 	if (!init_door(cub))
-		return (free_map(grid, height), cub->map->grid = NULL,0);
+		return (free_map(grid, height), cub->map->grid = NULL, 0);
 	return (1);
 }

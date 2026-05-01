@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 13:08:43 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 17:32:18 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,8 @@ void			free_weapon_textures(t_cub *cub);
 void			on_mouse_click(t_cub *cub);
 void			update_weapon(t_cub *cub);
 void			draw_weapon(t_cub *cub);
+
+/* ====== BONUS (DOOR) ====== */
+t_door			*get_door_at(t_cub *cub, int x, int y);
 
 #endif
