@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:04:30 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 19:41:33 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/01 16:06:47 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,13 @@ void	add_door(t_cub *cub, int x, int y)
 
 int	init_door(t_cub *cub)
 {
+	int	x;
+	int	y;
+
 	cub->n_door = 0;
 	cub->door = (t_door *)malloc(count_door(cub) * sizeof(t_door));
 	if (!cub->door)
 		return (0);
-	int	y;
-	int	x;
-
 	y = 0;
 	while (y < cub->map->height)
 	{
@@ -145,6 +145,7 @@ int	parse_map(char **lines, int map_start, t_cub *cub)
 	cub->map->grid = grid;
 	if (validate_map(grid, height, cub) == 0)
 		return (free_map(grid, height), cub->map->grid = NULL,0);
-	init_door(cub);
+	if (!init_door(cub))
+		return (free_map(grid, height), cub->map->grid = NULL,0);
 	return (1);
 }
