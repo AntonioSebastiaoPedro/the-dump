@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 02:16:31 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/01 20:11:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/02 03:27:39 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	draw_vertical_line(int col, t_ray *ray, t_cub *cub)
 			tex_y = texture->height - 1;
 		ray->texture_pos += ray->step_texture;
 		color = get_texture_color(texture, ray->texture_column, tex_y);
-		ft_put_pixel(cub, col, y, color);
+		if (color != WEAPON_BACKGROUND)
+			ft_put_pixel(cub, col, y, color);
 		y++;
 	}
 	while (y < HEIGHT)

@@ -6,7 +6,7 @@
 #    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/04/29 16:54:47 by aamandio         ###   ########.fr        #
+#    Updated: 2026/05/02 02:56:21 by aamandio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,8 +86,8 @@ OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
 DEP = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.d))
 
 # Bonus SRC
-BONUS_PARSER_FILES = $(PARSER_FILES:.c=_bonus.c)
-BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) hooks1_bonus.c  weapon_hooks_bonus.c
+BONUS_PARSER_FILES = $(PARSER_FILES:.c=_bonus.c) init_door_bonus.c
+BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) loop_hook_bonus.c weapon_hooks_bonus.c door_hooks_bonus.c
 BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon_bonus.c draw_weapon_bonus.c
 BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c
 BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c

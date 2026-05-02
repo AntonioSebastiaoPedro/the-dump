@@ -127,7 +127,7 @@ static char *result[] = {
 "w. c #725B45",
 "e. c #765E48",
 "r. c #7A624B",
-"t. c None",
+"t. c #FF0000",
 /* pixels */
 "          o           o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o X o o o o o o o o o o o o o o o o o o X o o o o o o o o o o o o o o o o o o o o o o o o X o o o o o X o o o X     o X o o o o o o o o o o o o o o o o o o o o o o o o o o o o o   o o o o o o o o o o o o o o o     o o o o o o o o   o o X o o o o o X o o o o o o o o o X X X o o o o o o X o   X o o   o o o o o o o o o o X X o   X     o     o     ",
 "                  o   o o o   o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o X o o o o o o o o o o o o   o o   o o o o o X o o o o o o o   o o o o o o o o o o o o o o o o o o o o o o o o o o o X o o o o o o o o o o o o o o o o   o o o o o o o o o o o o o o   o o o X o o o o o o o o o o o   o o o o o o o o o o o o     o   o o o o o     X     o           o           ",

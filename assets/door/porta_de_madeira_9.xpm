@@ -73,7 +73,7 @@ static char *result[] = {
 "L c #494643",
 "P c #4C4946",
 "I c #4C4B49",
-"U c None",
+"U c #FF0000",
 /* pixels */
 "     o     oooooooooooooooooooooooooooooooooooooooooXooooooooooooooooooXooooooooooooooooooooooooXoooooXoooX  oXooooooooooooooooooooooooooooo ooooooooooooooo  oooooooo ooXoooooXoooooooooXXXooooooXo Xoo ooooooooooXXo X  o  o  ",
 "         o ooo ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooXoooooooooooo oo oooooXooooooo oooooooooooooooooooooooooooXoooooooooooooooo oooooooooooooo oooXooooooooooo oooooooooooo  o ooooo  X  o     o     ",

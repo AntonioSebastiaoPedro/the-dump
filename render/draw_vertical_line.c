@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 02:16:31 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 16:21:36 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/02 02:37:11 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	draw_vertical_line(int col, t_ray *ray, t_cub *cub)
 	while (y <= ray->draw_end)
 	{
 		tex_y = (int)ray->texture_pos;
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= texture->height)
+			tex_y = texture->height - 1;
 		ray->texture_pos += ray->step_texture;
 		color = get_texture_color(texture, ray->texture_column, tex_y);
 		ft_put_pixel(cub, col, y, color);

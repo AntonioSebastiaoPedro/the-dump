@@ -6,33 +6,26 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 18:25:16 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/01 18:21:33 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/02 14:41:27 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
 
-int	has_door_collision(t_cub *cub, t_ray *ray)
+int	is_door_open(t_cub *cub, int x, int y)
 {
 	t_door	*door;
 
-	door = NULL;
-	if (cub->map->grid[ray->map_y][ray->map_x] == 'D')
-	{
-		door = get_door_at(cub, ray->map_x, ray->map_y);
-		if (door && door->state == DOOR_CLOSED)
-		{
-			ray->is_door = 1;
-			ray->hit = 1;
-			return (1);
-		}
-	}
+	door = get_door_at(cub, x, y);
+	if (door && door->state == DOOR_OPEN)
+		return (1);
 	return (0);
 }
 
 void	dda(t_ray *ray, t_cub *cub)
 {
 	ray->hit = 0;
+	ray->is_door = 0;
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -49,10 +42,39 @@ void	dda(t_ray *ray, t_cub *cub)
 		}
 		if (ray->map_x < 0 || ray->map_x >= cub->map->width || ray->map_y < 0
 			|| ray->map_y >= cub->map->height)
-			return ((void)(ray->hit = 1));
-		if (has_door_collision(cub, ray))
-			return ;
+		{
+			ray->hit = 1;
+			break ;
+		}
 		if (cub->map->grid[ray->map_y][ray->map_x] == '1')
-			return ((void)(ray->hit = 1));
+			ray->hit = 1;
+
+
+		// --- LÓGICA DA PORTA RECUADA ---
+        if (cub->map->grid[ray->map_y][ray->map_x] == 'D')
+        {
+            if (!is_door_open(cub, ray->map_x, ray->map_y))
+            {
+                double dist_to_door;
+
+                // Calculamos a distância até ao MEIO do tile
+                if (ray->side == 0)
+                    dist_to_door = ray->side_dist_x - (ray->delta_dist_x / 2);
+                else
+                    dist_to_door = ray->side_dist_y - (ray->delta_dist_y / 2);
+
+                // Verificação de segurança: a distância da porta
+                // não pode ser menor que a face anterior do tile
+                // e o raio deve "atingir" a profundidade 0.5 dentro do tile
+                ray->hit = 1;
+                ray->is_door = 1;
+
+                // Atualizamos o side_dist para a renderização usar a distância correta
+                if (ray->side == 0)
+                    ray->side_dist_x = dist_to_door;
+                else
+                    ray->side_dist_y = dist_to_door;
+            }
+        }
 	}
 }

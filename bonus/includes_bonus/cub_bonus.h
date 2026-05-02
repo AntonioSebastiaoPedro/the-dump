@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 17:32:18 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/02 14:11:25 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,8 @@ void			draw_weapon(t_cub *cub);
 
 /* ====== BONUS (DOOR) ====== */
 t_door			*get_door_at(t_cub *cub, int x, int y);
+int				init_door(t_cub *cub);
+void			try_interact_door(t_cub *cub);
+int				is_door_open(t_cub *cub, int x, int y);
 
 #endif
