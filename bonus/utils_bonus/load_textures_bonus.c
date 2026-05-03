@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/01 19:25:53 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/04 00:52:58 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,15 @@ int	load_door(t_cub *cub, const char *paths[DOOR_FRAMES])
 int	load_door_textures(t_cub *cub)
 {
 	const char *paths[DOOR_FRAMES] = {
-		"assets/door/porta_de_madeira_1.xpm",
-		"assets/door/porta_de_madeira_2.xpm",
-		"assets/door/porta_de_madeira_3.xpm",
-		"assets/door/porta_de_madeira_4.xpm",
-		"assets/door/porta_de_madeira_5.xpm",
-		"assets/door/porta_de_madeira_6.xpm",
-		"assets/door/porta_de_madeira_7.xpm",
-		"assets/door/porta_de_madeira_8.xpm",
-		"assets/door/porta_de_madeira_9.xpm",
-		"assets/door/porta_de_madeira_10.xpm",
+		"assets/door/door0.xpm",
+		"assets/door/door1.xpm",
+		"assets/door/door2.xpm",
+		"assets/door/door3.xpm",
+		"assets/door/door4.xpm",
+		"assets/door/door5.xpm",
+		"assets/door/door6.xpm",
+		"assets/door/door7.xpm",
+		"assets/door/door8.xpm",
 	};
 	if (!load_door(cub, paths))
 		return (0);

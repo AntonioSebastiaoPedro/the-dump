@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/02 03:18:31 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/04 00:53:07 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@
 
 /* DOOR MACROS */
 # define MAX_DOOR_DIST 3.0
-# define DOOR_FRAMES 10
+# define DOOR_FRAMES 9
 # define DOOR_FRAME_DELAY 5
 
 #endif
