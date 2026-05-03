@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 18:25:16 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/02 14:41:27 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/03 14:19:40 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,32 +48,12 @@ void	dda(t_ray *ray, t_cub *cub)
 		}
 		if (cub->map->grid[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
-
-
-		// --- LÓGICA DA PORTA RECUADA ---
         if (cub->map->grid[ray->map_y][ray->map_x] == 'D')
         {
             if (!is_door_open(cub, ray->map_x, ray->map_y))
             {
-                double dist_to_door;
-
-                // Calculamos a distância até ao MEIO do tile
-                if (ray->side == 0)
-                    dist_to_door = ray->side_dist_x - (ray->delta_dist_x / 2);
-                else
-                    dist_to_door = ray->side_dist_y - (ray->delta_dist_y / 2);
-
-                // Verificação de segurança: a distância da porta
-                // não pode ser menor que a face anterior do tile
-                // e o raio deve "atingir" a profundidade 0.5 dentro do tile
                 ray->hit = 1;
                 ray->is_door = 1;
-
-                // Atualizamos o side_dist para a renderização usar a distância correta
-                if (ray->side == 0)
-                    ray->side_dist_x = dist_to_door;
-                else
-                    ray->side_dist_y = dist_to_door;
             }
         }
 	}
