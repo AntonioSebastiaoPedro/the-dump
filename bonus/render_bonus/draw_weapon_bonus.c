@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:35:35 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/29 22:22:03 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:45:03 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_weapon(t_cub *cub)
 		{
 			dw.color = get_texture_color(texture, x / WEAPON_SCALE,
 					y / WEAPON_SCALE);
-			if (dw.color != WEAPON_BACKGROUND)
+			if (dw.color != TRANSPARENT_BACKGROUND)
 				ft_put_pixel(cub, dw.start_x + x, dw.start_y + y, dw.color);
 			y++;
 		}

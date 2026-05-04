@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:28:44 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 19:43:11 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 20:10:34 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ t_cub	*parse_cub(int ac, char **av)
 		free_split(lines);
 		return (free_cub(cub), NULL);
 	}
-	init_doors(cub);
 	free_split(lines);
 	return (cub);
 }

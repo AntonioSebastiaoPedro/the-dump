@@ -10,7 +10,7 @@ static const char *B81777852037[] = {
 "+ c #444C30",
 "@ c #505438",
 "# c #586044",
-"$ c None",
+"$ c #FF0000",
 /* pixels */
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@#@@O++OOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+OOO+@@#@@@@@@@@@@@@@@@@@@@@@@@@@@",
 "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO+OOOOOOOO+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO+OOOOOOOOOOOOOO",

@@ -12,6 +12,7 @@ static const char *B01777852036[] = {
 "# c #141C04",
 "$ c gray3",
 "% c #64684C",
+"& c #FF0000",
 /* pixels */
 "                            .  XooXXX                                                         oXXXo  .                          ",
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXoXXXXXXXXoXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXoXXXXXXXXXXXXXX",

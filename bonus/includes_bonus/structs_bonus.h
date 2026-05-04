@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 15:49:08 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:56:00 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ typedef struct s_weapon
 
 typedef struct s_door
 {
+	//t_texture		door_frames[DOOR_FRAMES];
 	int				x;
 	int				y;
 	t_door_state	state;
@@ -209,7 +210,6 @@ typedef struct s_cub
 	int				keys[65536];
 	t_mouse			mouse;
 	t_weapon		weapon;
-	t_texture		door_frames[DOOR_FRAMES];
 	t_door			*door;
 	bool			show_mira;
 	int				n_door;
@@ -220,6 +220,8 @@ typedef struct s_cub
 	unsigned int	button_sound;
 	unsigned int	run_channel;
 	unsigned int	back_channel;
+
+	t_texture		door_frames[DOOR_FRAMES];
 }	t_cub;
 
 typedef struct s_ldg_render

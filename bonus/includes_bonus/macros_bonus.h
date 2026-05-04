@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 15:56:13 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:44:59 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,11 @@
 # define WEAPON_MOVE 1
 # define WEAPON_SHOT 2
 # define WEAPON_SCALE 4.0
-# define WEAPON_BACKGROUND 0xFF0000
-# define DOOR_FRAMES 9
+# define TRANSPARENT_BACKGROUND 0xFF0000
 
 /* DOOR MACROS */
 # define MAX_DOOR_DIST 3.0
-# define FRAME_DELAY 5
-# define KEY_SPACE 32
+# define DOOR_FRAMES 9
+# define DOOR_FRAME_DELAY 5
 
 #endif

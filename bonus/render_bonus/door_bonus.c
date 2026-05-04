@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 08:20:00 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/04 11:26:28 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:17:45 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	try_interact_door(t_cub *cub)
 static void	update_single_door(t_door *door)
 {
 	door->timer++;
-	if (door->timer < FRAME_DELAY)
+	if (door->timer < DOOR_FRAME_DELAY)
 		return ;
 	door->timer = 0;
 	if (door->state == DOOR_OPENING)

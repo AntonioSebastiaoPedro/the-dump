@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 15:59:58 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:08:57 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	key_press(int key, t_cub *cub)
 		cub->keys[key] = 1;
 	if (key == KEY_W || key == KEY_S || key == KEY_A || key == KEY_D)
 		cub->player->is_moving = 1;
-	if (key == KEY_SPACE && cub->state == GAME)
+	if (key == SPACE && cub->state == GAME)
 		try_interact_door(cub);
 	if (key == KEY_M)
 		cub->show_mira = !cub->show_mira;

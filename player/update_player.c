@@ -3,51 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   update_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:48:35 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/17 11:09:38 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:22:58 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-static void	move_forward(t_player *player, t_map *map)
+static void	move_forward(t_player *player, t_cub *cub)
 {
 	double	new_x;
 	double	new_y;
 
 	new_x = player->pos_x + player->dir_x * MOVE_SPEED;
 	new_y = player->pos_y + player->dir_y * MOVE_SPEED;
-	if (map->grid[(int)player->pos_y][(int)new_x] == '0')
+	if (cub->map->grid[(int)player->pos_y][(int)new_x] == '0')
 		player->pos_x = new_x;
-	if (map->grid[(int)new_y][(int)player->pos_x] == '0')
+	if (cub->map->grid[(int)new_y][(int)player->pos_x] == '0')
 		player->pos_y = new_y;
 }
 
-static void	move_backward(t_player *player, t_map *map)
+static void	move_backward(t_player *player, t_cub *cub)
 {
 	double	new_x;
 	double	new_y;
 
 	new_x = player->pos_x - player->dir_x * MOVE_SPEED;
 	new_y = player->pos_y - player->dir_y * MOVE_SPEED;
-	if (map->grid[(int)player->pos_y][(int)new_x] == '0')
+	if (cub->map->grid[(int)player->pos_y][(int)new_x] == '0')
 		player->pos_x = new_x;
-	if (map->grid[(int)new_y][(int)player->pos_x] == '0')
+	if (cub->map->grid[(int)new_y][(int)player->pos_x] == '0')
 		player->pos_y = new_y;
 }
 
-static void	strafe(t_player *player, t_map *map, int dir)
+static void	strafe(t_player *player, t_cub *cub, int dir)
 {
 	double	new_x;
 	double	new_y;
 
 	new_x = player->pos_x + dir * player->plane_x * MOVE_SPEED;
 	new_y = player->pos_y + dir * player->plane_y * MOVE_SPEED;
-	if (map->grid[(int)player->pos_y][(int)new_x] == '0')
+	if (cub->map->grid[(int)player->pos_y][(int)new_x] == '0')
 		player->pos_x = new_x;
-	if (map->grid[(int)new_y][(int)player->pos_x] == '0')
+	if (cub->map->grid[(int)new_y][(int)player->pos_x] == '0')
 		player->pos_y = new_y;
 }
 
@@ -67,13 +67,13 @@ static void	rotate(t_player *player, double rot)
 void	update_player(t_cub *cub)
 {
 	if (cub->keys[KEY_W])
-		move_forward(cub->player, cub->map);
+		move_forward(cub->player, cub);
 	if (cub->keys[KEY_S])
-		move_backward(cub->player, cub->map);
+		move_backward(cub->player, cub);
 	if (cub->keys[KEY_A])
-		strafe(cub->player, cub->map, -1);
+		strafe(cub->player, cub, -1);
 	if (cub->keys[KEY_D])
-		strafe(cub->player, cub->map, 1);
+		strafe(cub->player, cub, 1);
 	if (cub->keys[KEY_LEFT])
 		rotate(cub->player, -ROT_SPEED);
 	if (cub->keys[KEY_RIGHT])

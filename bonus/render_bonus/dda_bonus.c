@@ -6,7 +6,7 @@
 /*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 18:25:16 by aamandio          #+#    #+#             */
-/*   Updated: 2026/04/30 12:43:07 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:47:32 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	dda(t_ray *ray, t_cub *cub)
 {
 	ray->hit = 0;
+	ray->is_door = 0;
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
