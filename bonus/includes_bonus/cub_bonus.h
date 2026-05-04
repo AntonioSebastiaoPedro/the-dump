@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 19:43:07 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 12:02:06 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int				ft_fprintf_fd(int fd, const char *format, ...);
 int				ft_sprintf(char *str, const char *format, ...);
 char			ft_delim(const char *s);
 char			**ft_split_new(const char *s, const char *delim);
+bool			load_floor_ceiling_texture(t_cub *cub);
 
 /* ====== MLX SETUP ====== */
 t_mlx			*init_mlx(void);
@@ -105,6 +106,12 @@ void			draw_vertical_line(int col, t_ray *ray, t_cub *cub);
 void			calculate_texture(t_ray *ray, t_cub *cub);
 unsigned int	get_texture_color(t_texture *texture, int x, int y);
 t_texture		*get_texture(t_ray *ray, t_cub *cub);
+void			put_fc_color(t_cub *cub, int col, int y, int is_floor);
+void			put_floor_or_ceiling(t_cub *cub, t_floorceil_args a);
+int				load_single_texture(t_cub *cub, t_texture *tex,
+					const char *path);
+void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
+					t_ray *ray);
 
 /* ====== PLAYER ====== */
 t_player		*init_player(t_cub *cub);
@@ -130,13 +137,13 @@ void			update_doors(t_cub *cub);
 int				is_door_open(t_cub *cub, int x, int y);
 int				load_door_textures(t_cub *cub);
 void			free_door_textures(t_cub *cub);
-
-#endif
+int				can_walk(t_cub *cub, int x, int y);
 
 /* ====== AUDIO ====== */
-void			init_audio(t_cub *cub);
-void 			play_weapon_sound(t_cub *cub);
+bool			init_audio(t_cub *cub);
+void			play_weapon_sound(t_cub *cub);
 void			play_door_sound(t_cub *cub);
 void			play_run_sound(t_cub *cub);
 void			stop_run_sound(t_cub *cub);
 void			free_audio(t_cub *cub);
+#endif

@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 19:40:05 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 11:56:13 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,6 @@ typedef enum e_door_state
 	DOOR_OPEN,
 	DOOR_CLOSING
 }	t_door_state;
-
-typedef struct s_audio
-{
-	HSTREAM	music;
-	HSAMPLE	step;
-	HSAMPLE	door;
-	HSAMPLE	lion;
-	float	step_timer;
-}	t_audio;
 
 typedef struct s_texture
 {
@@ -85,8 +76,6 @@ typedef struct s_loading
 	int		progress;
 	int		max_progress;
 	int		frame_count;
-	void	*logo;
-	void	*background;
 }	t_loading;
 
 typedef struct s_map
@@ -107,6 +96,26 @@ typedef struct s_config
 	int		floor_color;
 	int		ceiling_color;
 }	t_config;
+
+typedef struct s_floorceil_args
+{
+	int	col;
+	int	y;
+	int	is_floor;
+}	t_floorceil_args;
+
+typedef struct s_tex_info
+{
+	int	w;
+	int	h;
+}	t_tex_info;
+
+typedef struct s_floorceil_ctx
+{
+	double	fx;
+	double	fy;
+	double	dist;
+}	t_floorceil_ctx;
 
 typedef struct s_player
 {
