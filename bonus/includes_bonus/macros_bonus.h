@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 13:18:09 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:56:13 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@
 # define KEY_A       97
 # define KEY_D       100
 # define KEY_P       112
+# define KEY_M		 109
 # define KEY_LEFT    65361
 # define KEY_RIGHT   65363
 # define KEY_UP      65362
 # define KEY_DOWN    65364
 # define KEY_ENTER   65293
+# define KEY_LCTRL 65507
+# define KEY_RCTRL 65508
 # define ESC         65307
 
 /* Screen */

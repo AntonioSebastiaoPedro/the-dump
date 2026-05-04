@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 12:02:06 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:51:41 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stdint.h>
+# include <X11/Xlib.h>
+
 
 /* ====== HEADERS DO PROJETO ====== */
 # include "../libft/libft.h"
-# include "mlx.h"
+# include <mlx.h>
+# include <mlx_int.h>
 # include "../bass/bass.h"
 # include "structs_bonus.h"
 # include "macros_bonus.h"
@@ -112,6 +115,7 @@ int				load_single_texture(t_cub *cub, t_texture *tex,
 					const char *path);
 void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
 					t_ray *ray);
+void			draw_mira(t_cub *cub);
 
 /* ====== PLAYER ====== */
 t_player		*init_player(t_cub *cub);

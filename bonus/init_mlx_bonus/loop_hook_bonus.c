@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks1.c                                           :+:      :+:    :+:   */
+/*   loop_hook_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:25:08 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/27 16:25:41 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:29:59 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
+
+int	is_window_focused(t_cub *cub)
+{
+	Window	focused_win;
+	t_xvar	*xvar;
+	int		revert;
+
+	xvar = (t_xvar *)cub->mlx->mlx;
+	XGetInputFocus(xvar->display, &focused_win, &revert);
+	return (focused_win == xvar->win_list->window);
+}
 
 int	loop_hook(t_cub *cub)
 {
@@ -33,9 +44,10 @@ int	loop_hook(t_cub *cub)
 		render_about(cub);
 	else if (cub->state == GAME)
 	{
-		update_player(cub);
-		update_doors(cub);
+		(update_player(cub), update_doors(cub));
 		render(cub);
+		if (!is_window_focused(cub))
+			cub->state = MENU;
 	}
 	return (0);
 }

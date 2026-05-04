@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 11:56:13 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:49:08 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,7 @@ typedef struct s_cub
 	t_weapon		weapon;
 	t_texture		door_frames[DOOR_FRAMES];
 	t_door			*door;
+	bool			show_mira;
 	int				n_door;
 	unsigned int	weapon_sound;
 	unsigned int	run_sound;
