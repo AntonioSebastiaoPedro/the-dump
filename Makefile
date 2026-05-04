@@ -101,7 +101,7 @@ BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon_b
 BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c load_floor_ceiling_texture_bonus.c
 BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
 BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
-BONUS_AUDIO_FILES = audio_bonus.c free_audio_bonus.c play_door_sound_bonus.c play_weapon_sound_bonus.c run_sound_bonus.c
+BONUS_AUDIO_FILES = audio_bonus.c free_audio_bonus.c play_door_sound_bonus.c play_weapon_sound_bonus.c run_sound_bonus.c play_button_sound_bonus.c
 
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
 BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(BONUS_MLX_FILES))

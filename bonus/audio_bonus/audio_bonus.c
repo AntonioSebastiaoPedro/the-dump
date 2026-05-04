@@ -65,6 +65,8 @@ bool	init_audio(t_cub *cub)
 			"assets/sounds/door/door_1.mp3", 3, 0);
 	cub->back_sound = load_sound(
 			"assets/sounds/back3.mp3", 1, 4);
+	cub->button_sound = load_sound(
+			"assets/sounds/button.mp3", 3, 0);
 	cub->run_channel = init_channel(cub->run_sound, false);
 	cub->back_channel = init_channel(cub->back_sound, true);
 	return (true);

@@ -217,6 +217,7 @@ typedef struct s_cub
 	unsigned int	run_sound;
 	unsigned int	door_sound;
 	unsigned int	back_sound;
+	unsigned int	button_sound;
 	unsigned int	run_channel;
 	unsigned int	back_channel;
 }	t_cub;

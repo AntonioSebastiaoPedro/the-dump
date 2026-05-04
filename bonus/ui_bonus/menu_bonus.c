@@ -44,22 +44,30 @@ void	handle_menu_input(int key, t_cub *cub)
 	{
 		if (key == KEY_UP || key == KEY_W)
 		{
+			play_button_sound(cub);
 			cub->menu.selected--;
 			if (cub->menu.selected < 0)
 				cub->menu.selected = cub->menu.total - 1;
 		}
 		else if (key == KEY_DOWN || key == KEY_S)
 		{
+			play_button_sound(cub);
 			cub->menu.selected++;
 			if (cub->menu.selected >= cub->menu.total)
 				cub->menu.selected = 0;
 		}
 		else if (key == KEY_ENTER)
+		{
+			play_button_sound(cub);
 			handle_menu_selected(cub);
+		}
 	}
 	else if (cub->state == ABOUT)
 	{
 		if (key == ESC)
+		{
+			play_button_sound(cub);
 			cub->state = MENU;
+		}
 	}
 }

@@ -146,6 +146,7 @@ int				can_walk(t_cub *cub, int x, int y);
 bool			init_audio(t_cub *cub);
 void			play_weapon_sound(t_cub *cub);
 void			play_door_sound(t_cub *cub);
+void			play_button_sound(t_cub *cub);
 void			play_run_sound(t_cub *cub);
 void			stop_run_sound(t_cub *cub);
 void			free_audio(t_cub *cub);
