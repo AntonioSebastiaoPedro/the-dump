@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:48:35 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/30 13:43:34 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/04 10:50:17 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
-
-static int	can_walk(t_cub *cub, int x, int y)
-{
-	char	c;
-
-	c = cub->map->grid[y][x];
-	if (c == '0' || c == 'A')
-		return (1);
-	if (c == 'D' && is_door_open(cub, x, y))
-		return (1);
-	return (0);
-}
 
 static void	move_forward(t_player *player, t_cub *cub)
 {
