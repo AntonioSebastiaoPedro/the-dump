@@ -14,14 +14,14 @@
 
 void	render(t_cub *cub)
 {
-	//unsigned int	*pos;
+	unsigned int	*pos;
 	int				i;
 	t_ray			ray;
 
-	//i = 0;
-	//pos = (unsigned int *)cub->mlx->addr;
-	//while (i < WIDTH * HEIGHT)
-	//	*(pos + i++) = BLACK;
+	i = 0;
+	pos = (unsigned int *)cub->mlx->addr;
+	while (i < WIDTH * HEIGHT)
+		*(pos + i++) = BLACK;
 	update_weapon(cub);
 	update_doors(cub);
 	i = 0;
