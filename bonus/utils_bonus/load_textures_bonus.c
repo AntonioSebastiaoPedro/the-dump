@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/04 11:21:23 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 13:18:01 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,15 @@ int	load_weapon_textures(t_cub *cub)
 int	load_door_textures(t_cub *cub)
 {
 	const char	*paths[DOOR_FRAMES] = {
-		"assets/door/porta_de_madeira_1.xpm",
-		"assets/door/porta_de_madeira_2.xpm",
-		"assets/door/porta_de_madeira_3.xpm",
-		"assets/door/porta_de_madeira_4.xpm",
-		"assets/door/porta_de_madeira_5.xpm",
-		"assets/door/porta_de_madeira_6.xpm",
-		"assets/door/porta_de_madeira_7.xpm",
-		"assets/door/porta_de_madeira_8.xpm",
-		"assets/door/porta_de_madeira_9.xpm",
-		"assets/door/porta_de_madeira_10.xpm",
+		"assets/door/door0.xpm",
+		"assets/door/door1.xpm",
+		"assets/door/door2.xpm",
+		"assets/door/door3.xpm",
+		"assets/door/door4.xpm",
+		"assets/door/door5.xpm",
+		"assets/door/door6.xpm",
+		"assets/door/door7.xpm",
+		"assets/door/door8.xpm",
 	};
 	int			i;
 

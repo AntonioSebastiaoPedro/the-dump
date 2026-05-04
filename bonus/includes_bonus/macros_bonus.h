@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 11:10:12 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 13:18:09 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@
 # define WEAPON_SHOT 2
 # define WEAPON_SCALE 4.0
 # define WEAPON_BACKGROUND 0xFF0000
-# define DOOR_FRAMES 10
+# define DOOR_FRAMES 9
 
 /* DOOR MACROS */
 # define MAX_DOOR_DIST 3.0
