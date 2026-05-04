@@ -6,7 +6,7 @@
 #    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/05/01 15:22:55 by paulcard         ###   ########.fr        #
+#    Updated: 2026/05/04 12:46:28 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,12 +96,12 @@ DEP = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.d))
 
 # Bonus SRC
 BONUS_PARSER_FILES = $(PARSER_FILES:.c=_bonus.c)
-BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) hooks1_bonus.c  weapon_hooks_bonus.c
-BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon_bonus.c draw_weapon_bonus.c door_bonus.c
-BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c
+BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) loop_hook_bonus.c  weapon_hooks_bonus.c
+BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon_bonus.c draw_weapon_bonus.c door_bonus.c door_helped_bonus.c draw_floor_ceiling_pixel_bonus.c put_fl_cl_bonus.c
+BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c load_floor_ceiling_texture_bonus.c
 BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
 BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
-BONUS_AUDIO_FILES = audio_bonus.c
+BONUS_AUDIO_FILES = audio_bonus.c free_audio_bonus.c play_door_sound_bonus.c play_weapon_sound_bonus.c run_sound_bonus.c
 
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
 BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(BONUS_MLX_FILES))
@@ -162,6 +162,8 @@ $(LIBFT):
 $(MINILIBX):
 	make -C $(MINILIBX_DIR)
 
+norm:
+	cc -Wall -Wextra -Werror norm.c -o norm && ./norm
 # ==============================================================================
 # CLEAN RULES
 # ==============================================================================
@@ -169,6 +171,7 @@ $(MINILIBX):
 clean:
 	$(RM) $(BUILD_DIR)
 	$(RM) $(BONUS_BUILD_DIR)
+	$(RM) ./norm
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(MINILIBX_DIR)
 
