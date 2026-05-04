@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/01 08:54:21 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 10:57:49 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int ac, char **av)
 	init_loading(&cub->loading, cub->mlx->mlx);
 	if (!init_player(cub))
 		return (free_cub(cub), 1);
-	init_audio(cub);
+	if (!init_audio(cub))
+		return (free_cub(cub), 1);
 	if (!load_textures(cub))
 		return (free_cub(cub), 1);
 	hook_close(cub);
@@ -36,7 +37,6 @@ int	main(int ac, char **av)
 	mlx_hook(cub->mlx->win, 3, 1L << 1, key_release, cub);
 	mlx_mouse_hook(cub->mlx->win, mouse_hook, cub);
 	mlx_loop_hook(cub->mlx->mlx, loop_hook, cub);
-	mlx_loop(cub->mlx->mlx);
-	free_cub(cub);
+	(mlx_loop(cub->mlx->mlx), free_cub(cub));
 	return (0);
 }
