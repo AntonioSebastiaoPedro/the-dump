@@ -46,6 +46,9 @@ void	try_interact_door(t_cub *cub)
 	}
 	else if (door->state == DOOR_OPEN)
 	{
+		if ((int)cub->player->pos_x == door->x
+			&& (int)cub->player->pos_y == door->y)
+			return ;
 		door->state = DOOR_CLOSING;
 		play_door_sound(cub);
 	}
