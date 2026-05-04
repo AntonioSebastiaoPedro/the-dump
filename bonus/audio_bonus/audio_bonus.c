@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 15:35:00 by antigravity       #+#    #+#             */
-/*   Updated: 2026/05/01 19:35:44 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 09:59:40 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,94 +15,57 @@
 /* Use SampleLoad for sound effects:
 	 * param 5 (max) is 3 for up to 3 overlapping sounds.
 */
-void	init_audio(t_cub *cub)
+/* 4 is BASS_SAMPLE_LOOP */
+
+static HSAMPLE	load_sound(char *path, int max, int flags)
 {
-	cub->weapon_sound = 0;
-	cub->back_sound = 0;
+	HSAMPLE	sound;
+
+	sound = BASS_SampleLoad(FALSE, path, 0, 0, max, flags);
+	if (!sound)
+	{
+		ft_putstr_fd("Warning: Failed to load ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putchar_fd('\n', 2);
+	}
+	return (sound);
+}
+
+static HCHANNEL	init_channel(HSAMPLE sound, bool autoplay)
+{
+	HCHANNEL	channel;
+
+	if (!sound)
+		return (0);
+	channel = BASS_SampleGetChannel(sound, FALSE);
+	if (autoplay)
+		BASS_ChannelPlay(channel, FALSE);
+	return (channel);
+}
+
+static bool	init_bass(void)
+{
 	if (!BASS_Init(-1, 44100, 0, 0, NULL))
 	{
 		ft_putstr_fd("Error\nBASS initialization failed\n", 2);
-		return ;
+		return (false);
 	}
-	cub->weapon_sound = BASS_SampleLoad(FALSE,
-			"assets/sounds/weapon/revolver.mp3", 0, 0, 3, 0);
-	if (!cub->weapon_sound)
-		ft_putstr_fd("Warning: Failed to load assets/sounds/weapon/revolver.mp3\n", 2);
-	cub->run_sound = BASS_SampleLoad(FALSE,
-			"assets/sounds/run/run.mp3", 0, 0, 1, 4); /* 4 is BASS_SAMPLE_LOOP */
-	if (!cub->run_sound)
-		ft_putstr_fd("Warning: Failed to load assets/sounds/run/run.mp3\n", 2);
-	cub->door_sound = BASS_SampleLoad(FALSE,
-			"assets/sounds/door/door_1.mp3", 0, 0, 3, 0);
-	if (!cub->door_sound)
-		ft_putstr_fd("Warning: Failed to load assets/sounds/door/door_1.mp3\n", 2);
-	cub->back_sound = BASS_SampleLoad(FALSE,
-			"assets/sounds/back3.mp3", 0, 0, 1, 4);
-	if (!cub->back_sound)
-		ft_putstr_fd("Warning: Failed to load assets/sounds/back2.mp3\n", 2);
-	if (cub->run_sound)
-		cub->run_channel = BASS_SampleGetChannel(cub->run_sound, FALSE);
-	else
-		cub->run_channel = 0;
-	if (cub->back_sound)
-	{
-		cub->back_channel = BASS_SampleGetChannel(cub->back_sound, FALSE);
-		BASS_ChannelPlay(cub->back_channel, FALSE);
-	}
-	else
-		cub->back_channel = 0;
+	return (true);
 }
 
-/* Retrieves a playback channel for the sample and plays it */
-void	play_weapon_sound(t_cub *cub)
+bool	init_audio(t_cub *cub)
 {
-	unsigned int channel;
-
-	if (cub->weapon_sound)
-	{
-		channel = BASS_SampleGetChannel(cub->weapon_sound, FALSE);
-		BASS_ChannelPlay(channel, FALSE);
-	}
-}
-
-void	play_door_sound(t_cub *cub)
-{
-	unsigned int	channel;
-
-	if (cub->door_sound)
-	{
-		channel = BASS_SampleGetChannel(cub->door_sound, FALSE);
-		BASS_ChannelPlay(channel, FALSE);
-	}
-}
-
-void	play_run_sound(t_cub *cub)
-{
-	if (cub->run_channel)
-	{
-		if (BASS_ChannelIsActive(cub->run_channel) != 1)
-			BASS_ChannelPlay(cub->run_channel, FALSE);
-	}
-}
-
-void	stop_run_sound(t_cub *cub)
-{
-	if (cub->run_channel)
-	{
-		if (BASS_ChannelIsActive(cub->run_channel) == 1)
-			BASS_ChannelPause(cub->run_channel);
-	}
-}
-
-void	free_audio(t_cub *cub)
-{
-	if (cub->weapon_sound)
-		BASS_SampleFree(cub->weapon_sound);
-	if (cub->run_sound)
-		BASS_SampleFree(cub->run_sound);
-	if (cub->door_sound)
-		BASS_SampleFree(cub->door_sound);
-	if (cub->back_sound)
-		BASS_SampleFree(cub->back_sound);
-	BASS_Free();
+	if (!init_bass())
+		return (false);
+	cub->weapon_sound = load_sound(
+			"assets/sounds/weapon/revolver.mp3", 3, 0);
+	cub->run_sound = load_sound(
+			"assets/sounds/run/run.mp3", 1, 4);
+	cub->door_sound = load_sound(
+			"assets/sounds/door/door_1.mp3", 3, 0);
+	cub->back_sound = load_sound(
+			"assets/sounds/back3.mp3", 1, 4);
+	cub->run_channel = init_channel(cub->run_sound, false);
+	cub->back_channel = init_channel(cub->back_sound, true);
+	return (true);
 }
