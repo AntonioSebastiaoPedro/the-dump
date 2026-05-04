@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 15:51:41 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 16:17:13 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <stdbool.h>
 # include <stdint.h>
 # include <X11/Xlib.h>
-
 
 /* ====== HEADERS DO PROJETO ====== */
 # include "../libft/libft.h"
