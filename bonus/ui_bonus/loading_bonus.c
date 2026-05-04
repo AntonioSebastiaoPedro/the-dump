@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loading_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 14:39:29 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/04 09:39:05 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	init_loading(t_loading *loading, void *mlx)
 	loading->progress = 0;
 	loading->max_progress = 100;
 	loading->frame_count = 0;
-	loading->logo = NULL;
-	loading->background = NULL;
 }
 
 void	update_loading(t_loading *loading)

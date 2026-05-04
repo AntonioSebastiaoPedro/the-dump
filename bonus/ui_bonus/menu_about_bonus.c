@@ -6,21 +6,11 @@
 /*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:55:50 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 19:13:37 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/04 10:01:28 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
-
-void	put_line(t_draw *d, char *text)
-{
-	int	x;
-
-	x = (WIDTH - (ft_strlen(text) * 10)) / 2;
-	mlx_string_put(d->cub->mlx->mlx, d->cub->mlx->win, x, *(d->y),
-		d->color, text);
-	*(d->y) += 20;
-}
 
 void	about_write(t_cub *cub)
 {
