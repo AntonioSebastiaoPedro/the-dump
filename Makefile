@@ -6,7 +6,7 @@
 #    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/05/05 10:28:27 by paulcard         ###   ########.fr        #
+#    Updated: 2026/05/05 10:38:31 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -163,7 +163,7 @@ $(MINILIBX):
 	make -C $(MINILIBX_DIR)
 
 norm:
-	cc -Wall -Wextra -Werror norm.c -o norm && ./norm
+	@norminette bonus/ includes/ init_mlx/ libft/ parser/ player/ render/ utils/ main.c
 # ==============================================================================
 # CLEAN RULES
 # ==============================================================================
