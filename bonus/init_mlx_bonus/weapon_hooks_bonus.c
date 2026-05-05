@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/04 16:02:29 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/05/05 10:49:56 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	mouse_hook(int key, int x, int y, t_cub *cub)
 {
 	(void)x;
 	(void)y;
-	if (key == 1 && cub->mouse.show_mouse == false)
-		on_mouse_click(cub);
+	if (cub->state == GAME)
+	{
+		if (key == 1 && cub->mouse.show_mouse == false)
+			on_mouse_click(cub);
+	}
 	return (0);
 }

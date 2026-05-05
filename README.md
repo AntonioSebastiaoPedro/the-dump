@@ -108,7 +108,7 @@ For each vertical stripe of the screen:
 
 ```bash
 # Clone the repository
-git clone git@vogsphere.42luanda.com:vogsphere/intra-uuid-39aead79-5f1d-4dd3-9741-452221d44b3b-7296694-paulcard
+git clone git@vogsphere.42luanda.com:vogsphere/intra-uuid-39aead79-5f1d-4dd3-9741-452221d44b3b-7296694-paulcard cub3d
 cd cub3d
 
 # Compile mandatory version
