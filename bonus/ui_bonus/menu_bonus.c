@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 11:40:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 23:04:58 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/05 09:33:21 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,11 @@ void	handle_menu_input(int key, t_cub *cub)
 				cub->menu.selected = 0;
 		}
 		else if (key == KEY_ENTER)
-		{
-			play_button_sound(cub);
-			handle_menu_selected(cub);
-		}
+			(play_button_sound(cub), handle_menu_selected(cub));
 	}
 	else if (cub->state == ABOUT)
 	{
 		if (key == ESC)
-		{
-			play_button_sound(cub);
-			cub->state = MENU;
-		}
+			(play_button_sound(cub), cub->state = MENU);
 	}
 }

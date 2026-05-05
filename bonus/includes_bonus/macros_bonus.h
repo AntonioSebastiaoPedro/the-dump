@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 19:44:59 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/05 09:33:58 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define KEY_ENTER   65293
 # define KEY_LCTRL 65507
 # define KEY_RCTRL 65508
+# define KEY_V		118
 # define ESC         65307
 
 /* Screen */

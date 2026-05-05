@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aamandio <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/05/04 23:03:49 by aamandio         ###   ########.fr        #
+#    Updated: 2026/05/05 10:28:27 by paulcard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,11 @@ MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 
 # ==============================================================================
-# Bass Library
+# Bass Library (Bonus Only)
 # ==============================================================================
 BASSPATH = bass
-INCLUDES = -I$(BASSPATH)
-LDFLAGS += -L./$(BASSPATH) -lbass -Wl,-rpath=./$(BASSPATH)
+BONUS_INCLUDES = -I$(BASSPATH)
+BONUS_LDFLAGS = -L./$(BASSPATH) -lbass -Wl,-rpath=./$(BASSPATH)
 
 # ==============================================================================
 # DIRECTORIES
@@ -130,12 +130,12 @@ all: $(NAME)
 # Rule for mandatory objects
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # Rule for bonus objects
 $(BONUS_BUILD_DIR)/%.o: $(BONUS_DIR)/%.c | $(BONUS_BUILD_DIR)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INCLUDES) -I$(BONUS_DIR) -I$(BONUS_DIR)/$(BONUS_INCLUDES_DIR) -I$(LIBFT_DIR) -I. -MMD -MP -c $< -o $@
+	$(CC) $(CFLAGS) $(BONUS_INCLUDES) -I$(BONUS_DIR) -I$(BONUS_DIR)/$(BONUS_INCLUDES_DIR) -I$(LIBFT_DIR) -I. -MMD -MP -c $< -o $@
 
 # Create build folders
 $(BUILD_DIR):
@@ -152,7 +152,7 @@ $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(LIBFT) $(MINILIBX) $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) $(BONUS_LDFLAGS) -o $@
 
 # Compile libft
 $(LIBFT):

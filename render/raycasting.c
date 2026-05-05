@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 16:40:10 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/04 22:59:01 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/05/05 10:31:00 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	calculate_wall(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void  raycasting(int col, t_ray *ray, t_cub *cub)
+void	raycasting(int col, t_ray *ray, t_cub *cub)
 {
 	ray->map_x = (int)cub->player->pos_x;
 	ray->map_y = (int)cub->player->pos_y;
