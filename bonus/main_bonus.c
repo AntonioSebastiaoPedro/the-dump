@@ -30,6 +30,7 @@ int	main(int ac, char **av)
 		return (free_cub(cub), 1);
 	if (!init_audio(cub))
 		return (free_cub(cub), 1);
+	init_joystick(cub);
 	if (!load_textures(cub))
 		return (free_cub(cub), 1);
 	hook_close(cub);

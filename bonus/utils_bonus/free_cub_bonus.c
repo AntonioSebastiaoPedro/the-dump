@@ -32,6 +32,7 @@ void	free_cub(t_cub *cub)
 		free_textures(cub);
 		free(cub->textures);
 	}
+	close_joystick(cub);
 	free_audio(cub);
 	free_mlx(cub);
 	free(cub);

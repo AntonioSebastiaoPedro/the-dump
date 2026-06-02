@@ -222,6 +222,8 @@ typedef struct s_cub
 	unsigned int	back_channel;
 
 	t_texture		door_frames[DOOR_FRAMES];
+	int				joy_fd;
+	int				joy_axis[8];
 }	t_cub;
 
 typedef struct s_ldg_render

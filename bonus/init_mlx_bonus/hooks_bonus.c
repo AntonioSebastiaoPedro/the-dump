@@ -24,7 +24,7 @@ void	hook_close(t_cub *cub)
 	mlx_hook(cub->mlx->win, 17, 0, ft_close, cub);
 }
 
-static void	toggle_mouse(t_cub *cub)
+void	toggle_mouse_vis(t_cub *cub)
 {
 	cub->mouse.show_mouse = !cub->mouse.show_mouse;
 	if (cub->mouse.show_mouse)
@@ -38,7 +38,7 @@ int	key_press(int key, t_cub *cub)
 	if (key == ESC && cub->state == GAME)
 		ft_close(cub);
 	if (key == KEY_P && cub->state == GAME)
-		toggle_mouse(cub);
+		toggle_mouse_vis(cub);
 	if (cub->state == MENU || cub->state == ABOUT)
 		handle_menu_input(key, cub);
 	if (key >= 0 && key < 65536)

@@ -98,4 +98,8 @@
 # define DOOR_FRAMES 9
 # define DOOR_FRAME_DELAY 5
 
+/* JOYSTICK */
+# define JOY_DEADZONE     8000
+# define JOY_ROT_SENS     0.0000003
+
 #endif

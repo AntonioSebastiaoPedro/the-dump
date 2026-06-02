@@ -92,6 +92,7 @@ char			**ft_split_new(const char *s, const char *delim);
 bool			load_floor_ceiling_texture(t_cub *cub);
 
 /* ====== MLX SETUP ====== */
+int				ft_close(t_cub *cub);
 t_mlx			*init_mlx(void);
 void			hook_close(t_cub *cub);
 int				key_press(int key, t_cub *cub);
@@ -141,6 +142,12 @@ int				is_door_open(t_cub *cub, int x, int y);
 int				load_door_textures(t_cub *cub);
 void			free_door_textures(t_cub *cub);
 int				can_walk(t_cub *cub, int x, int y);
+
+/* ====== JOYSTICK ====== */
+void			init_joystick(t_cub *cub);
+void			poll_joystick(t_cub *cub);
+void			close_joystick(t_cub *cub);
+void			toggle_mouse_vis(t_cub *cub);
 
 /* ====== AUDIO ====== */
 bool			init_audio(t_cub *cub);

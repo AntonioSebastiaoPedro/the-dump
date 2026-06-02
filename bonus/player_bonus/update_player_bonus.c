@@ -72,13 +72,17 @@ void	update_player(t_cub *cub)
 	old_x = cub->player->pos_x;
 	old_y = cub->player->pos_y;
 	update_mouse(cub);
-	if (cub->keys[KEY_W])
+	if (cub->keys[KEY_W] || (cub->joy_fd >= 0 && (cub->joy_axis[1] < -JOY_DEADZONE
+				|| cub->joy_axis[7] < -JOY_DEADZONE)))
 		move_forward(cub->player, cub);
-	if (cub->keys[KEY_S])
+	if (cub->keys[KEY_S] || (cub->joy_fd >= 0 && (cub->joy_axis[1] > JOY_DEADZONE
+				|| cub->joy_axis[7] > JOY_DEADZONE)))
 		move_backward(cub->player, cub);
-	if (cub->keys[KEY_A])
+	if (cub->keys[KEY_A] || (cub->joy_fd >= 0 && (cub->joy_axis[0] < -JOY_DEADZONE
+				|| cub->joy_axis[6] < -JOY_DEADZONE)))
 		strafe(cub->player, cub, -1);
-	if (cub->keys[KEY_D])
+	if (cub->keys[KEY_D] || (cub->joy_fd >= 0 && (cub->joy_axis[0] > JOY_DEADZONE
+				|| cub->joy_axis[6] > JOY_DEADZONE)))
 		strafe(cub->player, cub, 1);
 	if (cub->keys[KEY_LEFT])
 		rotate(cub->player, -ROT_SPEED);

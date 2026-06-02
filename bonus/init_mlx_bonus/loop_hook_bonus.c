@@ -44,6 +44,7 @@ int	loop_hook(t_cub *cub)
 		render_about(cub);
 	else if (cub->state == GAME)
 	{
+		poll_joystick(cub);
 		(update_player(cub), update_doors(cub));
 		render(cub);
 		if (!is_window_focused(cub))
