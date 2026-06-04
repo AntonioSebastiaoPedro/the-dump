@@ -102,7 +102,7 @@ BONUS_MLX_FILES = $(MLX_FILES:.c=_bonus.c) loop_hook_bonus.c  weapon_hooks_bonus
 BONUS_RENDER_FILES = $(RENDER_FILES:.c=_bonus.c) minimap_bonus.c update_weapon_bonus.c draw_weapon_bonus.c door_bonus.c door_helped_bonus.c draw_floor_ceiling_pixel_bonus.c put_fl_cl_bonus.c mira_bonus.c
 BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonus.c free_textures_bonus.c load_floor_ceiling_texture_bonus.c
 BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
-BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
+BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c loader_thread_bonus.c
 BONUS_AUDIO_FILES = audio_bonus.c free_audio_bonus.c play_door_sound_bonus.c play_weapon_sound_bonus.c run_sound_bonus.c play_button_sound_bonus.c
 BONUS_ENEMY_FILES = enemy_init_bonus.c enemy_parser_bonus.c enemy_update_bonus.c enemy_render_bonus.c enemy_ai_bonus.c enemy_collision_bonus.c enemy_attack_bonus.c enemy_animation_bonus.c enemy_destroy_bonus.c
 BONUS_LEVEL_FILES = level_manager_bonus.c level_transition_bonus.c
@@ -158,7 +158,7 @@ $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(LIBFT) $(MINILIBX) $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) $(BONUS_LDFLAGS) -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(BONUS_OBJ) $(LDFLAGS) $(BONUS_LDFLAGS) -lpthread -o $@
 
 # Compile libft
 $(LIBFT):

@@ -15,6 +15,16 @@
 
 # include "macros_bonus.h"
 # include <stdbool.h>
+# include <pthread.h>
+
+typedef struct s_loader
+{
+	pthread_t		thread;
+	pthread_mutex_t	mutex;
+	int				done;
+	int				total_items;
+	int				items_loaded;
+}	t_loader;
 
 
 
@@ -290,6 +300,7 @@ typedef struct s_cub
 	t_weapon		weapons[WEAPON_COUNT];
 	t_weapon		*current_weapon;
 	int				current_weapon_index;
+	t_loader		loader;
 }	t_cub;
 
 typedef struct s_ldg_render

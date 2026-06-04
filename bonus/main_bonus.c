@@ -11,10 +11,13 @@
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub_bonus.h"
+#include <X11/Xlib.h>
 
 int	main(int ac, char **av)
 {
 	t_cub	*cub;
+
+	XInitThreads();
 
 	cub = parse_cub(ac, av);
 	if (!cub)
@@ -25,17 +28,15 @@ int	main(int ac, char **av)
 	cub->mouse.center_x = WIDTH / 2;
 	cub->mouse.center_y = HEIGHT / 2;
 	cub->state = LOADING;
-	init_loading(&cub->loading, cub->mlx->mlx);
-	if (!init_player(cub))
+	init_loading(cub, &cub->loading, cub->mlx->mlx);
+	
+	// Load items needed for loading screen itself
+	if (!load_single_texture(cub, &cub->menu.cover, COVER))
 		return (free_cub(cub), 1);
-	if (!init_audio(cub))
-		return (free_cub(cub), 1);
-	init_joystick(cub);
-	if (!load_textures(cub))
-		return (free_cub(cub), 1);
-	init_enemies(cub);
-	if (!load_enemy_textures(cub))
-		return (free_cub(cub), 1);
+	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
+	
+	start_loader_thread(cub);
+	
 	cub->player_hp = PLAYER_MAX_HP;
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);

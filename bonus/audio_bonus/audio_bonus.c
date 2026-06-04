@@ -17,7 +17,7 @@
 */
 /* 4 is BASS_SAMPLE_LOOP */
 
-static HSAMPLE	load_sound(char *path, int max, int flags)
+static HSAMPLE	load_sound(t_cub *cub, char *path, int max, int flags)
 {
 	HSAMPLE	sound;
 
@@ -28,6 +28,7 @@ static HSAMPLE	load_sound(char *path, int max, int flags)
 		ft_putstr_fd(path, 2);
 		ft_putchar_fd('\n', 2);
 	}
+	increment_loader(cub);
 	return (sound);
 }
 
@@ -57,19 +58,19 @@ bool	init_audio(t_cub *cub)
 {
 	if (!init_bass())
 		return (false);
-	cub->weapons[WEAPON_REVOLVER].shoot_sound = load_sound(
+	cub->weapons[WEAPON_REVOLVER].shoot_sound = load_sound(cub,
 			"assets/sounds/weapon/revolver.mp3", 3, 0);
-	cub->weapons[WEAPON_MACHINEGUN].shoot_sound = load_sound(
+	cub->weapons[WEAPON_MACHINEGUN].shoot_sound = load_sound(cub,
 			"assets/sounds/atkmachinegun.mp3", 3, 0);
-	cub->weapons[WEAPON_GATLING].shoot_sound = load_sound(
+	cub->weapons[WEAPON_GATLING].shoot_sound = load_sound(cub,
 			"assets/sounds/atkgatling.mp3", 3, 0);
-	cub->run_sound = load_sound(
+	cub->run_sound = load_sound(cub,
 			"assets/sounds/run/run.mp3", 1, 4);
-	cub->door_sound = load_sound(
+	cub->door_sound = load_sound(cub,
 			"assets/sounds/door/door_1.mp3", 3, 0);
-	cub->back_sound = load_sound(
+	cub->back_sound = load_sound(cub,
 			"assets/sounds/back3.mp3", 1, 4);
-	cub->button_sound = load_sound(
+	cub->button_sound = load_sound(cub,
 			"assets/sounds/button.mp3", 3, 0);
 	cub->run_channel = init_channel(cub->run_sound, false);
 	cub->back_channel = init_channel(cub->back_sound, true);

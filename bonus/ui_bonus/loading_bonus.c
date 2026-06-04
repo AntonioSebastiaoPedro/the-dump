@@ -12,12 +12,16 @@
 
 #include "../includes_bonus/cub_bonus.h"
 
-void	init_loading(t_loading *loading, void *mlx)
+void	init_loading(t_cub *cub, t_loading *loading, void *mlx)
 {
 	(void)mlx;
 	loading->progress = 0;
 	loading->max_progress = 100;
 	loading->frame_count = 0;
+	pthread_mutex_init(&cub->loader.mutex, NULL);
+	cub->loader.done = 0;
+	cub->loader.items_loaded = 0;
+	cub->loader.total_items = 64;
 }
 
 void	update_loading(t_loading *loading)

@@ -27,13 +27,18 @@ int	loop_hook(t_cub *cub)
 {
 	if (cub->state == LOADING)
 	{
-		update_loading(&cub->loading);
 		loading_render(cub);
-		if (is_loading_complete(&cub->loading))
+		pthread_mutex_lock(&cub->loader.mutex);
+		if (cub->loader.done)
 		{
+			pthread_mutex_unlock(&cub->loader.mutex);
+			pthread_join(cub->loader.thread, NULL);
+			pthread_mutex_destroy(&cub->loader.mutex);
 			cub->state = MENU;
 			init_menu(cub);
 		}
+		else
+			pthread_mutex_unlock(&cub->loader.mutex);
 	}
 	else if (cub->state == MENU)
 	{

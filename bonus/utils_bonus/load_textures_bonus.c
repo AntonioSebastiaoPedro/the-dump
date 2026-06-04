@@ -23,6 +23,7 @@ int	load_single_texture(t_cub *cub, t_texture *tex, const char *path)
 	}
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->line_len,
 			&tex->endian);
+	increment_loader(cub);
 	return (1);
 }
 

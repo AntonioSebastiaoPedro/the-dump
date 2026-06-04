@@ -33,7 +33,7 @@
 # include "macros_bonus.h"
 
 /* ====== LOADING SCREEN ====== */
-void			init_loading(t_loading *loading, void *mlx);
+void			init_loading(t_cub *cub, t_loading *loading, void *mlx);
 void			update_loading(t_loading *loading);
 void			loading_render(t_cub *game);
 int				is_loading_complete(t_loading *loading);
@@ -186,4 +186,6 @@ void			render_transition_screen(t_cub *cub);
 void			render_game_over(t_cub *cub);
 void			render_victory_screen(t_cub *cub);
 int				parse_map_into_cub(t_cub *cub, char *filename);
+void			start_loader_thread(t_cub *cub);
+void			increment_loader(t_cub *cub);
 #endif
