@@ -78,6 +78,10 @@ int	parse_texture(const char *line, t_cub *cub)
 		ret = set_cub_texture(&cub->config->we, parts, "WE");
 	else if (ft_strcmp(parts[0], "EA") == 0)
 		ret = set_cub_texture(&cub->config->ea, parts, "EA");
+	else if (ft_strcmp(parts[0], "SKY") == 0)
+		ret = set_cub_texture(&cub->config->c_tex, parts, "SKY");
+	else if (ft_strcmp(parts[0], "C") == 0)
+		ret = set_cub_texture(&cub->config->c_tex, parts, "C");
 	else
 		ret = (ft_putendl_fd(msg1, 2), free_split(parts), 0);
 	if (ret)

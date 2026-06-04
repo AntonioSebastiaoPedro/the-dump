@@ -35,6 +35,12 @@ t_line_type	get_line_type(const char *line)
 			return (COLOR);
 		return (INVALID);
 	}
+	if (ft_strncmp(line, "SKY", 3) == 0)
+	{
+		if (line[3] == SPACE || line[3] == NEWLINE || line[3] == TAB)
+			return (COLOR);
+		return (INVALID);
+	}
 	if (line[0] == '0' || line[0] == '1' || line[0] == SPACE
 		|| line[0] == 'N' || line[0] == 'S' || line[0] == 'E' || line[0] == 'W')
 		return (MAP);

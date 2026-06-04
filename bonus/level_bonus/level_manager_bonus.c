@@ -91,6 +91,7 @@ void	load_next_level(t_cub *cub)
 	{
 		clear_map(cub);
 		clear_config(cub);
+		cub->textures->skybox.img = NULL;
 	}
 
 	// Reset Player state (not the pointer)

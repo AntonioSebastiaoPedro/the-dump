@@ -14,10 +14,21 @@
 
 static int	validate_identifier(const char *line, char *id)
 {
-	if (!line || (line[0] != 'F' && line[0] != 'C') || !ft_isspace(line[1]))
-		return (ft_putendl_fd("Error\nIdentificador de cor inválido", 2), 0);
-	*id = line[0];
-	return (1);
+	if (!line)
+		return (0);
+	if (line[0] == 'F' || line[0] == 'C')
+	{
+		if (!ft_isspace(line[1]))
+			return (ft_putendl_fd("Error\nIdentificador de cor inválido", 2), 0);
+		*id = line[0];
+		return (1);
+	}
+	if (ft_strncmp(line, "SKY", 3) == 0 && ft_isspace(line[3]))
+	{
+		*id = 'S';
+		return (1);
+	}
+	return (ft_putendl_fd("Error\nIdentificador de cor inválido", 2), 0);
 }
 
 static int	validate_rgb_values(char **rgb)
@@ -93,8 +104,8 @@ int	parse_color(const char *line, t_cub *cub)
 
 	if (!validate_identifier(line, &id))
 		return (0);
-	if (!ft_strchr(line, ','))
-		return (parse_fc_texture(line, id, cub));
+	if (!ft_strchr(line, ',') || id == 'S')
+		return (parse_fc_texture(line, id == 'S' ? 'C' : id, cub));
 	if (!validate_rgb_format(line))
 		return (ft_putendl_fd("Error\nFormato RGB inválido", 2), 0);
 	rgb = ft_split_new(line + 2, ",");

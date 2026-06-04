@@ -20,8 +20,18 @@ void	render(t_cub *cub)
 
 	i = 0;
 	pos = (unsigned int *)cub->mlx->addr;
+	if (cub->textures->skybox.img)
+		draw_skybox(cub);
 	while (i < WIDTH * HEIGHT)
+	{
+		// Only clear floor area if skybox is active, or clear all if not
+		if (cub->textures->skybox.img && i < (WIDTH * HEIGHT) / 2)
+		{
+			i++;
+			continue;
+		}
 		*(pos + i++) = BLACK;
+	}
 	update_weapon(cub);
 	update_doors(cub);
 	i = 0;

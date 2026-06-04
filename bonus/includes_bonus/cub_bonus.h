@@ -119,6 +119,7 @@ void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
 					t_ray *ray);
 void			draw_mira(t_cub *cub);
 void			draw_hp_hud(t_cub *cub);
+void			draw_skybox(t_cub *cub);
 
 /* ====== PLAYER ====== */
 t_player		*init_player(t_cub *cub);

@@ -130,5 +130,7 @@ int	load_textures(t_cub *cub)
 		return (0);
 	if (!load_door_textures(cub))
 		return (0);
+	if (cub->config->c_tex && !load_single_texture(cub, &cub->textures->skybox, cub->config->c_tex))
+		return (0);
 	return (1);
 }

@@ -107,6 +107,7 @@ typedef struct s_textures
 	t_texture	ea;
 	t_texture	floor;
 	t_texture	ceiling;
+	t_texture	skybox;
 }	t_textures;
 
 typedef struct s_menu
