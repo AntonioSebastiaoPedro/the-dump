@@ -75,8 +75,11 @@ void	load_next_level(t_cub *cub)
 	next_map = cub->level_mgr.campaign_maps[cub->level_mgr.current_level_idx];
 
 	// Free current level resources safely
-	free_enemies(cub);
-	free_enemy_textures(cub);
+	if (cub->enemies)
+	{
+		free_enemies(cub);
+		free_enemy_textures(cub);
+	}
 	free_textures(cub);
 	if (cub->door)
 	{
@@ -84,12 +87,19 @@ void	load_next_level(t_cub *cub)
 		cub->door = NULL;
 		cub->n_door = 0;
 	}
-	clear_map(cub);
-	clear_config(cub);
+	if (cub->map && cub->map->grid)
+	{
+		clear_map(cub);
+		clear_config(cub);
+	}
 
 	// Reset Player state (not the pointer)
 	if (cub->player)
+	{
 		cub->player->dir = 0;
+		cub->player->pos_x = 0;
+		cub->player->pos_y = 0;
+	}
 
 	// Load new map
 	if (!parse_map_into_cub(cub, next_map))
@@ -106,7 +116,7 @@ void	load_next_level(t_cub *cub)
 	init_player(cub);
 	init_doors(cub);
 	init_enemies(cub);
-	if (!load_enemy_textures(cub))
+	if (cub->enemies && !load_enemy_textures(cub))
 	{
 		cub->state = GAME_OVER;
 		return ;

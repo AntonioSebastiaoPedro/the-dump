@@ -87,8 +87,9 @@ int	parse_map(char **lines, int map_start, t_cub *cub)
 	cub->map->height = height;
 	cub->map->width = ft_strlen(grid[0]);
 	cub->map->grid = grid;
+	if (check_player(grid, cub) == 0)
+		return (free_map(grid, height), cub->map->grid = NULL, 0);
 	if (validate_map(grid, height, cub) == 0)
 		return (free_map(grid, height), cub->map->grid = NULL, 0);
-	init_doors(cub);
 	return (1);
 }

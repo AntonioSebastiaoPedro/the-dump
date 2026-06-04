@@ -22,7 +22,6 @@ static	void	set_player_position(char **map, t_cub *cub, int x, int y)
 	cub->player->pos_x = x + 0.5;
 	cub->player->pos_y = y + 0.5;
 	cub->player->dir = map[y][x];
-	map[y][x] = '0';
 }
 
 int	check_player_help(char **map, t_cub *cub)

@@ -13,7 +13,7 @@ static int	count_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (ft_strchr("MDBO", cub->map->grid[y][x]))
+			if (ft_strchr("MBOG", cub->map->grid[y][x]))
 				count++;
 			x++;
 		}
@@ -85,11 +85,9 @@ void	init_enemies(t_cub *cub)
 
 	total = count_enemies(cub);
 	cub->enemy_count = 0;
+	cub->enemies = NULL;
 	if (total == 0)
-	{
-		cub->enemies = NULL;
 		return ;
-	}
 	cub->enemies = ft_calloc(total, sizeof(t_enemy));
 	if (!cub->enemies)
 		return ;
@@ -99,7 +97,7 @@ void	init_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (ft_strchr("MDBO", cub->map->grid[y][x]))
+			if (ft_strchr("MBOG", cub->map->grid[y][x]))
 			{
 				add_enemy(cub, x, y, cub->map->grid[y][x]);
 				cub->map->grid[y][x] = '0';
