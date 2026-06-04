@@ -3,6 +3,7 @@
 void	init_campaign(t_cub *cub, int ac, char **av)
 {
 	static char *campaign[] = {
+		"maps/enemy_test.cub",
 		"maps/level1.cub",
 		"maps/level2.cub",
 		"maps/boss.cub",
@@ -70,7 +71,7 @@ void	load_next_level(t_cub *cub)
 		return ;
 	}
 	next_map = cub->level_mgr.campaign_maps[cub->level_mgr.current_level_idx];
-	
+
 	// Free current level resources safely
 	free_enemies(cub);
 	free_enemy_textures(cub);
@@ -83,11 +84,11 @@ void	load_next_level(t_cub *cub)
 	}
 	clear_map(cub);
 	clear_config(cub);
-	
+
 	// Reset Player state (not the pointer)
 	if (cub->player)
 		cub->player->dir = 0;
-	
+
 	// Load new map
 	if (!parse_map_into_cub(cub, next_map))
 	{
