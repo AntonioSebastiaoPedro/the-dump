@@ -241,8 +241,34 @@ static void	draw_radar_border(t_cub *cub)
 }
 
 /*
+** Desenha as entidades (inimigos) no radar.
+*/
+static void	draw_radar_enemies(t_cub *cub)
+{
+	int		i;
+	int		ex;
+	int		ey;
+	double	rel_x;
+	double	rel_y;
+
+	i = 0;
+	while (i < cub->enemy_count)
+	{
+		if (cub->enemies[i].alive)
+		{
+			rel_x = cub->enemies[i].x - cub->player->pos_x;
+			rel_y = cub->enemies[i].y - cub->player->pos_y;
+			ex = RADAR_CENTER_X + (int)(rel_x * RADAR_SCALE);
+			ey = RADAR_CENTER_Y + (int)(rel_y * RADAR_SCALE);
+			draw_radar_square(cub, ex - 2, ey - 2, 4, RED);
+		}
+		i++;
+	}
+}
+
+/*
 ** Ponto de entrada do minimapa radar.
-** Ordem: fundo -> tiles -> crosshair -> aneis -> jogador -> borda
+** Ordem: fundo -> tiles -> crosshair -> aneis -> inimigos -> jogador -> borda
 */
 void	draw_minimap(t_cub *cub)
 {
@@ -263,6 +289,7 @@ void	draw_minimap(t_cub *cub)
 	draw_radar_tiles(cub, start_x, start_y);
 	draw_radar_crosshair(cub);
 	draw_radar_rings(cub);
+	draw_radar_enemies(cub);
 	draw_radar_player(cub);
 	draw_radar_border(cub);
 }

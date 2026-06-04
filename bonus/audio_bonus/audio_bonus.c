@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   audio_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 16:56:46 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 16:56:52 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/04 18:27:15 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,28 @@ bool	init_audio(t_cub *cub)
 			"assets/sounds/back3.mp3", 1, 4);
 	cub->button_sound = load_sound(cub,
 			"assets/sounds/button.mp3", 3, 0);
+	cub->level_done_sound = load_sound(cub,
+			"assets/sounds/leveldone.mp3", 1, 0);
+	cub->player_death_sound = load_sound(cub,
+			"assets/sounds/playerdeath.mp3", 1, 0);
+	cub->enemy_death_sound = load_sound(cub,
+			"assets/sounds/soldier/deathscream1.mp3", 1, 4);
 	cub->run_channel = init_channel(cub->run_sound, false);
 	cub->back_channel = init_channel(cub->back_sound, true);
 	return (true);
+}
+
+void	play_level_done_sound(t_cub *cub)
+{
+	init_channel(cub->level_done_sound, true);
+}
+
+void	play_player_death_sound(t_cub *cub)
+{
+	init_channel(cub->player_death_sound, true);
+}
+
+void	play_enemy_death_sound(t_cub *cub)
+{
+	init_channel(cub->enemy_death_sound, true);
 }

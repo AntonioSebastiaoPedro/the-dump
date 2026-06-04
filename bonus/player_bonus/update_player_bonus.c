@@ -92,4 +92,9 @@ void	update_player(t_cub *cub)
 		play_run_sound(cub);
 	else
 		stop_run_sound(cub);
+	if (cub->player_hp <= 0 && cub->state == GAME)
+	{
+		play_player_death_sound(cub);
+		cub->state = GAME_OVER;
+	}
 }

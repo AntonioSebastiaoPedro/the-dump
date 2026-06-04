@@ -16,6 +16,7 @@ static void	update_single_enemy(t_cub *cub, t_enemy *e)
 		e->state = EN_DEAD;
 		e->frame = 0;
 		e->frame_timer = 0;
+		play_enemy_death_sound(cub);
 	}
 	if (e->state == EN_IDLE)
 		enemy_ai_idle(cub, e);

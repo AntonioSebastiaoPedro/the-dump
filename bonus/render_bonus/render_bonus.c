@@ -31,5 +31,6 @@ void	render(t_cub *cub)
 	draw_enemies(cub);
 	draw_weapon(cub);
 	draw_mira(cub);
+	draw_hp_hud(cub);
 	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 }

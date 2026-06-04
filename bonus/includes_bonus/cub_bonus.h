@@ -118,6 +118,7 @@ int				load_single_texture(t_cub *cub, t_texture *tex,
 void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
 					t_ray *ray);
 void			draw_mira(t_cub *cub);
+void			draw_hp_hud(t_cub *cub);
 
 /* ====== PLAYER ====== */
 t_player		*init_player(t_cub *cub);
@@ -159,6 +160,9 @@ void			play_door_sound(t_cub *cub);
 void			play_button_sound(t_cub *cub);
 void			play_run_sound(t_cub *cub);
 void			stop_run_sound(t_cub *cub);
+void			play_level_done_sound(t_cub *cub);
+void			play_player_death_sound(t_cub *cub);
+void			play_enemy_death_sound(t_cub *cub);
 void			free_audio(t_cub *cub);
 
 /* ====== ENEMY ====== */

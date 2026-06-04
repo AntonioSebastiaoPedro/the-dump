@@ -17,6 +17,12 @@
 # include <stdbool.h>
 # include <pthread.h>
 
+typedef struct s_vec
+{
+	double	x;
+	double	y;
+}	t_vec;
+
 typedef struct s_loader
 {
 	pthread_t		thread;
@@ -303,6 +309,9 @@ typedef struct s_cub
 	unsigned int	button_sound;
 	unsigned int	run_channel;
 	unsigned int	back_channel;
+	unsigned int	level_done_sound;
+	unsigned int	player_death_sound;
+	unsigned int	enemy_death_sound;
 
 	t_texture		door_frames[DOOR_FRAMES];
 	int				joy_fd;
