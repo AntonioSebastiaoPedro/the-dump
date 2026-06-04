@@ -37,11 +37,15 @@ int	loop_hook(t_cub *cub)
 	}
 	else if (cub->state == MENU)
 	{
+		poll_joystick(cub);
 		update_menu(cub);
 		render_menu(cub);
 	}
 	else if (cub->state == ABOUT)
+	{
+		poll_joystick(cub);
 		render_about(cub);
+	}
 	else if (cub->state == GAME)
 	{
 		poll_joystick(cub);

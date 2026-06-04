@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/05 09:35:15 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/03 13:51:18 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	key_press(int key, t_cub *cub)
 	if (key == KEY_P && cub->state == GAME)
 		toggle_mouse_vis(cub);
 	if (cub->state == MENU || cub->state == ABOUT)
+	{
+		printf("key: %d\n", key);
 		handle_menu_input(key, cub);
+	}
 	if (key >= 0 && key < 65536)
 		cub->keys[key] = 1;
 	if (key == KEY_W || key == KEY_S || key == KEY_A || key == KEY_D)
