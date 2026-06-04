@@ -13,13 +13,49 @@ static int	count_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (cub->map->grid[y][x] == 'M' || cub->map->grid[y][x] == 'B')
+			if (ft_strchr("MDBO", cub->map->grid[y][x]))
 				count++;
 			x++;
 		}
 		y++;
 	}
 	return (count);
+}
+
+static void	set_enemy_stats(t_enemy *e, char type)
+{
+	if (type == 'B')
+	{
+		e->is_boss = 1;
+		e->type = OFFICER_TYPE;
+		e->hp = 100;
+		e->damage = 25;
+		e->speed = ENEMY_SPEED * 1.2;
+	}
+	else if (type == 'D')
+	{
+		e->is_boss = 0;
+		e->type = DOG_TYPE;
+		e->hp = DOG_HP;
+		e->damage = DOG_DAMAGE;
+		e->speed = DOG_SPEED;
+	}
+	else if (type == 'O')
+	{
+		e->is_boss = 0;
+		e->type = OFFICER_TYPE;
+		e->hp = OFFICER_HP;
+		e->damage = OFFICER_DAMAGE;
+		e->speed = OFFICER_SPEED;
+	}
+	else
+	{
+		e->is_boss = 0;
+		e->type = SOLDIER_TYPE;
+		e->hp = ENEMY_HP;
+		e->damage = ENEMY_DAMAGE;
+		e->speed = ENEMY_SPEED;
+	}
 }
 
 static void	add_enemy(t_cub *cub, int x, int y, char type)
@@ -32,20 +68,7 @@ static void	add_enemy(t_cub *cub, int x, int y, char type)
 	e->dir_x = 0.0;
 	e->dir_y = 0.0;
 	e->dist = 0.0;
-	if (type == 'B')
-	{
-		e->is_boss = 1;
-		e->hp = 10;
-		e->damage = 25;
-		e->speed = ENEMY_SPEED * 1.2;
-	}
-	else
-	{
-		e->is_boss = 0;
-		e->hp = ENEMY_HP;
-		e->damage = ENEMY_DAMAGE;
-		e->speed = ENEMY_SPEED;
-	}
+	set_enemy_stats(e, type);
 	e->alive = 1;
 	e->frame = 0;
 	e->frame_timer = 0;
@@ -76,7 +99,7 @@ void	init_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (cub->map->grid[y][x] == 'M' || cub->map->grid[y][x] == 'B')
+			if (ft_strchr("MDBO", cub->map->grid[y][x]))
 			{
 				add_enemy(cub, x, y, cub->map->grid[y][x]);
 				cub->map->grid[y][x] = '0';

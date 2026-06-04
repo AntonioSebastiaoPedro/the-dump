@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/05 09:33:58 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/04 15:47:42 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,40 @@
 # define JOY_ROT_SENS     0.0000003
 
 /* ENEMY */
+# define ENEMY_TYPE_COUNT    3
+# define EN_SOLDIER          0
+# define EN_DOG              1
+# define EN_OFFICER          2
+
 # define ENEMY_IDLE_FRAMES   4
 # define ENEMY_WALK_FRAMES   4
-# define ENEMY_ATTACK_FRAMES 2
+# define ENEMY_ATTACK_FRAMES 4
 # define ENEMY_DEAD_FRAMES   5
-# define DETECTION_RADIUS  8.0
-# define ENEMY_SPEED       0.02
-# define ENEMY_HP          3
-# define ENEMY_DAMAGE      10
+
+/* DIRECTIONS (8-WAY) */
+# define DIR_FRONT        0
+# define DIR_FRONT_RIGHT  1
+# define DIR_RIGHT        2
+# define DIR_BACK_RIGHT   3
+# define DIR_BACK         4
+# define DIR_BACK_LEFT    5
+# define DIR_LEFT         6
+# define DIR_FRONT_LEFT   7
+
+# define DETECTION_RADIUS  10.0
+# define ENEMY_SPEED       0.015
+# define ENEMY_HP          2
+# define ENEMY_DAMAGE      2
 # define ENEMY_ATK_COOLDOWN 60
-# define ENEMY_FRAME_DELAY  8
+# define ENEMY_FRAME_DELAY  10
+
+# define DOG_HP            3
+# define DOG_DAMAGE        1
+# define DOG_SPEED         0.025
+# define OFFICER_HP        25
+# define OFFICER_DAMAGE    15
+# define OFFICER_SPEED     0.018
+
 # define PLAYER_MAX_HP     100
 
 #endif

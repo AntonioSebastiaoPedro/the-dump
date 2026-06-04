@@ -11,20 +11,33 @@ static void	destroy_tex(t_cub *cub, t_texture *tex)
 
 void	free_enemy_textures(t_cub *cub)
 {
-	int	i;
+	int	t;
+	int	d;
+	int	f;
+	t_enemy_anims *a;
 
-	i = 0;
-	while (i < ENEMY_IDLE_FRAMES)
-		destroy_tex(cub, &cub->enemy_anims.idle[i++]);
-	i = 0;
-	while (i < ENEMY_WALK_FRAMES)
-		destroy_tex(cub, &cub->enemy_anims.walk[i++]);
-	i = 0;
-	while (i < ENEMY_ATTACK_FRAMES)
-		destroy_tex(cub, &cub->enemy_anims.attack[i++]);
-	i = 0;
-	while (i < ENEMY_DEAD_FRAMES)
-		destroy_tex(cub, &cub->enemy_anims.dead[i++]);
+	t = 0;
+	while (t < ENEMY_TYPE_COUNT)
+	{
+		a = &cub->enemy_anims[t];
+		d = 0;
+		while (d < 8)
+		{
+			f = 0;
+			while (f < 4) // Max frames
+			{
+				destroy_tex(cub, &a->idle[d][f]);
+				destroy_tex(cub, &a->walk[d][f]);
+				destroy_tex(cub, &a->attack[d][f]);
+				f++;
+			}
+			d++;
+		}
+		f = 0;
+		while (f < ENEMY_DEAD_FRAMES)
+			destroy_tex(cub, &a->dead[f++]);
+		t++;
+	}
 }
 
 void	free_enemies(t_cub *cub)

@@ -112,11 +112,18 @@ typedef struct s_menu
 	t_texture	menu_img;
 }	t_menu;
 
+typedef enum e_enemy_type
+{
+	SOLDIER_TYPE,
+	DOG_TYPE,
+	OFFICER_TYPE,
+}	t_enemy_type;
+
 typedef struct s_enemy_anims
 {
-	t_texture	idle[ENEMY_IDLE_FRAMES];
-	t_texture	walk[ENEMY_WALK_FRAMES];
-	t_texture	attack[ENEMY_ATTACK_FRAMES];
+	t_texture	idle[8][ENEMY_IDLE_FRAMES];
+	t_texture	walk[8][ENEMY_WALK_FRAMES];
+	t_texture	attack[8][ENEMY_ATTACK_FRAMES];
 	t_texture	dead[ENEMY_DEAD_FRAMES];
 }	t_enemy_anims;
 
@@ -136,6 +143,7 @@ typedef struct s_enemy
 	int				frame_timer;
 	int				attack_timer;
 	t_enemy_state	state;
+	t_enemy_type	type;
 }	t_enemy;
 
 typedef struct s_loading
@@ -293,7 +301,7 @@ typedef struct s_cub
 	int				joy_axis[8];
 	t_enemy			*enemies;
 	int				enemy_count;
-	t_enemy_anims	enemy_anims;
+	t_enemy_anims	enemy_anims[ENEMY_TYPE_COUNT];
 	double			zbuffer[WIDTH];
 	int				player_hp;
 	t_level_mgr		level_mgr;
