@@ -289,6 +289,7 @@ typedef struct s_cub
 	t_level_mgr		level_mgr;
 	t_weapon		weapons[WEAPON_COUNT];
 	t_weapon		*current_weapon;
+	int				current_weapon_index;
 }	t_cub;
 
 typedef struct s_ldg_render

@@ -133,6 +133,7 @@ void			free_weapon_textures(t_cub *cub);
 void			on_mouse_click(t_cub *cub);
 void			update_weapon(t_cub *cub);
 void			draw_weapon(t_cub *cub);
+void			switch_weapon_next(t_cub *cub);
 
 /* ====== BONUS (DOORS) ====== */
 void			init_doors(t_cub *cub);

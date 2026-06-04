@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/04 13:04:03 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/04 13:21:34 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,11 @@ static void	handle_joy_buttons(t_cub *cub, struct js_event *e)
 		else if (e->number == 3)
 			cub->show_mira = !cub->show_mira;
 		else if (e->number == 6)
-			ft_close(cub);
+			toggle_mouse_vis(cub);
 		else if (e->number == 7)
 			cub->state = MENU;
-		else if (e->number == 2)
-			toggle_mouse_vis(cub);
 		else if (e->number == 4)
-        	cub->current_weapon = &cub->weapons[WEAPON_MACHINEGUN];
+			switch_weapon_next(cub);
 	}
 }
 
@@ -79,7 +77,6 @@ static void	handle_joy_axes(t_cub *cub, struct js_event *e)
 			if (e->value < -JOY_DEADZONE && cub->joy_axis[e->number] >= -JOY_DEADZONE)
 			{
 				/* UP */
-				//printf("%d\n", e->number);
 				handle_menu_input(65362, cub);
 			}
 			else if (e->value > JOY_DEADZONE && cub->joy_axis[e->number] <= JOY_DEADZONE)

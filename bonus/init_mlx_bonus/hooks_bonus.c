@@ -56,11 +56,12 @@ int	key_press(int key, t_cub *cub)
 	if (key == KEY_V)
 		cub->state = MENU;
 	if (key == KEY_1)
-		cub->current_weapon = &cub->weapons[WEAPON_REVOLVER];
+		cub->current_weapon_index = WEAPON_REVOLVER;
 	if (key == KEY_2)
-		cub->current_weapon = &cub->weapons[WEAPON_MACHINEGUN];
+		cub->current_weapon_index = WEAPON_MACHINEGUN;
 	if (key == KEY_3)
-		cub->current_weapon = &cub->weapons[WEAPON_GATLING];
+		cub->current_weapon_index = WEAPON_GATLING;
+	cub->current_weapon = &cub->weapons[cub->current_weapon_index];
 	return (0);
 }
 

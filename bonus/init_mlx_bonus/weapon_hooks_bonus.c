@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   weapon_hooks_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:25:39 by aamandio          #+#    #+#             */
-/*   Updated: 2026/05/05 10:49:56 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/04 13:20:06 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ void	on_mouse_click(t_cub *cub)
 	set_weapon_state(cub->current_weapon, WEAPON_SHOT);
 	play_weapon_sound(cub);
 	enemy_take_damage(cub);
+}
+
+void	switch_weapon_next(t_cub *cub)
+{
+	cub->current_weapon_index++;
+	if (cub->current_weapon_index >= WEAPON_COUNT)
+		cub->current_weapon_index = 0;
+	cub->current_weapon = &cub->weapons[cub->current_weapon_index];
 }
 
 int	mouse_hook(int key, int x, int y, t_cub *cub)

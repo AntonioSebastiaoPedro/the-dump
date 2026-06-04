@@ -83,6 +83,7 @@ int	load_weapon_textures(t_cub *cub)
 		return (0);
 	if (!load_weapon(cub, &cub->weapons[WEAPON_GATLING], gt_paths))
 		return (0);
+	cub->current_weapon_index = WEAPON_REVOLVER;
 	cub->current_weapon = &cub->weapons[WEAPON_REVOLVER];
 	return (1);
 }
