@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/04 16:12:17 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/04 16:59:16 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,20 @@ static void	handle_joy_buttons(t_cub *cub, struct js_event *e)
 			cub->state = MENU;
 		else if (e->number == 4)
 			switch_weapon_next(cub);
+	}
+	else if (cub->state == LEVEL_TRANSITION)
+	{
+		if (e->number == 6 || e->number == 7 || e->number == 0)
+		{
+			load_next_level(cub);
+		}
+	}
+	else if (cub->state == GAME_OVER || cub->state == VICTORY)
+	{
+		if (e->number == 6 || e->number == 7 || e->number == 0)
+		{
+			restart_game(cub);
+		}
 	}
 }
 

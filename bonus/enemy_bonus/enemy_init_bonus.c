@@ -28,8 +28,8 @@ static void	set_enemy_stats(t_enemy *e, char type)
 	{
 		e->is_boss = 1;
 		e->type = OFFICER_TYPE;
-		e->hp = 100;
-		e->damage = 25;
+		e->hp = 20;
+		e->damage = 10;
 		e->speed = ENEMY_SPEED * 1.2;
 	}
 	else if (type == 'D')

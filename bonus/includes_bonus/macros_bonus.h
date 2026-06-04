@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/04 15:47:42 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/04 16:27:22 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,11 @@
 # define ENEMY_ATK_COOLDOWN 60
 # define ENEMY_FRAME_DELAY  10
 
-# define DOG_HP            3
-# define DOG_DAMAGE        1
+# define DOG_HP            2
+# define DOG_DAMAGE        2
 # define DOG_SPEED         0.025
-# define OFFICER_HP        25
-# define OFFICER_DAMAGE    15
+# define OFFICER_HP        10
+# define OFFICER_DAMAGE    5
 # define OFFICER_SPEED     0.018
 
 # define PLAYER_MAX_HP     100

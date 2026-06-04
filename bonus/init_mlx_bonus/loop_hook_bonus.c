@@ -65,6 +65,7 @@ int	loop_hook(t_cub *cub)
 	}
 	else if (cub->state == LEVEL_TRANSITION)
 	{
+		poll_joystick(cub);
 		render_transition_screen(cub);
 		if (cub->keys[KEY_ENTER])
 		{
@@ -74,6 +75,7 @@ int	loop_hook(t_cub *cub)
 	}
 	else if (cub->state == GAME_OVER)
 	{
+		poll_joystick(cub);
 		render_game_over(cub);
 		if (cub->keys[ESC])
 		{
@@ -83,6 +85,7 @@ int	loop_hook(t_cub *cub)
 	}
 	else if (cub->state == VICTORY)
 	{
+		poll_joystick(cub);
 		render_victory_screen(cub);
 		if (cub->keys[KEY_ENTER])
 		{
