@@ -251,6 +251,13 @@ typedef struct s_mouse
 	bool	show_mouse;
 }	t_mouse;
 
+typedef struct s_crosshair
+{
+	float	scale;
+	int		color;
+	bool	enabled;
+}	t_crosshair;
+
 typedef struct s_weapon
 {
 	t_texture		frames[WEAPON_STATES][WEAPON_FRAMES];
@@ -288,6 +295,7 @@ typedef struct s_cub
 	t_mouse			mouse;
 	t_door			*door;
 	bool			show_mira;
+	t_crosshair		crosshair;
 	int				n_door;
 	unsigned int	run_sound;
 	unsigned int	door_sound;

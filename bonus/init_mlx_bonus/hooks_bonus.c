@@ -61,6 +61,14 @@ int	key_press(int key, t_cub *cub)
 		cub->current_weapon_index = WEAPON_MACHINEGUN;
 	if (key == KEY_3)
 		cub->current_weapon_index = WEAPON_GATLING;
+	if (key == KEY_UP && cub->state == GAME)
+		cub->crosshair.scale += 0.2f;
+	if (key == KEY_DOWN && cub->state == GAME)
+	{
+		cub->crosshair.scale -= 0.2f;
+		if (cub->crosshair.scale < 0.2f)
+			cub->crosshair.scale = 0.2f;
+	}
 	cub->current_weapon = &cub->weapons[cub->current_weapon_index];
 	return (0);
 }

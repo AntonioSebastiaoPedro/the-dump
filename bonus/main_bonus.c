@@ -43,6 +43,10 @@ int	main(int ac, char **av)
 	
 	start_loader_thread(cub);
 	cub->player_hp = PLAYER_MAX_HP;
+	cub->show_mira = true;
+	cub->crosshair.scale = 1.0f;
+	cub->crosshair.color = GREEN;
+	cub->crosshair.enabled = true;
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);
 	mlx_hook(cub->mlx->win, 3, 1L << 1, key_release, cub);

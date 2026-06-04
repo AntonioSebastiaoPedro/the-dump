@@ -1,111 +1,268 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minimap_bonus.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/27 13:09:20 by paulcard          #+#    #+#             */
-/*   Updated: 2026/04/29 16:15:23 by aamandio         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes_bonus/cub_bonus.h"
+#include <math.h>
 
-void	draw_line_dir(t_cub *cub, t_mmap_render *mmap)
+/*
+** Verifica que todos os ponteiros criticos estao validos.
+*/
+static int	radar_is_valid(t_cub *cub)
+{
+	if (!cub || !cub->map || !cub->map->grid)
+		return (0);
+	if (cub->map->width <= 0 || cub->map->height <= 0)
+		return (0);
+	return (1);
+}
+
+/*
+** Acesso seguro ao tile do mapa.
+*/
+static int	get_radar_tile(t_cub *cub, int mx, int my)
+{
+	if (my < 0 || my >= cub->map->height)
+		return (-1);
+	if (!cub->map->grid[my])
+		return (-1);
+	if (mx < 0 || mx >= (int)ft_strlen(cub->map->grid[my]))
+		return (-1);
+	return (cub->map->grid[my][mx]);
+}
+
+/*
+** Determina a cor do tile.
+*/
+static int	get_tile_color(int tile)
+{
+	if (tile == '1')
+		return (RADAR_WALL);
+	if (tile == 'D')
+		return (RADAR_DOOR);
+	if (tile == '0' || tile == 'N' || tile == 'S'
+		|| tile == 'E' || tile == 'W'
+		|| tile == 'M' || tile == 'O' || tile == 'B')
+		return (RADAR_FLOOR);
+	return (RADAR_BG);
+}
+
+/*
+** Desenha um pixel apenas dentro do circulo do radar.
+*/
+void	draw_radar_pixel(t_cub *cub, int x, int y, int color)
 {
 	int	dx;
 	int	dy;
 
-	dx = (int)((cub->player->pos_x + cub->player->dir_x * 0.5) * mmap->scale)
-		+ mmap->off_x;
-	dy = (int)((cub->player->pos_y + cub->player->dir_y * 0.5) * mmap->scale)
-		+ mmap->off_y;
-	ft_put_pixel(cub, dx, dy, RED);
+	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+		return ;
+	dx = x - RADAR_CENTER_X;
+	dy = y - RADAR_CENTER_Y;
+	if ((dx * dx + dy * dy) > (RADAR_RADIUS * RADAR_RADIUS))
+		return ;
+	ft_put_pixel(cub, x, y, color);
 }
 
-void	draw_player(t_cub *cub, t_mmap_render *mmap)
+/*
+** Preenche um quadrado de tiles dentro do circulo.
+*/
+static void	draw_radar_square(t_cub *cub, int sx, int sy, int size, int color)
 {
 	int	x;
 	int	y;
+
+	if (size <= 0)
+		return ;
+	y = 0;
+	while (y < size)
+	{
+		x = 0;
+		while (x < size)
+		{
+			draw_radar_pixel(cub, sx + x, sy + y, color);
+			x++;
+		}
+		y++;
+	}
+}
+
+/*
+** Fundo circular escuro antes dos tiles.
+*/
+static void	draw_radar_background(t_cub *cub)
+{
+	int	x;
+	int	y;
+	int	dx;
+	int	dy;
+
+	y = RADAR_CENTER_Y - RADAR_RADIUS;
+	while (y <= RADAR_CENTER_Y + RADAR_RADIUS)
+	{
+		x = RADAR_CENTER_X - RADAR_RADIUS;
+		while (x <= RADAR_CENTER_X + RADAR_RADIUS)
+		{
+			dx = x - RADAR_CENTER_X;
+			dy = y - RADAR_CENTER_Y;
+			if ((dx * dx + dy * dy) <= (RADAR_RADIUS * RADAR_RADIUS))
+			{
+				if (x >= 0 && y >= 0 && x < WIDTH && y < HEIGHT)
+					ft_put_pixel(cub, x, y, RADAR_BG);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+/*
+** Desenha os tiles visiveis dentro do raio do radar.
+*/
+static void	draw_radar_tiles(t_cub *cub, int start_x, int start_y)
+{
+	int	map_x;
+	int	map_y;
+	int	tiles;
+	int	screen_x;
+	int	screen_y;
+	int	tile;
+
+	tiles = (RADAR_RADIUS * 2) / RADAR_SCALE + 1;
+	map_y = 0;
+	while (map_y < tiles)
+	{
+		map_x = 0;
+		while (map_x < tiles)
+		{
+			screen_x = RADAR_CENTER_X - RADAR_RADIUS + (map_x * RADAR_SCALE);
+			screen_y = RADAR_CENTER_Y - RADAR_RADIUS + (map_y * RADAR_SCALE);
+			tile = get_radar_tile(cub, start_x + map_x, start_y + map_y);
+			draw_radar_square(cub, screen_x, screen_y, RADAR_SCALE,
+				get_tile_color(tile));
+			map_x++;
+		}
+		map_y++;
+	}
+}
+
+/*
+** Desenha as linhas de crosshair no centro do radar.
+*/
+static void	draw_radar_crosshair(t_cub *cub)
+{
+	int	i;
+
+	i = -RADAR_RADIUS;
+	while (i <= RADAR_RADIUS)
+	{
+		draw_radar_pixel(cub, RADAR_CENTER_X + i, RADAR_CENTER_Y, RADAR_CROSS);
+		draw_radar_pixel(cub, RADAR_CENTER_X, RADAR_CENTER_Y + i, RADAR_CROSS);
+		i++;
+	}
+}
+
+/*
+** Desenha os circulos concentricos de referencia (estilo sonar).
+*/
+static void	draw_radar_rings(t_cub *cub)
+{
+	double	angle;
+	int		r;
+	int		rx;
+	int		ry;
+
+	r = RADAR_RADIUS / 3;
+	while (r < RADAR_RADIUS)
+	{
+		angle = 0.0;
+		while (angle < 6.2832)
+		{
+			rx = RADAR_CENTER_X + (int)(r * cos(angle));
+			ry = RADAR_CENTER_Y + (int)(r * sin(angle));
+			draw_radar_pixel(cub, rx, ry, RADAR_CROSS);
+			angle += 0.01;
+		}
+		r += RADAR_RADIUS / 3;
+	}
+}
+
+/*
+** Desenha a linha de direcao do jogador a partir do centro.
+*/
+static void	draw_radar_direction(t_cub *cub)
+{
+	int	i;
 	int	px;
 	int	py;
 
-	px = (int)(cub->player->pos_x * mmap->scale) + mmap->off_x
-		- PLAYER_SIZE / 2;
-	py = (int)(cub->player->pos_y * mmap->scale) + mmap->off_y
-		- PLAYER_SIZE / 2;
-	y = 0;
-	while (y < PLAYER_SIZE)
+	i = 0;
+	while (i < RADAR_DIR_LEN)
 	{
-		x = 0;
-		while (x < PLAYER_SIZE)
-		{
-			ft_put_pixel(cub, px + x, py + y, RED);
-			x++;
-		}
-		y++;
+		px = RADAR_CENTER_X + (int)(cub->player->dir_x * i);
+		py = RADAR_CENTER_Y + (int)(cub->player->dir_y * i);
+		draw_radar_pixel(cub, px, py, RADAR_DIR);
+		i++;
 	}
-	draw_line_dir(cub, mmap);
 }
 
-void	draw_square(t_cub *cub, t_ldg_render *render, int color)
+/*
+** Desenha o ponto do jogador no centro do radar.
+*/
+static void	draw_radar_player(t_cub *cub)
 {
-	int	x;
-	int	y;
+	int	px;
+	int	py;
 
-	y = 0;
-	while (y < render->h)
-	{
-		x = 0;
-		while (x < render->w)
-		{
-			ft_put_pixel(cub, render->x + x, render->y + y, color);
-			x++;
-		}
-		y++;
-	}
+	px = RADAR_CENTER_X - RADAR_PLAYER_SIZE / 2;
+	py = RADAR_CENTER_Y - RADAR_PLAYER_SIZE / 2;
+	draw_radar_square(cub, px, py, RADAR_PLAYER_SIZE, RADAR_PLAYER);
+	draw_radar_direction(cub);
 }
 
-static void	draw_grid(t_cub *cub, t_mmap_render *mmap)
+/*
+** Desenha a borda circular do radar com dois aneis.
+*/
+static void	draw_radar_border(t_cub *cub)
 {
-	int				x;
-	int				y;
-	t_ldg_render	render;
+	double	angle;
+	int		bx;
+	int		by;
 
-	y = -1;
-	while (cub->map->grid[++y])
+	angle = 0.0;
+	while (angle < 6.2832)
 	{
-		x = -1;
-		while (cub->map->grid[y][++x])
-		{
-			render.x = mmap->off_x + x * mmap->scale;
-			render.y = mmap->off_y + y * mmap->scale;
-			render.w = (int)mmap->scale;
-			render.h = (int)mmap->scale;
-			if (cub->map->grid[y][x] == '1')
-				draw_square(cub, &render, WHITE);
-			else if (cub->map->grid[y][x] == 'D')
-				draw_square(cub, &render, DARK_RED);
-			else if (cub->map->grid[y][x] == '0')
-				draw_square(cub, &render, GRAY);
-			else
-				draw_square(cub, &render, BLACK);
-		}
+		bx = RADAR_CENTER_X + (int)((RADAR_RADIUS) * cos(angle));
+		by = RADAR_CENTER_Y + (int)((RADAR_RADIUS) * sin(angle));
+		if (bx >= 0 && by >= 0 && bx < WIDTH && by < HEIGHT)
+			ft_put_pixel(cub, bx, by, RADAR_BORDER);
+		bx = RADAR_CENTER_X + (int)((RADAR_RADIUS - 1) * cos(angle));
+		by = RADAR_CENTER_Y + (int)((RADAR_RADIUS - 1) * sin(angle));
+		if (bx >= 0 && by >= 0 && bx < WIDTH && by < HEIGHT)
+			ft_put_pixel(cub, bx, by, RADAR_BORDER_DIM);
+		angle += 0.005;
 	}
 }
 
+/*
+** Ponto de entrada do minimapa radar.
+** Ordem: fundo -> tiles -> crosshair -> aneis -> jogador -> borda
+*/
 void	draw_minimap(t_cub *cub)
 {
-	t_mmap_render	mmap;
+	int	player_map_x;
+	int	player_map_y;
+	int	start_x;
+	int	start_y;
+	int	tiles_half;
 
-	mmap.scale = (double)MNP_MAX_SIZE / cub->map->width;
-	if ((double)MNP_MAX_SIZE / cub->map->height < mmap.scale)
-		mmap.scale = (double)MNP_MAX_SIZE / cub->map->height;
-	mmap.off_x = (MNP_MAX_SIZE - (cub->map->width * mmap.scale))
-		/ 2 + MNP_OFFSET;
-	mmap.off_y = (MNP_MAX_SIZE - (cub->map->height * mmap.scale))
-		/ 2 + MNP_OFFSET;
-	draw_grid(cub, &mmap);
-	draw_player(cub, &mmap);
+	if (!radar_is_valid(cub))
+		return ;
+	player_map_x = (int)(cub->player->pos_x);
+	player_map_y = (int)(cub->player->pos_y);
+	tiles_half = RADAR_RADIUS / RADAR_SCALE;
+	start_x = player_map_x - tiles_half;
+	start_y = player_map_y - tiles_half;
+	draw_radar_background(cub);
+	draw_radar_tiles(cub, start_x, start_y);
+	draw_radar_crosshair(cub);
+	draw_radar_rings(cub);
+	draw_radar_player(cub);
+	draw_radar_border(cub);
 }

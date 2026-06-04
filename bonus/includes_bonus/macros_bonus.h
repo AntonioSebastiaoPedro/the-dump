@@ -78,10 +78,23 @@
 # define SKY_BLUE 0x00AAFF
 # define MEDIUM_GRAY 0xAAAAAA
 
-/* Minimap */
-# define MNP_MAX_SIZE 200
-# define MNP_OFFSET 20
-# define PLAYER_SIZE 4
+/* Radar Minimap */
+# define RADAR_RADIUS      90
+# define RADAR_SCALE       10
+# define RADAR_CENTER_X    (RADAR_RADIUS + 20)
+# define RADAR_CENTER_Y    (RADAR_RADIUS + 20)
+# define RADAR_DIR_LEN     12
+# define RADAR_PLAYER_SIZE 5
+
+# define RADAR_BG          0x0A1520
+# define RADAR_WALL        0x4488CC
+# define RADAR_FLOOR       0x1A2A3A
+# define RADAR_CROSS       0x1E4A1E
+# define RADAR_BORDER      0x22BB55
+# define RADAR_BORDER_DIM  0x116633
+# define RADAR_PLAYER      0x22FF44
+# define RADAR_DIR         0xFFFF00
+# define RADAR_DOOR        0xCC6600
 
 # define COVER "assets/textures/cover5.xpm"
 # define MENU_IMG "assets/textures/menu.xpm"
