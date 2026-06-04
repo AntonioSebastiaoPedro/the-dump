@@ -2,7 +2,8 @@ EA ./assets/textures/ea.xpm
 WE ./assets/textures/we.xpm
 SO ./assets/textures/so.xpm
 NO ./assets/textures/no.xpm
-F 100,100,100
+
+F ./assets/textures/grama1.xpm
 C 50,50,80
 
 1111111111111

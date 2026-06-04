@@ -4,7 +4,7 @@ SO ./assets/textures/so.xpm
 NO ./assets/textures/no.xpm
 
 F ./assets/textures/grama1.xpm
-C ./assets/textures/night.xpm
+C 30,30,80
 
 111111111111111111111111111111111
 100000000000000000000000000000001
