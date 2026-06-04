@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/03 17:44:39 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/04 13:04:03 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	close_joystick(t_cub *cub)
 		close(cub->joy_fd);
 	cub->joy_fd = -1;
 }
+
 
 static void	handle_joy_buttons(t_cub *cub, struct js_event *e)
 {
@@ -60,8 +61,10 @@ static void	handle_joy_buttons(t_cub *cub, struct js_event *e)
 			ft_close(cub);
 		else if (e->number == 7)
 			cub->state = MENU;
-		else if (e->number == 4)
+		else if (e->number == 2)
 			toggle_mouse_vis(cub);
+		else if (e->number == 4)
+        	cub->current_weapon = &cub->weapons[WEAPON_MACHINEGUN];
 	}
 }
 

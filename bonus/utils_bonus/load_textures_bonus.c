@@ -26,7 +26,8 @@ int	load_single_texture(t_cub *cub, t_texture *tex, const char *path)
 	return (1);
 }
 
-int	load_weapon(t_cub *cub, const char *paths[WEAPON_STATES][WEAPON_FRAMES])
+int	load_weapon(t_cub *cub, t_weapon *weapon,
+		const char *paths[WEAPON_STATES][WEAPON_FRAMES])
 {
 	int			state;
 	int			frame;
@@ -43,43 +44,46 @@ int	load_weapon(t_cub *cub, const char *paths[WEAPON_STATES][WEAPON_FRAMES])
 				continue ;
 			}
 			if (!load_single_texture(cub
-					, &cub->weapon.frames[state][frame], paths[state][frame]))
+					, &weapon->frames[state][frame], paths[state][frame]))
 				return (0);
 			frame++;
 		}
 		state++;
 	}
-	cub->weapon.state = WEAPON_IDLE;
-	cub->weapon.current_frame = 0;
-	cub->weapon.frame_timer = 0;
-	return (set_weapon_state(&cub->weapon, WEAPON_IDLE), 1);
+	weapon->state = WEAPON_IDLE;
+	weapon->current_frame = 0;
+	weapon->frame_timer = 0;
+	return (set_weapon_state(weapon, WEAPON_IDLE), 1);
 }
 
 int	load_weapon_textures(t_cub *cub)
 {
-	const char	*paths[WEAPON_STATES][WEAPON_FRAMES] = {
-	{
-		"assets/weapon/idle/idle1.xpm",
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-	},
-	{
-		"assets/weapon/move/move1.xpm", "assets/weapon/move/move2.xpm",
-		"assets/weapon/move/move3.xpm", "assets/weapon/move/move4.xpm",
-		"assets/weapon/move/move5.xpm", "assets/weapon/move/move6.xpm",
-		"assets/weapon/move/move7.xpm",
-		NULL, NULL
-	},
-	{
-		"assets/weapon/shot/frame1.xpm", "assets/weapon/shot/frame2.xpm",
-		"assets/weapon/shot/frame3.xpm", "assets/weapon/shot/frame4.xpm",
-		"assets/weapon/shot/frame5.xpm", "assets/weapon/shot/frame6.xpm",
-		"assets/weapon/shot/frame7.xpm", "assets/weapon/shot/frame8.xpm",
-		"assets/weapon/shot/frame9.xpm",
-	},
+	const char	*rev_paths[WEAPON_STATES][WEAPON_FRAMES] = {
+	{"assets/weapon/idle/idle1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/weapon/move/move1.xpm", "assets/weapon/move/move2.xpm", "assets/weapon/move/move3.xpm", "assets/weapon/move/move4.xpm", "assets/weapon/move/move5.xpm", "assets/weapon/move/move6.xpm", "assets/weapon/move/move7.xpm", NULL, NULL},
+	{"assets/weapon/shot/frame1.xpm", "assets/weapon/shot/frame2.xpm", "assets/weapon/shot/frame3.xpm", "assets/weapon/shot/frame4.xpm", "assets/weapon/shot/frame5.xpm", "assets/weapon/shot/frame6.xpm", "assets/weapon/shot/frame7.xpm", "assets/weapon/shot/frame8.xpm", "assets/weapon/shot/frame9.xpm"}
+	};
+	const char	*mg_paths[WEAPON_STATES][WEAPON_FRAMES] = {
+	{"assets/machinegun/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/machinegun/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/machinegun/1.xpm", "assets/machinegun/2.xpm", "assets/machinegun/3.xpm", "assets/machinegun/4.xpm", "assets/machinegun/0.xpm", NULL, NULL, NULL, NULL}
+	};
+	const char	*gt_paths[WEAPON_STATES][WEAPON_FRAMES] = {
+	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/gatling/1.xpm", "assets/gatling/2.xpm", "assets/gatling/3.xpm", "assets/gatling/4.xpm", "assets/gatling/0.xpm", NULL, NULL, NULL, NULL}
 	};
 
-	if (load_weapon(cub, paths) == 0)
+	cub->weapons[WEAPON_REVOLVER].type = WEAPON_REVOLVER;
+	cub->weapons[WEAPON_MACHINEGUN].type = WEAPON_MACHINEGUN;
+	cub->weapons[WEAPON_GATLING].type = WEAPON_GATLING;
+	if (!load_weapon(cub, &cub->weapons[WEAPON_REVOLVER], rev_paths))
 		return (0);
+	if (!load_weapon(cub, &cub->weapons[WEAPON_MACHINEGUN], mg_paths))
+		return (0);
+	if (!load_weapon(cub, &cub->weapons[WEAPON_GATLING], gt_paths))
+		return (0);
+	cub->current_weapon = &cub->weapons[WEAPON_REVOLVER];
 	return (1);
 }
 

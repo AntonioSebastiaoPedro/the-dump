@@ -93,6 +93,7 @@ void	enemy_ai_attack(t_cub *cub, t_enemy *e)
 	double	dx;
 	double	dy;
 	double	len;
+	int		cooldown;
 
 	dx = cub->player->pos_x - e->x;
 	dy = cub->player->pos_y - e->y;
@@ -103,8 +104,11 @@ void	enemy_ai_attack(t_cub *cub, t_enemy *e)
 		e->state = EN_CHASE;
 		return ;
 	}
+	cooldown = ENEMY_ATK_COOLDOWN;
+	if (e->is_boss && e->hp < 50)
+		cooldown = ENEMY_ATK_COOLDOWN / 2;
 	e->attack_timer++;
-	if (e->attack_timer >= ENEMY_ATK_COOLDOWN)
+	if (e->attack_timer >= cooldown)
 	{
 		cub->player_hp -= e->damage;
 		if (cub->player_hp < 0)

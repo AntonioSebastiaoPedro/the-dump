@@ -103,30 +103,42 @@ t_cub	*init_cub(void)
 	return (cub);
 }
 
-t_cub	*parse_cub(int ac, char **av)
+int	parse_map_into_cub(t_cub *cub, char *filename)
 {
 	char	**lines;
 	int		map_start;
-	t_cub	*cub;
 
 	map_start = -1;
-	ft_validate_file(ac, av);
-	lines = read_file(av[1]);
+	if (!ft_check_file(filename))
+		return (0);
+	lines = read_file(filename);
 	if (!lines)
-		return (NULL);
-	cub = init_cub();
-	if (!cub)
-		return (free_split(lines), NULL);
+		return (0);
 	if (!process_config(lines, cub, &map_start))
 	{
 		free_split(lines);
-		return (free_cub(cub), NULL);
+		return (0);
 	}
 	if (parse_map(lines, map_start, cub) == 0)
 	{
 		free_split(lines);
-		return (free_cub(cub), NULL);
+		return (0);
 	}
 	free_split(lines);
+	return (1);
+}
+
+t_cub	*parse_cub(int ac, char **av)
+{
+	t_cub	*cub;
+
+	if (ac != 1)
+		ft_validate_file(ac, av);
+	cub = init_cub();
+	if (!cub)
+		return (NULL);
+	init_campaign(cub, ac, av);
+	if (!parse_map_into_cub(cub, cub->level_mgr.campaign_maps[0]))
+		return (free_cub(cub), NULL);
 	return (cub);
 }

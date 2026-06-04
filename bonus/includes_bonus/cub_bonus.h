@@ -83,6 +83,8 @@ void			free_config(t_cub *cub);
 void			free_mlx(t_cub *cub);
 void			free_textures(t_cub *cub);
 void			free_cub(t_cub *cub);
+void			clear_map(t_cub *cub);
+void			clear_config(t_cub *cub);
 int				load_textures(t_cub *cub);
 int				scale_texture(t_cub *cub, t_texture *tex, int new_w, int new_h);
 int				ft_fprintf_fd(int fd, const char *format, ...);
@@ -173,4 +175,14 @@ void			enemy_ai_chase(t_cub *cub, t_enemy *e);
 void			enemy_ai_attack(t_cub *cub, t_enemy *e);
 int				enemy_has_line_of_sight(t_cub *cub, t_enemy *e);
 int				enemy_can_move(t_cub *cub, double x, double y);
+
+/* ====== LEVEL MANAGER ====== */
+void			init_campaign(t_cub *cub, int ac, char **av);
+int				check_level_completion(t_cub *cub);
+void			load_next_level(t_cub *cub);
+void			restart_game(t_cub *cub);
+void			render_transition_screen(t_cub *cub);
+void			render_game_over(t_cub *cub);
+void			render_victory_screen(t_cub *cub);
+int				parse_map_into_cub(t_cub *cub, char *filename);
 #endif

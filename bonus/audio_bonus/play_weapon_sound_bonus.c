@@ -17,9 +17,9 @@ void	play_weapon_sound(t_cub *cub)
 {
 	unsigned int	channel;
 
-	if (cub->weapon_sound)
+	if (cub->current_weapon && cub->current_weapon->shoot_sound)
 	{
-		channel = BASS_SampleGetChannel(cub->weapon_sound, FALSE);
+		channel = BASS_SampleGetChannel(cub->current_weapon->shoot_sound, FALSE);
 		BASS_ChannelPlay(channel, FALSE);
 	}
 }

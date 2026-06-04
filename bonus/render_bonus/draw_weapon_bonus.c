@@ -19,7 +19,8 @@ void	draw_weapon(t_cub *cub)
 	int				x;
 	int				y;
 
-	texture = &cub->weapon.frames[cub->weapon.state][cub->weapon.current_frame];
+	texture = &cub->current_weapon->frames[cub->current_weapon->state]
+	[cub->current_weapon->current_frame];
 	dw.scaled_width = texture->width * WEAPON_SCALE;
 	dw.scaled_height = texture->height * WEAPON_SCALE;
 	dw.start_x = (WIDTH - dw.scaled_width) / 2;

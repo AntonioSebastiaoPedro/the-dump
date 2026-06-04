@@ -52,8 +52,39 @@ int	loop_hook(t_cub *cub)
 		(update_player(cub), update_doors(cub));
 		update_enemies(cub);
 		render(cub);
-		if (!is_window_focused(cub))
+		if (cub->player_hp <= 0)
+			cub->state = GAME_OVER;
+		else if (check_level_completion(cub))
+			cub->state = LEVEL_TRANSITION;
+		else if (!is_window_focused(cub))
 			cub->state = MENU;
+	}
+	else if (cub->state == LEVEL_TRANSITION)
+	{
+		render_transition_screen(cub);
+		if (cub->keys[KEY_ENTER])
+		{
+			cub->keys[KEY_ENTER] = 0;
+			load_next_level(cub);
+		}
+	}
+	else if (cub->state == GAME_OVER)
+	{
+		render_game_over(cub);
+		if (cub->keys[KEY_ENTER])
+		{
+			cub->keys[KEY_ENTER] = 0;
+			restart_game(cub);
+		}
+	}
+	else if (cub->state == VICTORY)
+	{
+		render_victory_screen(cub);
+		if (cub->keys[KEY_ENTER])
+		{
+			cub->keys[KEY_ENTER] = 0;
+			restart_game(cub);
+		}
 	}
 	return (0);
 }

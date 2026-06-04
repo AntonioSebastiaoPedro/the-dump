@@ -1,0 +1,13 @@
+EA ./assets/textures/ea.xpm
+WE ./assets/textures/we.xpm
+SO ./assets/textures/so.xpm
+NO ./assets/textures/no.xpm
+F 100,50,50
+C 80,30,30
+
+11111111111
+1000M0M0001
+10011111001
+1001N001M01
+1M000000001
+11111111111

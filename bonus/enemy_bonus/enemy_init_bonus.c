@@ -13,7 +13,7 @@ static int	count_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (cub->map->grid[y][x] == 'M')
+			if (cub->map->grid[y][x] == 'M' || cub->map->grid[y][x] == 'B')
 				count++;
 			x++;
 		}
@@ -22,7 +22,7 @@ static int	count_enemies(t_cub *cub)
 	return (count);
 }
 
-static void	add_enemy(t_cub *cub, int x, int y)
+static void	add_enemy(t_cub *cub, int x, int y, char type)
 {
 	t_enemy	*e;
 
@@ -31,10 +31,21 @@ static void	add_enemy(t_cub *cub, int x, int y)
 	e->y = (double)y + 0.5;
 	e->dir_x = 0.0;
 	e->dir_y = 0.0;
-	e->speed = ENEMY_SPEED;
 	e->dist = 0.0;
-	e->hp = ENEMY_HP;
-	e->damage = ENEMY_DAMAGE;
+	if (type == 'B')
+	{
+		e->is_boss = 1;
+		e->hp = 100;
+		e->damage = 25;
+		e->speed = ENEMY_SPEED * 1.2;
+	}
+	else
+	{
+		e->is_boss = 0;
+		e->hp = ENEMY_HP;
+		e->damage = ENEMY_DAMAGE;
+		e->speed = ENEMY_SPEED;
+	}
 	e->alive = 1;
 	e->frame = 0;
 	e->frame_timer = 0;
@@ -65,9 +76,9 @@ void	init_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (cub->map->grid[y][x] == 'M')
+			if (cub->map->grid[y][x] == 'M' || cub->map->grid[y][x] == 'B')
 			{
-				add_enemy(cub, x, y);
+				add_enemy(cub, x, y, cub->map->grid[y][x]);
 				cub->map->grid[y][x] = '0';
 			}
 			x++;

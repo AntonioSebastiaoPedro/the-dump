@@ -14,8 +14,15 @@
 
 void	free_audio(t_cub *cub)
 {
-	if (cub->weapon_sound)
-		BASS_SampleFree(cub->weapon_sound);
+	int	i;
+
+	i = 0;
+	while (i < WEAPON_COUNT)
+	{
+		if (cub->weapons[i].shoot_sound)
+			BASS_SampleFree(cub->weapons[i].shoot_sound);
+		i++;
+	}
 	if (cub->run_sound)
 		BASS_SampleFree(cub->run_sound);
 	if (cub->door_sound)

@@ -12,14 +12,22 @@
 
 #include "../includes_bonus/cub_bonus.h"
 
-static int	get_max_frames(int state)
+static int	get_max_frames(t_weapon *weapon, int state)
 {
 	if (state == WEAPON_IDLE)
 		return (1);
 	else if (state == WEAPON_MOVE)
-		return (7);
+	{
+		if (weapon->type == WEAPON_REVOLVER)
+			return (7);
+		return (1);
+	}
 	else if (state == WEAPON_SHOT)
-		return (9);
+	{
+		if (weapon->type == WEAPON_REVOLVER)
+			return (9);
+		return (5);
+	}
 	return (0);
 }
 
@@ -35,7 +43,14 @@ void	set_weapon_state(t_weapon *weapon, int new_state)
 	else if (new_state == WEAPON_MOVE)
 		weapon->frame_delay = 4;
 	else if (new_state == WEAPON_SHOT)
-		weapon->frame_delay = 6;
+	{
+		if (weapon->type == WEAPON_REVOLVER)
+			weapon->frame_delay = 6;
+		else if (weapon->type == WEAPON_MACHINEGUN)
+			weapon->frame_delay = 2;
+		else if (weapon->type == WEAPON_GATLING)
+			weapon->frame_delay = 4;
+	}
 }
 
 static void	update_frame(t_weapon *weapon)
@@ -52,11 +67,13 @@ void	update_weapon(t_cub *cub)
 {
 	t_weapon	*weapon;
 
-	weapon = &cub->weapon;
+	weapon = cub->current_weapon;
+	if (!weapon)
+		return ;
 	if (weapon->state == WEAPON_SHOT)
 	{
 		update_frame(weapon);
-		if (weapon->current_frame >= get_max_frames(weapon->state))
+		if (weapon->current_frame >= get_max_frames(weapon, weapon->state))
 		{
 			if (cub->player->is_moving)
 				set_weapon_state(weapon, WEAPON_MOVE);
@@ -70,6 +87,6 @@ void	update_weapon(t_cub *cub)
 	else
 		set_weapon_state(weapon, WEAPON_IDLE);
 	update_frame(weapon);
-	if (weapon->current_frame >= get_max_frames(weapon->state))
+	if (weapon->current_frame >= get_max_frames(weapon, weapon->state))
 		weapon->current_frame = 0;
 }

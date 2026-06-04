@@ -18,13 +18,33 @@
 
 
 
+typedef enum e_weapon_type
+{
+	WEAPON_REVOLVER,
+	WEAPON_MACHINEGUN,
+	WEAPON_GATLING,
+	WEAPON_COUNT
+}	t_weapon_type;
+
 typedef enum e_game_state
 {
 	LOADING,
 	MENU,
 	GAME,
-	ABOUT
+	ABOUT,
+	LEVEL_TRANSITION,
+	VICTORY,
+	GAME_OVER
 }	t_game_state;
+
+typedef struct s_level_mgr
+{
+	char	**campaign_maps;
+	int		current_level_idx;
+	int		total_levels;
+	int		is_campaign;
+	int		level_completed;
+}	t_level_mgr;
 
 typedef enum e_line_type
 {
@@ -101,6 +121,7 @@ typedef struct s_enemy
 	int				hp;
 	int				damage;
 	int				alive;
+	int				is_boss;
 	int				frame;
 	int				frame_timer;
 	int				attack_timer;
@@ -214,11 +235,13 @@ typedef struct s_mouse
 
 typedef struct s_weapon
 {
-	t_texture	frames[WEAPON_STATES][WEAPON_FRAMES];
-	int			state;
-	int			current_frame;
-	int			frame_timer;
-	int			frame_delay;
+	t_texture		frames[WEAPON_STATES][WEAPON_FRAMES];
+	int				state;
+	int				current_frame;
+	int				frame_timer;
+	int				frame_delay;
+	t_weapon_type	type;
+	unsigned int	shoot_sound;
 }	t_weapon;
 
 typedef struct s_door
@@ -245,11 +268,9 @@ typedef struct s_cub
 	int				ceiling_color;
 	int				keys[65536];
 	t_mouse			mouse;
-	t_weapon		weapon;
 	t_door			*door;
 	bool			show_mira;
 	int				n_door;
-	unsigned int	weapon_sound;
 	unsigned int	run_sound;
 	unsigned int	door_sound;
 	unsigned int	back_sound;
@@ -265,6 +286,9 @@ typedef struct s_cub
 	t_enemy_anims	enemy_anims;
 	double			zbuffer[WIDTH];
 	int				player_hp;
+	t_level_mgr		level_mgr;
+	t_weapon		weapons[WEAPON_COUNT];
+	t_weapon		*current_weapon;
 }	t_cub;
 
 typedef struct s_ldg_render

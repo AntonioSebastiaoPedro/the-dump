@@ -14,9 +14,9 @@
 
 void	on_mouse_click(t_cub *cub)
 {
-	if (cub->weapon.state == WEAPON_SHOT)
+	if (!cub->current_weapon || cub->current_weapon->state == WEAPON_SHOT)
 		return ;
-	set_weapon_state(&cub->weapon, WEAPON_SHOT);
+	set_weapon_state(cub->current_weapon, WEAPON_SHOT);
 	play_weapon_sound(cub);
 	enemy_take_damage(cub);
 }

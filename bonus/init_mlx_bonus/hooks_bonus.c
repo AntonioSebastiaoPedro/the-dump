@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 11:42:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/03 13:51:18 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/04 11:28:45 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	key_press(int key, t_cub *cub)
 		toggle_mouse_vis(cub);
 	if (cub->state == MENU || cub->state == ABOUT)
 	{
-		printf("key: %d\n", key);
 		handle_menu_input(key, cub);
 	}
 	if (key >= 0 && key < 65536)
@@ -56,6 +55,12 @@ int	key_press(int key, t_cub *cub)
 		on_mouse_click(cub);
 	if (key == KEY_V)
 		cub->state = MENU;
+	if (key == KEY_1)
+		cub->current_weapon = &cub->weapons[WEAPON_REVOLVER];
+	if (key == KEY_2)
+		cub->current_weapon = &cub->weapons[WEAPON_MACHINEGUN];
+	if (key == KEY_3)
+		cub->current_weapon = &cub->weapons[WEAPON_GATLING];
 	return (0);
 }
 

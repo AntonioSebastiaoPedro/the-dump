@@ -51,6 +51,9 @@
 # define KEY_LCTRL 65507
 # define KEY_RCTRL 65508
 # define KEY_V		118
+# define KEY_1		49
+# define KEY_2		50
+# define KEY_3		51
 # define ESC         65307
 
 /* Screen */

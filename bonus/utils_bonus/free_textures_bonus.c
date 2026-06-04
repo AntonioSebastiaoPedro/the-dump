@@ -14,22 +14,29 @@
 
 void	free_weapon_textures(t_cub *cub)
 {
+	int		w;
 	int		state;
 	int		frame;
 	void	*img_ptr;
 
-	state = 0;
-	while (state < WEAPON_STATES)
+	w = 0;
+	while (w < WEAPON_COUNT)
 	{
-		frame = 0;
-		while (frame < WEAPON_FRAMES)
+		state = 0;
+		while (state < WEAPON_STATES)
 		{
-			img_ptr = cub->weapon.frames[state][frame].img;
-			if (img_ptr)
-				mlx_destroy_image(cub->mlx->mlx, img_ptr);
-			frame++;
+			frame = 0;
+			while (frame < WEAPON_FRAMES)
+			{
+				img_ptr = cub->weapons[w].frames[state][frame].img;
+				if (img_ptr)
+					mlx_destroy_image(cub->mlx->mlx, img_ptr);
+				cub->weapons[w].frames[state][frame].img = NULL;
+				frame++;
+			}
+			state++;
 		}
-		state++;
+		w++;
 	}
 }
 
