@@ -14,6 +14,8 @@
 
 void	increment_loader(t_cub *cub)
 {
+	if (cub->state != LOADING)
+		return ;
 	pthread_mutex_lock(&cub->loader.mutex);
 	if (cub->loader.total_items > 0)
 	{

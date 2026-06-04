@@ -1,15 +1,8 @@
 #include "../includes_bonus/cub_bonus.h"
 
-static void	destroy_tex(t_cub *cub, t_texture *tex)
-{
-	if (tex->img)
-	{
-		mlx_destroy_image(cub->mlx->mlx, tex->img);
-		tex->img = NULL;
-	}
-}
 
-void	free_enemy_textures(t_cub *cub)
+
+static void	null_duplicates(t_cub *cub, void *img)
 {
 	int	t;
 	int	d;
@@ -24,18 +17,58 @@ void	free_enemy_textures(t_cub *cub)
 		while (d < 8)
 		{
 			f = 0;
-			while (f < 4) // Max frames
+			while (f < 4)
 			{
-				destroy_tex(cub, &a->idle[d][f]);
-				destroy_tex(cub, &a->walk[d][f]);
-				destroy_tex(cub, &a->attack[d][f]);
+				if (a->idle[d][f].img == img) a->idle[d][f].img = NULL;
+				if (a->walk[d][f].img == img) a->walk[d][f].img = NULL;
+				if (a->attack[d][f].img == img) a->attack[d][f].img = NULL;
 				f++;
 			}
 			d++;
 		}
 		f = 0;
 		while (f < ENEMY_DEAD_FRAMES)
-			destroy_tex(cub, &a->dead[f++]);
+		{
+			if (a->dead[f].img == img) a->dead[f].img = NULL;
+			f++;
+		}
+		t++;
+	}
+}
+
+void	free_enemy_textures(t_cub *cub)
+{
+	int	t;
+	int	d;
+	int	f;
+	void *img;
+
+	t = 0;
+	while (t < ENEMY_TYPE_COUNT)
+	{
+		d = 0;
+		while (d < 8)
+		{
+			f = 0;
+			while (f < 4)
+			{
+				img = cub->enemy_anims[t].idle[d][f].img;
+				if (img) (mlx_destroy_image(cub->mlx->mlx, img), null_duplicates(cub, img));
+				img = cub->enemy_anims[t].walk[d][f].img;
+				if (img) (mlx_destroy_image(cub->mlx->mlx, img), null_duplicates(cub, img));
+				img = cub->enemy_anims[t].attack[d][f].img;
+				if (img) (mlx_destroy_image(cub->mlx->mlx, img), null_duplicates(cub, img));
+				f++;
+			}
+			d++;
+		}
+		f = 0;
+		while (f < ENEMY_DEAD_FRAMES)
+		{
+			img = cub->enemy_anims[t].dead[f].img;
+			if (img) (mlx_destroy_image(cub->mlx->mlx, img), null_duplicates(cub, img));
+			f++;
+		}
 		t++;
 	}
 }

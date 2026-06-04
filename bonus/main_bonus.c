@@ -30,10 +30,17 @@ int	main(int ac, char **av)
 	cub->state = LOADING;
 	init_loading(cub, &cub->loading, cub->mlx->mlx);
 
-	// Load items needed for loading screen itself
+	// Load and scale UI textures needed for transitions and menu
 	if (!load_single_texture(cub, &cub->menu.cover, COVER))
 		return (free_cub(cub), 1);
 	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
+	if (!load_single_texture(cub, &cub->menu.menu_img, MENU_IMG))
+		return (free_cub(cub), 1);
+	scale_texture(cub, &cub->menu.menu_img, WIDTH, HEIGHT);
+	if (!load_single_texture(cub, &cub->menu.about_img, ABOUT_IMG))
+		return (free_cub(cub), 1);
+	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
+	
 	start_loader_thread(cub);
 	cub->player_hp = PLAYER_MAX_HP;
 	hook_close(cub);

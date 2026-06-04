@@ -33,7 +33,6 @@ int	loop_hook(t_cub *cub)
 		{
 			pthread_mutex_unlock(&cub->loader.mutex);
 			pthread_join(cub->loader.thread, NULL);
-			pthread_mutex_destroy(&cub->loader.mutex);
 			cub->state = MENU;
 			init_menu(cub);
 		}

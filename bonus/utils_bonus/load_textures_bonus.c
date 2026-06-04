@@ -124,20 +124,11 @@ int	load_textures(t_cub *cub)
 		return (0);
 	if (!load_single_texture(cub, &cub->textures->ea, cub->config->ea))
 		return (0);
-	if (!load_single_texture(cub, &cub->menu.cover, COVER))
-		return (0);
-	if (!load_single_texture(cub, &cub->menu.about_img, ABOUT_IMG))
-		return (0);
-	if (!load_single_texture(cub, &cub->menu.menu_img, MENU_IMG))
-		return (0);
 	if (!load_floor_ceiling_texture(cub))
 		return (0);
 	if (!load_weapon_textures(cub))
 		return (0);
 	if (!load_door_textures(cub))
 		return (0);
-	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
-	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
-	scale_texture(cub, &cub->menu.menu_img, WIDTH, HEIGHT);
 	return (1);
 }

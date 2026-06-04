@@ -14,7 +14,7 @@ void	init_campaign(t_cub *cub, int ac, char **av)
 	{
 		cub->level_mgr.is_campaign = 1;
 		cub->level_mgr.campaign_maps = campaign;
-		cub->level_mgr.total_levels = 3;
+		cub->level_mgr.total_levels = 4;
 	}
 	else
 	{
