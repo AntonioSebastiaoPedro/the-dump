@@ -50,6 +50,7 @@ int	loop_hook(t_cub *cub)
 	{
 		poll_joystick(cub);
 		(update_player(cub), update_doors(cub));
+		update_enemies(cub);
 		render(cub);
 		if (!is_window_focused(cub))
 			cub->state = MENU;

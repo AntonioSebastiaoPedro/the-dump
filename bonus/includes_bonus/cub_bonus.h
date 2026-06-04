@@ -157,4 +157,20 @@ void			play_button_sound(t_cub *cub);
 void			play_run_sound(t_cub *cub);
 void			stop_run_sound(t_cub *cub);
 void			free_audio(t_cub *cub);
+
+/* ====== ENEMY ====== */
+void			init_enemies(t_cub *cub);
+void			update_enemies(t_cub *cub);
+void			draw_enemies(t_cub *cub);
+int				load_enemy_textures(t_cub *cub);
+void			free_enemies(t_cub *cub);
+void			free_enemy_textures(t_cub *cub);
+void			enemy_take_damage(t_cub *cub);
+void			update_enemy_animation(t_enemy *e);
+t_texture		*get_enemy_texture(t_cub *cub, t_enemy *e);
+void			enemy_ai_idle(t_cub *cub, t_enemy *e);
+void			enemy_ai_chase(t_cub *cub, t_enemy *e);
+void			enemy_ai_attack(t_cub *cub, t_enemy *e);
+int				enemy_has_line_of_sight(t_cub *cub, t_enemy *e);
+int				enemy_can_move(t_cub *cub, double x, double y);
 #endif

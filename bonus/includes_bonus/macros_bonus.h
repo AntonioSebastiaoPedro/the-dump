@@ -102,4 +102,17 @@
 # define JOY_DEADZONE     8000
 # define JOY_ROT_SENS     0.0000003
 
+/* ENEMY */
+# define ENEMY_IDLE_FRAMES   4
+# define ENEMY_WALK_FRAMES   4
+# define ENEMY_ATTACK_FRAMES 2
+# define ENEMY_DEAD_FRAMES   5
+# define DETECTION_RADIUS  8.0
+# define ENEMY_SPEED       0.02
+# define ENEMY_HP          3
+# define ENEMY_DAMAGE      10
+# define ENEMY_ATK_COOLDOWN 60
+# define ENEMY_FRAME_DELAY  8
+# define PLAYER_MAX_HP     100
+
 #endif

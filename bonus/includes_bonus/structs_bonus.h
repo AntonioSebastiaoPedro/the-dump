@@ -16,6 +16,8 @@
 # include "macros_bonus.h"
 # include <stdbool.h>
 
+
+
 typedef enum e_game_state
 {
 	LOADING,
@@ -40,6 +42,15 @@ typedef enum e_door_state
 	DOOR_OPEN,
 	DOOR_CLOSING
 }	t_door_state;
+
+typedef enum e_enemy_state
+{
+	EN_IDLE,
+	EN_CHASE,
+	EN_ATTACK,
+	EN_HURT,
+	EN_DEAD
+}	t_enemy_state;
 
 typedef struct s_texture
 {
@@ -70,6 +81,31 @@ typedef struct s_menu
 	t_texture	about_img;
 	t_texture	menu_img;
 }	t_menu;
+
+typedef struct s_enemy_anims
+{
+	t_texture	idle[ENEMY_IDLE_FRAMES];
+	t_texture	walk[ENEMY_WALK_FRAMES];
+	t_texture	attack[ENEMY_ATTACK_FRAMES];
+	t_texture	dead[ENEMY_DEAD_FRAMES];
+}	t_enemy_anims;
+
+typedef struct s_enemy
+{
+	double			x;
+	double			y;
+	double			dir_x;
+	double			dir_y;
+	double			speed;
+	double			dist;
+	int				hp;
+	int				damage;
+	int				alive;
+	int				frame;
+	int				frame_timer;
+	int				attack_timer;
+	t_enemy_state	state;
+}	t_enemy;
 
 typedef struct s_loading
 {
@@ -224,6 +260,11 @@ typedef struct s_cub
 	t_texture		door_frames[DOOR_FRAMES];
 	int				joy_fd;
 	int				joy_axis[8];
+	t_enemy			*enemies;
+	int				enemy_count;
+	t_enemy_anims	enemy_anims;
+	double			zbuffer[WIDTH];
+	int				player_hp;
 }	t_cub;
 
 typedef struct s_ldg_render

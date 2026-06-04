@@ -15,7 +15,7 @@
 static int	is_walkable(char c)
 {
 	return (c == '0' || c == 'N' || c == 'S'
-		|| c == 'E' || c == 'W' || c == 'D');
+		|| c == 'E' || c == 'W' || c == 'D' || c == 'M');
 }
 
 static int	check_no_space_adjacent(char **map, int height, int width)

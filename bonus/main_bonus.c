@@ -33,6 +33,10 @@ int	main(int ac, char **av)
 	init_joystick(cub);
 	if (!load_textures(cub))
 		return (free_cub(cub), 1);
+	init_enemies(cub);
+	if (!load_enemy_textures(cub))
+		return (free_cub(cub), 1);
+	cub->player_hp = PLAYER_MAX_HP;
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);
 	mlx_hook(cub->mlx->win, 3, 1L << 1, key_release, cub);

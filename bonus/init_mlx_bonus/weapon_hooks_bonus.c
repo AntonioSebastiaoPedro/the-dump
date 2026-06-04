@@ -18,6 +18,7 @@ void	on_mouse_click(t_cub *cub)
 		return ;
 	set_weapon_state(&cub->weapon, WEAPON_SHOT);
 	play_weapon_sound(cub);
+	enemy_take_damage(cub);
 }
 
 int	mouse_hook(int key, int x, int y, t_cub *cub)

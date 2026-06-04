@@ -86,4 +86,5 @@ void	raycasting(int col, t_ray *ray, t_cub *cub)
 	calculate_wall(ray);
 	calculate_texture(ray, cub);
 	draw_vertical_line(col, ray, cub);
+	cub->zbuffer[col] = ray->perp_wall_dist;
 }

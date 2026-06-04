@@ -68,6 +68,7 @@ BONUS_PLAYER_DIR = player_bonus
 BONUS_UI_DIR = ui_bonus
 BONUS_INCLUDES_DIR = includes_bonus
 BONUS_AUDIO_DIR = audio_bonus
+BONUS_ENEMY_DIR = enemy_bonus
 
 # ==============================================================================
 # SOURCE FILES
@@ -102,6 +103,7 @@ BONUS_UTILS_FILES = $(UTILS_FILES:.c=_bonus.c) image_utils_bonus.c ft_delim_bonu
 BONUS_PLAYER_FILES = $(PLAYER_FILES:.c=_bonus.c) mouse_move_bonus.c
 BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bonus.c loading_render_bonus.c
 BONUS_AUDIO_FILES = audio_bonus.c free_audio_bonus.c play_door_sound_bonus.c play_weapon_sound_bonus.c run_sound_bonus.c play_button_sound_bonus.c
+BONUS_ENEMY_FILES = enemy_init_bonus.c enemy_parser_bonus.c enemy_update_bonus.c enemy_render_bonus.c enemy_ai_bonus.c enemy_collision_bonus.c enemy_attack_bonus.c enemy_animation_bonus.c enemy_destroy_bonus.c
 
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
 BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(BONUS_MLX_FILES))
@@ -110,8 +112,9 @@ BONUS_UTILS = $(addprefix $(BONUS_UTILS_DIR)/, $(BONUS_UTILS_FILES))
 BONUS_PLAYER = $(addprefix $(BONUS_PLAYER_DIR)/, $(BONUS_PLAYER_FILES))
 BONUS_UI = $(addprefix $(BONUS_UI_DIR)/, $(BONUS_UI_FILES))
 BONUS_AUDIO = $(addprefix $(BONUS_AUDIO_DIR)/, $(BONUS_AUDIO_FILES))
+BONUS_ENEMY = $(addprefix $(BONUS_ENEMY_DIR)/, $(BONUS_ENEMY_FILES))
 
-BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI) $(BONUS_AUDIO)
+BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI) $(BONUS_AUDIO) $(BONUS_ENEMY)
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC_FILES))
 BONUS_OBJ = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.o))
 BONUS_DEP = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.d))
