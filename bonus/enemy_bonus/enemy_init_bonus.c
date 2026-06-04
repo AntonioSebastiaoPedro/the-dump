@@ -35,7 +35,7 @@ static void	add_enemy(t_cub *cub, int x, int y, char type)
 	if (type == 'B')
 	{
 		e->is_boss = 1;
-		e->hp = 100;
+		e->hp = 10;
 		e->damage = 25;
 		e->speed = ENEMY_SPEED * 1.2;
 	}

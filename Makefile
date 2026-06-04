@@ -6,7 +6,7 @@
 #    By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 17:06:55 by aamandio          #+#    #+#              #
-#    Updated: 2026/05/05 10:38:31 by paulcard         ###   ########.fr        #
+#    Updated: 2026/06/04 14:17:49 by ofeverei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 NAME = cub3D
 BONUS_NAME = cub3D_bonus
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 CFLAGS += -Iminilibx-linux
 CFLAGS += -O3
 CPPFLAGS = -I includes -I $(LIBFT_DIR) -MMD -MP

@@ -76,9 +76,9 @@ int	loop_hook(t_cub *cub)
 	else if (cub->state == GAME_OVER)
 	{
 		render_game_over(cub);
-		if (cub->keys[KEY_ENTER])
+		if (cub->keys[ESC])
 		{
-			cub->keys[KEY_ENTER] = 0;
+			cub->keys[ESC] = 0;
 			restart_game(cub);
 		}
 	}
@@ -89,6 +89,11 @@ int	loop_hook(t_cub *cub)
 		{
 			cub->keys[KEY_ENTER] = 0;
 			restart_game(cub);
+		}
+		else if (cub->keys[ESC])
+		{
+			cub->keys[ESC] = 0;
+			ft_close(cub);
 		}
 	}
 	return (0);

@@ -41,6 +41,21 @@ static t_enemy	*find_closest_enemy_in_crosshair(t_cub *cub)
 	return (best);
 }
 
+int	damage_rate(double dist)
+{
+	double i = 4;
+	if (dist > i && dist < 9)
+		return 1;
+	if (dist > 9)
+		return 0;
+	for (; i > 0; i--)
+	{
+		if ((int)i == (int)dist)
+			break ;
+	}
+	return (4 - i) * (rand() % 3);
+}
+
 void	enemy_take_damage(t_cub *cub)
 {
 	t_enemy	*e;
@@ -48,7 +63,7 @@ void	enemy_take_damage(t_cub *cub)
 	e = find_closest_enemy_in_crosshair(cub);
 	if (!e)
 		return ;
-	e->hp -= 1;
+	e->hp -= 1 * damage_rate(sqrtf((cub->player->pos_x - e->x) * (cub->player->pos_x - e->x)  + (cub->player->pos_y - e->y) * (cub->player->pos_y - e->y) ));
 	if (e->hp <= 0)
 	{
 		e->state = EN_DEAD;
