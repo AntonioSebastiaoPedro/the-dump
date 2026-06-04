@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:28:44 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 23:06:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/04 14:46:09 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,10 @@ t_cub	*parse_cub(int ac, char **av)
 	t_cub	*cub;
 
 	if (ac != 1)
-		ft_validate_file(ac, av);
+	{
+		//ft_validate_file(ac, av);
+		return(NULL);
+	}
 	cub = init_cub();
 	if (!cub)
 		return (NULL);

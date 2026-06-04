@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 19:22:47 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/04 14:35:48 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ int	main(int ac, char **av)
 	cub->mouse.center_y = HEIGHT / 2;
 	cub->state = LOADING;
 	init_loading(cub, &cub->loading, cub->mlx->mlx);
-	
+
 	// Load items needed for loading screen itself
 	if (!load_single_texture(cub, &cub->menu.cover, COVER))
 		return (free_cub(cub), 1);
 	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
-	
 	start_loader_thread(cub);
-	
 	cub->player_hp = PLAYER_MAX_HP;
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);
