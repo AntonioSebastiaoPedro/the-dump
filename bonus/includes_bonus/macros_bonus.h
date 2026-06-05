@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/05 12:48:42 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/05 17:21:23 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@
 # define RADAR_DIR         0xFFFF00
 # define RADAR_DOOR        0xCC6600
 
-# define COVER "assets/textures/cover5.xpm"
-# define MENU_IMG "assets/textures/menu.xpm"
-# define ABOUT_IMG "assets/textures/about.xpm"
+# define COVER "assets/textures/themes/cover.xpm"
+# define MENU_IMG "assets/textures/themes/menu.xpm"
+# define ABOUT_IMG "assets/textures/themes/about.xpm"
 
 /* WEAPON MACROS */
 # define WEAPON_FRAMES 9
