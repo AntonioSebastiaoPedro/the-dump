@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/04 16:27:22 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/05 12:48:42 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,13 +141,13 @@
 
 # define DETECTION_RADIUS  10.0
 # define ENEMY_SPEED       0.015
-# define ENEMY_HP          2
-# define ENEMY_DAMAGE      2
+# define ENEMY_HP          6
+# define ENEMY_DAMAGE      6
 # define ENEMY_ATK_COOLDOWN 60
 # define ENEMY_FRAME_DELAY  10
 
-# define DOG_HP            2
-# define DOG_DAMAGE        2
+# define DOG_HP            5
+# define DOG_DAMAGE        5
 # define DOG_SPEED         0.025
 # define OFFICER_HP        10
 # define OFFICER_DAMAGE    5
@@ -156,6 +156,8 @@
 # define PLAYER_MAX_HP     100
 
 /* WEAPON AMMO */
+
+ #define CURRENT_AMMO		  100
 # define REVOLVER_MAX_AMMO    100
 # define MACHINEGUN_MAX_AMMO  100
 # define GATLING_MAX_AMMO     200

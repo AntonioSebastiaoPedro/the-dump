@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/06/05 11:08:31 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/05 12:49:19 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,21 +76,21 @@ int	load_weapon_textures(t_cub *cub)
 	};
 
 	cub->weapons[WEAPON_REVOLVER].type = WEAPON_REVOLVER;
-	cub->weapons[WEAPON_REVOLVER].current_ammo = 12;
-	cub->weapons[WEAPON_REVOLVER].reserve_ammo = 40;
 	cub->weapons[WEAPON_REVOLVER].max_ammo = REVOLVER_MAX_AMMO;
+	cub->weapons[WEAPON_REVOLVER].current_ammo = CURRENT_AMMO;
+	cub->weapons[WEAPON_REVOLVER].reserve_ammo = REVOLVER_MAX_AMMO;
 	load_single_texture(cub, &cub->weapons[WEAPON_REVOLVER].hud_icon, "assets/hud/idle.xpm");
 
 	cub->weapons[WEAPON_MACHINEGUN].type = WEAPON_MACHINEGUN;
-	cub->weapons[WEAPON_MACHINEGUN].current_ammo = 30;
-	cub->weapons[WEAPON_MACHINEGUN].reserve_ammo = MACHINEGUN_MAX_AMMO / 2;
 	cub->weapons[WEAPON_MACHINEGUN].max_ammo = MACHINEGUN_MAX_AMMO;
+	cub->weapons[WEAPON_MACHINEGUN].current_ammo = CURRENT_AMMO;
+	cub->weapons[WEAPON_MACHINEGUN].reserve_ammo = MACHINEGUN_MAX_AMMO;
 	load_single_texture(cub, &cub->weapons[WEAPON_MACHINEGUN].hud_icon, "assets/hud/machinegun.xpm");
 
 	cub->weapons[WEAPON_GATLING].type = WEAPON_GATLING;
-	cub->weapons[WEAPON_GATLING].current_ammo = 50;
-	cub->weapons[WEAPON_GATLING].reserve_ammo = GATLING_MAX_AMMO / 2;
 	cub->weapons[WEAPON_GATLING].max_ammo = GATLING_MAX_AMMO;
+	cub->weapons[WEAPON_GATLING].current_ammo = CURRENT_AMMO;
+	cub->weapons[WEAPON_GATLING].reserve_ammo = GATLING_MAX_AMMO;
 	load_single_texture(cub, &cub->weapons[WEAPON_GATLING].hud_icon, "assets/hud/gatling.xpm");
 
 	if (!load_weapon(cub, &cub->weapons[WEAPON_REVOLVER], rev_paths))
