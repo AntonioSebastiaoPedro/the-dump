@@ -32,9 +32,13 @@ void	render(t_cub *cub)
 		}
 		*(pos + i++) = BLACK;
 	}
-	update_weapon(cub);
-	update_doors(cub);
-	update_items(cub);
+	if (!cub->game_paused)
+	{
+		update_weapon(cub);
+		update_doors(cub);
+		update_items(cub);
+		update_enemies(cub); // Ensure enemies are updated
+	}
 	i = 0;
 	while (i < WIDTH)
 		raycasting(i++, &ray, cub);
@@ -45,5 +49,7 @@ void	render(t_cub *cub)
 	draw_mira(cub);
 	draw_hp_hud(cub);
 	draw_ammo_hud(cub);
+	if (cub->show_full_map)
+		draw_tactical_map(cub);
 	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 }

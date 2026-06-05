@@ -120,6 +120,7 @@ void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
 void			draw_mira(t_cub *cub);
 void			draw_hp_hud(t_cub *cub);
 void			draw_ammo_hud(t_cub *cub);
+void			draw_tactical_map(t_cub *cub);
 void			draw_skybox(t_cub *cub);
 
 /* ====== PLAYER ====== */

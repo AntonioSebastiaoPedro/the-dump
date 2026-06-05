@@ -354,6 +354,8 @@ typedef struct s_cub
 	int				item_count;
 	t_texture		item_textures[ITEM_TYPE_COUNT];
 	bool			has_blue_key;
+	bool			show_full_map;
+	bool			game_paused;
 }	t_cub;
 
 typedef struct s_ldg_render

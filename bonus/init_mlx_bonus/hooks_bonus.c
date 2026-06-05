@@ -69,6 +69,11 @@ int	key_press(int key, t_cub *cub)
 		if (cub->crosshair.scale < 0.2f)
 			cub->crosshair.scale = 0.2f;
 	}
+	if (key == KEY_U)
+	{
+		cub->show_full_map = !cub->show_full_map;
+		cub->game_paused = cub->show_full_map;
+	}
 	cub->current_weapon = &cub->weapons[cub->current_weapon_index];
 	return (0);
 }

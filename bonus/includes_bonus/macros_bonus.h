@@ -54,6 +54,7 @@
 # define KEY_1		49
 # define KEY_2		50
 # define KEY_3		51
+# define KEY_U		117
 # define ESC         65307
 
 /* Screen */

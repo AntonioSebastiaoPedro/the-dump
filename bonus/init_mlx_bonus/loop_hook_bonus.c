@@ -53,8 +53,12 @@ int	loop_hook(t_cub *cub)
 	else if (cub->state == GAME)
 	{
 		poll_joystick(cub);
-		(update_player(cub), update_doors(cub));
-		update_enemies(cub);
+		if (!cub->game_paused)
+		{
+			update_player(cub);
+			update_doors(cub);
+			update_enemies(cub);
+		}
 		render(cub);
 		if (cub->player_hp <= 0)
 			cub->state = GAME_OVER;
