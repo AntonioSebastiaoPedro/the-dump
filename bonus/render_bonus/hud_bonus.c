@@ -77,26 +77,67 @@ void	draw_hp_hud(t_cub *cub)
 	draw_filled_rect(cub, start, hp_size, color);
 }
 
+void	draw_texture_hud(t_cub *cub, t_texture *tex, int x, int y)
+{
+	int				i;
+	int				j;
+	unsigned int	color;
+
+	if (!tex || !tex->img)
+		return ;
+	i = 0;
+	while (i < tex->height)
+	{
+		j = 0;
+		while (j < tex->width)
+		{
+			color = *(unsigned int *)(tex->addr + (i * tex->line_len
+						+ j * (tex->bpp / 8)));
+			// Ignore transparent red (0xFF0000) and standard black/null transparency
+			if (color != TRANSPARENT_BACKGROUND && (color & 0x00FFFFFF) != 0)
+				pixel_put(cub, x + j, y + i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	draw_ammo_hud(t_cub *cub)
 {
-	t_vec	start;
-	t_vec	size;
-	char	ammo_str[32];
+	t_vec		start;
+	t_vec		size;
 	t_weapon	*w;
+	char		ammo_str[64];
+	int			icon_x;
+	int			icon_y;
 
 	w = cub->current_weapon;
-	if (!w) return ;
+	if (!w)
+		return ;
 
 	start.x = 20;
-	start.y = HEIGHT - 80;
-	size.x = 200;
-	size.y = 60;
+	start.y = HEIGHT - 110;
+	size.x = 250; 
+	size.y = 80;
+	
+	draw_filled_rect(cub, start, size, BG_COLOR); 
 	draw_empty_rect(cub, start, size, WHITE);
+
+	if (w->hud_icon.img)
+	{
+		// Center icon vertically in the 80px high box
+		icon_x = start.x + 8;
+		icon_y = start.y + (size.y - w->hud_icon.height) - 13;
+		draw_texture_hud(cub, &w->hud_icon, icon_x, icon_y);
+	}
 
 	ft_sprintf(ammo_str, "%d / %d", w->current_ammo, w->reserve_ammo);
 	
-	// Since I don't have a direct string render tool for MLX in my pixel logic,
-	// and I see they use mlx_string_put usually, I will check if I can use it.
-	// But let's assume they might want a graphical one. 
-	// For now let's just make sure the call exists and suggest it in render.
+	// Position text to the right of the icon (assuming icon width is around 64-80)
+	mlx_string_put(cub->mlx->mlx, cub->mlx->win, start.x + 100,
+		start.y + 45, WHITE, ammo_str);
+
+	if (w->current_ammo == 0 && w->reserve_ammo == 0)
+		mlx_string_put(cub->mlx->mlx, cub->mlx->win, start.x + 100,
+			start.y + 65, RED, "OUT OF AMMO");
 }

@@ -274,6 +274,7 @@ typedef struct s_weapon
 	int				frame_delay;
 	t_weapon_type	type;
 	unsigned int	shoot_sound;
+	t_texture		hud_icon;
 	int				current_ammo;
 	int				max_ammo;
 	int				reserve_ammo;

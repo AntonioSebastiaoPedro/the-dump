@@ -123,5 +123,6 @@ void	load_next_level(t_cub *cub)
 		return ;
 	}
 	cub->player_hp = PLAYER_MAX_HP;
+	player_add_ammo(cub);
 	cub->state = GAME;
 }
