@@ -54,6 +54,8 @@ static bool	init_bass(void)
 	return (true);
 }
 
+// som ambiente back3.mp3
+
 bool	init_audio(t_cub *cub)
 {
 	if (!init_bass())
@@ -69,7 +71,7 @@ bool	init_audio(t_cub *cub)
 	cub->door_sound = load_sound(cub,
 			"assets/sounds/door/door_1.mp3", 3, 0);
 	cub->back_sound = load_sound(cub,
-			"assets/sounds/back3.mp3", 1, 4);
+			"assets/sounds/xfunkie.mp3", 1, 4);
 	cub->button_sound = load_sound(cub,
 			"assets/sounds/button.mp3", 3, 0);
 	cub->level_done_sound = load_sound(cub,
