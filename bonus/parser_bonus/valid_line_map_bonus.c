@@ -37,7 +37,7 @@ int	is_valid_line_map(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_strchr("01NSEWDMBG\t \n", line[i]))
+		if (!ft_strchr("01NSEWDKMBOG\t \n", line[i]))
 			return (0);
 		i++;
 	}

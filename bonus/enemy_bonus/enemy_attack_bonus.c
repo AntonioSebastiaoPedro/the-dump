@@ -1,5 +1,6 @@
 #include "../includes_bonus/cub_bonus.h"
 #include <math.h>
+#include <stdlib.h>
 
 static t_enemy	*find_closest_enemy_in_crosshair(t_cub *cub)
 {
@@ -41,29 +42,36 @@ static t_enemy	*find_closest_enemy_in_crosshair(t_cub *cub)
 	return (best);
 }
 
-int	damage_rate(double dist)
+int	damage_rate(double dist, float zoom_scale)
 {
-	double i = 4;
-	if (dist > i && dist < 9)
+	// Standard max range is 9.0. If zoomed in (scale < 1.0), increase range.
+	// We use 1.0 / zoom_scale as a range multiplier.
+	double max_range = 9.0 * (1.0 / zoom_scale);
+	double drop_off_start = 4.0 * (1.0 / zoom_scale);
+
+	if (dist > drop_off_start && dist < max_range)
 		return 1;
-	if (dist > 9)
+	if (dist > max_range)
 		return 0;
-	for (; i > 0; i--)
-	{
-		if ((int)i == (int)dist)
-			break ;
-	}
-	return (4 - i) * (rand() % 3);
+	
+	// Close range damage
+	double dmg = (4.0 - (dist / (1.0 / zoom_scale))) * (rand() % 3 + 1);
+	if (dmg < 1)
+		dmg = 1;
+	return (int)dmg;
 }
 
 void	enemy_take_damage(t_cub *cub)
 {
 	t_enemy	*e;
+	double	dist;
 
 	e = find_closest_enemy_in_crosshair(cub);
 	if (!e)
 		return ;
-	e->hp -= 1 * damage_rate(sqrtf((cub->player->pos_x - e->x) * (cub->player->pos_x - e->x)  + (cub->player->pos_y - e->y) * (cub->player->pos_y - e->y) ));
+	dist = sqrt((cub->player->pos_x - e->x) * (cub->player->pos_x - e->x)
+			+ (cub->player->pos_y - e->y) * (cub->player->pos_y - e->y));
+	e->hp -= damage_rate(dist, cub->crosshair.scale);
 	if (e->hp <= 0)
 	{
 		e->state = EN_DEAD;

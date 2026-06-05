@@ -71,12 +71,15 @@ void	free_textures(t_cub *cub)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->floor.img);
 	if (cub->textures->ceiling.img)
 		mlx_destroy_image(cub->mlx->mlx, cub->textures->ceiling.img);
+	if (cub->textures->skybox.img)
+		mlx_destroy_image(cub->mlx->mlx, cub->textures->skybox.img);
 	cub->textures->no.img = NULL;
 	cub->textures->so.img = NULL;
 	cub->textures->we.img = NULL;
 	cub->textures->ea.img = NULL;
 	cub->textures->floor.img = NULL;
 	cub->textures->ceiling.img = NULL;
+	cub->textures->skybox.img = NULL;
 	free_weapon_textures(cub);
 	free_door_textures(cub);
 }

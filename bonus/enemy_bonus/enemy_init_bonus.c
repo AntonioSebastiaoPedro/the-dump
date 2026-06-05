@@ -13,7 +13,7 @@ static int	count_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (ft_strchr("MBOG", cub->map->grid[y][x]))
+			if (ft_strchr("MBDOG", cub->map->grid[y][x]))
 				count++;
 			x++;
 		}
@@ -32,7 +32,7 @@ static void	set_enemy_stats(t_enemy *e, char type)
 		e->damage = 10;
 		e->speed = ENEMY_SPEED * 1.2;
 	}
-	else if (type == 'D')
+	else if (type == 'K')
 	{
 		e->is_boss = 0;
 		e->type = DOG_TYPE;
@@ -97,7 +97,7 @@ void	init_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (ft_strchr("MBOG", cub->map->grid[y][x]))
+			if (ft_strchr("MBKOG", cub->map->grid[y][x]))
 			{
 				add_enemy(cub, x, y, cub->map->grid[y][x]);
 				cub->map->grid[y][x] = '0';

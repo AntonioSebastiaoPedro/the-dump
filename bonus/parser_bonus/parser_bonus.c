@@ -96,10 +96,11 @@ t_cub	*init_cub(void)
 	cub->textures = ft_calloc(1, sizeof(t_textures));
 	if (!cub->map || !cub->config || !cub->player || !cub->textures)
 		return (free_cub(cub), NULL);
-	cub->config->floor_color = -1;
 	cub->config->ceiling_color = -1;
 	cub->menu.cover.img = NULL;
 	cub->menu.about_img.img = NULL;
+	cub->enemies = NULL;
+	cub->door = NULL;
 	return (cub);
 }
 
