@@ -56,11 +56,11 @@ int	key_press(int key, t_cub *cub)
 	if (key == KEY_V)
 		cub->state = MENU;
 	if (key == KEY_1)
-		cub->current_weapon_index = WEAPON_REVOLVER;
+		cub->current_weapon_index = 0;
 	if (key == KEY_2)
-		cub->current_weapon_index = WEAPON_MACHINEGUN;
+		cub->current_weapon_index = 2; // Gatling
 	if (key == KEY_3)
-		cub->current_weapon_index = WEAPON_GATLING;
+		cub->current_weapon_index = 1; // Machinegun
 	if (key == KEY_UP && cub->state == GAME)
 		cub->crosshair.scale += 0.2f;
 	if (key == KEY_DOWN && cub->state == GAME)

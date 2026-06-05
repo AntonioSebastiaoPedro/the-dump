@@ -62,18 +62,15 @@ void	draw_hp_hud(t_cub *cub)
 	// HP Bar
 	hp_width = (int)((cub->player_hp / 100.0) * 196);
 	if (hp_width < 0) hp_width = 0;
-	
 	start.x += 2;
 	start.y += 2;
 	hp_size.x = hp_width;
 	hp_size.y = 36;
-	
 	int color = GREEN;
 	if (cub->player_hp < 30)
 		color = RED;
 	else if (cub->player_hp < 60)
 		color = YELLOW;
-	
 	draw_filled_rect(cub, start, hp_size, color);
 }
 
@@ -102,6 +99,50 @@ void	draw_texture_hud(t_cub *cub, t_texture *tex, int x, int y)
 	}
 }
 
+static void	draw_char_pixel(t_cub *cub, int x, int y, int character, int color)
+{
+	static const unsigned char font[11][5] = {
+		{0x7, 0x5, 0x5, 0x5, 0x7}, // 0
+		{0x2, 0x6, 0x2, 0x2, 0x7}, // 1
+		{0x7, 0x1, 0x7, 0x4, 0x7}, // 2
+		{0x7, 0x1, 0x7, 0x1, 0x7}, // 3
+		{0x5, 0x5, 0x7, 0x1, 0x1}, // 4
+		{0x7, 0x4, 0x7, 0x1, 0x7}, // 5
+		{0x7, 0x4, 0x7, 0x5, 0x7}, // 6
+		{0x7, 0x1, 0x1, 0x1, 0x1}, // 7
+		{0x7, 0x5, 0x7, 0x5, 0x7}, // 8
+		{0x7, 0x5, 0x7, 0x1, 0x1}, // 9
+		{0x1, 0x2, 0x4, 0x2, 0x1}  // /
+	};
+	int i, j;
+	int char_idx = (character >= '0' && character <= '9') ? (character - '0') : 10;
+
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 3; j++) {
+			if ((font[char_idx][i] >> (2 - j)) & 1) {
+				for (int dx = 0; dx < 3; dx++) // Scale 3x
+					for (int dy = 0; dy < 3; dy++)
+						pixel_put(cub, x + j * 3 + dx, y + i * 3 + dy, color);
+			}
+		}
+	}
+}
+
+static void	draw_string_graphics(t_cub *cub, int x, int y, char *str, int color)
+{
+	while (*str)
+	{
+		if ((*str >= '0' && *str <= '9') || *str == '/')
+		{
+			draw_char_pixel(cub, x, y, *str, color);
+			x += 15; // 3 blocks * 3 pixels + padding
+		}
+		else if (*str == ' ')
+			x += 10;
+		str++;
+	}
+}
+
 void	draw_ammo_hud(t_cub *cub)
 {
 	t_vec		start;
@@ -117,27 +158,22 @@ void	draw_ammo_hud(t_cub *cub)
 
 	start.x = 20;
 	start.y = HEIGHT - 110;
-	size.x = 250; 
+	size.x = 250;
 	size.y = 80;
-	
-	draw_filled_rect(cub, start, size, BG_COLOR); 
+
+	draw_filled_rect(cub, start, size, BG_COLOR);
 	draw_empty_rect(cub, start, size, WHITE);
 
 	if (w->hud_icon.img)
 	{
-		// Center icon vertically in the 80px high box
 		icon_x = start.x + 8;
 		icon_y = start.y + (size.y - w->hud_icon.height) - 13;
 		draw_texture_hud(cub, &w->hud_icon, icon_x, icon_y);
 	}
 
 	ft_sprintf(ammo_str, "%d / %d", w->current_ammo, w->reserve_ammo);
-	
-	// Position text to the right of the icon (assuming icon width is around 64-80)
-	mlx_string_put(cub->mlx->mlx, cub->mlx->win, start.x + 100,
-		start.y + 45, WHITE, ammo_str);
+	draw_string_graphics(cub, start.x + 110, start.y + 35, ammo_str, WHITE);
 
 	if (w->current_ammo == 0 && w->reserve_ammo == 0)
-		mlx_string_put(cub->mlx->mlx, cub->mlx->win, start.x + 100,
-			start.y + 65, RED, "OUT OF AMMO");
+		draw_string_graphics(cub, start.x + 110, start.y + 55, "0 / 0", RED);
 }
