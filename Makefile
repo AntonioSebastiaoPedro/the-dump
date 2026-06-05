@@ -106,6 +106,7 @@ BONUS_UI_FILES = loading_bonus.c menu_bonus.c menu_about_bonus.c render_menu_bon
 BONUS_AUDIO_FILES = audio_bonus.c free_audio_bonus.c play_door_sound_bonus.c play_weapon_sound_bonus.c run_sound_bonus.c play_button_sound_bonus.c
 BONUS_ENEMY_FILES = enemy_init_bonus.c enemy_parser_bonus.c enemy_update_bonus.c enemy_render_bonus.c enemy_ai_bonus.c enemy_collision_bonus.c enemy_attack_bonus.c enemy_animation_bonus.c enemy_destroy_bonus.c
 BONUS_LEVEL_FILES = level_manager_bonus.c level_transition_bonus.c
+BONUS_ITEM_FILES = item_init_bonus.c item_update_bonus.c item_render_bonus.c
 
 BONUS_PARSER = $(addprefix $(BONUS_PARSER_DIR)/, $(BONUS_PARSER_FILES))
 BONUS_MLX = $(addprefix $(BONUS_MLX_DIR)/, $(BONUS_MLX_FILES))
@@ -116,8 +117,9 @@ BONUS_UI = $(addprefix $(BONUS_UI_DIR)/, $(BONUS_UI_FILES))
 BONUS_AUDIO = $(addprefix $(BONUS_AUDIO_DIR)/, $(BONUS_AUDIO_FILES))
 BONUS_ENEMY = $(addprefix $(BONUS_ENEMY_DIR)/, $(BONUS_ENEMY_FILES))
 BONUS_LEVEL = $(addprefix $(BONUS_LEVEL_DIR)/, $(BONUS_LEVEL_FILES))
+BONUS_ITEM = $(addprefix item_bonus/, $(BONUS_ITEM_FILES))
 
-BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI) $(BONUS_AUDIO) $(BONUS_ENEMY) $(BONUS_LEVEL)
+BONUS_SRC_FILES = main_bonus.c $(BONUS_PARSER) $(BONUS_MLX) $(BONUS_RENDER) $(BONUS_UTILS) $(BONUS_PLAYER) $(BONUS_UI) $(BONUS_AUDIO) $(BONUS_ENEMY) $(BONUS_LEVEL) $(BONUS_ITEM)
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC_FILES))
 BONUS_OBJ = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.o))
 BONUS_DEP = $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRC_FILES:.c=.d))

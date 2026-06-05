@@ -119,6 +119,7 @@ void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
 					t_ray *ray);
 void			draw_mira(t_cub *cub);
 void			draw_hp_hud(t_cub *cub);
+void			draw_ammo_hud(t_cub *cub);
 void			draw_skybox(t_cub *cub);
 
 /* ====== PLAYER ====== */
@@ -181,6 +182,15 @@ void			enemy_ai_chase(t_cub *cub, t_enemy *e);
 void			enemy_ai_attack(t_cub *cub, t_enemy *e);
 int				enemy_has_line_of_sight(t_cub *cub, t_enemy *e);
 int				enemy_can_move(t_cub *cub, double x, double y);
+
+/* ====== ITEM SYSTEM ====== */
+void			init_items(t_cub *cub);
+void			update_items(t_cub *cub);
+void			draw_items(t_cub *cub);
+int				load_item_textures(t_cub *cub);
+void			free_items(t_cub *cub);
+void			player_heal(t_cub *cub, int amount);
+void			player_add_ammo(t_cub *cub);
 
 /* ====== LEVEL MANAGER ====== */
 void			init_campaign(t_cub *cub, int ac, char **av);

@@ -34,13 +34,16 @@ void	render(t_cub *cub)
 	}
 	update_weapon(cub);
 	update_doors(cub);
+	update_items(cub);
 	i = 0;
 	while (i < WIDTH)
 		raycasting(i++, &ray, cub);
 	draw_minimap(cub);
+	draw_items(cub);
 	draw_enemies(cub);
 	draw_weapon(cub);
 	draw_mira(cub);
 	draw_hp_hud(cub);
+	draw_ammo_hud(cub);
 	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
 }

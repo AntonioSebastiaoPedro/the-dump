@@ -155,4 +155,11 @@
 
 # define PLAYER_MAX_HP     100
 
+/* WEAPON AMMO */
+# define REVOLVER_MAX_AMMO    100
+# define MACHINEGUN_MAX_AMMO  100
+# define GATLING_MAX_AMMO     200
+
+# define ITEM_INTERACT_DIST   0.5
+
 #endif

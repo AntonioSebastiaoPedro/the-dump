@@ -16,6 +16,12 @@ void	on_mouse_click(t_cub *cub)
 {
 	if (!cub->current_weapon || cub->current_weapon->state == WEAPON_SHOT)
 		return ;
+	if (cub->current_weapon->current_ammo <= 0)
+	{
+		// To do: play empty click sound
+		return ;
+	}
+	cub->current_weapon->current_ammo--;
 	set_weapon_state(cub->current_weapon, WEAPON_SHOT);
 	play_weapon_sound(cub);
 	enemy_take_damage(cub);

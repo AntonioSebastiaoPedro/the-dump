@@ -274,7 +274,29 @@ typedef struct s_weapon
 	int				frame_delay;
 	t_weapon_type	type;
 	unsigned int	shoot_sound;
+	int				current_ammo;
+	int				max_ammo;
+	int				reserve_ammo;
 }	t_weapon;
+
+typedef enum e_item_type
+{
+	ITEM_BARREL,
+	ITEM_GOLD_PLANT,
+	ITEM_WELL,
+	ITEM_BLUE_KEY,
+	ITEM_MEDIC_KIT,
+	ITEM_TYPE_COUNT
+}	t_item_type;
+
+typedef struct s_item
+{
+	double			x;
+	double			y;
+	t_item_type		type;
+	bool			active;
+	double			dist;
+}	t_item;
 
 typedef struct s_door
 {
@@ -327,6 +349,10 @@ typedef struct s_cub
 	t_weapon		*current_weapon;
 	int				current_weapon_index;
 	t_loader		loader;
+	t_item			*items;
+	int				item_count;
+	t_texture		item_textures[ITEM_TYPE_COUNT];
+	bool			has_blue_key;
 }	t_cub;
 
 typedef struct s_ldg_render

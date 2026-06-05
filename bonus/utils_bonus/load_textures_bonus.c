@@ -76,8 +76,20 @@ int	load_weapon_textures(t_cub *cub)
 	};
 
 	cub->weapons[WEAPON_REVOLVER].type = WEAPON_REVOLVER;
+	cub->weapons[WEAPON_REVOLVER].current_ammo = 12;
+	cub->weapons[WEAPON_REVOLVER].reserve_ammo = 40;
+	cub->weapons[WEAPON_REVOLVER].max_ammo = REVOLVER_MAX_AMMO;
+
 	cub->weapons[WEAPON_MACHINEGUN].type = WEAPON_MACHINEGUN;
+	cub->weapons[WEAPON_MACHINEGUN].current_ammo = 30;
+	cub->weapons[WEAPON_MACHINEGUN].reserve_ammo = MACHINEGUN_MAX_AMMO / 2;
+	cub->weapons[WEAPON_MACHINEGUN].max_ammo = MACHINEGUN_MAX_AMMO;
+
 	cub->weapons[WEAPON_GATLING].type = WEAPON_GATLING;
+	cub->weapons[WEAPON_GATLING].current_ammo = 50;
+	cub->weapons[WEAPON_GATLING].reserve_ammo = GATLING_MAX_AMMO / 2;
+	cub->weapons[WEAPON_GATLING].max_ammo = GATLING_MAX_AMMO;
+
 	if (!load_weapon(cub, &cub->weapons[WEAPON_REVOLVER], rev_paths))
 		return (0);
 	if (!load_weapon(cub, &cub->weapons[WEAPON_MACHINEGUN], mg_paths))
@@ -130,6 +142,9 @@ int	load_textures(t_cub *cub)
 		return (0);
 	if (!load_door_textures(cub))
 		return (0);
+	if (!load_item_textures(cub))
+		return (0);
+	init_items(cub);
 	if (cub->config->c_tex && !load_single_texture(cub, &cub->textures->skybox, cub->config->c_tex))
 		return (0);
 	return (1);

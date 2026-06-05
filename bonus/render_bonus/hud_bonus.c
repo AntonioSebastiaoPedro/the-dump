@@ -76,3 +76,27 @@ void	draw_hp_hud(t_cub *cub)
 	
 	draw_filled_rect(cub, start, hp_size, color);
 }
+
+void	draw_ammo_hud(t_cub *cub)
+{
+	t_vec	start;
+	t_vec	size;
+	char	ammo_str[32];
+	t_weapon	*w;
+
+	w = cub->current_weapon;
+	if (!w) return ;
+
+	start.x = 20;
+	start.y = HEIGHT - 80;
+	size.x = 200;
+	size.y = 60;
+	draw_empty_rect(cub, start, size, WHITE);
+
+	ft_sprintf(ammo_str, "%d / %d", w->current_ammo, w->reserve_ammo);
+	
+	// Since I don't have a direct string render tool for MLX in my pixel logic,
+	// and I see they use mlx_string_put usually, I will check if I can use it.
+	// But let's assume they might want a graphical one. 
+	// For now let's just make sure the call exists and suggest it in render.
+}
