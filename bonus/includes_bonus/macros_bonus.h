@@ -6,7 +6,7 @@
 /*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/05 17:21:23 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 10:58:58 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define WEST "WE"
 
 /* Movement */
-# define MOVE_SPEED 0.03
+# define MOVE_SPEED 2
 # define ROT_SPEED  0.02
 # define MOUSE_SENSITIVITY 0.007
 
@@ -54,6 +54,7 @@
 # define KEY_1		49
 # define KEY_2		50
 # define KEY_3		51
+# define KEY_U		117
 # define ESC         65307
 
 /* Screen */
@@ -140,24 +141,24 @@
 # define DIR_FRONT_LEFT   7
 
 # define DETECTION_RADIUS  10.0
-# define ENEMY_SPEED       0.015
-# define ENEMY_HP          6
-# define ENEMY_DAMAGE      6
+# define ENEMY_SPEED       0.010
+# define ENEMY_HP          2
+# define ENEMY_DAMAGE      2
 # define ENEMY_ATK_COOLDOWN 60
 # define ENEMY_FRAME_DELAY  10
 
-# define DOG_HP            5
-# define DOG_DAMAGE        5
-# define DOG_SPEED         0.025
+# define DOG_HP            2
+# define DOG_DAMAGE        2
+# define DOG_SPEED         0.020
 # define OFFICER_HP        10
-# define OFFICER_DAMAGE    5
-# define OFFICER_SPEED     0.018
+# define OFFICER_DAMAGE    2
+# define OFFICER_SPEED     0.015
 
 # define PLAYER_MAX_HP     100
 
 /* WEAPON AMMO */
 
- #define CURRENT_AMMO		  100
+#define CURRENT_AMMO		  100
 # define REVOLVER_MAX_AMMO    100
 # define MACHINEGUN_MAX_AMMO  100
 # define GATLING_MAX_AMMO     200

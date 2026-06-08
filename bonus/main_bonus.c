@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/04 14:35:48 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/08 09:49:05 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int ac, char **av)
 	if (!load_single_texture(cub, &cub->menu.about_img, ABOUT_IMG))
 		return (free_cub(cub), 1);
 	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
-	
 	start_loader_thread(cub);
 	cub->player_hp = PLAYER_MAX_HP;
 	cub->show_mira = true;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:48:35 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 23:06:30 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 10:49:23 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	move_forward(t_player *player, t_cub *cub)
 	double	new_x;
 	double	new_y;
 
-	new_x = player->pos_x + player->dir_x * MOVE_SPEED;
-	new_y = player->pos_y + player->dir_y * MOVE_SPEED;
+	new_x = player->pos_x + player->dir_x * MOVE_SPEED * cub->delta_time;
+	new_y = player->pos_y + player->dir_y * MOVE_SPEED * cub->delta_time;
 	if (can_walk(cub, (int)new_x, (int)player->pos_y))
 		player->pos_x = new_x;
 	if (can_walk(cub, (int)player->pos_x, (int)new_y))
@@ -30,8 +30,8 @@ static void	move_backward(t_player *player, t_cub *cub)
 	double	new_x;
 	double	new_y;
 
-	new_x = player->pos_x - player->dir_x * MOVE_SPEED;
-	new_y = player->pos_y - player->dir_y * MOVE_SPEED;
+	new_x = player->pos_x - player->dir_x * MOVE_SPEED * cub->delta_time;
+	new_y = player->pos_y - player->dir_y * MOVE_SPEED * cub->delta_time;
 	if (can_walk(cub, (int)new_x, (int)player->pos_y))
 		player->pos_x = new_x;
 	if (can_walk(cub, (int)player->pos_x, (int)new_y))
@@ -43,8 +43,8 @@ static void	strafe(t_player *player, t_cub *cub, int dir)
 	double	new_x;
 	double	new_y;
 
-	new_x = player->pos_x + dir * player->plane_x * MOVE_SPEED;
-	new_y = player->pos_y + dir * player->plane_y * MOVE_SPEED;
+	new_x = player->pos_x + dir * player->plane_x * MOVE_SPEED * cub->delta_time;
+	new_y = player->pos_y + dir * player->plane_y * MOVE_SPEED * cub->delta_time;
 	if (can_walk(cub, (int)new_x, (int)player->pos_y))
 		player->pos_x = new_x;
 	if (can_walk(cub, (int)player->pos_x, (int)new_y))

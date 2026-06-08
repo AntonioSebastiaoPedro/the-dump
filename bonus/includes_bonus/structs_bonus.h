@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 19:56:00 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 10:46:40 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,6 +326,9 @@ typedef struct s_cub
 	t_door			*door;
 	bool			show_mira;
 	t_crosshair		crosshair;
+	double			last_time;
+	double			current_time;
+	double			delta_time;
 	int				n_door;
 	unsigned int	run_sound;
 	unsigned int	door_sound;
@@ -354,6 +357,8 @@ typedef struct s_cub
 	int				item_count;
 	t_texture		item_textures[ITEM_TYPE_COUNT];
 	bool			has_blue_key;
+	bool			show_full_map;
+	bool			game_paused;
 }	t_cub;
 
 typedef struct s_ldg_render

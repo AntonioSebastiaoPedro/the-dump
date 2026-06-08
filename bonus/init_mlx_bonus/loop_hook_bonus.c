@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:25:08 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 19:09:10 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 11:04:15 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ int	is_window_focused(t_cub *cub)
 	XGetInputFocus(xvar->display, &focused_win, &revert);
 	return (focused_win == xvar->win_list->window);
 }
+
+double ft_get_time(void)
+{
+	struct timeval tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec + (tv.tv_usec / 1000000.0));
+}
+
 
 int	loop_hook(t_cub *cub)
 {
@@ -53,8 +62,17 @@ int	loop_hook(t_cub *cub)
 	else if (cub->state == GAME)
 	{
 		poll_joystick(cub);
-		(update_player(cub), update_doors(cub));
-		update_enemies(cub);
+		if (!cub->game_paused)
+		{
+			update_player(cub);
+			update_doors(cub);
+			update_enemies(cub);
+		}
+
+		cub->current_time = ft_get_time();
+		cub->delta_time = cub->current_time - cub->last_time;
+		cub->last_time = cub->current_time;
+
 		render(cub);
 		if (cub->player_hp <= 0)
 			cub->state = GAME_OVER;
@@ -67,6 +85,7 @@ int	loop_hook(t_cub *cub)
 	{
 		poll_joystick(cub);
 		render_transition_screen(cub);
+
 		if (cub->keys[KEY_ENTER])
 		{
 			cub->keys[KEY_ENTER] = 0;

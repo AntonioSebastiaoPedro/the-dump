@@ -6,7 +6,7 @@
 /*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:27:00 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/04 16:59:16 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/05 14:59:32 by paulcard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,25 @@ static void	handle_joy_buttons(t_cub *cub, struct js_event *e)
 		else if (e->number == 3)
 			cub->show_mira = !cub->show_mira;
 		else if (e->number == 6)
-			toggle_mouse_vis(cub);
+		{
+			cub->show_full_map = !cub->show_full_map;
+			cub->game_paused = cub->show_full_map;
+			//toggle_mouse_vis(cub);
+		}
 		else if (e->number == 7)
 			cub->state = MENU;
 		else if (e->number == 4)
 			switch_weapon_next(cub);
+		else if (e->number == 0)
+		{
+			cub->crosshair.scale += 0.2f;
+		}
+		else if (e->number == 2)
+		{
+			cub->crosshair.scale -= 0.2f;
+			if (cub->crosshair.scale < 0.2f)
+				cub->crosshair.scale = 0.2f;
+		}
 	}
 	else if (cub->state == LEVEL_TRANSITION)
 	{

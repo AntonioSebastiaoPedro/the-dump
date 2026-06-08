@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:52:24 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 20:07:39 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 10:49:57 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdbool.h>
 # include <stdint.h>
 # include <X11/Xlib.h>
+# include <sys/time.h>
 
 /* ====== HEADERS DO PROJETO ====== */
 # include "../libft/libft.h"
@@ -120,6 +121,7 @@ void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
 void			draw_mira(t_cub *cub);
 void			draw_hp_hud(t_cub *cub);
 void			draw_ammo_hud(t_cub *cub);
+void			draw_tactical_map(t_cub *cub);
 void			draw_skybox(t_cub *cub);
 
 /* ====== PLAYER ====== */
