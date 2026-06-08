@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loading_render_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 18:02:42 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 23:04:54 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 20:30:00 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	loading_render(t_cub *game)
 	char			progress_text[30];
 	t_ldg_render	ldg;
 
-	draw_texture_img(game, &game->menu.cover);
+	draw_texture_img(game, &game->menu.loading_img);
 	ldg.bar_width = 400;
 	ldg.bar_height = 30;
 	ldg.filled_width = (game->loading.progress * ldg.bar_width)

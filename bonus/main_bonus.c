@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:09:15 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/08 09:49:05 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/08 20:29:54 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	main(int ac, char **av)
 	init_loading(cub, &cub->loading, cub->mlx->mlx);
 
 	// Load and scale UI textures needed for transitions and menu
-	if (!load_single_texture(cub, &cub->menu.cover, COVER))
+	if (!load_single_texture(cub, &cub->menu.loading_img, LOADING_IMG))
 		return (free_cub(cub), 1);
-	scale_texture(cub, &cub->menu.cover, WIDTH, HEIGHT);
+	scale_texture(cub, &cub->menu.loading_img, WIDTH, HEIGHT);
 	if (!load_single_texture(cub, &cub->menu.menu_img, MENU_IMG))
 		return (free_cub(cub), 1);
 	scale_texture(cub, &cub->menu.menu_img, WIDTH, HEIGHT);

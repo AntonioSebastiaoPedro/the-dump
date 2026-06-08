@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
+/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 12:28:44 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/04 14:46:09 by paulcard         ###   ########.fr       */
+/*   Updated: 2026/06/08 20:30:05 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_cub	*init_cub(void)
 	if (!cub->map || !cub->config || !cub->player || !cub->textures)
 		return (free_cub(cub), NULL);
 	cub->config->ceiling_color = -1;
-	cub->menu.cover.img = NULL;
+	cub->menu.loading_img.img = NULL;
 	cub->menu.about_img.img = NULL;
 	cub->enemies = NULL;
 	cub->door = NULL;

@@ -6,7 +6,7 @@
 /*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/08 10:46:40 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 20:29:24 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ typedef struct s_menu
 {
 	int			selected;
 	int			total;
-	t_texture	cover;
+	t_texture	loading_img;
 	t_texture	about_img;
 	t_texture	menu_img;
 }	t_menu;

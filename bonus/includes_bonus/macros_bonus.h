@@ -6,7 +6,7 @@
 /*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 13:57:21 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/08 10:58:58 by aamandio         ###   ########.fr       */
+/*   Updated: 2026/06/08 20:31:07 by aamandio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@
 # define RADAR_DIR         0xFFFF00
 # define RADAR_DOOR        0xCC6600
 
-# define COVER "assets/textures/themes/cover.xpm"
+# define LOADING_IMG "assets/textures/themes/loading.xpm"
 # define MENU_IMG "assets/textures/themes/menu.xpm"
 # define ABOUT_IMG "assets/textures/themes/about.xpm"
 
