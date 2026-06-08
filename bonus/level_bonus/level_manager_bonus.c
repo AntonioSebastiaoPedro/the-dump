@@ -4,8 +4,8 @@ void	init_campaign(t_cub *cub, int ac, char **av)
 {
 	static char *campaign[] = {
 		"maps/enemy_test.cub",
-		"maps/level1.cub",
 		"maps/level2.cub",
+		"maps/level1.cub",
 		"maps/boss.cub",
 		NULL
 	};
