@@ -1,7 +1,7 @@
-EA ./assets/textures/themes/parede7.xpm
-WE ./assets/textures/themes/parede6.xpm
-SO ./assets/textures/themes/parede6.xpm
-NO ./assets/textures/themes/parede6.xpm
+EA ./assets/theme/parede7.xpm
+WE ./assets/theme/parede6.xpm
+SO ./assets/theme/parede6.xpm
+NO ./assets/theme/parede6.xpm
 
 F 100,50,50
 C 80,30,30

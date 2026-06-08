@@ -1,9 +1,9 @@
-EA ./assets/textures/themes/parede9.xpm
-WE ./assets/textures/themes/parede8.xpm
-SO ./assets/textures/themes/parede6.xpm
-NO ./assets/textures/themes/parede6.xpm
+EA ./assets/theme/parede9.xpm
+WE ./assets/theme/parede8.xpm
+SO ./assets/theme/parede6.xpm
+NO ./assets/theme/parede6.xpm
 
-F ./assets/textures/ea.xpm
+F ./assets/theme/chao.xpm
 C 50,50,80
 
 1111111111111

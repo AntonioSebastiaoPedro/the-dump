@@ -1,7 +1,7 @@
-WE ./assets/textures/parede7.xpm
-EA ./assets/textures/parede8.xpm
-NO ./assets/textures/chao3.xpm
-SO ./assets/textures/chao2.xpm
+EA ./assets/theme/parede1.xpm
+WE ./assets/theme/parede2.xpm
+SO ./assets/theme/parede4.xpm
+NO ./assets/theme/parede4.xpm
 
 F 120,120,120
 C 5,204,255
