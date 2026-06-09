@@ -20,6 +20,8 @@ static int	get_max_frames(t_weapon *weapon, int state)
 	{
 		if (weapon->type == WEAPON_REVOLVER)
 			return (7);
+		else if (weapon->type == WEAPON_PLASMA)
+			return (6);
 		return (1);
 	}
 	else if (state == WEAPON_SHOT)
@@ -28,6 +30,8 @@ static int	get_max_frames(t_weapon *weapon, int state)
 			return (9);
 		else if (weapon->type == WEAPON_RIFLE)
 			return (13);
+		else if (weapon->type == WEAPON_PLASMA)
+			return (6);
 		return (5);
 	}
 	return (0);

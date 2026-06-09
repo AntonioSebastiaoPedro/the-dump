@@ -67,7 +67,8 @@ int	load_weapon_textures(t_cub *cub)
 	const char	*rifle_paths[WEAPON_STATES][WEAPON_FRAMES] = {
 	{"assets/BoltRifle/idle/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
 	{"assets/BoltRifle/move/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{	"assets/BoltRifle/shot/1.xpm",
+	{
+		"assets/BoltRifle/shot/1.xpm",
 		"assets/BoltRifle/shot/2.xpm",
 		"assets/BoltRifle/shot/3.xpm",
 		"assets/BoltRifle/shot/4.xpm",
@@ -83,28 +84,48 @@ int	load_weapon_textures(t_cub *cub)
 	}
 	};
 	const char	*plasma_paths[WEAPON_STATES][WEAPON_FRAMES] = {
-	{"assets/PlasmaCaster/idle/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/PlasmaCaster/move/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/PlasmaCaster/shot/1.xpm", "assets/PlasmaCaster/shot/2.xpm", "assets/PlasmaCaster/shot/3.xpm", "assets/PlasmaCaster/shot/4.xpm", "assets/PlasmaCaster/shot/5.xpm", "assets/PlasmaCaster/shot/6.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL}
+	{
+		"assets/PlasmaCaster/idle/1.xpm",
+		NULL, NULL, NULL, NULL, NULL, NULL,
+		NULL, NULL, NULL, NULL, NULL, NULL
+	},
+	{
+		"assets/PlasmaCaster/move/1.xpm",
+		"assets/PlasmaCaster/move/2.xpm",
+		"assets/PlasmaCaster/move/3.xpm",
+		"assets/PlasmaCaster/move/4.xpm",
+		"assets/PlasmaCaster/move/5.xpm",
+		"assets/PlasmaCaster/move/6.xpm",
+		NULL, NULL, NULL, NULL, NULL, NULL, NULL
+	},
+	{
+		"assets/PlasmaCaster/shot/1.xpm",
+		"assets/PlasmaCaster/shot/2.xpm",
+		"assets/PlasmaCaster/shot/3.xpm",
+		"assets/PlasmaCaster/shot/4.xpm",
+		"assets/PlasmaCaster/shot/5.xpm",
+		"assets/PlasmaCaster/shot/6.xpm",
+		NULL, NULL, NULL, NULL, NULL, NULL, NULL
+	}
 	};
 
 	cub->weapons[WEAPON_REVOLVER].type = WEAPON_REVOLVER;
 	cub->weapons[WEAPON_REVOLVER].max_ammo = REVOLVER_MAX_AMMO;
 	cub->weapons[WEAPON_REVOLVER].current_ammo = CURRENT_AMMO;
 	cub->weapons[WEAPON_REVOLVER].reserve_ammo = REVOLVER_MAX_AMMO;
-	load_single_texture(cub, &cub->weapons[WEAPON_REVOLVER].hud_icon, "assets/hud/idle.xpm");
+	load_single_texture(cub, &cub->weapons[WEAPON_REVOLVER].hud_icon, "assets/weapon/idle/idle1.xpm");
 
 	cub->weapons[WEAPON_RIFLE].type = WEAPON_RIFLE;
 	cub->weapons[WEAPON_RIFLE].max_ammo = RIFLE_MAX_AMMO;
 	cub->weapons[WEAPON_RIFLE].current_ammo = CURRENT_AMMO;
 	cub->weapons[WEAPON_RIFLE].reserve_ammo = RIFLE_MAX_AMMO;
-	load_single_texture(cub, &cub->weapons[WEAPON_RIFLE].hud_icon, "assets/hud/machinegun.xpm");
+	load_single_texture(cub, &cub->weapons[WEAPON_RIFLE].hud_icon, "assets/BoltRifle/idle/1.xpm");
 
 	cub->weapons[WEAPON_PLASMA].type = WEAPON_PLASMA;
 	cub->weapons[WEAPON_PLASMA].max_ammo = PLASMA_MAX_AMMO;
 	cub->weapons[WEAPON_PLASMA].current_ammo = CURRENT_AMMO;
 	cub->weapons[WEAPON_PLASMA].reserve_ammo = PLASMA_MAX_AMMO;
-	load_single_texture(cub, &cub->weapons[WEAPON_PLASMA].hud_icon, "assets/hud/gatling.xpm");
+	load_single_texture(cub, &cub->weapons[WEAPON_PLASMA].hud_icon, "assets/PlasmaCaster/idle/1.xpm");
 
 	if (!load_weapon(cub, &cub->weapons[WEAPON_REVOLVER], rev_paths))
 		return (0);
