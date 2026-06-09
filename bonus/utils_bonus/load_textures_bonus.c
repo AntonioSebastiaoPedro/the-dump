@@ -65,8 +65,20 @@ int	load_weapon_textures(t_cub *cub)
 	{"assets/weapon/shot/frame1.xpm", "assets/weapon/shot/frame2.xpm", "assets/weapon/shot/frame3.xpm", "assets/weapon/shot/frame4.xpm", "assets/weapon/shot/frame5.xpm", "assets/weapon/shot/frame6.xpm", "assets/weapon/shot/frame7.xpm", "assets/weapon/shot/frame8.xpm", "assets/weapon/shot/frame9.xpm", NULL, NULL, NULL, NULL}
 	};
 	const char	*rifle_paths[WEAPON_STATES][WEAPON_FRAMES] = {
-	{"assets/BoltRifle/idle/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/BoltRifle/move/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{
+		"assets/BoltRifle/idle/1.xpm",
+		NULL, NULL, NULL, NULL, NULL,
+		NULL, NULL, NULL, NULL, NULL, NULL, NULL
+	},
+	{
+		"assets/BoltRifle/move/1.xpm",
+		"assets/BoltRifle/move/2.xpm",
+		"assets/BoltRifle/move/3.xpm",
+		"assets/BoltRifle/move/4.xpm",
+		"assets/BoltRifle/move/5.xpm",
+		"assets/BoltRifle/move/6.xpm",
+		NULL, NULL, NULL, NULL, NULL, NULL, NULL
+	},
 	{
 		"assets/BoltRifle/shot/1.xpm",
 		"assets/BoltRifle/shot/2.xpm",
