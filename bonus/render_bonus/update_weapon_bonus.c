@@ -26,6 +26,8 @@ static int	get_max_frames(t_weapon *weapon, int state)
 	{
 		if (weapon->type == WEAPON_REVOLVER)
 			return (9);
+		else if (weapon->type == WEAPON_RIFLE)
+			return (13);
 		return (5);
 	}
 	return (0);
@@ -46,7 +48,7 @@ void	set_weapon_state(t_weapon *weapon, int new_state)
 	{
 		if (weapon->type == WEAPON_REVOLVER)
 			weapon->frame_delay = 6;
-		else if (weapon->type == WEAPON_MACHINEGUN)
+		else if (weapon->type == WEAPON_RIFLE)
 			weapon->frame_delay = 2;
 		else if (weapon->type == WEAPON_GATLING)
 			weapon->frame_delay = 4;

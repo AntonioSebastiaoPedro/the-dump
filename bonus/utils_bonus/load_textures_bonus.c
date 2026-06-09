@@ -60,19 +60,32 @@ int	load_weapon(t_cub *cub, t_weapon *weapon,
 int	load_weapon_textures(t_cub *cub)
 {
 	const char	*rev_paths[WEAPON_STATES][WEAPON_FRAMES] = {
-	{"assets/weapon/idle/idle1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/weapon/move/move1.xpm", "assets/weapon/move/move2.xpm", "assets/weapon/move/move3.xpm", "assets/weapon/move/move4.xpm", "assets/weapon/move/move5.xpm", "assets/weapon/move/move6.xpm", "assets/weapon/move/move7.xpm", NULL, NULL},
-	{"assets/weapon/shot/frame1.xpm", "assets/weapon/shot/frame2.xpm", "assets/weapon/shot/frame3.xpm", "assets/weapon/shot/frame4.xpm", "assets/weapon/shot/frame5.xpm", "assets/weapon/shot/frame6.xpm", "assets/weapon/shot/frame7.xpm", "assets/weapon/shot/frame8.xpm", "assets/weapon/shot/frame9.xpm"}
+	{"assets/weapon/idle/idle1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/weapon/move/move1.xpm", "assets/weapon/move/move2.xpm", "assets/weapon/move/move3.xpm", "assets/weapon/move/move4.xpm", "assets/weapon/move/move5.xpm", "assets/weapon/move/move6.xpm", "assets/weapon/move/move7.xpm", NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/weapon/shot/frame1.xpm", "assets/weapon/shot/frame2.xpm", "assets/weapon/shot/frame3.xpm", "assets/weapon/shot/frame4.xpm", "assets/weapon/shot/frame5.xpm", "assets/weapon/shot/frame6.xpm", "assets/weapon/shot/frame7.xpm", "assets/weapon/shot/frame8.xpm", "assets/weapon/shot/frame9.xpm", NULL, NULL, NULL, NULL}
 	};
-	const char	*mg_paths[WEAPON_STATES][WEAPON_FRAMES] = {
-	{"assets/machinegun/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/machinegun/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/machinegun/1.xpm", "assets/machinegun/2.xpm", "assets/machinegun/3.xpm", "assets/machinegun/4.xpm", "assets/machinegun/0.xpm", NULL, NULL, NULL, NULL}
+	const char	*rifle_paths[WEAPON_STATES][WEAPON_FRAMES] = {
+	{"assets/BoltRifle/idle/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/BoltRifle/move/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{	"assets/BoltRifle/shot/1.xpm",
+		"assets/BoltRifle/shot/2.xpm",
+		"assets/BoltRifle/shot/3.xpm",
+		"assets/BoltRifle/shot/4.xpm",
+		"assets/BoltRifle/shot/5.xpm",
+		"assets/BoltRifle/shot/6.xpm",
+		"assets/BoltRifle/shot/7.xpm",
+		"assets/BoltRifle/shot/8.xpm",
+		"assets/BoltRifle/shot/9.xpm",
+		"assets/BoltRifle/shot/10.xpm",
+		"assets/BoltRifle/shot/11.xpm",
+		"assets/BoltRifle/shot/12.xpm",
+		"assets/BoltRifle/shot/13.xpm",
+	}
 	};
 	const char	*gt_paths[WEAPON_STATES][WEAPON_FRAMES] = {
-	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/gatling/1.xpm", "assets/gatling/2.xpm", "assets/gatling/3.xpm", "assets/gatling/4.xpm", "assets/gatling/0.xpm", NULL, NULL, NULL, NULL}
+	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/gatling/1.xpm", "assets/gatling/2.xpm", "assets/gatling/3.xpm", "assets/gatling/4.xpm", "assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
 	};
 
 	cub->weapons[WEAPON_REVOLVER].type = WEAPON_REVOLVER;
@@ -81,11 +94,11 @@ int	load_weapon_textures(t_cub *cub)
 	cub->weapons[WEAPON_REVOLVER].reserve_ammo = REVOLVER_MAX_AMMO;
 	load_single_texture(cub, &cub->weapons[WEAPON_REVOLVER].hud_icon, "assets/hud/idle.xpm");
 
-	cub->weapons[WEAPON_MACHINEGUN].type = WEAPON_MACHINEGUN;
-	cub->weapons[WEAPON_MACHINEGUN].max_ammo = MACHINEGUN_MAX_AMMO;
-	cub->weapons[WEAPON_MACHINEGUN].current_ammo = CURRENT_AMMO;
-	cub->weapons[WEAPON_MACHINEGUN].reserve_ammo = MACHINEGUN_MAX_AMMO;
-	load_single_texture(cub, &cub->weapons[WEAPON_MACHINEGUN].hud_icon, "assets/hud/machinegun.xpm");
+	cub->weapons[WEAPON_RIFLE].type = WEAPON_RIFLE;
+	cub->weapons[WEAPON_RIFLE].max_ammo = RIFLE_MAX_AMMO;
+	cub->weapons[WEAPON_RIFLE].current_ammo = CURRENT_AMMO;
+	cub->weapons[WEAPON_RIFLE].reserve_ammo = RIFLE_MAX_AMMO;
+	load_single_texture(cub, &cub->weapons[WEAPON_RIFLE].hud_icon, "assets/hud/machinegun.xpm");
 
 	cub->weapons[WEAPON_GATLING].type = WEAPON_GATLING;
 	cub->weapons[WEAPON_GATLING].max_ammo = GATLING_MAX_AMMO;
@@ -95,7 +108,7 @@ int	load_weapon_textures(t_cub *cub)
 
 	if (!load_weapon(cub, &cub->weapons[WEAPON_REVOLVER], rev_paths))
 		return (0);
-	if (!load_weapon(cub, &cub->weapons[WEAPON_MACHINEGUN], mg_paths))
+	if (!load_weapon(cub, &cub->weapons[WEAPON_RIFLE], rifle_paths))
 		return (0);
 	if (!load_weapon(cub, &cub->weapons[WEAPON_GATLING], gt_paths))
 		return (0);

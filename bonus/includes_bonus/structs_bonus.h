@@ -37,7 +37,7 @@ typedef struct s_loader
 typedef enum e_weapon_type
 {
 	WEAPON_REVOLVER,
-	WEAPON_MACHINEGUN,
+	WEAPON_RIFLE,
 	WEAPON_GATLING,
 	WEAPON_COUNT
 }	t_weapon_type;

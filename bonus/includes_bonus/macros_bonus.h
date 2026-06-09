@@ -102,7 +102,7 @@
 # define ABOUT_IMG "assets/theme/about.xpm"
 
 /* WEAPON MACROS */
-# define WEAPON_FRAMES 9
+# define WEAPON_FRAMES 13
 # define WEAPON_STATES 3
 # define WEAPON_IDLE 0
 # define WEAPON_MOVE 1
@@ -160,7 +160,7 @@
 
 #define CURRENT_AMMO		  100
 # define REVOLVER_MAX_AMMO    100
-# define MACHINEGUN_MAX_AMMO  100
+# define RIFLE_MAX_AMMO  100
 # define GATLING_MAX_AMMO     200
 
 # define ITEM_INTERACT_DIST   0.5

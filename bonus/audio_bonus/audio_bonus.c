@@ -62,7 +62,7 @@ bool	init_audio(t_cub *cub)
 		return (false);
 	cub->weapons[WEAPON_REVOLVER].shoot_sound = load_sound(cub,
 			"assets/sounds/weapon/revolver.mp3", 3, 0);
-	cub->weapons[WEAPON_MACHINEGUN].shoot_sound = load_sound(cub,
+	cub->weapons[WEAPON_RIFLE].shoot_sound = load_sound(cub,
 			"assets/sounds/atkmachinegun.mp3", 3, 0);
 	cub->weapons[WEAPON_GATLING].shoot_sound = load_sound(cub,
 			"assets/sounds/atkgatling.mp3", 3, 0);
