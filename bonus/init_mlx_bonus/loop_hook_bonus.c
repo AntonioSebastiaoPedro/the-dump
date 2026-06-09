@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   loop_hook_bonus.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aamandio <aamandio@student.42luanda.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 16:25:08 by paulcard          #+#    #+#             */
-/*   Updated: 2026/06/08 11:04:15 by aamandio         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes_bonus/cub_bonus.h"
 
 int	is_window_focused(t_cub *cub)
@@ -70,9 +58,18 @@ int	loop_hook(t_cub *cub)
 		}
 
 		cub->current_time = ft_get_time();
+		if (cub->last_time == 0.0)
+		{
+			cub->last_time = cub->current_time;
+			return (1);
+		}
 		cub->delta_time = cub->current_time - cub->last_time;
 		cub->last_time = cub->current_time;
 
+		if (cub->delta_time <= 0.0)
+			cub->delta_time = 0.0;
+		if (cub->delta_time > 1.0 / 60.0) //60 is the FPS, maybe shouldbe a macro
+			cub->delta_time = 1.0 / 60.0;
 		render(cub);
 		if (cub->player_hp <= 0)
 			cub->state = GAME_OVER;

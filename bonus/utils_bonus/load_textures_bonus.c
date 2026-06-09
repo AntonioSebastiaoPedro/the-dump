@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   load_textures_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 21:04:43 by aamandio          #+#    #+#             */
-/*   Updated: 2026/06/05 12:49:19 by paulcard         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes_bonus/cub_bonus.h"
 
 int	load_single_texture(t_cub *cub, t_texture *tex, const char *path)

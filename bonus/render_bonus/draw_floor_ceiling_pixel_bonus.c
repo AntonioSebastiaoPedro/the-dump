@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw_floor_ceiling_pixel_bonus.c                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: paulcard <paulcard@student.42luanda.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 10:55:32 by paulcard          #+#    #+#             */
-/*   Updated: 2026/05/04 12:47:45 by paulcard         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes_bonus/cub_bonus.h"
 
 static void	get_tex_size(t_cub *cub, t_floorceil_args a, t_tex_info *t)
