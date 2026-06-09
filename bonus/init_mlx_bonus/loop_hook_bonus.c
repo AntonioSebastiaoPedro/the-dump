@@ -22,6 +22,8 @@ double ft_get_time(void)
 
 int	loop_hook(t_cub *cub)
 {
+	char *time = NULL;
+
 	if (cub->state == LOADING)
 	{
 		loading_render(cub);
@@ -57,6 +59,7 @@ int	loop_hook(t_cub *cub)
 			update_enemies(cub);
 		}
 
+		int offset = 0;
 		cub->current_time = ft_get_time();
 		if (cub->last_time == 0.0)
 		{
@@ -65,12 +68,24 @@ int	loop_hook(t_cub *cub)
 		}
 		cub->delta_time = cub->current_time - cub->last_time;
 		cub->last_time = cub->current_time;
+		cub->t_elapsed_time += cub->delta_time; //Total elapsed time
+		cub->elapsed_time += cub->delta_time;
 
 		if (cub->delta_time <= 0.0)
 			cub->delta_time = 0.0;
 		if (cub->delta_time > 1.0 / 60.0) //60 is the FPS, maybe shouldbe a macro
 			cub->delta_time = 1.0 / 60.0;
 		render(cub);
+		/* =========== RENDER TIMER ============== */
+		time = ft_itoa((int)roundf(cub->elapsed_time));
+		draw_empty_rect(cub, (t_vec){(WIDTH/2)-70,13.5}, (t_vec){140,40}, WHITE);
+		if (roundf(cub->elapsed_time) >= 10)
+			offset = 5;
+		draw_string_graphics(cub, WIDTH / 2 - offset, HEIGHT / 2 - 480, time, WHITE);
+		free(time);
+		/* ========================================= */
+		// printf("Time: %lf\n", roundf(cub->t_elapsed_time));
+		// printf("Elapsed(match) time: %lf\n", roundf(cub->elapsed_time));
 		if (cub->player_hp <= 0)
 			cub->state = GAME_OVER;
 		else if (check_level_completion(cub))
@@ -80,6 +95,14 @@ int	loop_hook(t_cub *cub)
 	}
 	else if (cub->state == LEVEL_TRANSITION)
 	{
+		/*
+		 * Those 2 lines is to prevent current time being too big if
+		 * the player stays in between Dead or Level trans,
+		 * so when goes back to game mode the elapsed times wouldnt just jump values.
+		 */
+		cub->current_time = ft_get_time(); 
+		cub->last_time = cub->current_time;
+
 		poll_joystick(cub);
 		render_transition_screen(cub);
 
@@ -91,16 +114,22 @@ int	loop_hook(t_cub *cub)
 	}
 	else if (cub->state == GAME_OVER)
 	{
+		cub->current_time = ft_get_time();
+		cub->last_time = cub->current_time;
 		poll_joystick(cub);
 		render_game_over(cub);
 		if (cub->keys[ESC])
 		{
 			cub->keys[ESC] = 0;
 			restart_game(cub);
+			cub->last_time = 0.0;
+			cub->elapsed_time = 0.0;
 		}
 	}
 	else if (cub->state == VICTORY)
 	{
+		cub->current_time = ft_get_time();
+		cub->last_time = cub->current_time;
 		poll_joystick(cub);
 		render_victory_screen(cub);
 		if (cub->keys[KEY_ENTER])

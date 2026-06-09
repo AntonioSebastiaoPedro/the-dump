@@ -8,7 +8,7 @@ static void	draw_button(t_cub *cub, int y, int index, char *label)
 	{
 		color = GREEN;
 		mlx_string_put(cub->mlx->mlx, cub->mlx->win,
-			WIDTH / 2 - 120, y, color, label);
+			WIDTH / 2 - 130, y, color, label);
 	}
 	else
 	{
@@ -22,11 +22,11 @@ void	switch_button(t_cub *cub)
 {
 	int	y;
 
-	y = HEIGHT / 2 - 25;
+	y = HEIGHT / 2 + 75;
 	draw_button(cub, y, 0, ">");
-	y += 100;
+	y += 90;
 	draw_button(cub, y, 1, ">");
-	y += 100;
+	y += 90;
 	draw_button(cub, y, 2, ">");
 }
 

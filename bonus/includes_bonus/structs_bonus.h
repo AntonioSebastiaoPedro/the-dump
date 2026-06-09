@@ -317,6 +317,8 @@ typedef struct s_cub
 	double			last_time;
 	double			current_time;
 	double			delta_time;
+	double			t_elapsed_time;
+	double			elapsed_time;
 	int				n_door;
 	unsigned int	run_sound;
 	unsigned int	door_sound;

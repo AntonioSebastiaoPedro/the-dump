@@ -94,6 +94,7 @@ int				loop_hook(t_cub *cub);
 void			draw_minimap(t_cub *cub);
 void			render(t_cub *cub);
 void			ft_put_pixel(t_cub *cub, int x, int y, int color);
+void			pixel_put(t_cub *cub, int x, int y, int color);
 void			raycasting(int col, t_ray *ray, t_cub *cub);
 void			dda(t_ray *ray, t_cub *cub);
 void			draw_vertical_line(int col, t_ray *ray, t_cub *cub);
@@ -111,6 +112,10 @@ void			draw_hp_hud(t_cub *cub);
 void			draw_ammo_hud(t_cub *cub);
 void			draw_tactical_map(t_cub *cub);
 void			draw_skybox(t_cub *cub);
+void			draw_char_pixel(t_cub *cub, int x, int y, int character, int color);
+void			draw_string_graphics(t_cub *cub, int x, int y, char *str, int color);
+void			draw_empty_rect(t_cub *cub, t_vec start, t_vec rect_size, uint32_t color);
+
 
 /* ====== PLAYER ====== */
 t_player		*init_player(t_cub *cub);
