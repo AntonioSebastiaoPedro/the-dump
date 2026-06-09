@@ -38,7 +38,7 @@ typedef enum e_weapon_type
 {
 	WEAPON_REVOLVER,
 	WEAPON_RIFLE,
-	WEAPON_GATLING,
+	WEAPON_PLASMA,
 	WEAPON_COUNT
 }	t_weapon_type;
 

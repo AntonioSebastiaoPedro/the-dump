@@ -161,7 +161,7 @@
 #define CURRENT_AMMO		  100
 # define REVOLVER_MAX_AMMO    100
 # define RIFLE_MAX_AMMO  100
-# define GATLING_MAX_AMMO     200
+# define PLASMA_MAX_AMMO     200
 
 # define ITEM_INTERACT_DIST   0.5
 

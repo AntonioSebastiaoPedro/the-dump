@@ -50,7 +50,7 @@ void	set_weapon_state(t_weapon *weapon, int new_state)
 			weapon->frame_delay = 6;
 		else if (weapon->type == WEAPON_RIFLE)
 			weapon->frame_delay = 2;
-		else if (weapon->type == WEAPON_GATLING)
+		else if (weapon->type == WEAPON_PLASMA)
 			weapon->frame_delay = 4;
 	}
 }

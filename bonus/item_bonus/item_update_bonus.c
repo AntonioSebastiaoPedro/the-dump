@@ -17,7 +17,7 @@ void	player_add_ammo(t_cub *cub)
 			cub->weapons[i].reserve_ammo += 50;
 		else if (cub->weapons[i].type == WEAPON_RIFLE)
 			cub->weapons[i].reserve_ammo += 20;
-		else if (cub->weapons[i].type == WEAPON_GATLING)
+		else if (cub->weapons[i].type == WEAPON_PLASMA)
 			cub->weapons[i].reserve_ammo += 40;
 
 		if (cub->weapons[i].reserve_ammo > cub->weapons[i].max_ammo)

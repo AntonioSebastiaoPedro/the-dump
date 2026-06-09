@@ -82,10 +82,10 @@ int	load_weapon_textures(t_cub *cub)
 		"assets/BoltRifle/shot/13.xpm",
 	}
 	};
-	const char	*gt_paths[WEAPON_STATES][WEAPON_FRAMES] = {
-	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"assets/gatling/1.xpm", "assets/gatling/2.xpm", "assets/gatling/3.xpm", "assets/gatling/4.xpm", "assets/gatling/0.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
+	const char	*plasma_paths[WEAPON_STATES][WEAPON_FRAMES] = {
+	{"assets/PlasmaCaster/idle/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/PlasmaCaster/move/1.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+	{"assets/PlasmaCaster/shot/1.xpm", "assets/PlasmaCaster/shot/2.xpm", "assets/PlasmaCaster/shot/3.xpm", "assets/PlasmaCaster/shot/4.xpm", "assets/PlasmaCaster/shot/5.xpm", "assets/PlasmaCaster/shot/6.xpm", NULL, NULL, NULL, NULL, NULL, NULL, NULL}
 	};
 
 	cub->weapons[WEAPON_REVOLVER].type = WEAPON_REVOLVER;
@@ -100,17 +100,17 @@ int	load_weapon_textures(t_cub *cub)
 	cub->weapons[WEAPON_RIFLE].reserve_ammo = RIFLE_MAX_AMMO;
 	load_single_texture(cub, &cub->weapons[WEAPON_RIFLE].hud_icon, "assets/hud/machinegun.xpm");
 
-	cub->weapons[WEAPON_GATLING].type = WEAPON_GATLING;
-	cub->weapons[WEAPON_GATLING].max_ammo = GATLING_MAX_AMMO;
-	cub->weapons[WEAPON_GATLING].current_ammo = CURRENT_AMMO;
-	cub->weapons[WEAPON_GATLING].reserve_ammo = GATLING_MAX_AMMO;
-	load_single_texture(cub, &cub->weapons[WEAPON_GATLING].hud_icon, "assets/hud/gatling.xpm");
+	cub->weapons[WEAPON_PLASMA].type = WEAPON_PLASMA;
+	cub->weapons[WEAPON_PLASMA].max_ammo = PLASMA_MAX_AMMO;
+	cub->weapons[WEAPON_PLASMA].current_ammo = CURRENT_AMMO;
+	cub->weapons[WEAPON_PLASMA].reserve_ammo = PLASMA_MAX_AMMO;
+	load_single_texture(cub, &cub->weapons[WEAPON_PLASMA].hud_icon, "assets/hud/gatling.xpm");
 
 	if (!load_weapon(cub, &cub->weapons[WEAPON_REVOLVER], rev_paths))
 		return (0);
 	if (!load_weapon(cub, &cub->weapons[WEAPON_RIFLE], rifle_paths))
 		return (0);
-	if (!load_weapon(cub, &cub->weapons[WEAPON_GATLING], gt_paths))
+	if (!load_weapon(cub, &cub->weapons[WEAPON_PLASMA], plasma_paths))
 		return (0);
 	cub->current_weapon_index = WEAPON_REVOLVER;
 	cub->current_weapon = &cub->weapons[WEAPON_REVOLVER];
