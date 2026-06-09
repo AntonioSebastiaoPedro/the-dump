@@ -1,0 +1,5 @@
+04/11/2025 - RichardDS90
+-Added Brightmaps
+-Converted Into ZScript
+-Put A_Explode Into The First Explosion Frame Instead Of The Second
+-Put All Instances Of "40mm" In Actor Names At The End Due To ZScript Issues With Numbers Being Used First
