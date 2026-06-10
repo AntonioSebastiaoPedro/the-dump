@@ -211,4 +211,16 @@ void			fps_meter_enable(void);
 void			fps_meter_record(double frame_time_ms);
 void			fps_meter_print(void);
 
+/* ====== THREADING ====== */
+t_thread_pool	*init_raycast_pool(t_cub *cub);
+void			cleanup_raycast_pool(t_thread_pool *pool);
+void			start_raycast_threads(t_cub *cub);
+void			wait_raycast_threads(t_cub *cub);
+
+t_update_thread	*init_update_thread(t_cub *cub);
+void			cleanup_update_thread(t_update_thread *upd);
+
+/* ====== UTILITY FUNCTIONS ====== */
+double			ft_get_time(void);
+
 #endif

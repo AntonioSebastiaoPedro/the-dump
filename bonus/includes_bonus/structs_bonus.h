@@ -297,6 +297,39 @@ typedef struct s_door
 	int				timer;
 }	t_door;
 
+/* ===== THREADING STRUCTURES ===== */
+typedef struct s_raycast_job
+{
+	int				start_col;
+	int				end_col;
+	t_ray			*ray_buffer;
+	struct s_cub	*cub;
+	int				thread_id;
+}	t_raycast_job;
+
+typedef struct s_thread_pool
+{
+	pthread_t			*threads;
+	int					num_threads;
+	int					num_cols;
+	t_raycast_job		*jobs;
+	int					active;
+	/* Synchronisation: producer-consumer with condition variables */
+	pthread_mutex_t		work_mutex;
+	pthread_cond_t		work_cond;		/* main → workers: new frame ready  */
+	pthread_cond_t		done_cond;		/* workers → main: all done         */
+	volatile int		frame_id;		/* bumped each frame to wake workers */
+	int					done_count;		/* # threads that finished this frame */
+}	t_thread_pool;
+
+typedef struct s_update_thread
+{
+	pthread_t		thread;
+	struct s_cub	*cub;
+	int				active;
+	pthread_mutex_t	mutex;
+}	t_update_thread;
+
 typedef struct s_cub
 {
 	t_map			*map;
@@ -356,6 +389,12 @@ typedef struct s_cub
 	double			last_player_y;
 	double			last_player_angle;
 	double			frame_start_time;
+	
+	/* Multi-threading */
+	t_thread_pool	*raycast_pool;
+	t_update_thread	*update_thread;
+	pthread_mutex_t	render_mutex;
+	int				render_ready;
 }	t_cub;
 
 typedef struct s_ldg_render

@@ -28,6 +28,9 @@
 # define TARGET_FPS 60
 # define FRAME_TIME (1.0 / TARGET_FPS)
 
+/* Threading */
+# define NUM_THREADS 4
+
 /* Keys */
 # define KEY_W       119
 # define KEY_S       115
@@ -50,8 +53,8 @@
 # define ESC         65307
 
 /* Screen */
-# define WIDTH 1920 / 2
-# define HEIGHT 1010 / 2
+# define WIDTH 1920
+# define HEIGHT 1010
 
 /* Colors */
 # define RED 0xFF0000

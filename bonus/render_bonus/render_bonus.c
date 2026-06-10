@@ -4,7 +4,6 @@ void	render(t_cub *cub)
 {
 	unsigned int	*pos;
 	int				i;
-	t_ray			ray;
 
 	i = 0;
 	pos = (unsigned int *)cub->mlx->addr;
@@ -24,20 +23,23 @@ void	render(t_cub *cub)
 	}
 	prof_end("skybox+clear");
 
-	if (!cub->game_paused)
-	{
-		prof_start();
-		update_weapon(cub);
-		update_doors(cub);
-		update_items(cub);
-		update_enemies(cub);
-		prof_end("updates");
-	}
-
+	/* ===== RAYCASTING (parallelizado com threads) ===== */
 	prof_start();
-	i = 0;
-	while (i < WIDTH)
-		raycasting(i++, &ray, cub);
+	if (cub->raycast_pool)
+	{
+		// Threads já estão processando continuamente
+		// Apenas esperamos a sincronização via barrier
+		start_raycast_threads(cub);
+		wait_raycast_threads(cub);
+	}
+	else
+	{
+		// Fallback single-threaded
+		t_ray ray;
+		i = 0;
+		while (i < WIDTH)
+			raycasting(i++, &ray, cub);
+	}
 	prof_end("raycasting");
 
 	prof_start();

@@ -4,6 +4,14 @@ void	free_cub(t_cub *cub)
 {
 	if (!cub)
 		return ;
+	
+	/* ===== CLEANUP THREADING SYSTEM ===== */
+	if (cub->raycast_pool)
+		cleanup_raycast_pool(cub->raycast_pool);
+	if (cub->update_thread)
+		cleanup_update_thread(cub->update_thread);
+	pthread_mutex_destroy(&cub->render_mutex);
+	
 	free_config(cub);
 	if (cub->map)
 	{

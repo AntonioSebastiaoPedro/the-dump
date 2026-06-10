@@ -102,6 +102,8 @@ int	loop_hook(t_cub *cub)
 			update_player(cub);
 			update_doors(cub);
 			update_enemies(cub);
+			update_items(cub);
+			update_weapon(cub);
 		}
 
 		int offset = 0;

@@ -29,6 +29,16 @@ int	main(int ac, char **av)
 		return (free_cub(cub), 1);
 	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
 	start_loader_thread(cub);
+	
+	/* ===== INITIALIZE THREADING SYSTEM ===== */
+	pthread_mutex_init(&cub->render_mutex, NULL);
+	cub->raycast_pool = init_raycast_pool(cub);
+	if (!cub->raycast_pool)
+	{
+		ft_fprintf_fd(2, "Erro ao inicializar threads!\n");
+		return (free_cub(cub), 1);
+	}
+	
 	cub->player_hp = PLAYER_MAX_HP;
 	cub->show_mira = true;
 	cub->crosshair.scale = 1.0f;
