@@ -349,6 +349,13 @@ typedef struct s_cub
 	bool			has_blue_key;
 	bool			show_full_map;
 	bool			game_paused;
+	
+	/* Performance optimization */
+	bool			render_dirty;
+	double			last_player_x;
+	double			last_player_y;
+	double			last_player_angle;
+	double			frame_start_time;
 }	t_cub;
 
 typedef struct s_ldg_render

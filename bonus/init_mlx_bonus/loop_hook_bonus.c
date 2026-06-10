@@ -19,6 +19,47 @@ double ft_get_time(void)
 	return (tv.tv_sec + (tv.tv_usec / 1000000.0));
 }
 
+/* ========== PERFORMANCE OPTIMIZATION ========== */
+static void	check_render_dirty(t_cub *cub)
+{
+	double	angle_diff;
+	double	pos_diff;
+
+	angle_diff = fabs(cub->player->dir_x - cub->last_player_angle);
+	pos_diff = fabs(cub->player->pos_x - cub->last_player_x) + 
+			   fabs(cub->player->pos_y - cub->last_player_y);
+	
+	if (angle_diff > 0.001 || pos_diff > 0.001)
+	{
+		cub->render_dirty = true;
+		cub->last_player_angle = cub->player->dir_x;
+		cub->last_player_x = cub->player->pos_x;
+		cub->last_player_y = cub->player->pos_y;
+	}
+	else
+	{
+		cub->render_dirty = false;
+	}
+}
+
+static int	should_skip_frame(t_cub *cub)
+{
+	double	elapsed;
+	double	current;
+
+	current = ft_get_time();
+	elapsed = current - cub->frame_start_time;
+	
+	if (elapsed < FRAME_TIME)
+	{
+		usleep((FRAME_TIME - elapsed) * 1000000);
+		return (1);
+	}
+	cub->frame_start_time = current;
+	return (0);
+}
+/* ============================================== */
+
 
 int	loop_hook(t_cub *cub)
 {
@@ -51,6 +92,10 @@ int	loop_hook(t_cub *cub)
 	}
 	else if (cub->state == GAME)
 	{
+		/* Frame rate limiting */
+		if (should_skip_frame(cub))
+			return (0);
+
 		poll_joystick(cub);
 		if (!cub->game_paused)
 		{
@@ -68,14 +113,18 @@ int	loop_hook(t_cub *cub)
 		}
 		cub->delta_time = cub->current_time - cub->last_time;
 		cub->last_time = cub->current_time;
-		cub->t_elapsed_time += cub->delta_time; //Total elapsed time
+		cub->t_elapsed_time += cub->delta_time;
 		cub->elapsed_time += cub->delta_time;
 
 		if (cub->delta_time <= 0.0)
 			cub->delta_time = 0.0;
-		if (cub->delta_time > 1.0 / 60.0) //60 is the FPS, maybe shouldbe a macro
+		if (cub->delta_time > 1.0 / 60.0)
 			cub->delta_time = 1.0 / 60.0;
+		
+		/* Check if we need to render (dirty flag) */
+		check_render_dirty(cub);
 		render(cub);
+		
 		/* =========== RENDER TIMER ============== */
 		time = ft_itoa((int)roundf(cub->elapsed_time));
 		draw_empty_rect(cub, (t_vec){(WIDTH/2)-70,13.5}, (t_vec){140,40}, WHITE);
@@ -84,8 +133,6 @@ int	loop_hook(t_cub *cub)
 		draw_string_graphics(cub, WIDTH / 2 - offset, HEIGHT / 2 - 480, time, WHITE);
 		free(time);
 		/* ========================================= */
-		// printf("Time: %lf\n", roundf(cub->t_elapsed_time));
-		// printf("Elapsed(match) time: %lf\n", roundf(cub->elapsed_time));
 		if (cub->player_hp <= 0)
 			cub->state = GAME_OVER;
 		else if (check_level_completion(cub))

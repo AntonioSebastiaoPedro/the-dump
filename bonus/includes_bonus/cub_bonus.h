@@ -198,4 +198,17 @@ void			render_victory_screen(t_cub *cub);
 int				parse_map_into_cub(t_cub *cub, char *filename);
 void			start_loader_thread(t_cub *cub);
 void			increment_loader(t_cub *cub);
+
+/* ====== PROFILING ====== */
+void			prof_enable(int enable);
+void			prof_start(void);
+long			prof_end(const char *name);
+void			prof_start_named(struct timeval *t);
+long			prof_end_named(const char *name, struct timeval *t);
+
+/* ====== FPS METER ====== */
+void			fps_meter_enable(void);
+void			fps_meter_record(double frame_time_ms);
+void			fps_meter_print(void);
+
 #endif

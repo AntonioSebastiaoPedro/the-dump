@@ -12,3 +12,5 @@ cub3D
 *.o
 *.gcno
 *.txt
+*.md
+*.sh

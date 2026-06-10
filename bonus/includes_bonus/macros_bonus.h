@@ -24,6 +24,10 @@
 # define ROT_SPEED  0.02
 # define MOUSE_SENSITIVITY 0.007
 
+/* Performance Optimization */
+# define TARGET_FPS 60
+# define FRAME_TIME (1.0 / TARGET_FPS)
+
 /* Keys */
 # define KEY_W       119
 # define KEY_S       115
@@ -46,8 +50,8 @@
 # define ESC         65307
 
 /* Screen */
-# define WIDTH 1920
-# define HEIGHT 1010
+# define WIDTH 1920 / 2
+# define HEIGHT 1010 / 2
 
 /* Colors */
 # define RED 0xFF0000
