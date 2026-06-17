@@ -11,7 +11,7 @@
 # include <stdbool.h>
 
 /* ====== HEADERS DO PROJETO ====== */
-# include "../libft/libft.h"
+# include "libft.h"
 # include "mlx.h"
 # include "structs.h"
 # include "macros.h"

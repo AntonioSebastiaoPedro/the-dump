@@ -1,5 +1,22 @@
 #include "../includes_bonus/cub_bonus.h"
 
+typedef struct s_win_list
+{
+	Window		window;
+}				t_win_list;
+
+typedef struct s_xvar
+{
+	Display		*display;
+	Window		root;
+	int			screen;
+	int			depth;
+	Visual		*visual;
+	Colormap	cmap;
+	int			private_cmap;
+	t_win_list	*win_list;
+}				t_xvar;
+
 int	is_window_focused(t_cub *cub)
 {
 	Window	focused_win;

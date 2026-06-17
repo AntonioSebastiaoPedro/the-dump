@@ -23,8 +23,9 @@ void	switch_weapon_next(t_cub *cub)
 	cub->current_weapon = &cub->weapons[cub->current_weapon_index];
 }
 
-int	mouse_hook(int key, int x, int y, t_cub *cub)
+int	mouse_hook(int key, int x, int y, void *param)
 {
+	t_cub *cub = (t_cub *)param;
 	(void)x;
 	(void)y;
 	if (cub->state == GAME)

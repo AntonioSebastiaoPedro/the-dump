@@ -14,9 +14,8 @@
 # include <sys/time.h>
 
 /* ====== HEADERS DO PROJETO ====== */
-# include "../libft/libft.h"
+# include "libft.h"
 # include <mlx.h>
-# include <mlx_int.h>
 # include "../bass/bass.h"
 # include "structs_bonus.h"
 # include "macros_bonus.h"
@@ -125,7 +124,7 @@ void			update_mouse(t_cub *cub);
 void			rotate(t_player *player, double rot);
 
 /* ====== BONUS (WEAPON) ====== */
-int				mouse_hook(int key, int x, int y, t_cub *cub);
+int				mouse_hook(int key, int x, int y, void *param);
 void			set_weapon_state(t_weapon *weapon, int new_state);
 void			free_weapon_textures(t_cub *cub);
 void			on_mouse_click(t_cub *cub);
