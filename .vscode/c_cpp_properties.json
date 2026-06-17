@@ -3,7 +3,11 @@
     {
       "name": "linux-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/libft",
+        "${workspaceFolder}/includes",
+        "${workspaceFolder}/minilibx-linux",
+        "${workspaceFolder}/bass"
       ],
       "compilerPath": "/usr/bin/gcc",
       "cStandard": "${default}",
