@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	draw_text_centered(t_cub *cub, char *str, int color, int y_offset)
 {

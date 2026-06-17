@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 void	free_map(char **map, int height)
 {

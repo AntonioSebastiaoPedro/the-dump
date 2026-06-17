@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 void	free_weapon_textures(t_cub *cub)
 {

@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 #include "../includes/macros.h"
 #include <pthread.h>
 

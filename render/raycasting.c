@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	calculate_ray_dir(int col, t_ray *ray, t_player *player)
 {

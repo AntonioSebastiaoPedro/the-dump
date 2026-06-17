@@ -1,5 +1,5 @@
-#ifndef CUB_H
-# define CUB_H
+#ifndef THEDUMP_H
+# define THEDUMP_H
 
 /* ====== LIBS PADRÃO ====== */
 # include <fcntl.h>

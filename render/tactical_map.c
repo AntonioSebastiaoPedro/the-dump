@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	draw_tac_pixel(t_cub *cub, int x, int y, int color)
 {

@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 void	draw_weapon(t_cub *cub)
 {

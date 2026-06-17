@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 t_player	*init_player(t_cub *cub)
 {

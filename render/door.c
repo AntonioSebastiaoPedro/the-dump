@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 t_door	*find_door_in_front(t_cub *cub)
 {

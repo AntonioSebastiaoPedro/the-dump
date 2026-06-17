@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	get_tex_size(t_cub *cub, t_floorceil_args a, t_tex_info *t)
 {

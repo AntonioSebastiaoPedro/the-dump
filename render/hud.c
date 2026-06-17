@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 void	pixel_put(t_cub *cub, int x, int y, int color)
 {

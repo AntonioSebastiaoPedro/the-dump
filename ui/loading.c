@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 void	init_loading(t_cub *cub, t_loading *loading, void *mlx)
 {

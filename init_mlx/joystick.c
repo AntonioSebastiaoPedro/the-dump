@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 #include <linux/joystick.h>
 
 void	init_joystick(t_cub *cub)

@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 int	validate_map(char **map, int height, t_cub *cub)
 {

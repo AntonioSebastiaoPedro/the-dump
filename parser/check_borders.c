@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 int	check_borders(char **map, int height, int width)
 {

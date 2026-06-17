@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	draw_button(t_cub *cub, int y, int index, char *label)
 {

@@ -1,11 +1,8 @@
 debug.log
-build_bonus
 build
 *.o
 *.d
 minilibx-linux/
-cub3D_bonus
-cub3D
 *.a
 *.so
 *.dylib
@@ -14,3 +11,4 @@ cub3D
 *.txt
 *.md
 *.sh
+thedump

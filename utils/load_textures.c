@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 int	load_single_texture(t_cub *cub, t_texture *tex, const char *path)
 {

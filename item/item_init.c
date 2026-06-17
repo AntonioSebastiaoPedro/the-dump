@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	add_item(t_cub *cub, double x, double y, t_item_type type)
 {

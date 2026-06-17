@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 #include <math.h>
 
 int	enemy_has_line_of_sight(t_cub *cub, t_enemy *e)

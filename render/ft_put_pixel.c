@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 void	ft_put_pixel(t_cub *cub, int x, int y, int color)
 {

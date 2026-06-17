@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	move_forward(t_player *player, t_cub *cub)
 {

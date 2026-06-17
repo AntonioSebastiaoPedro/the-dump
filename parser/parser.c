@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static int	handle_line(char *line, t_cub *cub, int *map_start, int i)
 {

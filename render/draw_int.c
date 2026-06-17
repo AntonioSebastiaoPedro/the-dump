@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 void	draw_char_pixel(t_cub *cub, int x, int y, int character, int color)
 {

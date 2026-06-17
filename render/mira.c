@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static void	draw_line(t_cub *cub, int x0, int y0, int x1, int y1, int color)
 {

@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 static int	get_pixel_color(t_texture *tex, int x, int y) //trocar
 {

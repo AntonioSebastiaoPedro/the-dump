@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 unsigned int	get_texture_color(t_texture *texture, int x, int y)
 {

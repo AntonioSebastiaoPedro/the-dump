@@ -2,7 +2,7 @@
 # CONFIGURATION
 # ==============================================================================
 
-NAME = nova3d
+NAME = thedump
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -O3 -Iminilibx-linux -Iincludes -Ilibft -Ibass -I.
 LDFLAGS = -Llibft -lft -Lminilibx-linux -lmlx -lX11 -lXext -lm -Lbass -lbass -Wl,-rpath=./bass -lpthread

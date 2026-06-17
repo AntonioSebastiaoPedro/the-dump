@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "../includes/thedump.h"
 
 /* Retrieves a playback channel for the sample and plays it */
 void	play_weapon_sound(t_cub *cub)
