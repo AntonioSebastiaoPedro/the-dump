@@ -10,7 +10,6 @@ static	void	set_player_position(char **map, t_cub *cub, int x, int y)
 	cub->player->pos_x = x + 0.5;
 	cub->player->pos_y = y + 0.5;
 	cub->player->dir = map[y][x];
-	map[y][x] = '0';
 }
 
 int	check_player_help(char **map, t_cub *cub)
@@ -46,8 +45,8 @@ int	check_player(char **map, t_cub *cub)
 
 	count = check_player_help(map, cub);
 	if (count == 0)
-		return (ft_putendl_fd("Error\njogador ausente", 2), 0);
+		return (ft_putendl_fd("Error\nJogador ausente", 2), 0);
 	if (count > 1)
-		return (ft_putendl_fd("Error\nmúltiplos jogadores", 2), 0);
+		return (ft_putendl_fd("Error\nMúltiplos jogadores", 2), 0);
 	return (1);
 }

@@ -1,8 +1,11 @@
-#include "cub.h"
+#include "includes/cub.h"
+#include <X11/Xlib.h>
 
 int	main(int ac, char **av)
 {
 	t_cub	*cub;
+
+	XInitThreads();
 
 	cub = parse_cub(ac, av);
 	if (!cub)
@@ -10,15 +13,42 @@ int	main(int ac, char **av)
 	cub->mlx = init_mlx();
 	if (!cub->mlx)
 		return (free_cub(cub), 1);
-	if (!init_player(cub))
+	cub->mouse.center_x = WIDTH / 2;
+	cub->mouse.center_y = HEIGHT / 2;
+	cub->state = LOADING;
+	init_loading(cub, &cub->loading, cub->mlx->mlx);
+
+	// Load and scale UI textures needed for transitions and menu
+	if (!load_single_texture(cub, &cub->menu.loading_img, LOADING_IMG))
 		return (free_cub(cub), 1);
-	if (!load_textures(cub))
+	scale_texture(cub, &cub->menu.loading_img, WIDTH, HEIGHT);
+	if (!load_single_texture(cub, &cub->menu.menu_img, MENU_IMG))
 		return (free_cub(cub), 1);
+	scale_texture(cub, &cub->menu.menu_img, WIDTH, HEIGHT);
+	if (!load_single_texture(cub, &cub->menu.about_img, ABOUT_IMG))
+		return (free_cub(cub), 1);
+	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
+	start_loader_thread(cub);
+	
+	/* ===== INITIALIZE THREADING SYSTEM ===== */
+	pthread_mutex_init(&cub->render_mutex, NULL);
+	cub->raycast_pool = init_raycast_pool(cub);
+	if (!cub->raycast_pool)
+	{
+		ft_fprintf_fd(2, "Erro ao inicializar threads!\n");
+		return (free_cub(cub), 1);
+	}
+	
+	cub->player_hp = PLAYER_MAX_HP;
+	cub->show_mira = true;
+	cub->crosshair.scale = 1.0f;
+	cub->crosshair.color = GREEN;
+	cub->crosshair.enabled = true;
 	hook_close(cub);
 	mlx_hook(cub->mlx->win, 2, 1L << 0, key_press, cub);
 	mlx_hook(cub->mlx->win, 3, 1L << 1, key_release, cub);
+	mlx_mouse_hook(cub->mlx->win, mouse_hook, cub);
 	mlx_loop_hook(cub->mlx->mlx, loop_hook, cub);
-	mlx_loop(cub->mlx->mlx);
-	free_cub(cub);
+	(mlx_loop(cub->mlx->mlx), free_cub(cub));
 	return (0);
 }

@@ -32,8 +32,13 @@ static int	handle_line(char *line, t_cub *cub, int *map_start, int i)
 static int	is_config_complete(t_cub *cub)
 {
 	if (!cub->config->no || !cub->config->so || !cub->config->we
-		|| !cub->config->ea || cub->config->floor_color == -1
-		|| cub->config->ceiling_color == -1)
+		|| !cub->config->ea)
+	{
+		ft_putendl_fd("Error\nConfiguracao incompleta", 2);
+		return (0);
+	}
+	if ((cub->config->floor_color == -1 && !cub->config->f_tex)
+		|| (cub->config->ceiling_color == -1 && !cub->config->c_tex))
 	{
 		ft_putendl_fd("Error\nConfiguracao incompleta", 2);
 		return (0);
@@ -58,7 +63,7 @@ static int	process_config(char **lines, t_cub *cub, int *map_start)
 	}
 	if (*map_start == -1)
 	{
-		ft_putendl_fd("Error\nMapa não encontrado no ficheiro", 2);
+		ft_putendl_fd("Error\nFicheiro Nao encontrado no mapa", 2);
 		return (0);
 	}
 	if (!is_config_complete(cub))
@@ -79,35 +84,53 @@ t_cub	*init_cub(void)
 	cub->textures = ft_calloc(1, sizeof(t_textures));
 	if (!cub->map || !cub->config || !cub->player || !cub->textures)
 		return (free_cub(cub), NULL);
-	cub->config->floor_color = -1;
 	cub->config->ceiling_color = -1;
+	cub->menu.loading_img.img = NULL;
+	cub->menu.about_img.img = NULL;
+	cub->enemies = NULL;
+	cub->door = NULL;
 	return (cub);
 }
 
-t_cub	*parse_cub(int ac, char **av)
+int	parse_map_into_cub(t_cub *cub, char *filename)
 {
 	char	**lines;
 	int		map_start;
-	t_cub	*cub;
 
 	map_start = -1;
-	ft_validate_file(ac, av);
-	lines = read_file(av[1]);
+	if (!ft_check_file(filename))
+		return (0);
+	lines = read_file(filename);
 	if (!lines)
-		return (NULL);
-	cub = init_cub();
-	if (!cub)
-		return (free_split(lines), NULL);
+		return (0);
 	if (!process_config(lines, cub, &map_start))
 	{
 		free_split(lines);
-		return (free_cub(cub), NULL);
+		return (0);
 	}
 	if (parse_map(lines, map_start, cub) == 0)
 	{
 		free_split(lines);
-		return (free_cub(cub), NULL);
+		return (0);
 	}
 	free_split(lines);
+	return (1);
+}
+
+t_cub	*parse_cub(int ac, char **av)
+{
+	t_cub	*cub;
+
+	if (ac != 1)
+	{
+		//ft_validate_file(ac, av);
+		return(NULL);
+	}
+	cub = init_cub();
+	if (!cub)
+		return (NULL);
+	init_campaign(cub, ac, av);
+	if (!parse_map_into_cub(cub, cub->level_mgr.campaign_maps[0]))
+		return (free_cub(cub), NULL);
 	return (cub);
 }

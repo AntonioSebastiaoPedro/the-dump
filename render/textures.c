@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "../includes/cub.h"
 
 static void	calculate_wall_impact(t_ray *ray, t_player *player)
 {
@@ -13,8 +13,17 @@ static void	calculate_wall_impact(t_ray *ray, t_player *player)
 		ray->wall_impact = 1.0 - ray->wall_impact;
 }
 
-static t_texture	*get_texture(t_ray *ray, t_cub *cub)
+t_texture	*get_texture(t_ray *ray, t_cub *cub)
 {
+	t_door	*door;
+
+	if (ray->is_door == 1)
+	{
+		door = get_door_at(cub, ray->map_x, ray->map_y);
+		if (door)
+			return (&cub->door_frames[door->frame]);
+		return (&cub->door_frames[0]);
+	}
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)

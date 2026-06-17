@@ -1,56 +1,63 @@
-#include "cub.h"
+#include "../includes/cub.h"
 
-static t_texture	*get_texture(t_ray *ray, t_cub *cub)
+t_floorceil_args	make_args(int col, int y, int is_floor)
 {
-	if (ray->side == 0)
-	{
-		if (ray->dir_x < 0)
-			return (&cub->textures->we);
-		else
-			return (&cub->textures->ea);
-	}
-	else
-	{
-		if (ray->dir_y < 0)
-			return (&cub->textures->no);
-		else
-			return (&cub->textures->so);
-	}
-	return (NULL);
+	t_floorceil_args	a;
+
+	a.col = col;
+	a.y = y;
+	a.is_floor = is_floor;
+	return (a);
 }
 
-unsigned int	get_texture_color(t_texture *texture, int x, int y)
+void	draw_ceiling(t_cub *cub, t_ray *ray, int *y, int col)
 {
-	unsigned int	color;
+	t_floorceil_args	a;
 
-	color = *(unsigned int *)(texture->addr + (y * texture->line_len)
-			+ (x * (texture->bpp / 8)));
-	return (color);
+	while (*y < ray->draw_start)
+	{
+		a = make_args(col, *y, 0);
+		draw_floor_ceiling_pixel(cub, a, ray);
+		(*y)++;
+	}
+}
+
+void	draw_wall(t_cub *cub, t_ray *ray, int *y, int col)
+{
+	t_texture			*texture;
+	int					tex_y;
+	unsigned int		color;
+
+	texture = get_texture(ray, cub);
+	while (*y <= ray->draw_end)
+	{
+		tex_y = (int)ray->texture_pos;
+		ray->texture_pos += ray->step_texture;
+		color = get_texture_color(texture, ray->texture_column, tex_y);
+		if (color != TRANSPARENT_BACKGROUND)
+			ft_put_pixel(cub, col, *y, color);
+		(*y)++;
+	}
+}
+
+void	draw_floor(t_cub *cub, t_ray *ray, int *y, int col)
+{
+	t_floorceil_args	a;
+
+	while (*y < HEIGHT)
+	{
+		a = make_args(col, *y, 1);
+		draw_floor_ceiling_pixel(cub, a, ray);
+		(*y)++;
+	}
 }
 
 void	draw_vertical_line(int col, t_ray *ray, t_cub *cub)
 {
-	int				y;
-	int				tex_y;
-	unsigned int	color;
-	t_texture		*texture;
+	int					y;
 
 	y = 0;
-	texture = get_texture(ray, cub);
-	while (y < ray->draw_start)
-		ft_put_pixel(cub, col, y++, cub->config->ceiling_color);
-	while (y <= ray->draw_end)
-	{
-		tex_y = (int)ray->texture_pos;
-		if (tex_y < 0)
-			tex_y = 0;
-		if (tex_y >= texture->height)
-			tex_y = texture->height - 1;
-		ray->texture_pos += ray->step_texture;
-		color = get_texture_color(texture, ray->texture_column, tex_y);
-		ft_put_pixel(cub, col, y, color);
-		y++;
-	}
-	while (y < HEIGHT)
-		ft_put_pixel(cub, col, y++, cub->config->floor_color);
+	draw_ceiling(cub, ray, &y, col);
+	draw_wall(cub, ray, &y, col);
+	draw_floor(cub, ray, &y, col);
 }

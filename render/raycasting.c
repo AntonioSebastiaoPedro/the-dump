@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "../includes/cub.h"
 
 static void	calculate_ray_dir(int col, t_ray *ray, t_player *player)
 {
@@ -64,6 +64,7 @@ static void	calculate_wall(t_ray *ray)
 
 void	raycasting(int col, t_ray *ray, t_cub *cub)
 {
+	ray->is_door = 0;
 	ray->map_x = (int)cub->player->pos_x;
 	ray->map_y = (int)cub->player->pos_y;
 	calculate_ray_dir(col, ray, cub->player);
@@ -73,4 +74,5 @@ void	raycasting(int col, t_ray *ray, t_cub *cub)
 	calculate_wall(ray);
 	calculate_texture(ray, cub);
 	draw_vertical_line(col, ray, cub);
+	cub->zbuffer[col] = ray->perp_wall_dist;
 }

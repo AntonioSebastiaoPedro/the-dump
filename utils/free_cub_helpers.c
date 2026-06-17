@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "../includes/cub.h"
 
 void	free_map(char **map, int height)
 {
@@ -13,7 +13,20 @@ void	free_map(char **map, int height)
 		i++;
 	}
 	free(map);
-	map = NULL;
+}
+
+void	clear_map(t_cub *cub)
+{
+	if (cub->map)
+	{
+		if (cub->map->grid)
+		{
+			free_map(cub->map->grid, cub->map->height);
+			cub->map->grid = NULL;
+		}
+		cub->map->height = 0;
+		cub->map->width = 0;
+	}
 }
 
 void	free_split(char **arr)
@@ -31,7 +44,7 @@ void	free_split(char **arr)
 	free(arr);
 }
 
-void	free_config(t_cub *cub)
+void	clear_config(t_cub *cub)
 {
 	if (cub->config)
 	{
@@ -43,7 +56,28 @@ void	free_config(t_cub *cub)
 			free(cub->config->we);
 		if (cub->config->ea)
 			free(cub->config->ea);
+		if (cub->config->f_tex)
+			free(cub->config->f_tex);
+		if (cub->config->c_tex)
+			free(cub->config->c_tex);
+		cub->config->no = NULL;
+		cub->config->so = NULL;
+		cub->config->we = NULL;
+		cub->config->ea = NULL;
+		cub->config->f_tex = NULL;
+		cub->config->c_tex = NULL;
+		cub->config->floor_color = -1;
+		cub->config->ceiling_color = -1;
+	}
+}
+
+void	free_config(t_cub *cub)
+{
+	if (cub->config)
+	{
+		clear_config(cub);
 		free(cub->config);
+		cub->config = NULL;
 	}
 }
 
@@ -63,18 +97,4 @@ void	free_mlx(t_cub *cub)
 		free(cub->mlx);
 		cub->mlx = NULL;
 	}
-}
-
-void	free_textures(t_cub *cub)
-{
-	if (!cub || !cub->mlx || !cub->mlx->mlx || !cub->textures)
-		return ;
-	if (cub->textures->no.img)
-		mlx_destroy_image(cub->mlx->mlx, cub->textures->no.img);
-	if (cub->textures->so.img)
-		mlx_destroy_image(cub->mlx->mlx, cub->textures->so.img);
-	if (cub->textures->we.img)
-		mlx_destroy_image(cub->mlx->mlx, cub->textures->we.img);
-	if (cub->textures->ea.img)
-		mlx_destroy_image(cub->mlx->mlx, cub->textures->ea.img);
 }
