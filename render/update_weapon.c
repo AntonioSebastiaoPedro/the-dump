@@ -49,9 +49,9 @@ void	set_weapon_state(t_weapon *weapon, int new_state)
 	}
 }
 
-static void	update_frame(t_weapon *weapon)
+static void	update_frame(t_weapon *weapon, double delta_time)
 {
-	weapon->frame_timer++;
+	weapon->frame_timer += delta_time * 60.0;
 	if (weapon->frame_timer >= weapon->frame_delay)
 	{
 		weapon->frame_timer = 0;
@@ -68,7 +68,7 @@ void	update_weapon(t_cub *cub)
 		return ;
 	if (weapon->state == WEAPON_SHOT)
 	{
-		update_frame(weapon);
+		update_frame(weapon, cub->delta_time);
 		if (weapon->current_frame >= get_max_frames(weapon, weapon->state))
 		{
 			if (cub->player->is_moving)
@@ -82,7 +82,7 @@ void	update_weapon(t_cub *cub)
 		set_weapon_state(weapon, WEAPON_MOVE);
 	else
 		set_weapon_state(weapon, WEAPON_IDLE);
-	update_frame(weapon);
+	update_frame(weapon, cub->delta_time);
 	if (weapon->current_frame >= get_max_frames(weapon, weapon->state))
 		weapon->current_frame = 0;
 }

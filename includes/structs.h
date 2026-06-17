@@ -135,8 +135,8 @@ typedef struct s_enemy
 	int				alive;
 	int				is_boss;
 	int				frame;
-	int				frame_timer;
-	int				attack_timer;
+	double			frame_timer;
+	double			attack_timer;
 	t_enemy_state	state;
 	t_enemy_type	type;
 }	t_enemy;
@@ -258,7 +258,7 @@ typedef struct s_weapon
 	t_texture		frames[WEAPON_STATES][WEAPON_FRAMES];
 	int				state;
 	int				current_frame;
-	int				frame_timer;
+	double			frame_timer;
 	int				frame_delay;
 	t_weapon_type	type;
 	unsigned int	shoot_sound;
@@ -294,7 +294,7 @@ typedef struct s_door
 	int				y;
 	t_door_state	state;
 	int				frame;
-	int				timer;
+	double			timer;
 }	t_door;
 
 /* ===== THREADING STRUCTURES ===== */

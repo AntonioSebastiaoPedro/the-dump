@@ -42,9 +42,9 @@ void	try_interact_door(t_cub *cub)
 	}
 }
 
-static void	update_single_door(t_door *door)
+static void	update_single_door(t_door *door, double delta_time)
 {
-	door->timer++;
+	door->timer += delta_time * 60.0;
 	if (door->timer < DOOR_FRAME_DELAY)
 		return ;
 	door->timer = 0;
@@ -75,7 +75,7 @@ void	update_doors(t_cub *cub)
 	i = 0;
 	while (i < cub->n_door)
 	{
-		update_single_door(&cub->door[i]);
+		update_single_door(&cub->door[i], cub->delta_time);
 		i++;
 	}
 }
