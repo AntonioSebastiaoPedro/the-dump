@@ -73,9 +73,9 @@ void	update_player(t_cub *cub)
 				|| cub->joy_axis[6] > JOY_DEADZONE)))
 		strafe(cub->player, cub, 1);
 	if (cub->keys[KEY_LEFT])
-		rotate(cub->player, -ROT_SPEED);
+		rotate(cub->player, -ROT_SPEED * cub->delta_time * 60.0);
 	if (cub->keys[KEY_RIGHT])
-		rotate(cub->player, ROT_SPEED);
+		rotate(cub->player, ROT_SPEED * cub->delta_time * 60.0);
 	if (old_x != cub->player->pos_x || old_y != cub->player->pos_y)
 		play_run_sound(cub);
 	else

@@ -137,8 +137,8 @@ int	loop_hook(t_cub *cub)
 
 		if (cub->delta_time <= 0.0)
 			cub->delta_time = 0.0;
-		if (cub->delta_time > 1.0 / 60.0)
-			cub->delta_time = 1.0 / 60.0;
+		if (cub->delta_time > 0.05)
+			cub->delta_time = 0.05;
 		
 		/* Check if we need to render (dirty flag) */
 		check_render_dirty(cub);
