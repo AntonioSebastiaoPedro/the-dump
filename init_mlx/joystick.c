@@ -4,8 +4,6 @@
 void	init_joystick(t_cub *cub)
 {
 	cub->joy_fd = open("/dev/input/js0", O_RDONLY | O_NONBLOCK);
-	if (cub->joy_fd < 0)
-		ft_fprintf_fd(2, "Joystick: /dev/input/js0 not found\n");
 	ft_memset(cub->joy_axis, 0, sizeof(cub->joy_axis));
 }
 

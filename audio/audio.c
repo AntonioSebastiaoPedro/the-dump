@@ -10,12 +10,6 @@ static HSAMPLE	load_sound(t_cub *cub, char *path, int max, int flags)
 	HSAMPLE	sound;
 
 	sound = BASS_SampleLoad(FALSE, path, 0, 0, max, flags);
-	if (!sound)
-	{
-		ft_putstr_fd("Warning: Failed to load ", 2);
-		ft_putstr_fd(path, 2);
-		ft_putchar_fd('\n', 2);
-	}
 	increment_loader(cub);
 	return (sound);
 }

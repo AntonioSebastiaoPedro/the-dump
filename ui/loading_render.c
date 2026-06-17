@@ -2,7 +2,6 @@
 
 void	loading_render(t_cub *game)
 {
-	char			progress_text[30];
 	t_ldg_render	ldg;
 
 	draw_texture_img(game, &game->menu.loading_img);
@@ -24,7 +23,4 @@ void	loading_render(t_cub *game)
 	draw_rectangle(game, &ldg, DARK_GREEN);
 	mlx_put_image_to_window(game->mlx->mlx,
 		game->mlx->win, game->mlx->img, 0, 0);
-	ft_sprintf(progress_text, "Loading... %d%%", game->loading.progress);
-	mlx_string_put(game->mlx->mlx, game->mlx->win, (WIDTH / 2) - 50,
-		ldg.y + ldg.bar_height + 40, WHITE, progress_text);
 }

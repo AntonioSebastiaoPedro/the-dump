@@ -10,12 +10,6 @@ static void	draw_button(t_cub *cub, int y, int index, char *label)
 		mlx_string_put(cub->mlx->mlx, cub->mlx->win,
 			WIDTH / 2 - 130, y, color, label);
 	}
-	else
-	{
-		color = WHITE;
-		mlx_string_put(cub->mlx->mlx, cub->mlx->win,
-			WIDTH / 2 - 100, y, color, label + 2);
-	}
 }
 
 void	switch_button(t_cub *cub)
