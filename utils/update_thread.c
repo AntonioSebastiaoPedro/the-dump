@@ -36,6 +36,7 @@ static void	*update_worker(void *arg)
 				update_doors(upd->cub);
 				update_enemies(upd->cub);
 				update_items(upd->cub);
+				update_projectiles(upd->cub);
 				update_weapon(upd->cub);
 			}
 			pthread_mutex_unlock(&upd->mutex);
