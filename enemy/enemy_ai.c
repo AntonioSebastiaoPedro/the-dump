@@ -70,7 +70,10 @@ void	enemy_ai_chase(t_cub *cub, t_enemy *e)
 		e->state = EN_IDLE;
 		return ;
 	}
-	if (len < 1.5)
+	double	attack_range;
+	
+	attack_range = (e->type != DOG_TYPE) ? 8.0 : 1.0;
+	if (len < attack_range)
 	{
 		e->state = EN_ATTACK;
 		e->attack_timer = 0;
@@ -95,11 +98,15 @@ void	enemy_ai_attack(t_cub *cub, t_enemy *e)
 	double	len;
 	int		cooldown;
 
+	double	attack_range;
+
 	dx = cub->player->pos_x - e->x;
 	dy = cub->player->pos_y - e->y;
 	len = sqrt(dx * dx + dy * dy);
 	e->dist = len * len;
-	if (len > 2.0)
+	
+	attack_range = (e->type != DOG_TYPE) ? 8.0 : 1.5;
+	if (len > attack_range || !enemy_has_line_of_sight(cub, e))
 	{
 		e->state = EN_CHASE;
 		return ;
