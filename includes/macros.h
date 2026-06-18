@@ -50,6 +50,7 @@
 # define KEY_2		50
 # define KEY_3		51
 # define KEY_U		117
+# define KEY_N       110
 # define KEY_MINUS   45
 # define KEY_PLUS    61
 # define ESC         65307

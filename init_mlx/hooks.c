@@ -62,6 +62,8 @@ int	key_press(int key, t_cub *cub)
 		cub->show_full_map = !cub->show_full_map;
 		cub->game_paused = cub->show_full_map;
 	}
+	if (key == KEY_N && cub->state == GAME)
+		load_next_level(cub);
 	if (key == KEY_PLUS && cub->difficulty < DIFF_HARD)
 	{
 		cub->difficulty++;
