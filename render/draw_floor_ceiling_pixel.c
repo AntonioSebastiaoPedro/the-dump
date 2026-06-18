@@ -40,7 +40,7 @@ static void	get_tex_coords(t_floorceil_ctx c,
 		*ty += t.h;
 }
 
-void	draw_floor_ceiling_pixel(t_cub *cub,
+unsigned int	get_floor_ceiling_pixel_color(t_cub *cub,
 			t_floorceil_args a, t_ray *ray)
 {
 	t_tex_info		tex;
@@ -49,16 +49,14 @@ void	draw_floor_ceiling_pixel(t_cub *cub,
 	int				ty;
 
 	if (a.is_floor && !cub->config->f_tex)
-		return (put_floor_or_ceiling(cub, a));
+		return (get_floor_or_ceiling_color(cub, a));
 	if (!a.is_floor && !cub->config->c_tex)
-		return (put_floor_or_ceiling(cub, a));
+		return (get_floor_or_ceiling_color(cub, a));
 	get_tex_size(cub, a, &tex);
 	get_floorceil_pos(cub, ray, a, &ctx);
 	get_tex_coords(ctx, tex, &tx, &ty);
 	if (a.is_floor)
-		ft_put_pixel(cub, a.col, a.y,
-			apply_depth_shading(get_texture_color(&cub->textures->floor, tx, ty), ctx.dist));
+		return (apply_depth_shading(get_texture_color(&cub->textures->floor, tx, ty), ctx.dist));
 	else
-		ft_put_pixel(cub, a.col, a.y,
-			apply_depth_shading(get_texture_color(&cub->textures->ceiling, tx, ty), ctx.dist));
+		return (apply_depth_shading(get_texture_color(&cub->textures->ceiling, tx, ty), ctx.dist));
 }

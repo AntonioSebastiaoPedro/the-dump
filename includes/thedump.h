@@ -101,10 +101,9 @@ void			calculate_texture(t_ray *ray, t_cub *cub);
 unsigned int	get_texture_color(t_texture *texture, int x, int y);
 t_texture		*get_texture(t_ray *ray, t_cub *cub);
 void			put_fc_color(t_cub *cub, int col, int y, int is_floor);
-void			put_floor_or_ceiling(t_cub *cub, t_floorceil_args a);
-int				load_single_texture(t_cub *cub, t_texture *tex,
-					const char *path);
-void			draw_floor_ceiling_pixel(t_cub *cub, t_floorceil_args a,
+unsigned int	get_floor_or_ceiling_color(t_cub *cub, t_floorceil_args a);
+int				load_single_texture(t_cub *cub, t_texture *tex, const char *path);
+unsigned int	get_floor_ceiling_pixel_color(t_cub *cub, t_floorceil_args a,
 					t_ray *ray);
 void			draw_mira(t_cub *cub);
 void			draw_hp_hud(t_cub *cub);

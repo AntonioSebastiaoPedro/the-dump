@@ -13,12 +13,16 @@ t_floorceil_args	make_args(int col, int y, int is_floor)
 void	draw_ceiling(t_cub *cub, t_ray *ray, int *y, int col)
 {
 	t_floorceil_args	a;
+	unsigned int		color;
 
 	while (*y < ray->draw_start)
 	{
 		a = make_args(col, *y, 0);
-		draw_floor_ceiling_pixel(cub, a, ray);
-		(*y)++;
+		color = get_floor_ceiling_pixel_color(cub, a, ray);
+		ft_put_pixel(cub, col, *y, color);
+		if (*y + 1 < ray->draw_start)
+			ft_put_pixel(cub, col, *y + 1, color);
+		*y += 2;
 	}
 }
 
@@ -46,12 +50,16 @@ void	draw_wall(t_cub *cub, t_ray *ray, int *y, int col)
 void	draw_floor(t_cub *cub, t_ray *ray, int *y, int col)
 {
 	t_floorceil_args	a;
+	unsigned int		color;
 
 	while (*y < HEIGHT)
 	{
 		a = make_args(col, *y, 1);
-		draw_floor_ceiling_pixel(cub, a, ray);
-		(*y)++;
+		color = get_floor_ceiling_pixel_color(cub, a, ray);
+		ft_put_pixel(cub, col, *y, color);
+		if (*y + 1 < HEIGHT)
+			ft_put_pixel(cub, col, *y + 1, color);
+		*y += 2;
 	}
 }
 
