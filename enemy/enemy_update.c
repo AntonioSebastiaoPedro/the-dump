@@ -11,6 +11,11 @@ static void	update_single_enemy(t_cub *cub, t_enemy *e)
 	dx = cub->player->pos_x - e->x;
 	dy = cub->player->pos_y - e->y;
 	e->dist = dx * dx + dy * dy;
+	if (e->hp > 0 && e->dist > 900.0)
+	{
+		e->state = EN_IDLE;
+		return ;
+	}
 	if (e->hp <= 0 && e->state != EN_DEAD)
 	{
 		e->state = EN_DEAD;
