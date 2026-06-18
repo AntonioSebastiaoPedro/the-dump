@@ -138,18 +138,18 @@
 # define DIR_FRONT_LEFT   7
 
 # define DETECTION_RADIUS  10.0
-# define ENEMY_SPEED       0.020
+# define ENEMY_SPEED       0.050
 # define ENEMY_HP          2
 # define ENEMY_DAMAGE      2
 # define ENEMY_ATK_COOLDOWN 30
 # define ENEMY_FRAME_DELAY  10
 
-# define DOG_HP            2
+# define DOG_HP            5
 # define DOG_DAMAGE        2
-# define DOG_SPEED         0.030
+# define DOG_SPEED         0.1
 # define OFFICER_HP        10
 # define OFFICER_DAMAGE    2
-# define OFFICER_SPEED     0.025
+# define OFFICER_SPEED     0.1
 
 # define PLAYER_MAX_HP     100
 
