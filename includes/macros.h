@@ -160,10 +160,4 @@
 
 # define ITEM_INTERACT_DIST   0.5
 
-/* PROJECTILES */
-# define MAX_PROJECTILES      100
-# define PROJECTILE_SPEED     2.0
-# define PROJECTILE_DAMAGE    50
-# define PROJECTILE_RADIUS    0.2
-
 #endif

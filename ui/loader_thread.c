@@ -27,7 +27,6 @@ void	*load_assets_thread(void *arg)
 	init_joystick(cub);
 	load_textures(cub);
 	init_enemies(cub);
-	init_projectiles(cub);
 	load_enemy_textures(cub);
 
 	pthread_mutex_lock(&cub->loader.mutex);

@@ -12,10 +12,7 @@ void	on_mouse_click(t_cub *cub)
 	cub->current_weapon->current_ammo--;
 	set_weapon_state(cub->current_weapon, WEAPON_SHOT);
 	play_weapon_sound(cub);
-	if (cub->current_weapon->type == WEAPON_PLASMA)
-		fire_projectile(cub, cub->player->dir_x, cub->player->dir_y, PROJECTILE_DAMAGE);
-	else
-		enemy_take_damage(cub);
+	enemy_take_damage(cub);
 }
 
 void	switch_weapon_next(t_cub *cub)

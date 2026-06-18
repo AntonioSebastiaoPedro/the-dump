@@ -132,11 +132,6 @@ void			update_weapon(t_cub *cub);
 void			draw_weapon(t_cub *cub);
 void			switch_weapon_next(t_cub *cub);
 
-/* ====== PROJECTILES ====== */
-void			init_projectiles(t_cub *cub);
-void			fire_projectile(t_cub *cub, double dir_x, double dir_y, int damage);
-void			update_projectiles(t_cub *cub);
-
 /* ====== BONUS (DOORS) ====== */
 void			init_doors(t_cub *cub);
 t_door			*get_door_at(t_cub *cub, int x, int y);
