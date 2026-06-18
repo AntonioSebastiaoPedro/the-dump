@@ -10,7 +10,7 @@ unsigned int	apply_depth_shading(unsigned int color, double dist)
 
 	if (color == TRANSPARENT_BACKGROUND)
 		return (color);
-	intensity = 1.0 / (1.0 + dist * 0.5); // Factor 0.15 controls the darkness
+	intensity = 1.0 / (1.0 + dist * 0.3); // Factor 0.15 controls the darkness
 	if (intensity > 1.0)
 		intensity = 1.0;
 	a = (color >> 24) & 0xFF;

@@ -89,7 +89,10 @@ static void	draw_sprite_col(t_cub *cub, t_sprite_proj *p, t_texture *tex,
 		{
 			color = get_texture_color(tex, tex_x, tex_y);
 			if (color != TRANSPARENT_BACKGROUND && (color & 0xFF000000) == 0)
+			{
+				color = apply_depth_shading(color, p->ty);
 				ft_put_pixel(cub, stripe, y, color);
+			}
 		}
 		y++;
 	}
