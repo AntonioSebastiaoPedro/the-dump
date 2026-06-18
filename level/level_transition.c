@@ -36,13 +36,16 @@ void	render_game_over(t_cub *cub)
 
 void	render_victory_screen(t_cub *cub)
 {
-	int	i;
-
-	i = 0;
-	while (i < WIDTH * HEIGHT)
-		((unsigned int *)cub->mlx->addr)[i++] = LIGHT_GRAY;
-	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
-	draw_text_centered(cub, "YOU ESCAPED!", GREEN, -20);
-	draw_text_centered(cub, "Congratulations!", WHITE, 20);
-	draw_text_centered(cub, "Press ESC to Quit", WHITE, 60);
+	if (cub->menu.victory_img.img)
+	{
+		mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->menu.victory_img.img, 0, 0);
+	}
+	else
+	{
+		int	i;
+		i = 0;
+		while (i < WIDTH * HEIGHT)
+			((unsigned int *)cub->mlx->addr)[i++] = LIGHT_GRAY;
+		mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
+	}
 }

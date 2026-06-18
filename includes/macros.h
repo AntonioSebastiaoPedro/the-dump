@@ -98,6 +98,7 @@
 # define LOADING_IMG "assets/theme/loading.xpm"
 # define MENU_IMG "assets/theme/menu.xpm"
 # define ABOUT_IMG "assets/theme/about.xpm"
+# define VICTORY_IMG "assets/theme/boss_victory.xpm"
 
 /* WEAPON MACROS */
 # define WEAPON_FRAMES 13

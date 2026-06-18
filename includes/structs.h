@@ -112,6 +112,7 @@ typedef struct s_menu
 	t_texture	loading_img;
 	t_texture	about_img;
 	t_texture	menu_img;
+	t_texture	victory_img;
 }	t_menu;
 
 typedef enum e_enemy_type

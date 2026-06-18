@@ -29,6 +29,9 @@ int	main(int ac, char **av)
 	if (!load_single_texture(cub, &cub->menu.about_img, ABOUT_IMG))
 		return (free_cub(cub), 1);
 	scale_texture(cub, &cub->menu.about_img, WIDTH, HEIGHT);
+	if (!load_single_texture(cub, &cub->menu.victory_img, VICTORY_IMG))
+		return (free_cub(cub), 1);
+	scale_texture(cub, &cub->menu.victory_img, WIDTH, HEIGHT);
 	start_loader_thread(cub);
 	
 	/* ===== INITIALIZE THREADING SYSTEM ===== */
