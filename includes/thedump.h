@@ -220,6 +220,7 @@ t_update_thread	*init_update_thread(t_cub *cub);
 void			cleanup_update_thread(t_update_thread *upd);
 
 /* ====== UTILITY FUNCTIONS ====== */
+unsigned int	apply_depth_shading(unsigned int color, double dist);
 double			ft_get_time(void);
 
 #endif

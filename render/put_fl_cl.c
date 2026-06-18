@@ -19,8 +19,16 @@ void	put_fc_color(t_cub *cub, int col, int y, int is_floor)
 
 void	put_floor_or_ceiling(t_cub *cub, t_floorceil_args a)
 {
+	double dist;
+
 	if (a.is_floor)
-		put_fc_color(cub, a.col, a.y, 1);
+	{
+		dist = ((double)HEIGHT / (2.0 * a.y - HEIGHT));
+		ft_put_pixel(cub, a.col, a.y, apply_depth_shading(cub->config->floor_color, dist));
+	}
 	else
-		put_fc_color(cub, a.col, a.y, 0);
+	{
+		dist = ((double)HEIGHT / (HEIGHT - 2.0 * a.y));
+		ft_put_pixel(cub, a.col, a.y, apply_depth_shading(cub->config->ceiling_color, dist));
+	}
 }

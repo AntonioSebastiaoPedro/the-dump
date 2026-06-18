@@ -35,7 +35,10 @@ void	draw_wall(t_cub *cub, t_ray *ray, int *y, int col)
 		ray->texture_pos += ray->step_texture;
 		color = get_texture_color(texture, ray->texture_column, tex_y);
 		if (color != TRANSPARENT_BACKGROUND)
+		{
+			color = apply_depth_shading(color, ray->perp_wall_dist);
 			ft_put_pixel(cub, col, *y, color);
+		}
 		(*y)++;
 	}
 }

@@ -57,8 +57,8 @@ void	draw_floor_ceiling_pixel(t_cub *cub,
 	get_tex_coords(ctx, tex, &tx, &ty);
 	if (a.is_floor)
 		ft_put_pixel(cub, a.col, a.y,
-			get_texture_color(&cub->textures->floor, tx, ty));
+			apply_depth_shading(get_texture_color(&cub->textures->floor, tx, ty), ctx.dist));
 	else
 		ft_put_pixel(cub, a.col, a.y,
-			get_texture_color(&cub->textures->ceiling, tx, ty));
+			apply_depth_shading(get_texture_color(&cub->textures->ceiling, tx, ty), ctx.dist));
 }
