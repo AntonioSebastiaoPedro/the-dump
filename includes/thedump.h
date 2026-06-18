@@ -221,6 +221,7 @@ void			cleanup_update_thread(t_update_thread *upd);
 
 /* ====== UTILITY FUNCTIONS ====== */
 unsigned int	apply_depth_shading(unsigned int color, double dist);
+int				is_walkable_aabb(t_cub *cub, double new_x, double new_y, double size);
 double			ft_get_time(void);
 
 #endif
