@@ -44,4 +44,4 @@ def image_to_xpm(image_path, xpm_path, target_size=(1920, 1010)):
             f.write(line + '\n')
         f.write("};\n")
 
-image_to_xpm("/home/ansebast/.gemini/antigravity/brain/991ac5e8-a6e0-4c20-b28a-ea8fa292688b/media__1781824085485.jpg", "assets/theme/boss_victory.xpm")
+image_to_xpm("/home/ansebast/.gemini/antigravity/brain/991ac5e8-a6e0-4c20-b28a-ea8fa292688b/media__1781824679665.jpg", "assets/theme/game_over.xpm")

@@ -24,14 +24,18 @@ void	render_transition_screen(t_cub *cub)
 
 void	render_game_over(t_cub *cub)
 {
-	int	i;
-
-	i = 0;
-	while (i < WIDTH * HEIGHT)
-		((unsigned int *)cub->mlx->addr)[i++] = DARK_RED;
-	mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
-	draw_text_centered(cub, "GAME OVER", WHITE, -20);
-	draw_text_centered(cub, "Press ESC to Quit", WHITE, 20);
+	if (cub->menu.game_over_img.img)
+	{
+		mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->menu.game_over_img.img, 0, 0);
+	}
+	else
+	{
+		int	i;
+		i = 0;
+		while (i < WIDTH * HEIGHT)
+			((unsigned int *)cub->mlx->addr)[i++] = DARK_RED;
+		mlx_put_image_to_window(cub->mlx->mlx, cub->mlx->win, cub->mlx->img, 0, 0);
+	}
 }
 
 void	render_victory_screen(t_cub *cub)

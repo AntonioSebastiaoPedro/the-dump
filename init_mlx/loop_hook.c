@@ -184,12 +184,17 @@ int	loop_hook(t_cub *cub)
 		cub->last_time = cub->current_time;
 		poll_joystick(cub);
 		render_game_over(cub);
-		if (cub->keys[ESC])
+		if (cub->keys[KEY_ENTER])
 		{
-			cub->keys[ESC] = 0;
+			cub->keys[KEY_ENTER] = 0;
 			restart_game(cub);
 			cub->last_time = 0.0;
 			cub->elapsed_time = 0.0;
+		}
+		else if (cub->keys[ESC])
+		{
+			cub->keys[ESC] = 0;
+			ft_close(cub);
 		}
 	}
 	else if (cub->state == VICTORY)

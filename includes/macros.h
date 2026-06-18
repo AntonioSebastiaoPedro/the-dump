@@ -99,6 +99,7 @@
 # define MENU_IMG "assets/theme/menu.xpm"
 # define ABOUT_IMG "assets/theme/about.xpm"
 # define VICTORY_IMG "assets/theme/boss_victory.xpm"
+# define GAME_OVER_IMG "assets/theme/game_over.xpm"
 
 /* WEAPON MACROS */
 # define WEAPON_FRAMES 13
