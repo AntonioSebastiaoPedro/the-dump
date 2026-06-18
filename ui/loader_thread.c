@@ -28,6 +28,8 @@ void	*load_assets_thread(void *arg)
 	load_textures(cub);
 	init_enemies(cub);
 	load_enemy_textures(cub);
+	init_doors(cub);
+	init_items(cub);
 
 	pthread_mutex_lock(&cub->loader.mutex);
 	cub->loader.done = 1;
