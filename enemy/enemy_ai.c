@@ -26,10 +26,11 @@ int	enemy_has_line_of_sight(t_cub *cub, t_enemy *e)
 	{
 		cx += dx * 0.2;
 		cy += dy * 0.2;
-		if (cub->map->grid[(int)cy][(int)cx] == '1')
-			return (0);
-		if (cub->map->grid[(int)cy][(int)cx] == 'D'
-			&& !is_door_open(cub, (int)cx, (int)cy))
+		if (!can_walk(cub, (int)cx, (int)cy) ||
+			!can_walk(cub, (int)(cx + 0.25), (int)cy) ||
+			!can_walk(cub, (int)(cx - 0.25), (int)cy) ||
+			!can_walk(cub, (int)cx, (int)(cy + 0.25)) ||
+			!can_walk(cub, (int)cx, (int)(cy - 0.25)))
 			return (0);
 		i++;
 	}
