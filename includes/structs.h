@@ -158,6 +158,7 @@ typedef struct s_loading
 typedef struct s_map
 {
 	char	**grid;
+	int		**flow_field;
 	int		width;
 	int		height;
 }	t_map;

@@ -24,6 +24,7 @@ void	clear_map(t_cub *cub)
 			free_map(cub->map->grid, cub->map->height);
 			cub->map->grid = NULL;
 		}
+		free_flow_field(cub);
 		cub->map->height = 0;
 		cub->map->width = 0;
 	}

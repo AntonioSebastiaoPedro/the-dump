@@ -176,6 +176,9 @@ void			enemy_ai_chase(t_cub *cub, t_enemy *e);
 void			enemy_ai_attack(t_cub *cub, t_enemy *e);
 int				enemy_has_line_of_sight(t_cub *cub, t_enemy *e);
 int				enemy_can_move(t_cub *cub, double x, double y);
+void			init_flow_field(t_cub *cub);
+void			free_flow_field(t_cub *cub);
+void			update_flow_field(t_cub *cub);
 
 /* ====== ITEM SYSTEM ====== */
 void			init_items(t_cub *cub);

@@ -32,6 +32,7 @@ void	update_enemies(t_cub *cub)
 	int	i;
 
 	i = 0;
+	update_flow_field(cub);
 	while (i < cub->enemy_count)
 	{
 		update_single_enemy(cub, &cub->enemies[i]);
