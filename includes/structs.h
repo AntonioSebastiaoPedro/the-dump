@@ -287,6 +287,17 @@ typedef struct s_item
 	double			dist;
 }	t_item;
 
+typedef struct s_projectile
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	bool	active;
+	double	dist;
+	int		damage;
+}	t_projectile;
+
 typedef struct s_door
 {
 	//t_texture		door_frames[DOOR_FRAMES];
@@ -382,6 +393,9 @@ typedef struct s_cub
 	bool			has_blue_key;
 	bool			show_full_map;
 	bool			game_paused;
+	
+	t_projectile	projectiles[MAX_PROJECTILES];
+	t_texture		projectile_tex;
 	
 	/* Performance optimization */
 	bool			render_dirty;
