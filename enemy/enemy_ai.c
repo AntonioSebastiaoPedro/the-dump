@@ -110,7 +110,15 @@ void	enemy_ai_attack(t_cub *cub, t_enemy *e)
 	e->attack_timer++;
 	if (e->attack_timer >= cooldown)
 	{
-		cub->player_hp -= e->damage;
+		int final_damage = e->damage;
+		if (cub->difficulty == DIFF_EASY)
+			final_damage = e->damage / 2;
+		else if (cub->difficulty == DIFF_HARD)
+			final_damage = e->damage * 2;
+		if (final_damage < 1)
+			final_damage = 1;
+
+		cub->player_hp -= final_damage;
 		if (cub->player_hp < 0)
 			cub->player_hp = 0;
 		e->attack_timer = 0;

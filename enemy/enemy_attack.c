@@ -71,7 +71,16 @@ void	enemy_take_damage(t_cub *cub)
 		return ;
 	dist = sqrt((cub->player->pos_x - e->x) * (cub->player->pos_x - e->x)
 			+ (cub->player->pos_y - e->y) * (cub->player->pos_y - e->y));
-	e->hp -= damage_rate(dist, cub->crosshair.scale);
+	
+	int dmg = damage_rate(dist, cub->crosshair.scale);
+	if (cub->difficulty == DIFF_EASY)
+		dmg *= 2;
+	else if (cub->difficulty == DIFF_HARD)
+		dmg /= 2;
+	if (dmg < 1)
+		dmg = 1;
+
+	e->hp -= dmg;
 	if (e->hp <= 0)
 	{
 		e->state = EN_DEAD;

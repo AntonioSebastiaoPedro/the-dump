@@ -41,6 +41,13 @@ typedef enum e_game_state
 	GAME_OVER
 }	t_game_state;
 
+typedef enum e_difficulty
+{
+	DIFF_EASY,
+	DIFF_NORMAL,
+	DIFF_HARD
+}	t_difficulty;
+
 typedef struct s_level_mgr
 {
 	char	**campaign_maps;
@@ -340,6 +347,7 @@ typedef struct s_cub
 	t_loading		loading;
 	t_menu			menu;
 	t_game_state	state;
+	t_difficulty	difficulty;
 	int				floor_color;
 	int				ceiling_color;
 	int				keys[65536];

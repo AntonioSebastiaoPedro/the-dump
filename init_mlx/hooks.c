@@ -62,6 +62,16 @@ int	key_press(int key, t_cub *cub)
 		cub->show_full_map = !cub->show_full_map;
 		cub->game_paused = cub->show_full_map;
 	}
+	if (key == KEY_PLUS && cub->difficulty < DIFF_HARD)
+	{
+		cub->difficulty++;
+		printf("Difficulty set to: %d\n", cub->difficulty);
+	}
+	if (key == KEY_MINUS && cub->difficulty > DIFF_EASY)
+	{
+		cub->difficulty--;
+		printf("Difficulty set to: %d\n", cub->difficulty);
+	}
 	cub->current_weapon = &cub->weapons[cub->current_weapon_index];
 	return (0);
 }

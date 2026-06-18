@@ -16,6 +16,7 @@ int	main(int ac, char **av)
 	cub->mouse.center_x = WIDTH / 2;
 	cub->mouse.center_y = HEIGHT / 2;
 	cub->state = LOADING;
+	cub->difficulty = DIFF_NORMAL;
 	init_loading(cub, &cub->loading, cub->mlx->mlx);
 
 	// Load and scale UI textures needed for transitions and menu
