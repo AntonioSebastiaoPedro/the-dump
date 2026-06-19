@@ -153,7 +153,14 @@ int	loop_hook(t_cub *cub)
 		free(time);
 		/* ========================================= */
 		if (cub->player_hp <= 0)
+		{
+			if (cub->state != GAME_OVER)
+			{
+				stop_back_sound(cub);
+				play_player_death_sound(cub);
+			}
 			cub->state = GAME_OVER;
+		}
 		else if (check_level_completion(cub))
 			cub->state = LEVEL_TRANSITION;
 		else if (!is_window_focused(cub))
@@ -187,6 +194,7 @@ int	loop_hook(t_cub *cub)
 		if (cub->keys[KEY_ENTER])
 		{
 			cub->keys[KEY_ENTER] = 0;
+			stop_player_death_sound(cub);
 			restart_game(cub);
 			cub->last_time = 0.0;
 			cub->elapsed_time = 0.0;

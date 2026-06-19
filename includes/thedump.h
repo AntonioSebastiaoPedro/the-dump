@@ -157,7 +157,10 @@ void			play_run_sound(t_cub *cub);
 void			stop_run_sound(t_cub *cub);
 void			play_level_done_sound(t_cub *cub);
 void			play_player_death_sound(t_cub *cub);
+void			stop_player_death_sound(t_cub *cub);
 void			play_enemy_death_sound(t_cub *cub);
+void			stop_back_sound(t_cub *cub);
+void			resume_back_sound(t_cub *cub);
 void			free_audio(t_cub *cub);
 
 /* ====== ENEMY ====== */

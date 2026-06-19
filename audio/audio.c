@@ -74,10 +74,28 @@ void	play_level_done_sound(t_cub *cub)
 
 void	play_player_death_sound(t_cub *cub)
 {
-	init_channel(cub->player_death_sound, true);
+	cub->death_channel = init_channel(cub->player_death_sound, true);
+}
+
+void	stop_player_death_sound(t_cub *cub)
+{
+	if (cub->death_channel)
+		BASS_ChannelStop(cub->death_channel);
 }
 
 void	play_enemy_death_sound(t_cub *cub)
 {
 	init_channel(cub->enemy_death_sound, true);
+}
+
+void	stop_back_sound(t_cub *cub)
+{
+	if (cub->back_channel)
+		BASS_ChannelPause(cub->back_channel);
+}
+
+void	resume_back_sound(t_cub *cub)
+{
+	if (cub->back_channel)
+		BASS_ChannelPlay(cub->back_channel, FALSE);
 }

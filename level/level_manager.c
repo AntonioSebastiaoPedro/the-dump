@@ -66,11 +66,14 @@ void	load_next_level(t_cub *cub)
 	cub->level_mgr.current_level_idx++;
 	if (cub->level_mgr.current_level_idx >= cub->level_mgr.total_levels)
 	{
+		stop_back_sound(cub);
 		play_level_done_sound(cub);
 		cub->state = VICTORY;
 		return ;
 	}
-	play_level_done_sound(cub);
+	resume_back_sound(cub);
+	if (cub->level_mgr.current_level_idx > 0)
+		play_level_done_sound(cub);
 	next_map = cub->level_mgr.campaign_maps[cub->level_mgr.current_level_idx];
 
 	// Free current level resources safely
