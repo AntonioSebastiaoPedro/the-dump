@@ -80,6 +80,9 @@ void	enemy_take_damage(t_cub *cub)
 	if (dmg < 1)
 		dmg = 1;
 
+	if (cub->gold_buff_timer > 0)
+		dmg *= 3;
+
 	e->hp -= dmg;
 	if (e->hp <= 0)
 	{

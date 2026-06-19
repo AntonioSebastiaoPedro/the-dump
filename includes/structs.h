@@ -396,6 +396,7 @@ typedef struct s_cub
 	bool			has_blue_key;
 	bool			show_full_map;
 	bool			game_paused;
+	double			gold_buff_timer;
 	
 	/* Performance optimization */
 	bool			render_dirty;

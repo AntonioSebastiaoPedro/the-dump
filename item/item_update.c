@@ -40,7 +40,7 @@ static void	collect_item(t_cub *cub, t_item *item)
 	}
 	else if (item->type == ITEM_GOLD_PLANT)
 	{
-		// Logic for score could be added here if needed
+		cub->gold_buff_timer = 120.0;
 	}
 	else if (item->type == ITEM_WELL)
 	{

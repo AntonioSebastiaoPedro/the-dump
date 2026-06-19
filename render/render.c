@@ -53,6 +53,7 @@ void	render(t_cub *cub)
 	draw_mira(cub);
 	draw_hp_hud(cub);
 	draw_ammo_hud(cub);
+	draw_buff_hud(cub);
 	if (cub->show_full_map)
 		draw_tactical_map(cub);
 	prof_end("ui_hud");

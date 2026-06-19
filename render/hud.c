@@ -133,3 +133,24 @@ void	draw_ammo_hud(t_cub *cub)
 	if (w->current_ammo == 0 && w->reserve_ammo == 0)
 		draw_string_graphics(cub, start.x + 110, start.y + 55, "0 / 0", RED);
 }
+
+void	draw_buff_hud(t_cub *cub)
+{
+	char	buff_str[64];
+	t_vec	start;
+	t_vec	size;
+
+	if (cub->gold_buff_timer <= 0)
+		return ;
+
+	start.x = WIDTH / 3 - 100;
+	start.y = 20;
+	size.x = 200;
+	size.y = 40;
+
+	draw_filled_rect(cub, start, size, BG_COLOR);
+	draw_empty_rect(cub, start, size, YELLOW);
+
+	ft_sprintf(buff_str, "GOD MODE: %.1f s", cub->gold_buff_timer);
+	draw_string_graphics(cub, start.x + 40, start.y + 15, buff_str, YELLOW);
+}

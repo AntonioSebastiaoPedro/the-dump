@@ -188,9 +188,12 @@ void	enemy_ai_attack(t_cub *cub, t_enemy *e)
 		if (final_damage < 1)
 			final_damage = 1;
 
-		cub->player_hp -= final_damage;
-		if (cub->player_hp < 0)
-			cub->player_hp = 0;
+		if (cub->gold_buff_timer <= 0)
+		{
+			cub->player_hp -= final_damage;
+			if (cub->player_hp < 0)
+				cub->player_hp = 0;
+		}
 		e->attack_timer = 0;
 	}
 }
