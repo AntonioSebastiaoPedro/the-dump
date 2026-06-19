@@ -69,7 +69,13 @@ bool	init_audio(t_cub *cub)
 
 void	play_level_done_sound(t_cub *cub)
 {
-	init_channel(cub->level_done_sound, true);
+	cub->level_done_channel = init_channel(cub->level_done_sound, true);
+}
+
+void	stop_level_done_sound(t_cub *cub)
+{
+	if (cub->level_done_channel)
+		BASS_ChannelStop(cub->level_done_channel);
 }
 
 void	play_player_death_sound(t_cub *cub)

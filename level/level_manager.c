@@ -72,8 +72,6 @@ void	load_next_level(t_cub *cub)
 		return ;
 	}
 	resume_back_sound(cub);
-	if (cub->level_mgr.current_level_idx > 0)
-		play_level_done_sound(cub);
 	next_map = cub->level_mgr.campaign_maps[cub->level_mgr.current_level_idx];
 
 	// Free current level resources safely

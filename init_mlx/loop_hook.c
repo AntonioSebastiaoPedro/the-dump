@@ -214,6 +214,7 @@ int	loop_hook(t_cub *cub)
 		if (cub->keys[KEY_ENTER])
 		{
 			cub->keys[KEY_ENTER] = 0;
+			stop_level_done_sound(cub);
 			restart_game(cub);
 		}
 		else if (cub->keys[ESC])
