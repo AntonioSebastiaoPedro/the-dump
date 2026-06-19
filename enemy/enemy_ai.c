@@ -136,6 +136,8 @@ void	enemy_ai_chase(t_cub *cub, t_enemy *e)
 	attack_range = (e->type != DOG_TYPE) ? 8.0 : 1.0;
 	if (len < attack_range)
 	{
+		if (e->state != EN_ATTACK && e->type == DOG_TYPE)
+			play_dog_attack_sound(cub);
 		e->state = EN_ATTACK;
 		e->attack_timer = 0;
 		return ;

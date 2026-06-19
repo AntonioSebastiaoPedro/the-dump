@@ -9,7 +9,7 @@ void	init_loading(t_cub *cub, t_loading *loading, void *mlx)
 	pthread_mutex_init(&cub->loader.mutex, NULL);
 	cub->loader.done = 0;
 	cub->loader.items_loaded = 0;
-	cub->loader.total_items = 64;
+	cub->loader.total_items = 65;
 }
 
 void	update_loading(t_loading *loading)
