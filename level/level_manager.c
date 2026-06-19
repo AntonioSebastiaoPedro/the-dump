@@ -29,11 +29,11 @@ int	check_level_completion(t_cub *cub)
 {
 	int	i;
 	int	has_boss;
-	int	boss_dead;
+	int	bosses_alive;
 	int	enemies_alive;
 
 	has_boss = 0;
-	boss_dead = 0;
+	bosses_alive = 0;
 	enemies_alive = 0;
 	i = 0;
 	while (i < cub->enemy_count)
@@ -41,15 +41,15 @@ int	check_level_completion(t_cub *cub)
 		if (cub->enemies[i].is_boss)
 		{
 			has_boss = 1;
-			if (!cub->enemies[i].alive)
-				boss_dead = 1;
+			if (cub->enemies[i].alive)
+				bosses_alive++;
 		}
 		else if (cub->enemies[i].alive)
 			enemies_alive++;
 		i++;
 	}
 	if (has_boss)
-		return (boss_dead);
+		return (bosses_alive == 0);
 	return (enemies_alive == 0);
 }
 
