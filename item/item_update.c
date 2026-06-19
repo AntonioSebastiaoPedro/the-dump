@@ -26,6 +26,50 @@ void	player_add_ammo(t_cub *cub)
 	}
 }
 
+void	explode_barrel(t_cub *cub, t_item *barrel)
+{
+	int		i;
+	double	dist;
+
+	barrel->active = false;
+	play_explosion_sound(cub);
+	cub->explosion_flash_timer = 5;
+
+	i = 0;
+	while (i < cub->enemy_count)
+	{
+		if (cub->enemies[i].alive && cub->enemies[i].state != EN_DEAD)
+		{
+			dist = sqrt(pow(cub->enemies[i].x - barrel->x, 2)
+					+ pow(cub->enemies[i].y - barrel->y, 2));
+			if (dist < 4.0)
+			{
+				cub->enemies[i].hp -= 100;
+				if (cub->enemies[i].hp <= 0)
+				{
+					cub->enemies[i].state = EN_DEAD;
+					cub->enemies[i].frame = 0;
+					cub->enemies[i].frame_timer = 0;
+				}
+				else
+				{
+					cub->enemies[i].state = EN_HURT;
+					cub->enemies[i].frame_timer = 0;
+				}
+			}
+		}
+		i++;
+	}
+	dist = sqrt(pow(cub->player->pos_x - barrel->x, 2)
+			+ pow(cub->player->pos_y - barrel->y, 2));
+	if (dist < 3.0 && cub->gold_buff_timer <= 0)
+	{
+		cub->player_hp -= 50;
+		if (cub->player_hp < 0)
+			cub->player_hp = 0;
+	}
+}
+
 static void	collect_item(t_cub *cub, t_item *item)
 {
 	item->active = false;

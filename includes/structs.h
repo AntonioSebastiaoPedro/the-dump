@@ -374,8 +374,10 @@ typedef struct s_cub
 	unsigned int	player_death_sound;
 	unsigned int	enemy_death_sound;
 	unsigned int	dog_attack_sound;
+	unsigned int	explosion_sound;
 	unsigned int	death_channel;
 	unsigned int	level_done_channel;
+	int				explosion_flash_timer;
 
 	t_texture		door_frames[DOOR_FRAMES];
 	int				joy_fd;

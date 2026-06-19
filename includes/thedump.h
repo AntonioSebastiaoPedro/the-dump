@@ -109,6 +109,7 @@ void			draw_mira(t_cub *cub);
 void			draw_hp_hud(t_cub *cub);
 void			draw_ammo_hud(t_cub *cub);
 void			draw_buff_hud(t_cub *cub);
+void			draw_explosion_flash(t_cub *cub);
 void			draw_tactical_map(t_cub *cub);
 void			draw_skybox(t_cub *cub);
 void			draw_char_pixel(t_cub *cub, int x, int y, int character, int color);
@@ -162,6 +163,7 @@ void			play_player_death_sound(t_cub *cub);
 void			stop_player_death_sound(t_cub *cub);
 void			play_enemy_death_sound(t_cub *cub);
 void			play_dog_attack_sound(t_cub *cub);
+void			play_explosion_sound(t_cub *cub);
 void			stop_back_sound(t_cub *cub);
 void			resume_back_sound(t_cub *cub);
 void			free_audio(t_cub *cub);
@@ -193,6 +195,7 @@ int				load_item_textures(t_cub *cub);
 void			free_items(t_cub *cub);
 void			player_heal(t_cub *cub, int amount);
 void			player_add_ammo(t_cub *cub);
+void			explode_barrel(t_cub *cub, t_item *barrel);
 
 /* ====== LEVEL MANAGER ====== */
 void			init_campaign(t_cub *cub, int ac, char **av);

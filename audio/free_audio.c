@@ -27,5 +27,7 @@ void	free_audio(t_cub *cub)
 		BASS_SampleFree(cub->enemy_death_sound);
 	if (cub->dog_attack_sound)
 		BASS_SampleFree(cub->dog_attack_sound);
+	if (cub->explosion_sound)
+		BASS_SampleFree(cub->explosion_sound);
 	BASS_Free();
 }

@@ -66,7 +66,47 @@ void	enemy_take_damage(t_cub *cub)
 	t_enemy	*e;
 	double	dist;
 
+	int		i;
+	double	best_barrel_dist = 1e30;
+	t_item	*best_barrel = NULL;
+	double	sx, sy, inv, tx, ty;
+
+	// Check for barrels in crosshair
+	i = 0;
+	while (i < cub->item_count)
+	{
+		if (!cub->items[i].active || cub->items[i].type != ITEM_BARREL)
+		{
+			i++;
+			continue ;
+		}
+		sx = cub->items[i].x - cub->player->pos_x;
+		sy = cub->items[i].y - cub->player->pos_y;
+		inv = 1.0 / (cub->player->plane_x * cub->player->dir_y
+				- cub->player->dir_x * cub->player->plane_y);
+		tx = inv * (cub->player->dir_y * sx - cub->player->dir_x * sy);
+		ty = inv * (-cub->player->plane_y * sx + cub->player->plane_x * sy);
+		if (ty > 0.0 && fabs(tx / ty) < 0.3 && ty < best_barrel_dist)
+		{
+			best_barrel_dist = ty;
+			best_barrel = &cub->items[i];
+		}
+		i++;
+	}
+
 	e = find_closest_enemy_in_crosshair(cub);
+	if (best_barrel)
+	{
+		double barrel_dist_sq = pow(best_barrel->x - cub->player->pos_x, 2) + pow(best_barrel->y - cub->player->pos_y, 2);
+		if (!e || barrel_dist_sq < e->dist)
+		{
+			// Shoot the barrel
+			if (best_barrel_dist < 9.0 * (1.0 / cub->crosshair.scale))
+				explode_barrel(cub, best_barrel);
+			return ;
+		}
+	}
+
 	if (!e)
 		return ;
 	dist = sqrt((cub->player->pos_x - e->x) * (cub->player->pos_x - e->x)

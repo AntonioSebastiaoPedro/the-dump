@@ -154,3 +154,37 @@ void	draw_buff_hud(t_cub *cub)
 	ft_sprintf(buff_str, "GOD MODE: %.1f s", cub->gold_buff_timer);
 	draw_string_graphics(cub, start.x + 40, start.y + 15, buff_str, YELLOW);
 }
+
+void	draw_explosion_flash(t_cub *cub)
+{
+	t_vec	start;
+	t_vec	size;
+
+	if (cub->explosion_flash_timer <= 0)
+		return ;
+
+	start.x = 0;
+	start.y = 0;
+	size.x = WIDTH;
+	size.y = HEIGHT;
+
+	// Decrement timer
+	cub->explosion_flash_timer--;
+
+	// Draw a translucent orange/white flash
+	// We'll draw an empty rect multiple times to simulate a filled rect or use an existing function
+	// Wait, draw_filled_rect draws solid. We can draw an orange solid if we want but it covers the screen.
+	// Since we don't have alpha blending in pixel_put right now, we can draw horizontal lines
+	// with a pattern to make it translucent, or just a thick orange border.
+	// Let's draw a thick orange border to simulate taking damage/explosion shockwave.
+	int thickness = cub->explosion_flash_timer * 10;
+	int i = 0;
+	while (i < thickness)
+	{
+		start.x = i; start.y = i;
+		size.x = WIDTH - i * 2; size.y = HEIGHT - i * 2;
+		if (size.x > 0 && size.y > 0)
+			draw_empty_rect(cub, start, size, 0xFF8800); // Orange
+		i++;
+	}
+}
