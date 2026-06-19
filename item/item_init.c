@@ -42,7 +42,7 @@ void	init_items(t_cub *cub)
 				add_item(cub, x, y, ITEM_BARREL);
 			else if (cub->map->grid[y][x] == 'G')
 				add_item(cub, x, y, ITEM_GOLD_PLANT);
-			else if (cub->map->grid[y][x] == 'P' || cub->map->grid[y][x] == 'O')
+			else if (cub->map->grid[y][x] == 'P')
 				add_item(cub, x, y, ITEM_WELL);
 			else if (cub->map->grid[y][x] == 'K')
 				add_item(cub, x, y, ITEM_BLUE_KEY);

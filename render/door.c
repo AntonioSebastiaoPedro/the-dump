@@ -87,7 +87,7 @@ int	can_walk(t_cub *cub, int x, int y)
 	if (x < 0 || x >= cub->map->width || y < 0 || y >= cub->map->height)
 		return (0);
 	c = cub->map->grid[y][x];
-	if (c == '0' || c == 'A' || ft_strchr("NSEWMBROG", c))
+	if (c == '0' || c == 'A' || ft_strchr("NSEWMXZUBGPKH", c))
 		return (1);
 	if (c == 'D' && is_door_open(cub, x, y))
 		return (1);

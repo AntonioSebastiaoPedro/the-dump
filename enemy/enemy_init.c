@@ -13,7 +13,7 @@ static int	count_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (ft_strchr("MBDOG", cub->map->grid[y][x]))
+			if (ft_strchr("MXZU", cub->map->grid[y][x]))
 				count++;
 			x++;
 		}
@@ -24,7 +24,7 @@ static int	count_enemies(t_cub *cub)
 
 static void	set_enemy_stats(t_enemy *e, char type)
 {
-	if (type == 'B')
+	if (type == 'X')
 	{
 		e->is_boss = 1;
 		e->type = OFFICER_TYPE;
@@ -32,7 +32,7 @@ static void	set_enemy_stats(t_enemy *e, char type)
 		e->damage = 10;
 		e->speed = ENEMY_SPEED * 1.2;
 	}
-	else if (type == 'K')
+	else if (type == 'Z')
 	{
 		e->is_boss = 0;
 		e->type = DOG_TYPE;
@@ -40,7 +40,7 @@ static void	set_enemy_stats(t_enemy *e, char type)
 		e->damage = DOG_DAMAGE;
 		e->speed = DOG_SPEED;
 	}
-	else if (type == 'O')
+	else if (type == 'U')
 	{
 		e->is_boss = 0;
 		e->type = OFFICER_TYPE;
@@ -97,7 +97,7 @@ void	init_enemies(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (ft_strchr("MBKOG", cub->map->grid[y][x]))
+			if (ft_strchr("MXZU", cub->map->grid[y][x]))
 			{
 				add_enemy(cub, x, y, cub->map->grid[y][x]);
 				cub->map->grid[y][x] = '0';
