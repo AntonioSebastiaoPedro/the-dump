@@ -132,8 +132,14 @@ static void	draw_tac_enemies(t_cub *cub, int ts, int ox, int oy)
 	while (i < cub->enemy_count)
 	{
 		if (cub->enemies[i].alive)
-			draw_tac_rect(cub, ox + (int)(cub->enemies[i].x * ts),
-				oy + (int)(cub->enemies[i].y * ts), sz, RED);
+		{
+			if (cub->enemies[i].is_boss)
+				draw_tac_rect(cub, ox + (int)(cub->enemies[i].x * ts),
+					oy + (int)(cub->enemies[i].y * ts), sz, MAGENTA);
+			else
+				draw_tac_rect(cub, ox + (int)(cub->enemies[i].x * ts),
+					oy + (int)(cub->enemies[i].y * ts), sz, RED);
+		}
 		i++;
 	}
 }

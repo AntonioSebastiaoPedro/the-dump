@@ -260,7 +260,10 @@ static void	draw_radar_enemies(t_cub *cub)
 			rel_y = cub->enemies[i].y - cub->player->pos_y;
 			ex = RADAR_CENTER_X + (int)(rel_x * RADAR_SCALE);
 			ey = RADAR_CENTER_Y + (int)(rel_y * RADAR_SCALE);
-			draw_radar_square(cub, ex - 2, ey - 2, 4, RED);
+			if (cub->enemies[i].is_boss)
+				draw_radar_square(cub, ex - 2, ey - 2, 4, MAGENTA);
+			else
+				draw_radar_square(cub, ex - 2, ey - 2, 4, RED);
 		}
 		i++;
 	}
