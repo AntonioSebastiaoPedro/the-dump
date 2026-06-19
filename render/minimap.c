@@ -36,6 +36,8 @@ static int	get_tile_color(int tile)
 		return (RADAR_WALL);
 	if (tile == 'D')
 		return (RADAR_DOOR);
+	if (tile == 'L')
+		return (BLUE);
 	if (tile == '0' || tile == 'N' || tile == 'S'
 		|| tile == 'E' || tile == 'W'
 		|| tile == 'M' || tile == 'O' || tile == 'B')

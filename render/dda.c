@@ -31,7 +31,7 @@ void	dda(t_ray *ray, t_cub *cub)
 		}
 		if (cub->map->grid[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
-		if (cub->map->grid[ray->map_y][ray->map_x] == 'D')
+		if (cub->map->grid[ray->map_y][ray->map_x] == 'D' || cub->map->grid[ray->map_y][ray->map_x] == 'L')
 		{
 			if (!is_door_open(cub, ray->map_x, ray->map_y))
 			{

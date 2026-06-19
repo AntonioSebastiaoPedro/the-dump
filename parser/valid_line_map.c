@@ -25,7 +25,7 @@ int	is_valid_line_map(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_strchr("01NSEWDKMBOGHPXZU\t \n", line[i]))
+		if (!ft_strchr("01NSEWDKMBOGHPXZUL\t \n", line[i]))
 			return (0);
 		i++;
 	}

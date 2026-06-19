@@ -305,6 +305,7 @@ typedef struct s_door
 	t_door_state	state;
 	int				frame;
 	double			timer;
+	bool			is_locked;
 }	t_door;
 
 /* ===== THREADING STRUCTURES ===== */

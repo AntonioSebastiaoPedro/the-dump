@@ -13,7 +13,7 @@ static int	count_doors(t_cub *cub)
 		x = 0;
 		while (x < cub->map->width)
 		{
-			if (cub->map->grid[y][x] == 'D')
+			if (cub->map->grid[y][x] == 'D' || cub->map->grid[y][x] == 'L')
 				count++;
 			x++;
 		}
@@ -22,7 +22,7 @@ static int	count_doors(t_cub *cub)
 	return (count);
 }
 
-static void	add_door(t_cub *cub, int x, int y)
+static void	add_door(t_cub *cub, int x, int y, bool locked)
 {
 	t_door	*door;
 
@@ -32,6 +32,7 @@ static void	add_door(t_cub *cub, int x, int y)
 	door->state = DOOR_CLOSED;
 	door->frame = 0;
 	door->timer = 0;
+	door->is_locked = locked;
 	cub->n_door++;
 }
 
@@ -55,7 +56,9 @@ void	init_doors(t_cub *cub)
 		while (x < cub->map->width)
 		{
 			if (cub->map->grid[y][x] == 'D')
-				add_door(cub, x, y);
+				add_door(cub, x, y, false);
+			else if (cub->map->grid[y][x] == 'L')
+				add_door(cub, x, y, true);
 			x++;
 		}
 		y++;

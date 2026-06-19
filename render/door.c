@@ -29,6 +29,15 @@ void	try_interact_door(t_cub *cub)
 		return ;
 	if (door->state == DOOR_CLOSED)
 	{
+		if (door->is_locked)
+		{
+			if (!cub->has_blue_key)
+			{
+				play_button_sound(cub); // Play a sound indicating it's locked
+				return ;
+			}
+			door->is_locked = false; // Unlock it permanently once opened with key
+		}
 		door->state = DOOR_OPENING;
 		play_door_sound(cub);
 	}
@@ -89,7 +98,7 @@ int	can_walk(t_cub *cub, int x, int y)
 	c = cub->map->grid[y][x];
 	if (c == '0' || c == 'A' || ft_strchr("NSEWMXZUBGPKH", c))
 		return (1);
-	if (c == 'D' && is_door_open(cub, x, y))
+	if ((c == 'D' || c == 'L') && is_door_open(cub, x, y))
 		return (1);
 	return (0);
 }

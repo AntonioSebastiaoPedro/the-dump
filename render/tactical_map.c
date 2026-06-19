@@ -52,11 +52,13 @@ static int	get_grid_color(char tile)
 		return (RADAR_WALL);
 	if (tile == 'D')
 		return (RADAR_DOOR);
+	if (tile == 'L')
+		return (BLUE);
 	if (tile == '0' || is_player(tile)
 		|| tile == 'M' || tile == 'O' || tile == 'B')
 		return (RADAR_FLOOR);
 	if (tile == 'H' || tile == 'P' || tile == 'K'
-		|| tile == 'G' || tile == 'L')
+		|| tile == 'G')
 		return (RADAR_FLOOR);
 	return (0);
 }
