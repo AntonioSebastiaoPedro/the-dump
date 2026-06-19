@@ -111,7 +111,7 @@ static void	draw_tac_items(t_cub *cub, int ts, int ox, int oy)
 	i = 0;
 	while (i < cub->item_count)
 	{
-		if (cub->items[i].active)
+		if (cub->items[i].active && cub->items[i].type == ITEM_BLUE_KEY)
 		{
 			color = get_item_color(cub->items[i].type);
 			draw_tac_rect(cub, ox + (int)(cub->items[i].x * ts),
