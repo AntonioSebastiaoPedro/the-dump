@@ -381,6 +381,7 @@ typedef struct s_cub
 	int				explosion_flash_timer;
 
 	t_texture		door_frames[DOOR_FRAMES];
+	t_texture		door_blue_frames[DOOR_FRAMES];
 	int				joy_fd;
 	int				joy_axis[8];
 	t_enemy			*enemies;

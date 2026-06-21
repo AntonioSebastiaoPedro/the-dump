@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 	}
 	
 	cub->player_hp = PLAYER_MAX_HP;
-	cub->show_mira = true;
+	cub->show_mira = false;
 	cub->crosshair.scale = 1.0f;
 	cub->crosshair.color = GREEN;
 	cub->crosshair.enabled = true;

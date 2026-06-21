@@ -39,6 +39,9 @@ void	free_door_textures(t_cub *cub)
 		img_ptr = cub->door_frames[i].img;
 		if (img_ptr)
 			mlx_destroy_image(cub->mlx->mlx, img_ptr);
+		img_ptr = cub->door_blue_frames[i].img;
+		if (img_ptr)
+			mlx_destroy_image(cub->mlx->mlx, img_ptr);
 		i++;
 	}
 }

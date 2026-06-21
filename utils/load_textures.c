@@ -163,6 +163,31 @@ int	load_door_textures(t_cub *cub)
 	return (1);
 }
 
+int	load_door_blue_textures(t_cub *cub)
+{
+	const char	*paths[DOOR_FRAMES] = {
+		"assets/door_blue/door0.xpm",
+		"assets/door_blue/door1.xpm",
+		"assets/door_blue/door2.xpm",
+		"assets/door_blue/door3.xpm",
+		"assets/door_blue/door4.xpm",
+		"assets/door_blue/door5.xpm",
+		"assets/door_blue/door6.xpm",
+		"assets/door_blue/door7.xpm",
+		"assets/door_blue/door8.xpm",
+	};
+	int			i;
+
+	i = 0;
+	while (i < DOOR_FRAMES)
+	{
+		if (!load_single_texture(cub, &cub->door_blue_frames[i], paths[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	load_textures(t_cub *cub)
 {
 	if (!load_single_texture(cub, &cub->textures->no, cub->config->no))
@@ -178,6 +203,8 @@ int	load_textures(t_cub *cub)
 	if (!load_weapon_textures(cub))
 		return (0);
 	if (!load_door_textures(cub))
+		return (0);
+	if (!load_door_blue_textures(cub))
 		return (0);
 	if (!load_item_textures(cub))
 		return (0);

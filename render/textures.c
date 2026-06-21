@@ -20,6 +20,12 @@ t_texture	*get_texture(t_ray *ray, t_cub *cub)
 	if (ray->is_door == 1)
 	{
 		door = get_door_at(cub, ray->map_x, ray->map_y);
+		if (cub->map->grid[ray->map_y][ray->map_x] == 'L')
+		{
+			if (door)
+				return (&cub->door_blue_frames[door->frame]);
+			return (&cub->door_blue_frames[0]);
+		}
 		if (door)
 			return (&cub->door_frames[door->frame]);
 		return (&cub->door_frames[0]);
