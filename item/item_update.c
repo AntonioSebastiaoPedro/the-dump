@@ -84,7 +84,9 @@ static void	collect_item(t_cub *cub, t_item *item)
 	}
 	else if (item->type == ITEM_GOLD_PLANT)
 	{
-		cub->gold_buff_timer = 120.0;
+		cub->gold_buff_timer += 120.0;
+		if (cub->gold_buff_timer > cub->max_gold_buff_timer)
+			cub->max_gold_buff_timer = cub->gold_buff_timer;
 	}
 	else if (item->type == ITEM_WELL)
 	{

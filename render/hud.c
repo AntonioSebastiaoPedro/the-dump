@@ -149,10 +149,19 @@ void	draw_buff_hud(t_cub *cub)
 	size.y = 40;
 
 	draw_filled_rect(cub, start, size, BG_COLOR);
+
+	double ratio = 0.0;
+	if (cub->max_gold_buff_timer > 0)
+		ratio = cub->gold_buff_timer / cub->max_gold_buff_timer;
+	if (ratio > 1.0) ratio = 1.0;
+	t_vec bar_start = {start.x + 2, start.y + 2};
+	t_vec bar_size = { (int)(ratio * 196), 36 };
+	draw_filled_rect(cub, bar_start, bar_size, 0xAA8800);
+
 	draw_empty_rect(cub, start, size, YELLOW);
 
 	ft_sprintf(buff_str, "GOD MODE: %.1f s", cub->gold_buff_timer);
-	draw_string_graphics(cub, start.x + 40, start.y + 15, buff_str, YELLOW);
+	draw_string_graphics(cub, start.x + 35, start.y + 15, buff_str, WHITE);
 }
 
 void	draw_explosion_flash(t_cub *cub)

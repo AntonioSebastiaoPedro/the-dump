@@ -66,8 +66,11 @@ void	update_player(t_cub *cub)
 	if (cub->gold_buff_timer > 0)
 	{
 		cub->gold_buff_timer -= cub->delta_time;
-		if (cub->gold_buff_timer < 0)
+		if (cub->gold_buff_timer <= 0)
+		{
 			cub->gold_buff_timer = 0;
+			cub->max_gold_buff_timer = 0;
+		}
 	}
 
 	old_x = cub->player->pos_x;

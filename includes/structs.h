@@ -401,6 +401,7 @@ typedef struct s_cub
 	bool			show_full_map;
 	bool			game_paused;
 	double			gold_buff_timer;
+	double			max_gold_buff_timer;
 	
 	/* Performance optimization */
 	bool			render_dirty;
