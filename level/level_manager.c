@@ -108,6 +108,9 @@ void	load_next_level(t_cub *cub)
 		cub->player->pos_x = 0;
 		cub->player->pos_y = 0;
 	}
+	cub->has_blue_key = false;
+	cub->gold_buff_timer = 0;
+	cub->max_gold_buff_timer = 0;
 
 	// Load new map
 	if (!parse_map_into_cub(cub, next_map))
