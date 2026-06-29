@@ -119,7 +119,7 @@
 
 /* JOYSTICK */
 # define JOY_DEADZONE     8000
-# define JOY_ROT_SENS     0.0000003
+# define JOY_ROT_SENS     0.000003
 
 /* ENEMY */
 # define ENEMY_TYPE_COUNT    3
