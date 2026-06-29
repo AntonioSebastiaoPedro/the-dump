@@ -73,6 +73,7 @@ void	explode_barrel(t_cub *cub, t_item *barrel)
 static void	collect_item(t_cub *cub, t_item *item)
 {
 	item->active = false;
+	play_item_collect_sound(cub);
 	if (item->type == ITEM_MEDIC_KIT)
 	{
 		player_heal(cub, HEAL_MEDIC_KIT);

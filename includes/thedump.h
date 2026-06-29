@@ -164,6 +164,7 @@ void			stop_player_death_sound(t_cub *cub);
 void			play_enemy_death_sound(t_cub *cub);
 void			play_enemy_shoot_sound(t_cub *cub);
 void			play_dog_attack_sound(t_cub *cub);
+void			play_item_collect_sound(t_cub *cub);
 void			play_explosion_sound(t_cub *cub);
 void			stop_back_sound(t_cub *cub);
 void			resume_back_sound(t_cub *cub);

@@ -66,6 +66,8 @@ bool	init_audio(t_cub *cub)
 			"assets/sounds/weapon_enemies.mp3", 3, 0);
 	cub->dog_attack_sound = load_sound(cub,
 			"assets/sounds/dog/dogbark.mp3", 3, 0);
+	cub->item_collect_sound = load_sound(cub,
+			"assets/sounds/button.mp3", 3, 0);
 	cub->explosion_sound = load_sound(cub,
 			"assets/sounds/explosao.mp3", 3, 0);
 	cub->run_channel = init_channel(cub->run_sound, false);
@@ -103,6 +105,11 @@ void	play_enemy_death_sound(t_cub *cub)
 void	play_enemy_shoot_sound(t_cub *cub)
 {
 	init_channel(cub->enemy_shoot_sound, true);
+}
+
+void	play_item_collect_sound(t_cub *cub)
+{
+	init_channel(cub->item_collect_sound, true);
 }
 
 void	play_dog_attack_sound(t_cub *cub)
