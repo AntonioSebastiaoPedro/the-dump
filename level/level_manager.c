@@ -66,6 +66,12 @@ void	restart_game(t_cub *cub)
 	load_next_level(cub);
 }
 
+void	restart_level(t_cub *cub)
+{
+	cub->level_mgr.current_level_idx--; // decrement so load_next_level restores it to current
+	load_next_level(cub);
+}
+
 void	load_next_level(t_cub *cub)
 {
 	char	*next_map;

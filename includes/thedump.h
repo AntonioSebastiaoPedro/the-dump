@@ -206,6 +206,7 @@ void			init_campaign(t_cub *cub, int ac, char **av);
 int				check_level_completion(t_cub *cub);
 void			load_next_level(t_cub *cub);
 void			restart_game(t_cub *cub);
+void			restart_level(t_cub *cub);
 void			render_transition_screen(t_cub *cub);
 void			render_game_over(t_cub *cub);
 void			render_victory_screen(t_cub *cub);

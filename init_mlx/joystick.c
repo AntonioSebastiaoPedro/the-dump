@@ -71,7 +71,14 @@ static void	handle_joy_buttons(t_cub *cub, struct js_event *e)
 			load_next_level(cub);
 		}
 	}
-	else if (cub->state == GAME_OVER || cub->state == VICTORY)
+	else if (cub->state == GAME_OVER)
+	{
+		if (e->number == 6 || e->number == 7 || e->number == 0)
+		{
+			restart_level(cub);
+		}
+	}
+	else if (cub->state == VICTORY)
 	{
 		if (e->number == 6 || e->number == 7 || e->number == 0)
 		{

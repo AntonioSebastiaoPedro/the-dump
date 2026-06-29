@@ -195,7 +195,7 @@ int	loop_hook(t_cub *cub)
 		{
 			cub->keys[KEY_ENTER] = 0;
 			stop_player_death_sound(cub);
-			restart_game(cub);
+			restart_level(cub);
 			cub->last_time = 0.0;
 			cub->elapsed_time = 0.0;
 		}
