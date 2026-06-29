@@ -23,11 +23,20 @@ void	toggle_mouse_vis(t_cub *cub)
 
 int	key_press(int key, t_cub *cub)
 {
-	if (key == ESC && cub->state == GAME)
-		ft_close(cub);
-	if (key == KEY_P && cub->state == GAME)
+	t_game_state	initial_state;
+
+	initial_state = cub->state;
+	if (key == ESC && initial_state == GAME)
+	{
+		cub->state = MENU;
+		cub->game_paused = true;
+		stop_back_sound(cub);
+		mlx_mouse_show(cub->mlx->mlx, cub->mlx->win);
+		return (0);
+	}
+	if (key == KEY_P && initial_state == GAME)
 		toggle_mouse_vis(cub);
-	if (cub->state == MENU || cub->state == ABOUT)
+	if (initial_state == MENU || initial_state == ABOUT)
 	{
 		handle_menu_input(key, cub);
 	}
@@ -35,11 +44,11 @@ int	key_press(int key, t_cub *cub)
 		cub->keys[key] = 1;
 	if (key == KEY_W || key == KEY_S || key == KEY_A || key == KEY_D)
 		cub->player->is_moving = 1;
-	if (key == SPACE && cub->state == GAME)
+	if (key == SPACE && initial_state == GAME)
 		try_interact_door(cub);
 	if (key == KEY_M)
 		cub->show_mira = !cub->show_mira;
-	if ((key == KEY_RCTRL || key == KEY_ENTER) && cub->state == GAME)
+	if ((key == KEY_RCTRL || key == KEY_ENTER) && initial_state == GAME)
 		on_mouse_click(cub);
 	if (key == KEY_V)
 		cub->state = MENU;
@@ -49,9 +58,9 @@ int	key_press(int key, t_cub *cub)
 		cub->current_weapon_index = 2; // Gatling
 	if (key == KEY_3)
 		cub->current_weapon_index = 1; // Machinegun
-	if (key == KEY_UP && cub->state == GAME)
+	if (key == KEY_UP && initial_state == GAME)
 		cub->crosshair.scale += 0.2f;
-	if (key == KEY_DOWN && cub->state == GAME)
+	if (key == KEY_DOWN && initial_state == GAME)
 	{
 		cub->crosshair.scale -= 0.2f;
 		if (cub->crosshair.scale < 0.2f)
@@ -62,7 +71,7 @@ int	key_press(int key, t_cub *cub)
 		cub->show_full_map = !cub->show_full_map;
 		cub->game_paused = cub->show_full_map;
 	}
-	if (key == KEY_N && cub->state == GAME)
+	if (key == KEY_N && initial_state == GAME)
 		load_next_level(cub);
 	if (key == KEY_PLUS && cub->difficulty < DIFF_HARD)
 	{

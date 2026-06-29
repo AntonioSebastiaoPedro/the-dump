@@ -16,6 +16,11 @@ void	handle_menu_selected(t_cub *cub)
 	if (cub->menu.selected == 0)
 	{
 		cub->state = GAME;
+		cub->game_paused = false;
+		cub->last_time = 0.0;
+		ft_bzero(cub->keys, sizeof(cub->keys));
+		cub->player->is_moving = 0;
+		resume_back_sound(cub);
 		mlx_mouse_hide(cub->mlx->mlx, cub->mlx->win);
 		mlx_mouse_move(cub->mlx->mlx, cub->mlx->win,
 			cub->mouse.center_x, cub->mouse.center_y);
@@ -30,6 +35,19 @@ void	handle_menu_input(int key, t_cub *cub)
 {
 	if (cub->state == MENU)
 	{
+		if (key == ESC && cub->game_paused)
+		{
+			cub->state = GAME;
+			cub->game_paused = false;
+			cub->last_time = 0.0;
+			ft_bzero(cub->keys, sizeof(cub->keys));
+			cub->player->is_moving = 0;
+			resume_back_sound(cub);
+			mlx_mouse_hide(cub->mlx->mlx, cub->mlx->win);
+			mlx_mouse_move(cub->mlx->mlx, cub->mlx->win,
+				cub->mouse.center_x, cub->mouse.center_y);
+			return ;
+		}
 		if (key == KEY_UP || key == KEY_W)
 		{
 			play_button_sound(cub);
