@@ -26,7 +26,7 @@ int	is_walkable_aabb(t_cub *cub, double new_x, double new_y, double size)
 		if (cub->items[i].active && cub->items[i].type == ITEM_BARREL)
 		{
 			double dist = sqrt(pow(new_x - cub->items[i].x, 2) + pow(new_y - cub->items[i].y, 2));
-			if (dist < size + 0.3) // barrel has radius 0.3
+			if (dist < size + BARREL_COLLISION_RADIUS) // barrel has radius BARREL_COLLISION_RADIUS
 				return (0);
 		}
 		i++;

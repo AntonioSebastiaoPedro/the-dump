@@ -15,7 +15,7 @@ t_door	*find_door_in_front(t_cub *cub)
 		door = get_door_at(cub, grid_x, grid_y);
 		if (door)
 			return (door);
-		i += 0.1;
+		i += DOOR_RAY_STEP;
 	}
 	return (NULL);
 }

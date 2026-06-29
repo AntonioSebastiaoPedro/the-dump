@@ -113,6 +113,7 @@
 
 /* DOOR MACROS */
 # define MAX_DOOR_DIST 3.0
+# define DOOR_RAY_STEP 0.1
 # define DOOR_FRAMES 9
 # define DOOR_FRAME_DELAY 5
 
@@ -147,6 +148,7 @@
 # define ENEMY_DAMAGE      2
 # define ENEMY_ATK_COOLDOWN 30
 # define ENEMY_FRAME_DELAY  10
+# define ENEMY_ATTACK_RANGE 8.0
 
 # define LOS_RAY_STEP      0.2
 # define LOS_RAY_THICKNESS 0.1
@@ -154,6 +156,7 @@
 # define DOG_HP            5
 # define DOG_DAMAGE        2
 # define DOG_SPEED         0.1
+# define DOG_ATTACK_RANGE  1.5
 # define OFFICER_HP        10
 # define OFFICER_DAMAGE    2
 # define OFFICER_SPEED     0.1
@@ -162,11 +165,15 @@
 
 /* WEAPON AMMO */
 
-#define CURRENT_AMMO		  100
+# define CURRENT_AMMO		  100
 # define REVOLVER_MAX_AMMO    100
 # define RIFLE_MAX_AMMO  100
 # define PLASMA_MAX_AMMO     200
+# define WEAPON_MAX_RANGE    9.0
+# define WEAPON_DROP_OFF_START 4.0
+# define CROSSHAIR_TOLERANCE 0.3
 
 # define ITEM_INTERACT_DIST   0.5
+# define BARREL_COLLISION_RADIUS 0.3
 
 #endif

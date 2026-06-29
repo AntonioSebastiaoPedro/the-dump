@@ -133,7 +133,7 @@ void	enemy_ai_chase(t_cub *cub, t_enemy *e)
 	}
 	double	attack_range;
 	
-	attack_range = (e->type != DOG_TYPE) ? 8.0 : 1.0;
+	attack_range = (e->type != DOG_TYPE) ? ENEMY_ATTACK_RANGE : DOG_ATTACK_RANGE;
 	if (len < attack_range)
 	{
 		if (e->state != EN_ATTACK && e->type == DOG_TYPE)
@@ -168,7 +168,7 @@ void	enemy_ai_attack(t_cub *cub, t_enemy *e)
 	len = sqrt(dx * dx + dy * dy);
 	e->dist = len * len;
 	
-	attack_range = (e->type != DOG_TYPE) ? 8.0 : 1.5;
+	attack_range = (e->type != DOG_TYPE) ? ENEMY_ATTACK_RANGE : DOG_ATTACK_RANGE;
 	if (len > attack_range || !enemy_has_line_of_sight(cub, e))
 	{
 		e->state = EN_CHASE;

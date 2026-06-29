@@ -29,7 +29,7 @@ static t_enemy	*find_closest_enemy_in_crosshair(t_cub *cub)
 				- cub->player->dir_x * cub->player->plane_y);
 		tx = inv * (cub->player->dir_y * sx - cub->player->dir_x * sy);
 		ty = inv * (-cub->player->plane_y * sx + cub->player->plane_x * sy);
-		if (ty > 0.0 && fabs(tx / ty) < 0.3 && ty < best_dist)
+		if (ty > 0.0 && fabs(tx / ty) < CROSSHAIR_TOLERANCE && ty < best_dist)
 		{
 			if (enemy_has_line_of_sight(cub, &cub->enemies[i]))
 			{
@@ -44,10 +44,10 @@ static t_enemy	*find_closest_enemy_in_crosshair(t_cub *cub)
 
 int	damage_rate(double dist, float zoom_scale)
 {
-	// Standard max range is 9.0. If zoomed in (scale < 1.0), increase range.
+	// Standard max range is WEAPON_MAX_RANGE. If zoomed in (scale < 1.0), increase range.
 	// We use 1.0 / zoom_scale as a range multiplier.
-	double max_range = 9.0 * (1.0 / zoom_scale);
-	double drop_off_start = 4.0 * (1.0 / zoom_scale);
+	double max_range = WEAPON_MAX_RANGE * (1.0 / zoom_scale);
+	double drop_off_start = WEAPON_DROP_OFF_START * (1.0 / zoom_scale);
 
 	if (dist > drop_off_start && dist < max_range)
 		return 1;
@@ -55,7 +55,7 @@ int	damage_rate(double dist, float zoom_scale)
 		return 0;
 	
 	// Close range damage
-	double dmg = (4.0 - (dist / (1.0 / zoom_scale))) * (rand() % 3 + 1);
+	double dmg = (WEAPON_DROP_OFF_START - (dist / (1.0 / zoom_scale))) * (rand() % 3 + 1);
 	if (dmg < 1)
 		dmg = 1;
 	return (int)dmg;
@@ -86,7 +86,7 @@ void	enemy_take_damage(t_cub *cub)
 				- cub->player->dir_x * cub->player->plane_y);
 		tx = inv * (cub->player->dir_y * sx - cub->player->dir_x * sy);
 		ty = inv * (-cub->player->plane_y * sx + cub->player->plane_x * sy);
-		if (ty > 0.0 && fabs(tx / ty) < 0.3 && ty < best_barrel_dist)
+		if (ty > 0.0 && fabs(tx / ty) < CROSSHAIR_TOLERANCE && ty < best_barrel_dist)
 		{
 			best_barrel_dist = ty;
 			best_barrel = &cub->items[i];
@@ -101,7 +101,7 @@ void	enemy_take_damage(t_cub *cub)
 		if (!e || barrel_dist_sq < e->dist)
 		{
 			// Shoot the barrel
-			if (best_barrel_dist < 9.0 * (1.0 / cub->crosshair.scale))
+			if (best_barrel_dist < WEAPON_MAX_RANGE * (1.0 / cub->crosshair.scale))
 				explode_barrel(cub, best_barrel);
 			return ;
 		}
