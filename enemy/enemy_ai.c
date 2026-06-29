@@ -27,10 +27,10 @@ int	enemy_has_line_of_sight(t_cub *cub, t_enemy *e)
 		cx += dx * 0.2;
 		cy += dy * 0.2;
 		if (!can_walk(cub, (int)cx, (int)cy) ||
-			!can_walk(cub, (int)(cx + 0.25), (int)cy) ||
-			!can_walk(cub, (int)(cx - 0.25), (int)cy) ||
-			!can_walk(cub, (int)cx, (int)(cy + 0.25)) ||
-			!can_walk(cub, (int)cx, (int)(cy - 0.25)))
+			!can_walk(cub, (int)(cx + 0.1), (int)cy) ||
+			!can_walk(cub, (int)(cx - 0.1), (int)cy) ||
+			!can_walk(cub, (int)cx, (int)(cy + 0.1)) ||
+			!can_walk(cub, (int)cx, (int)(cy - 0.1)))
 			return (0);
 		i++;
 	}
