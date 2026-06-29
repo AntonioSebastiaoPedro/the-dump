@@ -33,7 +33,7 @@ void	try_interact_door(t_cub *cub)
 		{
 			if (!cub->has_blue_key)
 			{
-				play_button_sound(cub); // Play a sound indicating it's locked
+				play_door_locked_sound(cub); // Play a sound indicating it's locked
 				return ;
 			}
 			door->is_locked = false; // Unlock it permanently once opened with key
