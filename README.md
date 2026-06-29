@@ -132,19 +132,19 @@ O jogo possui uma campanha linear com três fases:
 Confira a atmosfera retro em primeira pessoa do jogo:
 
 ### Menu Principal
-![Menu Principal](screenshot_1.png)
+![Menu Principal](docs/images/screenshot_1.png)
 
 ### Jogabilidade Geral & HUD
-![Gameplay](screenshot_2.png)
+![Gameplay](docs/images/screenshot_2.png)
 
 ### Combates Intensos
-![Combate](screenshot_3.png)
+![Combate](docs/images/screenshot_3.png)
 
 ### Portas e Exploração
-![Exploracao](screenshot_4.png)
+![Exploracao](docs/images/screenshot_4.png)
 
 ### Inventário & Minimapa Tático
-![Minimapa e Armas](screenshot_5.png)
+![Minimapa e Armas](docs/images/screenshot_5.png)
 
 ### Combate de Curto Alcance
-![Ataque de Inimigos](screenshot_6.png)
+![Ataque de Inimigos](docs/images/screenshot_6.png)
