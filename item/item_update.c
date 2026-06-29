@@ -107,9 +107,20 @@ void	update_items(t_cub *cub)
 			dist = sqrt(pow(cub->player->pos_x - cub->items[i].x, 2)
 					+ pow(cub->player->pos_y - cub->items[i].y, 2));
 			cub->items[i].dist = dist;
-			if (dist < ITEM_INTERACT_DIST)
-				collect_item(cub, &cub->items[i]);
 		}
+		i++;
+	}
+}
+
+void	try_collect_item(t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	while (i < cub->item_count)
+	{
+		if (cub->items[i].active && cub->items[i].dist < ITEM_INTERACT_DIST)
+			collect_item(cub, &cub->items[i]);
 		i++;
 	}
 }

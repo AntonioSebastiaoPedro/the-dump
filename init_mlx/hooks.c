@@ -45,7 +45,10 @@ int	key_press(int key, t_cub *cub)
 	if (key == KEY_W || key == KEY_S || key == KEY_A || key == KEY_D)
 		cub->player->is_moving = 1;
 	if (key == SPACE && initial_state == GAME)
+	{
 		try_interact_door(cub);
+		try_collect_item(cub);
+	}
 	if (key == KEY_M)
 		cub->show_mira = !cub->show_mira;
 	if ((key == KEY_RCTRL || key == KEY_ENTER) && initial_state == GAME)

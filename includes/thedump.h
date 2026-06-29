@@ -190,6 +190,7 @@ void			update_flow_field(t_cub *cub);
 /* ====== ITEM SYSTEM ====== */
 void			init_items(t_cub *cub);
 void			update_items(t_cub *cub);
+void			try_collect_item(t_cub *cub);
 void			draw_items(t_cub *cub);
 int				load_item_textures(t_cub *cub);
 void			free_items(t_cub *cub);
