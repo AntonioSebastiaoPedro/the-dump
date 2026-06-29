@@ -176,4 +176,16 @@
 # define ITEM_INTERACT_DIST   0.5
 # define BARREL_COLLISION_RADIUS 0.3
 
+# define HEAL_MEDIC_KIT        25
+# define HEAL_WELL             5
+# define AMMO_REVOLVER_PICKUP  50
+# define AMMO_RIFLE_PICKUP     20
+# define AMMO_PLASMA_PICKUP    40
+# define INVINCIBILITY_DURATION 120.0
+
+# define BARREL_ENEMY_RADIUS   4.0
+# define BARREL_ENEMY_DAMAGE   100
+# define BARREL_PLAYER_RADIUS  3.0
+# define BARREL_PLAYER_DAMAGE  50
+
 #endif

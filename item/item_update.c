@@ -14,11 +14,11 @@ void	player_add_ammo(t_cub *cub)
 	while (i < WEAPON_COUNT)
 	{
 		if (cub->weapons[i].type == WEAPON_REVOLVER)
-			cub->weapons[i].reserve_ammo += 50;
+			cub->weapons[i].reserve_ammo += AMMO_REVOLVER_PICKUP;
 		else if (cub->weapons[i].type == WEAPON_RIFLE)
-			cub->weapons[i].reserve_ammo += 20;
+			cub->weapons[i].reserve_ammo += AMMO_RIFLE_PICKUP;
 		else if (cub->weapons[i].type == WEAPON_PLASMA)
-			cub->weapons[i].reserve_ammo += 40;
+			cub->weapons[i].reserve_ammo += AMMO_PLASMA_PICKUP;
 
 		if (cub->weapons[i].reserve_ammo > cub->weapons[i].max_ammo)
 			cub->weapons[i].reserve_ammo = cub->weapons[i].max_ammo;
@@ -42,9 +42,9 @@ void	explode_barrel(t_cub *cub, t_item *barrel)
 		{
 			dist = sqrt(pow(cub->enemies[i].x - barrel->x, 2)
 					+ pow(cub->enemies[i].y - barrel->y, 2));
-			if (dist < 4.0)
+			if (dist < BARREL_ENEMY_RADIUS)
 			{
-				cub->enemies[i].hp -= 100;
+				cub->enemies[i].hp -= BARREL_ENEMY_DAMAGE;
 				if (cub->enemies[i].hp <= 0)
 				{
 					cub->enemies[i].state = EN_DEAD;
@@ -62,9 +62,9 @@ void	explode_barrel(t_cub *cub, t_item *barrel)
 	}
 	dist = sqrt(pow(cub->player->pos_x - barrel->x, 2)
 			+ pow(cub->player->pos_y - barrel->y, 2));
-	if (dist < 3.0 && cub->gold_buff_timer <= 0)
+	if (dist < BARREL_PLAYER_RADIUS && cub->gold_buff_timer <= 0)
 	{
-		cub->player_hp -= 50;
+		cub->player_hp -= BARREL_PLAYER_DAMAGE;
 		if (cub->player_hp < 0)
 			cub->player_hp = 0;
 	}
@@ -75,7 +75,7 @@ static void	collect_item(t_cub *cub, t_item *item)
 	item->active = false;
 	if (item->type == ITEM_MEDIC_KIT)
 	{
-		player_heal(cub, 25);
+		player_heal(cub, HEAL_MEDIC_KIT);
 		player_add_ammo(cub);
 	}
 	else if (item->type == ITEM_BLUE_KEY)
@@ -84,13 +84,13 @@ static void	collect_item(t_cub *cub, t_item *item)
 	}
 	else if (item->type == ITEM_GOLD_PLANT)
 	{
-		cub->gold_buff_timer += 120.0;
+		cub->gold_buff_timer += INVINCIBILITY_DURATION;
 		if (cub->gold_buff_timer > cub->max_gold_buff_timer)
 			cub->max_gold_buff_timer = cub->gold_buff_timer;
 	}
 	else if (item->type == ITEM_WELL)
 	{
-		player_heal(cub, 5);
+		player_heal(cub, HEAL_WELL);
 	}
 }
 
