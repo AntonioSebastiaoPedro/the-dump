@@ -23,6 +23,7 @@
 # define MOVE_SPEED 2
 # define ROT_SPEED  0.02
 # define MOUSE_SENSITIVITY 0.007
+# define PLAYER_COLLISION_RADIUS 0.2
 
 /* Performance Optimization */
 # define TARGET_FPS 60
@@ -146,6 +147,9 @@
 # define ENEMY_DAMAGE      2
 # define ENEMY_ATK_COOLDOWN 30
 # define ENEMY_FRAME_DELAY  10
+
+# define LOS_RAY_STEP      0.2
+# define LOS_RAY_THICKNESS 0.1
 
 # define DOG_HP            5
 # define DOG_DAMAGE        2

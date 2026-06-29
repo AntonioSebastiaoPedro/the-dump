@@ -9,9 +9,9 @@ static void	move_forward(t_player *player, t_cub *cub)
 	speed_mult = (cub->gold_buff_timer > 0) ? 2.0 : 1.0;
 	new_x = player->pos_x + player->dir_x * MOVE_SPEED * speed_mult * cub->delta_time;
 	new_y = player->pos_y + player->dir_y * MOVE_SPEED * speed_mult * cub->delta_time;
-	if (is_walkable_aabb(cub, new_x, player->pos_y, 0.2))
+	if (is_walkable_aabb(cub, new_x, player->pos_y, PLAYER_COLLISION_RADIUS))
 		player->pos_x = new_x;
-	if (is_walkable_aabb(cub, player->pos_x, new_y, 0.2))
+	if (is_walkable_aabb(cub, player->pos_x, new_y, PLAYER_COLLISION_RADIUS))
 		player->pos_y = new_y;
 }
 
@@ -24,9 +24,9 @@ static void	move_backward(t_player *player, t_cub *cub)
 	speed_mult = (cub->gold_buff_timer > 0) ? 2.0 : 1.0;
 	new_x = player->pos_x - player->dir_x * MOVE_SPEED * speed_mult * cub->delta_time;
 	new_y = player->pos_y - player->dir_y * MOVE_SPEED * speed_mult * cub->delta_time;
-	if (is_walkable_aabb(cub, new_x, player->pos_y, 0.2))
+	if (is_walkable_aabb(cub, new_x, player->pos_y, PLAYER_COLLISION_RADIUS))
 		player->pos_x = new_x;
-	if (is_walkable_aabb(cub, player->pos_x, new_y, 0.2))
+	if (is_walkable_aabb(cub, player->pos_x, new_y, PLAYER_COLLISION_RADIUS))
 		player->pos_y = new_y;
 }
 
@@ -39,9 +39,9 @@ static void	strafe(t_player *player, t_cub *cub, int dir)
 	speed_mult = (cub->gold_buff_timer > 0) ? 2.0 : 1.0;
 	new_x = player->pos_x + dir * player->plane_x * MOVE_SPEED * speed_mult * cub->delta_time;
 	new_y = player->pos_y + dir * player->plane_y * MOVE_SPEED * speed_mult * cub->delta_time;
-	if (is_walkable_aabb(cub, new_x, player->pos_y, 0.2))
+	if (is_walkable_aabb(cub, new_x, player->pos_y, PLAYER_COLLISION_RADIUS))
 		player->pos_x = new_x;
-	if (is_walkable_aabb(cub, player->pos_x, new_y, 0.2))
+	if (is_walkable_aabb(cub, player->pos_x, new_y, PLAYER_COLLISION_RADIUS))
 		player->pos_y = new_y;
 }
 

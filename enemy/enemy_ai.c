@@ -18,19 +18,19 @@ int	enemy_has_line_of_sight(t_cub *cub, t_enemy *e)
 		return (1);
 	dx /= len;
 	dy /= len;
-	steps = (int)(len / 0.2);
+	steps = (int)(len / LOS_RAY_STEP);
 	i = 0;
 	cx = e->x;
 	cy = e->y;
 	while (i < steps)
 	{
-		cx += dx * 0.2;
-		cy += dy * 0.2;
+		cx += dx * LOS_RAY_STEP;
+		cy += dy * LOS_RAY_STEP;
 		if (!can_walk(cub, (int)cx, (int)cy) ||
-			!can_walk(cub, (int)(cx + 0.1), (int)cy) ||
-			!can_walk(cub, (int)(cx - 0.1), (int)cy) ||
-			!can_walk(cub, (int)cx, (int)(cy + 0.1)) ||
-			!can_walk(cub, (int)cx, (int)(cy - 0.1)))
+			!can_walk(cub, (int)(cx + LOS_RAY_THICKNESS), (int)cy) ||
+			!can_walk(cub, (int)(cx - LOS_RAY_THICKNESS), (int)cy) ||
+			!can_walk(cub, (int)cx, (int)(cy + LOS_RAY_THICKNESS)) ||
+			!can_walk(cub, (int)cx, (int)(cy - LOS_RAY_THICKNESS)))
 			return (0);
 		i++;
 	}
