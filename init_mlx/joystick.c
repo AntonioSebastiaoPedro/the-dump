@@ -40,7 +40,10 @@ static void	handle_joy_buttons(t_cub *cub, struct js_event *e)
 		if (e->number == 5)
 			on_mouse_click(cub);
 		else if (e->number == 1)
+		{
 			try_interact_door(cub);
+			try_collect_item(cub);
+		}
 		else if (e->number == 3)
 			cub->show_mira = !cub->show_mira;
 		else if (e->number == 6)
