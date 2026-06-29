@@ -39,7 +39,7 @@ int	key_press(int key, t_cub *cub)
 		try_interact_door(cub);
 	if (key == KEY_M)
 		cub->show_mira = !cub->show_mira;
-	if (key == KEY_RCTRL || key == KEY_ENTER)
+	if ((key == KEY_RCTRL || key == KEY_ENTER) && cub->state == GAME)
 		on_mouse_click(cub);
 	if (key == KEY_V)
 		cub->state = MENU;
