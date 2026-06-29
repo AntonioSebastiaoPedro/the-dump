@@ -9,6 +9,5 @@ minilibx-linux/
 *.o
 *.gcno
 *.txt
-*.md
 *.sh
 thedump
