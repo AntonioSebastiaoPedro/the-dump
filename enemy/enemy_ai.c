@@ -188,6 +188,9 @@ void	enemy_ai_attack(t_cub *cub, t_enemy *e)
 		if (final_damage < 1)
 			final_damage = 1;
 
+		if (e->type != DOG_TYPE)
+			play_enemy_shoot_sound(cub);
+
 		if (cub->gold_buff_timer <= 0)
 		{
 			cub->player_hp -= final_damage;
