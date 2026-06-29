@@ -65,7 +65,7 @@ bool	init_audio(t_cub *cub)
 	cub->dog_attack_sound = load_sound(cub,
 			"assets/sounds/dog/dogbark.mp3", 3, 0);
 	cub->explosion_sound = load_sound(cub,
-			"assets/sounds/playerdeath.mp3", 3, 0);
+			"assets/sounds/explosao.mp3", 3, 0);
 	cub->run_channel = init_channel(cub->run_sound, false);
 	cub->back_channel = init_channel(cub->back_sound, true);
 	return (true);
