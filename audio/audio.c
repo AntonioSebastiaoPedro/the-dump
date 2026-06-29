@@ -63,7 +63,7 @@ bool	init_audio(t_cub *cub)
 	cub->enemy_death_sound = load_sound(cub,
 			"assets/sounds/soldier/deathscream1.mp3", 1, 4);
 	cub->enemy_shoot_sound = load_sound(cub,
-			"assets/sounds/weapon-PlasmaCaster/sounds/CSTRFIRE.ogg", 3, 0);
+			"assets/sounds/weapon_enemies.mp3", 3, 0);
 	cub->dog_attack_sound = load_sound(cub,
 			"assets/sounds/dog/dogbark.mp3", 3, 0);
 	cub->explosion_sound = load_sound(cub,
