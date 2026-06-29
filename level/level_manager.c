@@ -5,7 +5,14 @@ void	init_campaign(t_cub *cub, int ac, char **av)
 	static char *campaign[] = {
 		"maps/level1.cub",
 		"maps/level2.cub",
-		"maps/boss.cub",
+		"maps/level3.cub",
+		"maps/level4.cub",
+		"maps/level5.cub",
+		"maps/level6.cub",
+		"maps/level7.cub",
+		"maps/level8.cub",
+		"maps/level9.cub",
+		"maps/level10.cub",
 		NULL
 	};
 
@@ -13,7 +20,7 @@ void	init_campaign(t_cub *cub, int ac, char **av)
 	{
 		cub->level_mgr.is_campaign = 1;
 		cub->level_mgr.campaign_maps = campaign;
-		cub->level_mgr.total_levels = 3;
+		cub->level_mgr.total_levels = 10;
 	}
 	else
 	{
