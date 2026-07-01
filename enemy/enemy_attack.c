@@ -61,6 +61,42 @@ int	damage_rate(double dist, float zoom_scale)
 	return (int)dmg;
 }
 
+static int	item_has_line_of_sight(t_cub *cub, t_item *item)
+{
+	double	dx;
+	double	dy;
+	double	len;
+	double	cx;
+	double	cy;
+	int		steps;
+	int		i;
+
+	dx = cub->player->pos_x - item->x;
+	dy = cub->player->pos_y - item->y;
+	len = sqrt(dx * dx + dy * dy);
+	if (len < 0.001)
+		return (1);
+	dx /= len;
+	dy /= len;
+	steps = (int)(len / LOS_RAY_STEP);
+	i = 0;
+	cx = item->x;
+	cy = item->y;
+	while (i < steps)
+	{
+		cx += dx * LOS_RAY_STEP;
+		cy += dy * LOS_RAY_STEP;
+		if (!can_walk(cub, (int)cx, (int)cy) ||
+			!can_walk(cub, (int)(cx + LOS_RAY_THICKNESS), (int)cy) ||
+			!can_walk(cub, (int)(cx - LOS_RAY_THICKNESS), (int)cy) ||
+			!can_walk(cub, (int)cx, (int)(cy + LOS_RAY_THICKNESS)) ||
+			!can_walk(cub, (int)cx, (int)(cy - LOS_RAY_THICKNESS)))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	enemy_take_damage(t_cub *cub)
 {
 	t_enemy	*e;
@@ -88,8 +124,11 @@ void	enemy_take_damage(t_cub *cub)
 		ty = inv * (-cub->player->plane_y * sx + cub->player->plane_x * sy);
 		if (ty > 0.0 && fabs(tx / ty) < CROSSHAIR_TOLERANCE && ty < best_barrel_dist)
 		{
-			best_barrel_dist = ty;
-			best_barrel = &cub->items[i];
+			if (item_has_line_of_sight(cub, &cub->items[i]))
+			{
+				best_barrel_dist = ty;
+				best_barrel = &cub->items[i];
+			}
 		}
 		i++;
 	}
