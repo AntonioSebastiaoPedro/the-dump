@@ -115,6 +115,7 @@ void			draw_skybox(t_cub *cub);
 void			draw_char_pixel(t_cub *cub, int x, int y, int character, int color);
 void			draw_string_graphics(t_cub *cub, int x, int y, char *str, int color);
 void			draw_empty_rect(t_cub *cub, t_vec start, t_vec rect_size, uint32_t color);
+void			draw_level_hud(t_cub *cub);
 
 
 /* ====== PLAYER ====== */

@@ -197,3 +197,21 @@ void	draw_explosion_flash(t_cub *cub)
 		i++;
 	}
 }
+
+void	draw_level_hud(t_cub *cub)
+{
+	char	level_str[64];
+	t_vec	start;
+	t_vec	size;
+
+	if (!cub->level_mgr.is_campaign)
+		return ;
+	start.x = 1080;
+	start.y = 12;
+	size.x = 120;
+	size.y = 40;
+	draw_filled_rect(cub, start, size, BG_COLOR);
+	draw_empty_rect(cub, start, size, WHITE);
+	ft_sprintf(level_str, "LVL %d", cub->level_mgr.current_level_idx + 1);
+	draw_string_graphics(cub, start.x + 20, start.y + 15, level_str, WHITE);
+}
